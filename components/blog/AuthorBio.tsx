@@ -18,7 +18,7 @@ export default function AuthorBio() {
             <a href="https://aigeletterdheid.academy" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
               AI Literacy Academy (AIGA)
             </a>
-            . He helps organizations build the bridge between human talent and technology — not as a project, but as a strategy.
+            . He helps organizations build the bridge between human talent and technology, not as a project, but as a strategy.
           </p>
           <div className="flex flex-wrap gap-4 mt-4">
             <a href="https://www.linkedin.com/in/ferryhoes/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-accent hover:underline font-heading font-semibold">

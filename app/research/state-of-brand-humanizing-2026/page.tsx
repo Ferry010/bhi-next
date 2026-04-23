@@ -178,7 +178,7 @@ export default function StateOfBrandHumanizing2026Page() {
             </P>
             <P>The results were exactly as mixed as anyone with a long view would have predicted.</P>
             <P>
-              Organizations that had invested in their human infrastructure — their culture, their employee capabilities, their real relationships with customers — adapted quickly. They already had people who knew how to think. Giving them better tools accelerated what was already working.
+              Organizations that had invested in their human infrastructure (their culture, their employee capabilities, their real relationships with customers) adapted quickly. They already had people who knew how to think. Giving them better tools accelerated what was already working.
             </P>
             <P>
               Organizations that had spent the previous decade cutting corners on the human side discovered a different reality. Powerful tools. Nobody who knew how to use them wisely. No culture of judgment or creativity to fall back on.

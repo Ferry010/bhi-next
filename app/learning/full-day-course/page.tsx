@@ -15,11 +15,11 @@ const data = {
   breadcrumbs: [{ label: "Learning", to: "/learning" }, { label: "Full-Day Course" }],
   badge: "Flagship training",
   title: "The Full-Day Course",
-  subtitle: "The inspiration session opens the conversation. The full-day training builds the skill. Over one focused day, your team works through the Brand Humanizing framework in depth — and leaves with a plan.",
+  subtitle: "The inspiration session opens the conversation. The full-day training builds the skill. Over one focused day, your team works through the Brand Humanizing framework in depth and leaves with a plan.",
   duration: "6–7 hours",
   audience: "12–30 people",
   deliveredBy: "Ferry Hoes and/or Jonathan Flores",
-  description: "This is the flagship learning product. A full day dedicated to building your team's fluency in the Brand Humanizing framework. Not a lecture — a working session. Your team maps their own Human-Technology Fit, inventories their skills across all four dimensions, identifies opportunities they've been missing, and builds a 90-day implementation plan they can start executing the following week.",
+  description: "This is the flagship learning product. A full day dedicated to building your team's fluency in the Brand Humanizing framework. Not a lecture: a working session. Your team maps their own Human-Technology Fit, inventories their skills across all four dimensions, identifies opportunities they've been missing, and builds a 90-day implementation plan they can start executing the following week.",
   agenda: [
     { time: "9:00", activity: "Intake review and context setting" },
     { time: "9:30", activity: "Framework deep-dive: the pyramid and four skills" },

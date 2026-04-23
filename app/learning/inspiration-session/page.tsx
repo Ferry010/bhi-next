@@ -20,7 +20,7 @@ const data = {
   duration: "60–90 minutes",
   audience: "15–500+ people",
   deliveredBy: "Ferry Hoes",
-  description: "This is where Brand Humanizing starts for most organizations. In 60 to 90 minutes, Ferry takes your team through the framework that has reshaped how organizations across Europe think about the relationship between humans and technology. No slides full of bullet points. No generic AI hype. An honest, interactive conversation about what your organization is actually for — and what that means for the people inside it.",
+  description: "This is where Brand Humanizing starts for most organizations. In 60 to 90 minutes, Ferry takes your team through the framework that has reshaped how organizations across Europe think about the relationship between humans and technology. No slides full of bullet points. No generic AI hype. An honest, interactive conversation about what your organization is actually for, and what that means for the people inside it.",
   agenda: [
     { time: "9:00", activity: "Opening: the question that started everything" },
     { time: "9:15", activity: "The state of human-technology relationships in your industry" },
@@ -35,7 +35,7 @@ const data = {
     "Concrete starting points specific to your context",
     "A shared language for conversations you've been having in fragments",
   ],
-  pricingSignal: "Pricing from €2,500 — varies by group size and format. Reach out for a quote.",
+  pricingSignal: "Pricing from €2,500. Varies by group size and format. Reach out for a quote.",
   includesBook: true,
   ctaLabel: "Book this session",
   ctaProduct: "inspiration-session",

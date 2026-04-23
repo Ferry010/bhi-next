@@ -30,7 +30,7 @@ export default function SocialProofBar() {
         <div
           className={`${transitionBase} ${isVisible ? visible : hidden} flex flex-col gap-y-6 md:gap-y-8`}
         >
-          {/* Row 1 — 6 logos */}
+          {/* Row 1: 6 logos */}
           <div className="grid grid-cols-6 gap-x-8 md:gap-x-12">
             {logos.slice(0, 6).map((logo) => (
               <div key={logo.alt} className="flex items-center justify-center">
@@ -43,7 +43,7 @@ export default function SocialProofBar() {
               </div>
             ))}
           </div>
-          {/* Row 2 — 5 logos, centred to match row 1 column width */}
+          {/* Row 2: 5 logos, centred to match row 1 column width */}
           <div className="grid grid-cols-5 gap-x-8 md:gap-x-12 w-5/6 mx-auto">
             {logos.slice(6).map((logo) => (
               <div key={logo.alt} className="flex items-center justify-center">

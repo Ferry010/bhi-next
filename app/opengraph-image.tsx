@@ -5,7 +5,7 @@ export const alt = "Brand Humanizing Institute";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Synchronous — no external fetches that can time out on Vercel edge.
+// Synchronous: no external fetches that can time out on Vercel edge.
 // Gradient background replaces glow blobs (filter:blur is not satori-supported).
 export default function Image() {
   return new ImageResponse(

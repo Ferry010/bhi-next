@@ -19,7 +19,7 @@ export default function OurStoryPage() {
         <section className="bg-secondary pt-28 md:pt-36 pb-12">
           <div className="container max-w-3xl">
             <Breadcrumb items={[{ label: "About", to: "/about" }, { label: "Our Story" }]} variant="light" />
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">2017 — Rotterdam</span>
+            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">2017, Rotterdam</span>
             <h1 className="text-hero md:text-hero-lg text-foreground mt-4">Our story</h1>
           </div>
         </section>

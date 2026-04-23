@@ -9,7 +9,7 @@ export default function NotFound() {
         Page not found
       </h1>
       <p className="text-body-lg text-muted-foreground max-w-md mb-10">
-        The page you&apos;re looking for doesn&apos;t exist — but a human does. Let us help you find what you need.
+        The page you&apos;re looking for doesn&apos;t exist, but a human does. Let us help you find what you need.
       </p>
       <div className="flex flex-col sm:flex-row gap-4">
         <Link href="/">

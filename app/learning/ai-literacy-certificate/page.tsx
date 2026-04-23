@@ -26,7 +26,7 @@ const outcomes = [
   "EU AI Act Article 4 compliance documentation",
   "Genuine understanding of AI systems and their limitations",
   "The four-skill Brand Humanizing framework applied to AI",
-  "Ability to identify where AI belongs — and where it doesn't — in your role",
+  "Ability to identify where AI belongs, and where it doesn't, in your role",
   "Certificate of completion from AIGA / Brand Humanizing Institute",
 ];
 
@@ -75,7 +75,7 @@ export default function AILiteracyCertificatePage() {
               The EU AI Act requires every organisation using AI to ensure their people have adequate AI literacy. Article 4 sets the standard. The enforcement deadline is 2 August 2026. Fines for non-compliance can reach EUR 35 million.
             </p>
             <p className="text-lg text-white/80 leading-relaxed mt-4">
-              We built this programme so your team genuinely understands AI — not just for compliance, but to think clearly about where it helps and where it doesn't. It&apos;s grounded in the Brand Humanizing four-skill framework and delivered via our sister institute AIGA.
+              We built this programme so your team genuinely understands AI, not just for compliance, but to think clearly about where it helps and where it doesn't. It&apos;s grounded in the Brand Humanizing four-skill framework and delivered via our sister institute AIGA.
             </p>
           </div>
         </section>
@@ -98,7 +98,7 @@ export default function AILiteracyCertificatePage() {
           <div className="container max-w-3xl">
             <div className="bg-navy-card rounded-3xl p-8 md:p-12 shadow-xl border border-accent/10 text-center">
               <h2 className="font-heading text-2xl md:text-4xl font-bold mb-6 text-white">Investment</h2>
-              <p className="text-xl md:text-2xl text-accent font-heading font-semibold mb-2">Per seat pricing — see aigeletterdheid.academy</p>
+              <p className="text-xl md:text-2xl text-accent font-heading font-semibold mb-2">Per seat pricing: see aigeletterdheid.academy</p>
               <p className="text-white/60 text-sm mt-4">Bulk pricing available for teams. Dutch version available now. English coming soon.</p>
               <a href="https://aigeletterdheid.academy" target="_blank" rel="noopener noreferrer" className="inline-block mt-8">
                 <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">

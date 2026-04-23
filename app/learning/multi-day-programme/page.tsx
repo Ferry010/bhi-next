@@ -36,7 +36,7 @@ const data = {
     "A 12–36 month strategy with clear decisions and milestones",
     "A shared language that makes technology-human conversations productive",
   ],
-  pricingSignal: "From €12,500 — scoped to your leadership team size and objectives.",
+  pricingSignal: "From €12,500, scoped to your leadership team size and objectives.",
   includesBook: true,
   ctaLabel: "Design our programme",
   ctaProduct: "multi-day-programme",

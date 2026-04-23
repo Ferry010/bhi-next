@@ -6,7 +6,7 @@ export const alt = "Blog post from Brand Humanizing Institute";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// No font fetch — avoids external timeouts on Vercel edge.
+// No font fetch: avoids external timeouts on Vercel edge.
 // filter:blur is not supported by satori; gradient background used instead.
 export default async function Image({ params }: { params: { slug: string } }) {
   let title = "Brand Humanizing Blog";
@@ -65,7 +65,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
           />
         )}
 
-        {/* ── Gradient overlay — only over a featured image ── */}
+        {/* Gradient overlay: only over a featured image */}
         {featuredImageUrl && (
           <div
             style={{
@@ -116,7 +116,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
             </span>
           </div>
 
-          {/* Spacer — image shows through here */}
+          {/* Spacer: image shows through here */}
           <div style={{ flex: 1 }} />
 
           {/* Post title */}

@@ -228,7 +228,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
 
       <SectionDivider />
 
-      {/* Why — dark */}
+      {/* Why: dark */}
       <section className="bg-navy section-padding">
         <div className="container max-w-3xl">
           <Section>
@@ -240,7 +240,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
 
       <SectionDivider />
 
-      {/* Process — white */}
+      {/* Process: white */}
       <section className="bg-white section-padding">
         <div className="container max-w-3xl">
           <Section>
@@ -252,7 +252,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
 
       <SectionDivider />
 
-      {/* Outputs — cream */}
+      {/* Outputs: cream */}
       <section className="bg-cream section-padding">
         <div className="container max-w-3xl">
           <Section>
@@ -274,7 +274,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
 
       <SectionDivider />
 
-      {/* Who — white */}
+      {/* Who: white */}
       <section className="bg-white section-padding">
         <div className="container max-w-3xl">
           <Section>
@@ -327,7 +327,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
 
       <SectionDivider />
 
-      {/* Testimonials — dark */}
+      {/* Testimonials: dark */}
       {data.testimonials.length > 0 && (
         <section className="bg-navy section-padding">
           <div className="container max-w-3xl">
@@ -348,7 +348,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
 
       <SectionDivider />
 
-      {/* Investment — cream */}
+      {/* Investment: cream */}
       <section className="bg-cream section-padding">
         <div className="container max-w-3xl">
           <Section>
@@ -369,7 +369,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
 
       <SectionDivider />
 
-      {/* Related engagements — white */}
+      {/* Related engagements: white */}
       <section className="bg-white section-padding">
         <div className="container max-w-4xl">
           <Section>
@@ -391,7 +391,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
 
       <SectionDivider />
 
-      {/* Final CTA — dark */}
+      {/* Final CTA: dark */}
       <section className="bg-navy section-padding relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
         <div className="container max-w-3xl text-center relative z-10">

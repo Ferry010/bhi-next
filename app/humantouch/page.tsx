@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import HumanTouchClient from "./HumanTouchClient";
 
 export const metadata: Metadata = {
-  title: "Human Touch — Brand Humanizing Institute",
+  title: "Human Touch | Brand Humanizing Institute",
   description: "Add a human touch to your email. Show it was really you.",
   openGraph: { images: [{ url: "/og/human-touch.jpg" }] },
 };
