@@ -1,6 +1,8 @@
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import AdminLayoutClient from "./AdminLayoutClient";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Admin | Brand Humanizing Institute",
   robots: { index: false, follow: false },
