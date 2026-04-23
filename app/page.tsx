@@ -17,9 +17,6 @@ export const metadata: Metadata = {
   title: "Brand Humanizing Institute | Human Edge in a Digital World",
   description:
     "Turn human talent into your strongest competitive advantage. Strategy for organizations navigating AI and automation. Founded 2017, Rotterdam.",
-  openGraph: {
-    images: [{ url: "/og/default.jpg" }],
-  },
 };
 
 const ORG_SCHEMA = {
