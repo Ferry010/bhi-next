@@ -6,56 +6,161 @@ import Breadcrumb from "@/components/Breadcrumb";
 export const metadata: Metadata = {
   title: "The No-Cookies Cookie Policy",
   description:
-    "We don't use tracking cookies. We have no idea what you're doing on our website — and we think that's the right way to do it.",
+    "We don't use tracking cookies. Here's the story of why we chose to treat visitors like humans, not datapoints.",
 };
 
 export default function NoCookiesPage() {
   return (
-    <>
-      <Navbar variant="light" />
-      <main className="bg-secondary min-h-screen">
-        <section className="pt-28 md:pt-36 pb-16 md:pb-24">
-          <div className="container max-w-3xl">
-            <Breadcrumb items={[{ label: "No-Cookie Policy" }]} variant="light" />
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">🍪 Crossed out</span>
-            <h1 className="text-hero md:text-hero-lg text-foreground mt-4">
-              The No-Cookies Cookie Policy
-            </h1>
-            <div className="mt-10 space-y-6 text-sm md:text-body-lg text-muted-foreground leading-relaxed prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-foreground">
-              <p>We don&apos;t use tracking cookies.</p>
-              <p>
-                We have no idea what you are doing on our website. We cannot follow you around. We don&apos;t track where you came from, what pages you visited, or how long you stayed. We have no interest in selling or sharing your browsing behavior with anyone.
-              </p>
-              <p>
-                This is a conscious decision. If we would invite you to our office, we wouldn&apos;t follow your every move either. We extend the same respect to your visit here.
-              </p>
-              <h2>What we do use</h2>
-              <p>
-                Our website uses basic, anonymous analytics through Plausible — a privacy-first analytics tool that does not use cookies, does not track individuals, and does not collect personal data. We use it to understand roughly how many people visit and which pages are most popular. That&apos;s it.
-              </p>
-              <p>
-                No third-party advertising cookies. No Facebook Pixel. No Google Analytics. No remarketing. No cross-site tracking of any kind.
-              </p>
-              <h2>Why this matters to us</h2>
-              <p>
-                Brand Humanizing is built on the idea that organizations should use technology to become closer to people — not to exploit the data trail people leave behind. Tracking cookies are, in our view, the opposite of Brand Humanizing.
-              </p>
-              <p>
-                We apply what we teach. That&apos;s not a marketing statement. It&apos;s just what we believe.
-              </p>
-              <h2>Contact</h2>
-              <p>
-                Questions about this? Email{" "}
-                <a href="mailto:ferry@brandhumanizing.com" className="text-accent hover:underline">
-                  ferry@brandhumanizing.com
-                </a>
-                . A human will read it and reply.
-              </p>
-            </div>
+    <div className="min-h-screen bg-[#0F1117] text-white">
+      <Navbar variant="dark" />
+
+      <main className="container max-w-3xl pt-24 md:pt-28 pb-24 md:pb-32">
+        <Breadcrumb
+          items={[{ label: "The No-Cookies Cookie Policy" }]}
+          variant="dark"
+        />
+
+        {/* Hero */}
+        <section className="text-center pt-8 md:pt-12 pb-12 md:pb-16">
+          <div className="relative inline-flex items-center justify-center w-24 h-24 mb-6">
+            <span className="text-7xl" role="img" aria-label="cookie">
+              🍪
+            </span>
+            <svg
+              className="absolute inset-0 w-24 h-24"
+              viewBox="0 0 96 96"
+              fill="none"
+            >
+              <line
+                x1="16"
+                y1="16"
+                x2="80"
+                y2="80"
+                stroke="hsl(var(--accent))"
+                strokeWidth="5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <h1 className="font-heading text-3xl md:text-5xl font-bold leading-tight mb-4 text-white">
+            The No-Cookies Cookie Policy
+          </h1>
+          <p className="text-accent font-heading font-semibold text-lg md:text-xl">
+            Yes, this is a real policy. No, there are no cookies.
+          </p>
+        </section>
+
+        {/* Declaration – orange left-border blockquote */}
+        <section className="border-l-4 border-accent pl-6 md:pl-8 py-2 mb-16 md:mb-20">
+          <p className="text-lg md:text-xl leading-relaxed text-white/90">
+            We don&apos;t use tracking cookies. We have no idea what you are
+            doing on our website, as we cannot follow you around. This is a
+            conscious decision made by us because if we would invite you to our
+            office, we wouldn&apos;t follow your every move either.
+          </p>
+        </section>
+
+        {/* Visitor counter */}
+        <section className="flex justify-center mb-16 md:mb-20">
+          <div className="bg-white/5 border border-white/10 rounded-2xl px-8 py-6 text-center">
+            <p className="text-white/40 text-xs uppercase tracking-widest font-heading mb-2">
+              Visitor count
+            </p>
+            <p className="text-5xl md:text-6xl font-heading font-bold text-accent">
+              ?
+            </p>
+            <p className="text-white/40 text-sm mt-2">
+              You could be our 10,000th visitor and we wouldn&apos;t have a
+              clue.
+            </p>
           </div>
         </section>
+
+        {/* Origin story */}
+        <section className="mb-16 md:mb-20 space-y-6">
+          <h2 className="font-heading text-xl md:text-2xl font-bold text-white/90">
+            Where it all started{" "}
+            <span className="text-accent" role="img" aria-label="cookie">
+              🍪
+            </span>
+          </h2>
+          <p className="text-white/70 leading-relaxed">
+            It stems from the time when Jonathan and I were Growth Hackers. Our
+            daily job was to optimize websites, forms, shops, you name it. Using
+            tools like Google Analytics and Hotjar to measure every move anyone
+            made. We were{" "}
+            <span className="text-accent font-semibold">
+              &ldquo;optimizing datapoints&rdquo;
+            </span>
+            .
+          </p>
+          <p className="text-white/70 leading-relaxed">
+            But when coining &ldquo;Brand Humanizing&rdquo; we realized that
+            with &ldquo;datapoint&rdquo; we meant people. Humans. Not an online
+            entity we could optimize, but a human being that took time out of
+            their day to visit our website, store or product.
+          </p>
+        </section>
+
+        {/* Big callout */}
+        <section className="mb-16 md:mb-20 bg-accent/10 rounded-3xl p-8 md:p-12 text-center">
+          <p className="font-heading text-2xl md:text-3xl font-bold leading-snug text-white">
+            We were optimizing datapoints.
+            <br />
+            <span className="text-accent">But datapoints were people.</span>
+          </p>
+        </section>
+
+        {/* The decision */}
+        <section className="mb-16 md:mb-20 space-y-6">
+          <h2 className="font-heading text-xl md:text-2xl font-bold text-white/90">
+            The decision
+          </h2>
+          <p className="text-white/70 leading-relaxed">
+            When we built this website, we figured: what would knowing all this
+            data bring us? Sure, we could optimize for more sales, analyze video
+            footage of your browsing, but would it bring us closer? No, it would
+            make our relationship even more transactional.
+          </p>
+          <p className="text-white/70 leading-relaxed">
+            And that&apos;s just not who we are.
+          </p>
+        </section>
+
+        {/* The policy – second blockquote */}
+        <section className="mb-16 md:mb-20 space-y-6">
+          <div className="border-l-4 border-accent pl-6 md:pl-8 py-2">
+            <p className="font-heading text-2xl md:text-3xl font-bold text-white">
+              And thus: no cookies.{" "}
+              <span role="img" aria-label="no cookie">
+                🚫🍪
+              </span>
+            </p>
+          </div>
+          <p className="text-white/70 leading-relaxed">
+            Out here, you are completely anonymous. We won&apos;t even know you
+            are here until you decide to reach out. Don&apos;t get us wrong, we
+            love data and tech just as much as the next person. But all in good
+            use and with a purpose. And following people online and seeing them
+            as datapoints is just not our purpose.
+          </p>
+        </section>
+
+        {/* Sign-off */}
+        <section className="text-center pt-4 pb-8">
+          <p className="font-heading text-2xl md:text-3xl font-bold text-accent mb-4">
+            So see you around!
+          </p>
+          <p className="text-white/50 text-lg">
+            Or not, who knows!{" "}
+            <span role="img" aria-label="shrug">
+              🤷
+            </span>
+          </p>
+        </section>
       </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
