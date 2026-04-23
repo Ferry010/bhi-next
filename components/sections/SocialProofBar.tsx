@@ -28,19 +28,19 @@ export default function SocialProofBar() {
     <section ref={ref} className="bg-[#0F1117] py-20 md:py-28">
       <div className="container max-w-5xl">
         <div
-          className={`${transitionBase} ${isVisible ? visible : hidden} overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]`}
+          className={`${transitionBase} ${isVisible ? visible : hidden} grid gap-x-8 gap-y-6 md:gap-x-12 md:gap-y-8`}
+          style={{ gridTemplateColumns: "repeat(auto-fit, minmax(80px, 1fr))" }}
         >
-          <div className="flex animate-marquee w-max gap-10">
-            {[...logos, ...logos].map((logo, i) => (
+          {logos.map((logo) => (
+            <div key={logo.alt} className="flex items-center justify-center">
               <img
-                key={`${logo.alt}-${i}`}
                 src={logo.src}
                 alt={logo.alt}
                 loading="lazy"
-                className="h-8 md:h-10 w-auto flex-shrink-0 brightness-0 invert opacity-[0.45] object-contain"
+                className="h-8 md:h-10 w-auto brightness-0 invert opacity-[0.45] object-contain"
               />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         <p
