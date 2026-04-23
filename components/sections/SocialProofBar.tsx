@@ -15,6 +15,7 @@ const logos = [
   { src: "/assets/logos/uwv.png", alt: "UWV" },
   { src: "/assets/logos/minfin.png", alt: "Ministerie van Financiën" },
   { src: "/assets/logos/eindhoven.png", alt: "Gemeente Eindhoven" },
+  { src: "/assets/logos/free-unilever-logo-icon-svg-download-png-2357829.png", alt: "Unilever" },
 ];
 
 export default function SocialProofBar() {
@@ -43,8 +44,8 @@ export default function SocialProofBar() {
               </div>
             ))}
           </div>
-          {/* Row 2: 5 logos, centred to match row 1 column width */}
-          <div className="grid grid-cols-5 gap-x-8 md:gap-x-12 w-5/6 mx-auto">
+          {/* Row 2: 6 logos */}
+          <div className="grid grid-cols-6 gap-x-8 md:gap-x-12">
             {logos.slice(6).map((logo) => (
               <div key={logo.alt} className="flex items-center justify-center">
                 <img
