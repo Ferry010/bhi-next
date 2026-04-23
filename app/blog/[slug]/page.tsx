@@ -51,7 +51,11 @@ export async function generateMetadata({
     description: post.seo_description || post.excerpt || undefined,
     openGraph: {
       type: "article",
-      images: [{ url: post.seo_og_image_url || post.header_image_url || "/og/blog.jpg" }],
+      // Only override when the editor set a custom OG image; otherwise the
+      // file-based opengraph-image.tsx generates the image dynamically.
+      ...(post.seo_og_image_url && {
+        images: [{ url: post.seo_og_image_url }],
+      }),
     },
   };
 }
