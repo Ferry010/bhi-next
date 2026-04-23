@@ -15,7 +15,7 @@ const logos = [
   { src: "/assets/logos/uwv.png", alt: "UWV" },
   { src: "/assets/logos/minfin.png", alt: "Ministerie van Financiën" },
   { src: "/assets/logos/eindhoven.png", alt: "Gemeente Eindhoven" },
-  { src: "/assets/logos/free-unilever-logo-icon-svg-download-png-2357829.png", alt: "Unilever" },
+  { src: "/assets/logos/Unilever.png", alt: "Unilever" },
 ];
 
 export default function SocialProofBar() {
