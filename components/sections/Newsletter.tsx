@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { notifyByEmail } from "@/lib/notifyByEmail";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -20,8 +20,8 @@ export default function Newsletter() {
     try {
       const submissionId = crypto.randomUUID();
       const formData = { email: email.trim() };
-      await supabase.from("form_submissions" as any).insert({ id: submissionId, form_type: "newsletter", data: formData } as any);
-      await supabase.functions.invoke("notify-slack", { body: { form_type: "newsletter", data: formData } });
+      await createSupabaseBrowserClient().from("form_submissions" as any).insert({ id: submissionId, form_type: "newsletter", data: formData } as any);
+      await createSupabaseBrowserClient().functions.invoke("notify-slack", { body: { form_type: "newsletter", data: formData } });
       notifyByEmail("newsletter", formData, submissionId);
       setSubmitted(true);
     } catch {

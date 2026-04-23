@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export interface PodcastEpisode {
   title: string;
@@ -35,7 +35,7 @@ export function usePodcastFeed() {
   useEffect(() => {
     async function fetchFeed() {
       try {
-        const { data, error: fnError } = await supabase.functions.invoke("podcast-rss");
+        const { data, error: fnError } = await createSupabaseBrowserClient().functions.invoke("podcast-rss");
         if (fnError) throw fnError;
         const eps = (data.episodes || []).map((ep: any) => ({
           ...ep,

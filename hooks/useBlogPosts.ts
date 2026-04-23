@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
-import { supabase } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export interface BlogPost {
   id: string;
@@ -29,7 +29,7 @@ export function useBlogPosts() {
   return useQuery({
     queryKey: ["blog-posts"],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data, error } = await createSupabaseBrowserClient()
         .from("blog_posts")
         .select("*")
         .eq("published", true)
@@ -44,7 +44,7 @@ export function useBlogPost(slug: string) {
   return useQuery({
     queryKey: ["blog-post", slug],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data, error } = await createSupabaseBrowserClient()
         .from("blog_posts")
         .select("*")
         .eq("slug", slug)
@@ -61,7 +61,7 @@ export function useAdjacentPosts(currentSlug: string) {
   return useQuery({
     queryKey: ["adjacent-posts", currentSlug],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data, error } = await createSupabaseBrowserClient()
         .from("blog_posts")
         .select("title, slug, published_at, header_image_url")
         .eq("published", true)
@@ -83,7 +83,7 @@ export function useRelatedPosts(slugs: string[] | null) {
     queryKey: ["related-posts", slugs],
     queryFn: async () => {
       if (!slugs?.length) return [];
-      const { data, error } = await supabase
+      const { data, error } = await createSupabaseBrowserClient()
         .from("blog_posts")
         .select("id, title, slug, excerpt, header_image_url, published_at, seo_keywords, content")
         .eq("published", true)

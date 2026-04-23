@@ -5,6 +5,19 @@ const nextConfig = {
       { protocol: "https", hostname: "**" },
     ],
   },
+  // Prevent server-side bundling of browser-only packages
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+        crypto: false,
+      };
+    }
+    return config;
+  },
   async redirects() {
     return [
       { source: "/learning/half-day-workshop", destination: "/learning", permanent: true },

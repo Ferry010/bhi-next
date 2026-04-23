@@ -32,15 +32,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/no-cookies`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  // Fetch all published blog post slugs
-  const supabase = createServerClient();
-  const { data: posts } = await supabase
-    .from("blog_posts")
-    .select("slug, updated_at")
-    .eq("published", true)
-    .order("published_at", { ascending: false });
+  // Fetch all published blog post slugs — wrapped in try/catch so a network
+  // failure at build time doesn't break the entire sitemap generation.
+  let posts: { slug: string; updated_at: string }[] = [];
+  try {
+    const supabase = createServerClient();
+    const { data } = await supabase
+      .from("blog_posts")
+      .select("slug, updated_at")
+      .eq("published", true)
+      .order("published_at", { ascending: false });
+    posts = data || [];
+  } catch {
+    // silently skip dynamic blog routes if DB is unreachable at build time
+  }
 
-  const blogRoutes: MetadataRoute.Sitemap = (posts || []).map((post) => ({
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${base}/blog/${post.slug}`,
     lastModified: new Date(post.updated_at),
     changeFrequency: "monthly" as const,

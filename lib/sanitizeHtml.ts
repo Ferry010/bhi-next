@@ -1,22 +1,15 @@
-const ALLOWED_TAGS = [
+// Blog content comes from our own Tiptap admin editor and is trusted.
+// Strip any tags not in the allowlist as a basic server-safe pass.
+const ALLOWED_TAGS = new Set([
   "p","h1","h2","h3","h4","h5","h6","blockquote","strong","em","b","i",
   "u","s","a","ul","ol","li","br","hr","img","figure","figcaption","code","pre",
-];
-const ALLOWED_ATTRS = ["href","src","alt","title","target","rel","loading"];
+]);
+
+const FORBIDDEN_TAGS_RE = /<\/?(?!(?:p|h[1-6]|blockquote|strong|em|b|i|u|s|a|ul|ol|li|br|hr|img|figure|figcaption|code|pre)\b)[a-z][^>]*>/gi;
+const FORBIDDEN_ATTRS_RE = /\s(?:style|on\w+)="[^"]*"/gi;
 
 export function sanitizeBlogHtml(html: string): string {
-  if (typeof window !== "undefined") {
-    // Browser: use DOMPurify
-    const DOMPurify = require("dompurify");
-    return DOMPurify.sanitize(html, {
-      USE_PROFILES: { html: true },
-      ALLOW_DATA_ATTR: false,
-      FORBID_TAGS: ["style","script","iframe","object","embed","form","input","button","textarea","select","link","meta"],
-      FORBID_ATTR: ["style"],
-      ALLOWED_TAGS,
-      ALLOWED_ATTR: ALLOWED_ATTRS,
-    });
-  }
-  // Server: basic tag stripping for unsupported tags only
-  return html;
+  return html
+    .replace(FORBIDDEN_TAGS_RE, "")
+    .replace(FORBIDDEN_ATTRS_RE, "");
 }

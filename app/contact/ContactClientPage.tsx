@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { supabase } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { notifyByEmail } from "@/lib/notifyByEmail";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
@@ -97,6 +97,7 @@ function ContactForm() {
         ...(intent === "project" && { project_type: projectType, org_size: orgSize, timeline }),
       };
       const submissionId = crypto.randomUUID();
+      const supabase = createSupabaseBrowserClient();
       await supabase.from("form_submissions" as any).insert({ id: submissionId, form_type: "contact", data: formData } as any);
       await supabase.functions.invoke("notify-slack", { body: { form_type: "contact", data: formData } });
       notifyByEmail("contact", formData, submissionId);

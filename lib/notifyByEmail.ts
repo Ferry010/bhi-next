@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 const NOTIFY_EMAILS = ["ferry@brandhumanizing.com", "jonathan@brandhumanizing.com"];
 
@@ -22,7 +22,7 @@ export async function notifyByEmail(
 
   await Promise.allSettled(
     NOTIFY_EMAILS.map((email) =>
-      supabase.functions.invoke("send-transactional-email", {
+      createSupabaseBrowserClient().functions.invoke("send-transactional-email", {
         body: {
           templateName: "form-notification",
           recipientEmail: email,

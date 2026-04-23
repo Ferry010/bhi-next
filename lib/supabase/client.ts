@@ -3,16 +3,17 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/supabase";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+type SupabaseClient = ReturnType<typeof createClient<Database>>;
 
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
-  auth: {
-    persistSession: true,
-    autoRefreshToken: true,
-  },
-});
+let _client: SupabaseClient | null = null;
 
-export function createSupabaseBrowserClient() {
-  return supabase;
+export function createSupabaseBrowserClient(): SupabaseClient {
+  if (!_client) {
+    _client = createClient<Database>(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      { auth: { persistSession: true, autoRefreshToken: true } },
+    );
+  }
+  return _client;
 }

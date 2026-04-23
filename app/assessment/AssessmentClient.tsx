@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import QuestionStep from "@/components/assessment/QuestionStep";
-import ResultsView from "@/components/assessment/ResultsView";
+import dynamic from "next/dynamic";
+const ResultsView = dynamic(() => import("@/components/assessment/ResultsView"), { ssr: false });
 import {
   assessmentQuestions,
   calculateScores,

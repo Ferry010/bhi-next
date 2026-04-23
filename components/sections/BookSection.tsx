@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { notifyByEmail } from "@/lib/notifyByEmail";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -21,9 +21,9 @@ export default function BookSection() {
     try {
       const submissionId = crypto.randomUUID();
       const formData = { email: email.trim() };
-      await supabase.from("english_book_requests" as any).insert({ email: email.trim() } as any);
-      await supabase.from("form_submissions" as any).insert({ id: submissionId, form_type: "book_request", data: formData } as any);
-      supabase.functions.invoke("notify-slack", { body: { form_type: "book_request", data: formData } });
+      await createSupabaseBrowserClient().from("english_book_requests" as any).insert({ email: email.trim() } as any);
+      await createSupabaseBrowserClient().from("form_submissions" as any).insert({ id: submissionId, form_type: "book_request", data: formData } as any);
+      createSupabaseBrowserClient().functions.invoke("notify-slack", { body: { form_type: "book_request", data: formData } });
       notifyByEmail("book_request", formData, submissionId);
       setSubmitted(true);
     } catch {
