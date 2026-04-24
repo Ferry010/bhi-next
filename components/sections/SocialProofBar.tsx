@@ -29,34 +29,18 @@ export default function SocialProofBar() {
     <section ref={ref} className="bg-[#0F1117] py-20 md:py-28">
       <div className="container max-w-5xl">
         <div
-          className={`${transitionBase} ${isVisible ? visible : hidden} flex flex-col gap-y-6 md:gap-y-8`}
+          className={`${transitionBase} ${isVisible ? visible : hidden} grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-x-12 lg:gap-y-8`}
         >
-          {/* Row 1: 6 logos */}
-          <div className="grid grid-cols-6 gap-x-8 md:gap-x-12">
-            {logos.slice(0, 6).map((logo) => (
-              <div key={logo.alt} className="flex items-center justify-center">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  loading="lazy"
-                  className="h-12 md:h-[60px] w-auto brightness-0 invert opacity-[0.45] object-contain"
-                />
-              </div>
-            ))}
-          </div>
-          {/* Row 2: 6 logos */}
-          <div className="grid grid-cols-6 gap-x-8 md:gap-x-12">
-            {logos.slice(6).map((logo) => (
-              <div key={logo.alt} className="flex items-center justify-center">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  loading="lazy"
-                  className="h-12 md:h-[60px] w-auto brightness-0 invert opacity-[0.45] object-contain"
-                />
-              </div>
-            ))}
-          </div>
+          {logos.map((logo) => (
+            <div key={logo.alt} className="flex items-center justify-center">
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                loading="lazy"
+                className="h-14 md:h-12 lg:h-[60px] w-auto brightness-0 invert opacity-[0.45] object-contain"
+              />
+            </div>
+          ))}
         </div>
 
         <p
