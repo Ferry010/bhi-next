@@ -48,18 +48,6 @@ export default function Hero() {
               </Link>
             </div>
 
-            <div className="border-t border-foreground/10 pt-5 grid grid-cols-3 gap-4 max-w-sm">
-              {[
-                { stat: "40+", label: "keynotes a year" },
-                { stat: "2", label: "humans behind it" },
-                { stat: "1", label: "book (and counting)" },
-              ].map(({ stat, label }) => (
-                <div key={label}>
-                  <p className="font-heading font-bold text-2xl md:text-3xl text-accent leading-none">{stat}</p>
-                  <p className="text-xs text-muted-foreground mt-1 leading-snug">{label}</p>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="relative flex justify-center lg:justify-end">
