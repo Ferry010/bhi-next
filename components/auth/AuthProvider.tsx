@@ -15,13 +15,25 @@ type AuthContextValue = {
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const supabase = createSupabaseBrowserClient();
+  // Gracefully handle missing env vars — createSupabaseBrowserClient throws if
+  // NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY are absent.
+  const supabase = useMemo(() => {
+    try {
+      return createSupabaseBrowserClient();
+    } catch {
+      return null;
+    }
+  }, []);
+
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Start loading only when Supabase is available; otherwise treat as logged-out immediately.
+  const [loading, setLoading] = useState(supabase !== null);
   const initializedRef = useRef(false);
 
   useEffect(() => {
+    if (!supabase) return;
+
     let cancelled = false;
 
     const applySession = (nextSession: Session | null) => {
@@ -39,10 +51,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       applySession(nextSession);
     });
 
-    void supabase.auth.getSession().then(({ data: { session: initialSession } }) => {
-      initializedRef.current = true;
-      applySession(initialSession);
-    });
+    void supabase.auth.getSession()
+      .then(({ data: { session: initialSession } }) => {
+        initializedRef.current = true;
+        applySession(initialSession);
+      })
+      .catch(() => {
+        // Supabase unreachable — treat as logged-out rather than hanging forever.
+        initializedRef.current = true;
+        applySession(null);
+      });
 
     return () => {
       cancelled = true;
@@ -54,9 +72,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     user,
     session,
     loading,
-    signIn: (email: string, password: string) =>
-      supabase.auth.signInWithPassword({ email, password }),
-    signOut: () => supabase.auth.signOut(),
+    signIn: (email: string, password: string) => {
+      if (!supabase) {
+        return Promise.resolve({
+          data: { user: null, session: null },
+          error: {
+            message: "Admin not configured — add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your Vercel environment.",
+            name: "AuthApiError",
+            status: 500,
+          } as AuthError,
+        });
+      }
+      return supabase.auth.signInWithPassword({ email, password });
+    },
+    signOut: () => {
+      if (!supabase) return Promise.resolve({ error: null });
+      return supabase.auth.signOut();
+    },
   }), [user, session, loading, supabase]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
