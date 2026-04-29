@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 
 export default function AdminPage() {
-  const { user, isAdmin, loading, signIn } = useAdminAccess();
+  const { user, isAdmin, loading, signIn, roleError } = useAdminAccess();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,12 +34,11 @@ export default function AdminPage() {
     e.preventDefault();
     setSubmitting(true);
     const { error } = await signIn(email, password);
+    setSubmitting(false);
     if (error) {
       toast.error("Login failed: " + error.message);
-    } else {
-      router.replace("/admin/dashboard");
     }
-    setSubmitting(false);
+    // Redirect is handled by the useEffect above once loading resolves and isAdmin is confirmed
   };
 
   return (
@@ -84,7 +83,17 @@ export default function AdminPage() {
           </Button>
         </form>
         {user && !isAdmin && (
-          <p className="text-sm text-destructive text-center">You don&apos;t have admin access.</p>
+          <div className="text-center space-y-2">
+            <p className="text-sm text-destructive">You don&apos;t have admin access.</p>
+            {roleError && (
+              <p className="text-xs text-muted-foreground">
+                {roleError === "timeout"
+                  ? "Role check timed out. The has_role RPC may not exist in Supabase."
+                  : `Role check error: ${roleError}`}
+              </p>
+            )}
+            <p className="text-xs text-muted-foreground font-mono break-all">User ID: {user.id}</p>
+          </div>
         )}
       </div>
     </div>

@@ -101,6 +101,13 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
   const { user, isAdmin, loading } = useAdminAccess();
   const router = useRouter();
   const pathname = usePathname();
+  const [loadingTooLong, setLoadingTooLong] = useState(false);
+
+  useEffect(() => {
+    if (!loading) { setLoadingTooLong(false); return; }
+    const t = setTimeout(() => setLoadingTooLong(true), 12000);
+    return () => clearTimeout(t);
+  }, [loading]);
 
   useEffect(() => {
     if (!loading) {
@@ -112,8 +119,20 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
 
   if (loading) {
     return (
-      <div className="admin-dark min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+      <div className="admin-dark min-h-screen flex flex-col items-center justify-center gap-4 bg-background">
+        {loadingTooLong ? (
+          <div className="text-center space-y-3 px-4">
+            <p className="text-muted-foreground text-sm">Auth check is taking too long.</p>
+            <button
+              onClick={() => router.replace("/admin")}
+              className="text-sm text-primary underline underline-offset-2"
+            >
+              Return to login
+            </button>
+          </div>
+        ) : (
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+        )}
       </div>
     );
   }
