@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/research/state-of-human-2020" },
   title: "The State of Human 2020 | Brand Humanizing Institute",
   description:
     "104 decision-makers across five continents. The central question: is there still a place for humans in an increasingly automated world? Download the full report.",

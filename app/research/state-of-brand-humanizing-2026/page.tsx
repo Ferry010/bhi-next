@@ -7,6 +7,7 @@ import ScrollProgress from "./ScrollProgress";
 import PrintButton from "./PrintButton";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/research/state-of-brand-humanizing-2026" },
   title: "The State of Brand Humanizing 2026 | Brand Humanizing Institute",
   description:
     "Eight years ago, two people in a Rotterdam McDonald's asked if brands could use technology to become more human. Here is what happened next. The State of Brand Humanizing 2026.",

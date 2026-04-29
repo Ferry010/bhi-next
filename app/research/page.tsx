@@ -4,11 +4,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
+import Newsletter from "@/components/sections/Newsletter";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { ArrowRight, TrendingUp, Globe, GraduationCap, Search, FileText, Beaker } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/research" },
   title: "Research | Brand Humanizing Institute",
   description:
     "Independent, primary research on technology, organizational behavior, and human-technology strategy. Freely available, no registration required.",
@@ -126,6 +128,7 @@ export default function ResearchPage() {
         </section>
 
         <FAQSection faqs={faqs} variant="light" />
+        <Newsletter />
       </main>
       <Footer />
     </>

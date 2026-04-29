@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/learning/ProductPageTemplate";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/learning/inspiration-session" },
   title: "Brand Humanizing Inspiration Session | 60–90 Min Team Workshop",
   description:
     "A 60–90 minute interactive session that gives your team a shared language for human-technology strategy. For teams of 15–500. From €2,500.",

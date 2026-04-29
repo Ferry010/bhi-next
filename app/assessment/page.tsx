@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AssessmentClient from "./AssessmentClient";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/assessment" },
   title: "Brand Humanizer Self-Assessment | Free Score",
   description: "Discover your Brand Humanizer Score across four critical skills: AI literacy, creativity, human sciences, and emotional intelligence. Free, takes 5 minutes.",
   openGraph: { images: [{ url: "/og/assessment.jpg" }] },

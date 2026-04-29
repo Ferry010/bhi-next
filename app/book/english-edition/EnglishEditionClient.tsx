@@ -55,23 +55,30 @@ export default function EnglishEditionClient() {
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="flex-1 rounded-full px-5 h-12"
-            />
-            <Button
-              type="submit"
-              disabled={loading}
-              className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral font-heading font-semibold px-6 h-12"
-            >
-              {loading ? "Sending..." : "Notify me"}
-            </Button>
-          </form>
+          <>
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <Input
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1 rounded-full px-5 h-12"
+              />
+              <Button
+                type="submit"
+                disabled={loading}
+                className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral font-heading font-semibold px-6 h-12"
+              >
+                {loading ? "Sending..." : "Notify me"}
+              </Button>
+            </form>
+            <p className="text-xs text-muted-foreground mt-3">
+              By submitting you agree to our{" "}
+              <a href="/privacy" className="underline hover:text-foreground">Privacy Policy</a>.
+              {" "}We&apos;ll only email you when the English edition is ready.
+            </p>
+          </>
         )}
 
         <div className="mt-10">

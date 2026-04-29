@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FullServicePageTemplate, { type FullServicePageData } from "@/components/work-with-us/FullServicePageTemplate";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work-with-us/brand-humanizing-roadmap" },
   title: "Brand Humanizing Roadmap | Human-Technology Strategy for Organisations",
   description: "The Roadmap turns your Audit findings into a 12–36 month strategy your leadership team will actually follow. Not a document. A set of decisions. built together, owned by your team.",
   openGraph: { images: [{ url: "/og/brand-humanizing-roadmap.jpg" }] },

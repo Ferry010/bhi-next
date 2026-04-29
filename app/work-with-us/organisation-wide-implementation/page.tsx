@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FullServicePageTemplate, { type FullServicePageData } from "@/components/work-with-us/FullServicePageTemplate";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work-with-us/organisation-wide-implementation" },
   title: "Organisation-Wide Brand Humanizing Implementation | Transformation That Sticks",
   description: "The full engagement. 3–6 months of embedded work alongside your teams. building real capability across every level, training your internal Brand Humanizers, and making the methodology yours to keep.",
   openGraph: { images: [{ url: "/og/organisation-wide.jpg" }] },

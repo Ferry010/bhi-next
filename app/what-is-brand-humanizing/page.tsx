@@ -7,6 +7,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/what-is-brand-humanizing" },
   title: "What is Brand Humanizing? | Definition, Origin & Framework",
   description: "Brand Humanizing is a strategy that uses technology to amplify human talent, not replace it. The definition, origin, four skills, and pyramid explained.",
   openGraph: { images: [{ url: "/og/what-is-brand-humanizing.jpg" }] },

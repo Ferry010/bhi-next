@@ -19,6 +19,7 @@ const bookSchema = {
 };
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/book/english-edition" },
   title: "English Edition | Brand Humanizing Book",
   description:
     "The English edition of Brand Humanizing is coming. Join the waitlist to be the first to know when it launches.",

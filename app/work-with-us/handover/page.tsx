@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FullServicePageTemplate, { type FullServicePageData } from "@/components/work-with-us/FullServicePageTemplate";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work-with-us/handover" },
   title: "The Brand Humanizing Handover | Training Internal Brand Humanizers",
   description: "We don't stay forever. That's the point. The Handover trains your internal Brand Humanizers and gives your organisation the capability to apply the methodology permanently. without us.",
   openGraph: { images: [{ url: "/og/handover.jpg" }] },

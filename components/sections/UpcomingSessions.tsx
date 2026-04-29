@@ -11,7 +11,6 @@ const sessions = [
     title: "Brand Humanizing in 60 Minutes",
     date: "September 18, 2026",
     location: "Rotterdam",
-    spots: 6,
     to: "/contact",
   },
   {
@@ -19,7 +18,6 @@ const sessions = [
     title: "AI Ethics & The Human Edge",
     date: "October 2, 2026",
     location: "Amsterdam",
-    spots: 4,
     to: "/contact",
   },
   {
@@ -27,7 +25,6 @@ const sessions = [
     title: "Staying Human in a Digital World",
     date: "October 16–17, 2026",
     location: "Utrecht",
-    spots: 8,
     to: "/contact",
   },
 ];
@@ -73,7 +70,7 @@ export default function UpcomingSessions() {
                 </div>
                 <div className="flex items-center gap-2 text-sm font-semibold text-accent">
                   <Users className="w-4 h-4" />
-                  {s.spots} spots left
+                  Limited seats — reserve now
                 </div>
               </div>
               <Link href={s.to}>

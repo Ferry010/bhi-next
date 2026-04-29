@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FullServicePageTemplate, { type FullServicePageData } from "@/components/work-with-us/FullServicePageTemplate";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work-with-us/audit-and-brainstorm" },
   title: "The Audit & Brainstorm | Brand Humanizing Organisational Assessment",
   description: "We interview your people, map your processes, and find where human potential is being wasted on machine work, and where automation is missing the human judgement it needs. With your team, not above them.",
   openGraph: { images: [{ url: "/og/audit-brainstorm.jpg" }] },

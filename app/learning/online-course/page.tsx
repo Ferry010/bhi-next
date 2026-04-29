@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/learning/ProductPageTemplate";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/learning/online-course" },
   title: "Brand Humanizing Online Course | Coming Soon",
   description:
     "Self-paced online course in the Brand Humanizing framework. Learn the four skills at your own pace. Coming soon.",

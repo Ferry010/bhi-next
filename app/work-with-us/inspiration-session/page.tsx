@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FullServicePageTemplate, { type FullServicePageData } from "@/components/work-with-us/FullServicePageTemplate";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work-with-us/inspiration-session" },
   title: "Inspiration Session | The Starting Point of Every Brand Humanizing Engagement",
   description: "Every Brand Humanizing engagement begins here. In 90 minutes, your team gains the shared language, framework, and honest first read that makes everything else possible. From €1,750.",
   openGraph: { images: [{ url: "/og/inspiration-session-wwu.jpg" }] },

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/glossary" },
   title: "Glossary | Key Concepts in Brand Humanizing",
   description: "Clear definitions of Brand Humanizing, Human-Technology Fit, AI Literacy, the Brand Humanizing Pyramid, and more. The terms that define our framework.",
 };

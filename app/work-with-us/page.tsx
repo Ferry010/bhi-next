@@ -9,6 +9,7 @@ import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { ArrowRight, ArrowDown } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work-with-us" },
   title: "Work With Us | Brand Humanizing Projects",
   description:
     "From a Human-Technology Fit Audit to full Organisation-Wide Implementation. Project-based Brand Humanizing work that changes how your organization operates.",

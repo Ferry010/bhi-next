@@ -66,7 +66,9 @@ export default function Newsletter() {
                 </Button>
               </form>
               <p className="text-xs text-text-light/60 mt-4">
-                No spam. Unsubscribe anytime. Written by actual humans.
+                By subscribing you agree to our{" "}
+                <a href="/privacy" className="underline hover:text-text-light">Privacy Policy</a>.
+                {" "}We&apos;ll only email you about our research and thinking. Unsubscribe anytime.
               </p>
             </>
           )}

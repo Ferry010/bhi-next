@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/no-cookies" },
   title: "The No-Cookies Cookie Policy",
   description:
     "We don't use tracking cookies. Here's the story of why we chose to treat visitors like humans, not datapoints.",

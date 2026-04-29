@@ -7,6 +7,7 @@ import PodcastClientPage from "./PodcastClientPage";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/podcast" },
   title: "The Human Era Podcast",
   description:
     "Conversations about staying human in a world that is automating everything. With Ferry Hoes.",

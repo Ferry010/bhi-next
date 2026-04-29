@@ -11,6 +11,7 @@ import PyramidScrollReveal from "@/components/sections/PyramidScrollReveal";
 import FourSkillsSpotlight from "@/components/sections/FourSkillsSpotlight";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/the-method" },
   title: "The Brand Humanizing Method | Four Skills Framework",
   description:
     "The research-backed pyramid and four skills that make your brand impossible to copy. Used by 50+ organizations in 12 countries.",

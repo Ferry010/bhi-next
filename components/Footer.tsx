@@ -79,10 +79,12 @@ export default function Footer() {
 
         <div className="border-t border-primary-foreground/10 mt-10 md:mt-12 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4 text-xs md:text-sm text-primary-foreground/30">
           <p>&copy; {new Date().getFullYear()} Brand Humanizing Institute. Rotterdam, the Netherlands.</p>
-          <div className="flex items-center gap-3">
-            <Link href="/no-cookies" className="hover:text-primary-foreground transition-colors">The No-Cookies Cookie Policy</Link>
+          <div className="flex items-center gap-3 flex-wrap justify-center md:justify-end">
+            <Link href="/privacy" className="hover:text-primary-foreground transition-colors">Privacy Policy</Link>
             <span>·</span>
-            <span>Your visit is completely anonymous.</span>
+            <Link href="/imprint" className="hover:text-primary-foreground transition-colors">Imprint</Link>
+            <span>·</span>
+            <Link href="/no-cookies" className="hover:text-primary-foreground transition-colors">No-Cookies Policy</Link>
           </div>
         </div>
       </div>

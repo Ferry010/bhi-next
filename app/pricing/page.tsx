@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/pricing" },
   title: "Training Programs & Pricing | Brand Humanizing Institute",
   description:
     "Premium Brand Humanizing training programs for organizations. From a one-hour inspiration session to full transformation programs. Invest in the skill of the future.",

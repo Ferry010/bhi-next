@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/learning/ProductPageTemplate";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/learning/full-day-course" },
   title: "Full-Day Brand Humanizing Course | Human Skills for the AI Era",
   description:
     "The flagship full-day training. Build the complete four-skill framework, create a 90-day implementation plan. For teams of 12–30. From €6,500.",

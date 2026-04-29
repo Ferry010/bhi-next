@@ -9,6 +9,7 @@ import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Sparkles, GraduationCap, Settings, Monitor, ShieldCheck, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/learning" },
   title: "Learning & Training",
   description:
     "From a 90-minute inspiration session to a multi-day leadership programme. Find the right format for your team.",

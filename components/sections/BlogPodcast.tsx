@@ -12,6 +12,8 @@ export default function BlogPodcast() {
 
   const latestPosts = posts?.slice(0, 3) ?? [];
 
+  if (!isLoading && latestPosts.length === 0) return null;
+
   return (
     <section ref={ref} className="bg-white section-padding">
       <div className="container">

@@ -40,7 +40,7 @@ export default function HowWeHelp() {
       <div className="container">
         <div className="text-center mb-10 md:mb-14">
           <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Three ways in</span>
-          <h2 className="text-display md:text-display-lg text-foreground mt-4">However deep you want to go.</h2>
+          <h2 className="text-display md:text-display-lg text-foreground mt-4">Three ways to apply the Brand Humanizing methodology.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 lg:gap-8">

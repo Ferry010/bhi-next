@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ShieldCheck, Check, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/learning/ai-literacy-certificate" },
   title: "AI Literacy Certificate | EU AI Act Compliant | Via AIGA",
   description:
     "EU AI Act Article 4 compliant AI literacy training. Delivered via AIGA, the sister institute of Brand Humanizing. Available now.",

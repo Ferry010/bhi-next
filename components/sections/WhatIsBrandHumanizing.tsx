@@ -14,7 +14,7 @@ export default function WhatIsBrandHumanizing() {
           <div className="space-y-5 md:space-y-6">
             <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">The concept</span>
             <h2 className="text-display md:text-display-lg text-foreground">
-              A strategy for the digital&nbsp;age.
+              AI strategy training that keeps humans at the&nbsp;centre.
             </h2>
             <div className="space-y-4 text-sm md:text-body-lg text-muted-foreground">
               <p>

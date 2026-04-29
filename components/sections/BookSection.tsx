@@ -104,7 +104,9 @@ export default function BookSection() {
                     </Button>
                   </form>
                   <p className="text-caption text-primary/70 mt-3 font-medium">
-                    Your vote counts. We&apos;ll let you know when it&apos;s ready.
+                    Your vote counts. We&apos;ll let you know when it&apos;s ready.{" "}
+                    By submitting you agree to our{" "}
+                    <a href="/privacy" className="underline hover:text-primary">Privacy Policy</a>.
                   </p>
                 </>
               )}

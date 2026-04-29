@@ -11,6 +11,7 @@ import Manifesto from "@/components/sections/Manifesto";
 import OriginStory from "@/components/sections/OriginStory";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About | Brand Humanizing Institute",
   description:
     "Meet Ferry Hoes and Jonathan Flores, the founders of Brand Humanizing Institute. Rotterdam, 2017.",

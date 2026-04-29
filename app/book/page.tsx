@@ -9,6 +9,7 @@ import { ArrowRight } from "lucide-react";
 import BookSection from "@/components/sections/BookSection";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/book" },
   title: "The Book | Brand Humanizing",
   description:
     "Brand Humanizing: The superpower that makes your brand more human and your business grow faster. By Ferry Hoes and Jonathan Flores.",

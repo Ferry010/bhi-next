@@ -8,6 +8,7 @@ import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { ArrowRight, BookOpen, Mic2, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/media" },
   title: "Media | Brand Humanizing Institute",
   description:
     "Blog, podcast, research, and press. All content from the Brand Humanizing Institute.",

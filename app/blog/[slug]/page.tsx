@@ -49,6 +49,7 @@ export async function generateMetadata({
   return {
     title: post.seo_title || post.title,
     description: post.seo_description || post.excerpt || undefined,
+    alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
       // Only override when the editor set a custom OG image; otherwise the

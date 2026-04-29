@@ -12,6 +12,7 @@ import { ArrowRight } from "lucide-react";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/blog" },
   title: "Blog",
   description:
     "Essays on technology, humanity, and organizations brave enough to take both seriously. Fresh thinking from the Institute.",
@@ -21,13 +22,18 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const supabase = createServerClient();
-  const { data: rawPosts } = await supabase
-    .from("blog_posts")
-    .select("*")
-    .eq("published", true)
-    .order("published_at", { ascending: false });
-  const posts = (rawPosts ?? []) as unknown as BlogPost[];
+  let posts: BlogPost[] = [];
+  try {
+    const supabase = createServerClient();
+    const { data: rawPosts } = await supabase
+      .from("blog_posts")
+      .select("*")
+      .eq("published", true)
+      .order("published_at", { ascending: false });
+    posts = (rawPosts ?? []) as unknown as BlogPost[];
+  } catch {
+    // DB unreachable — render empty state rather than 500
+  }
 
   return (
     <>

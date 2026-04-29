@@ -227,6 +227,11 @@ function ContactForm() {
               <Button type="submit" disabled={loading} className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base w-full md:w-auto">
                 {loading ? "Sending..." : "Send it"}
               </Button>
+              <p className="text-xs text-muted-foreground mt-2">
+                By sending this message you agree to our{" "}
+                <a href="/privacy" className="underline hover:text-foreground">Privacy Policy</a>.
+                {" "}We&apos;ll only use your details to respond to your enquiry.
+              </p>
             </div>
           )}
         </form>
