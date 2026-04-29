@@ -35,11 +35,11 @@ export default function ImprintPage() {
                 </div>
                 <div>
                   <dt className="inline font-semibold text-foreground">Chamber of Commerce (KvK): </dt>
-                  <dd className="inline">[fill in KvK number]</dd>
+                  <dd className="inline">67341950</dd>
                 </div>
                 <div>
                   <dt className="inline font-semibold text-foreground">VAT (BTW): </dt>
-                  <dd className="inline">[fill in BTW number]</dd>
+                  <dd className="inline">NL001559743B32</dd>
                 </div>
                 <div>
                   <dt className="inline font-semibold text-foreground">Address: </dt>
