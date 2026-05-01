@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAdminAccess } from "@/hooks/useAdminAccess";
 import { useNewSubmissionsCount } from "@/hooks/useNewSubmissionsCount";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, LogOut, PenSquare, Settings, Inbox, ChevronLeft, ChevronRight } from "lucide-react";
+import { LayoutDashboard, LogOut, PenSquare, Settings, Inbox, ChevronLeft, ChevronRight, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { to: "/admin/dashboard", icon: LayoutDashboard, label: "Posts" },
   { to: "/admin/posts/new", icon: PenSquare, label: "New Post" },
   { to: "/admin/forms", icon: Inbox, label: "Inbox", badge: true },
+  { to: "/admin/members", icon: Users, label: "Members" },
   { to: "/admin/settings", icon: Settings, label: "Settings" },
 ];
 
