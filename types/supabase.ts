@@ -51,6 +51,7 @@ export type Database = {
           published_at: string | null
           related_slugs: string[] | null
           seo_description: string | null
+          seo_focus_keyphrase: string | null
           seo_keywords: string[] | null
           seo_og_image_url: string | null
           seo_title: string | null
@@ -72,6 +73,7 @@ export type Database = {
           published_at?: string | null
           related_slugs?: string[] | null
           seo_description?: string | null
+          seo_focus_keyphrase?: string | null
           seo_keywords?: string[] | null
           seo_og_image_url?: string | null
           seo_title?: string | null
@@ -93,6 +95,7 @@ export type Database = {
           published_at?: string | null
           related_slugs?: string[] | null
           seo_description?: string | null
+          seo_focus_keyphrase?: string | null
           seo_keywords?: string[] | null
           seo_og_image_url?: string | null
           seo_title?: string | null
