@@ -62,6 +62,7 @@ export async function POST(req: NextRequest) {
     seo_keywords: post.seo_keywords ?? null,
     seo_og_image_url: post.seo_og_image_url ?? null,
     sources: post.sources ?? null,
+    author_id: caller.id,
     published: mode === "publish",
     published_at: mode === "publish" ? now : null,
     updated_at: now,

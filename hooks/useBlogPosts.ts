@@ -33,7 +33,7 @@ export function useBlogPosts() {
         .from("blog_posts")
         .select("*")
         .eq("published", true)
-        .order("published_at", { ascending: false });
+        .order("published_at", { ascending: false, nullsFirst: false });
       if (error) throw error;
       return data as unknown as BlogPost[];
     },

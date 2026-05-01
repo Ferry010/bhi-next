@@ -57,7 +57,10 @@ export function useCreatePost() {
       if (error) throw error;
       return data;
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: ["admin-posts"] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["admin-posts"] });
+      qc.invalidateQueries({ queryKey: ["blog-posts"] });
+    },
   });
 }
 
@@ -90,6 +93,9 @@ export function useDeletePost() {
       const { error } = await supabase.from("blog_posts").delete().eq("id", id);
       if (error) throw error;
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: ["admin-posts"] }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["admin-posts"] });
+      qc.invalidateQueries({ queryKey: ["blog-posts"] });
+    },
   });
 }

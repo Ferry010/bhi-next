@@ -29,7 +29,7 @@ export default async function BlogPage() {
       .from("blog_posts")
       .select("*")
       .eq("published", true)
-      .order("published_at", { ascending: false });
+      .order("published_at", { ascending: false, nullsFirst: false });
     posts = (rawPosts ?? []) as unknown as BlogPost[];
   } catch {
     // DB unreachable — render empty state rather than 500
