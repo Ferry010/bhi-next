@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/contact`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/assessment`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/glossary`, lastModified: new Date(), changeFrequency: "monthly" },
+    { url: `${base}/ai-geletterdheid`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/humantouch`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/no-cookies`, lastModified: new Date(), changeFrequency: "yearly" },
   ];
