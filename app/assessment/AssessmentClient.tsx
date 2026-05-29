@@ -114,6 +114,24 @@ export default function AssessmentClient() {
         },
       });
 
+      const now = Date.now();
+      await supabase.from("pending_nurture_emails" as never).insert([
+        {
+          assessment_submission_id: submissionId,
+          email: trimmed,
+          template_name: "assessment-nurture-3d",
+          template_data: { overallScore: result.overallScore, skillScores: result.skillScores },
+          send_at: new Date(now + 3 * 24 * 60 * 60 * 1000).toISOString(),
+        },
+        {
+          assessment_submission_id: submissionId,
+          email: trimmed,
+          template_name: "assessment-nurture-7d",
+          template_data: { overallScore: result.overallScore },
+          send_at: new Date(now + 7 * 24 * 60 * 60 * 1000).toISOString(),
+        },
+      ] as never);
+
       setPhase("results");
     } catch {
       setEmailError("Something went wrong. Please try again.");

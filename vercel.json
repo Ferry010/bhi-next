@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/assessment-nurture",
+      "schedule": "0 8 * * *"
+    }
+  ]
+}
