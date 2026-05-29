@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { ArrowRight, ShoppingCart, Shirt, Apple } from "lucide-react";
+import { ArrowRight, Apple, Stethoscope, Zap } from "lucide-react";
 import PyramidScrollReveal from "@/components/sections/PyramidScrollReveal";
 import FourSkillsSpotlight from "@/components/sections/FourSkillsSpotlight";
 
@@ -20,19 +20,19 @@ export const metadata: Metadata = {
 
 const realWorldExamples = [
   {
-    icon: ShoppingCart,
-    title: "The supermarket stylist",
-    description: "A grocery chain hired in-store stylists to help customers plan meals. Sales rose. Returns dropped. Staff turnover fell. The technology handled inventory. The humans handled connection.",
-  },
-  {
-    icon: Shirt,
-    title: "The clothing store dietician",
-    description: "A fashion retailer added wellness consultants to fitting rooms. Customers stayed longer, bought more intentionally, and came back more often. Technology optimized stock. Humans optimized the experience.",
-  },
-  {
     icon: Apple,
-    title: "The Apple Store model",
-    description: "Apple does not staff its stores with salespeople. It staffs them with enthusiasts who genuinely want to help. The technology runs the backend. The humans run the relationship. That is Brand Humanizing.",
+    title: "The Apple Store",
+    description: "Apple does not staff its stores with salespeople. It staffs them with enthusiasts who genuinely want to help. The technology runs the backend. The humans run the relationship. It is the number-one retailer in the world by sales per square foot, while the rest of physical retail struggles. That is Brand Humanizing, operating at scale.",
+  },
+  {
+    icon: Stethoscope,
+    title: "The hospital that gave time back",
+    description: "A hospital introduced tablets and apps to answer the simple, non-medical questions patients ask constantly: visiting hours, parking, meal times, where to go next. That freed nurses and doctors from repetitive admin so they could spend their time where it matters: on care, consultation, and the complex work only they can do. Automate the routine. Give human expertise back to the people who need it.",
+  },
+  {
+    icon: Zap,
+    title: "The utility that made its people sharper",
+    description: "A major UK utility company deployed AI to support its human customer service team — giving agents faster access to the right answers in real time. Handling times dropped. Service levels rose. And the humans stayed in the conversation throughout. The technology did not replace the relationship. It made the people on the other end of it better.",
   },
 ];
 
