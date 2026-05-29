@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import PodcastClientPage from "./PodcastClientPage";
 
 export const dynamic = "force-dynamic";
@@ -74,6 +77,27 @@ export default async function PodcastPage() {
         </section>
 
         <PodcastClientPage episodes={episodes} showImage={showImage} />
+
+        <section className="section-padding bg-navy">
+          <div className="container max-w-3xl text-center">
+            <h2 className="text-display md:text-display-lg text-white mb-4">Bring the conversation into your organisation</h2>
+            <p className="text-body-lg text-white/80 mb-8">
+              The podcast is the thinking. The Inspiration Session is where your team works through it together.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/learning/inspiration-session">
+                <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  Book an Inspiration Session <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <Link href="/the-method">
+                <Button variant="outline" className="rounded-full border-[1.5px] border-white/70 text-white hover:border-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base gap-2">
+                  Explore the method <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

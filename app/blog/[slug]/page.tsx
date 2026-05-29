@@ -246,14 +246,24 @@ export default async function BlogPostPage({
 
         <section className="bg-navy section-padding">
           <div className="container max-w-3xl text-center">
-            <h2 className="text-display md:text-display-lg text-white mb-6">
-              Ready to put this into practice?
+            <h2 className="text-display md:text-display-lg text-white mb-4">
+              Want to apply this in your organisation?
             </h2>
-            <Link href="/contact">
-              <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base">
-                Talk to us →
-              </Button>
-            </Link>
+            <p className="text-body-lg text-white/80 mb-8">
+              The Inspiration Session is where this thinking becomes practical for your team. 60–90 minutes. Built around your context.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/learning/inspiration-session">
+                <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  Book an Inspiration Session <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <Link href="/assessment">
+                <Button variant="outline" className="rounded-full border-[1.5px] border-white/70 text-white hover:border-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base gap-2">
+                  Take the assessment <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
       </main>
