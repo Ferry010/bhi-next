@@ -3,6 +3,8 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/glossary" },
@@ -143,6 +145,27 @@ export default function GlossaryPage() {
                 )}
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="section-padding bg-navy">
+          <div className="container max-w-3xl text-center">
+            <h2 className="text-display md:text-display-lg text-white mb-4">See where your organisation stands</h2>
+            <p className="text-body-lg text-white/80 mb-8">
+              The concepts make more sense when you apply them to your own context. The assessment takes five minutes and shows you where your organisation is strong and where the gaps are.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/assessment">
+                <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  Take the assessment <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <Link href="/the-method">
+                <Button variant="outline" className="rounded-full border-[1.5px] border-white/70 text-white hover:border-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base gap-2">
+                  Explore the method <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
       </main>
