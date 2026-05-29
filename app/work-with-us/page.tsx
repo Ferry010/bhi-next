@@ -31,7 +31,7 @@ const steps = [
     title: "The Audit & Brainstorm",
     body: "We interview key people across your organisation. We look at processes. We review your technology stack. We study where human talent is wasted on machine work, and where automation misses the human judgement it needs.",
     specs: "4–6 weeks · On request",
-    cta: null,
+    cta: { text: "Explore the Audit", to: "/work-with-us/audit-and-brainstorm" },
   },
   {
     number: "03",
@@ -39,7 +39,7 @@ const steps = [
     title: "The Roadmap",
     body: "The audit tells you where you are. The roadmap tells you where to go and in what order. We build this with your leadership team: not a document we hand over, but a working session that produces real decisions.",
     specs: "4–8 weeks · On request",
-    cta: null,
+    cta: { text: "Explore the Roadmap", to: "/work-with-us/brand-humanizing-roadmap" },
   },
   {
     number: "04",
@@ -47,7 +47,7 @@ const steps = [
     title: "Implementation",
     body: "This is where Brand Humanizing moves from strategy to reality. We work alongside your teams, department by department, process by process, redesigning workflows and training the people who need new skills.",
     specs: "3–6 months · On request",
-    cta: null,
+    cta: { text: "Explore Implementation", to: "/work-with-us/organisation-wide-implementation" },
   },
   {
     number: "05",
@@ -55,7 +55,7 @@ const steps = [
     title: "Handover",
     body: "The goal was never to make you dependent on us. During implementation, we identify and develop your internal Brand Humanizers. The handover means the method lives inside your organization permanently.",
     specs: "On request",
-    cta: null,
+    cta: { text: "Explore the Handover", to: "/work-with-us/handover" },
   },
 ];
 
