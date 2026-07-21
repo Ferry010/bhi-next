@@ -1,12 +1,15 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // SINGLE SOURCE OF TRUTH for the Brand Humanizing product line.
-// Change a price, a duration, a stage or a stat here and it updates everywhere:
-// the pricing page, the learning index, and every individual product page.
+// Change a price, a duration, a stage, a stat or an example here and it updates
+// everywhere: the pricing page, the learning index, and every product page.
 //
-// Pricing philosophy: premium "from" anchors, not a fixed price list. Every
-// engagement is scoped in a short intake, so the number below is a floor that
-// qualifies and signals value, never a ceiling.
+// Pricing philosophy (2026-07): we do NOT display prices publicly. Like Growth
+// Tribe, we describe each format by scale and outcome and route every path to a
+// conversation. The numbers below are kept for internal reference and intake.
+// Flip DISPLAY_PRICES to true to show the "from" anchors again.
 // ─────────────────────────────────────────────────────────────────────────────
+
+export const DISPLAY_PRICES = false;
 
 export interface ProductPricing {
   slug: string;
@@ -16,11 +19,13 @@ export interface ProductPricing {
   promise: string;
   duration: string;
   audience: string;
-  /** The floor, e.g. "€3,500" */
+  /** Who it's for — used as the differentiator when prices are hidden */
+  bestFor: string;
+  /** Internal reference only (not rendered while DISPLAY_PRICES is false) */
   priceFrom: string;
-  /** Compact spec line for cards: "duration · audience · from €X" */
+  /** Compact spec line for cards (no price) */
   specs: string;
-  /** Long-form line for the investment block on the product page */
+  /** Value line shown on the product page where the price used to be */
   investmentLine: string;
   href: string;
 }
@@ -32,10 +37,11 @@ export const PRODUCTS: Record<"inspiration" | "fullDay" | "multiDay", ProductPri
     promise: "The keynote that stops your team defending the old way of working and gets them hungry for the new one.",
     duration: "60–90 minutes",
     audience: "15–500+ people",
+    bestFor: "A whole department, or the entire company, in one room",
     priceFrom: "€3,500",
-    specs: "60–90 min · 15–500+ people · from €3,500",
+    specs: "60–90 min · 15–500+ people",
     investmentLine:
-      "Investment starts at €3,500 and is scoped to your group size, format and location. You get an exact proposal after a 30-minute intake, never a surprise.",
+      "Every session is shaped around your organisation and scoped in a short intake. Tell us the room and the moment, and we come back with the right format and an exact proposal.",
     href: "/learning/inspiration-session",
   },
   fullDay: {
@@ -44,10 +50,11 @@ export const PRODUCTS: Record<"inspiration" | "fullDay" | "multiDay", ProductPri
     promise: "One focused day that turns a curious team into one that knows exactly how to out-human its competitors.",
     duration: "A full day (6–7 hrs)",
     audience: "12–30 people",
+    bestFor: "One team that needs to go from curious to genuinely capable",
     priceFrom: "€7,500",
-    specs: "Full day · 12–30 people · from €7,500",
+    specs: "Full day · 12–30 people",
     investmentLine:
-      "Investment starts at €7,500, including a 90-day implementation plan and the book for every participant. Final scope is set in your intake.",
+      "Scoped to your team and objectives in a short intake, and it always includes the 90-day plan and the book for everyone. Tell us where your team is, and we'll come back with a proposal.",
     href: "/learning/full-day-course",
   },
   multiDay: {
@@ -56,10 +63,11 @@ export const PRODUCTS: Record<"inspiration" | "fullDay" | "multiDay", ProductPri
     promise: "The programme that puts Brand Humanizing into how your leadership actually decides, and leaves it there.",
     duration: "2–3 days",
     audience: "8–20 people",
+    bestFor: "A leadership team ready to change how it decides",
     priceFrom: "€15,000",
-    specs: "2–3 days · 8–20 people · from €15,000",
+    specs: "2–3 days · 8–20 people",
     investmentLine:
-      "Investment starts at €15,000, scoped to your leadership team size, the number of days and your objectives. Shaped together in a strategic intake.",
+      "A programme this deep is always built to fit. We scope the days, the depth and the outcomes with you, then come back with a proposal your board can sign off.",
     href: "/learning/multi-day-programme",
   },
 };
@@ -73,7 +81,6 @@ export const PRODUCT_LIST = [PRODUCTS.inspiration, PRODUCTS.fullDay, PRODUCTS.mu
 export const FACILITATOR = {
   name: "Ferry Hoes",
   role: "Founder & international keynote speaker on Brand Humanizing and AI",
-  // Grounded in the existing client roster and acknowledgements already on the site.
   stagesLine:
     "Ferry has taken Brand Humanizing to stages across Europe, in front of teams at Unilever, VodafoneZiggo, GlaxoSmithKline, Toshiba, Atos and the Dutch government.",
   acknowledgementLine:
@@ -92,10 +99,39 @@ export const STATS = [
 export const MARQUEE_LOGOS = [
   { src: "/assets/logos/unilever.png", alt: "Unilever" },
   { src: "/assets/logos/vodafone.png", alt: "Vodafone" },
+  { src: "/assets/logos/ziggo.png", alt: "Ziggo" },
   { src: "/assets/logos/gsk.png", alt: "GlaxoSmithKline" },
   { src: "/assets/logos/toshiba.png", alt: "Toshiba" },
   { src: "/assets/logos/atos.png", alt: "Atos" },
   { src: "/assets/logos/asr.png", alt: "a.s.r." },
   { src: "/assets/logos/chubb.png", alt: "Chubb" },
+  { src: "/assets/logos/uwv.png", alt: "UWV" },
   { src: "/assets/logos/minfin.png", alt: "Ministerie van Financiën" },
+  { src: "/assets/logos/eindhoven.png", alt: "Gemeente Eindhoven" },
+  { src: "/assets/logos/ama.webp", alt: "American Marketing Association" },
+];
+
+// Concrete "they already heard this and acted on it" examples. Grounded in the
+// real-world cases already published on /the-method.
+export const EXAMPLES = [
+  {
+    tag: "Retail",
+    title: "The store that stopped selling and started helping",
+    body: "Apple doesn't staff its stores with salespeople. It staffs them with enthusiasts. The technology runs the backend, the humans run the relationship. Result: the number-one retailer in the world by sales per square foot, while the rest of physical retail struggles.",
+  },
+  {
+    tag: "Healthcare",
+    title: "The hospital that gave time back to its nurses",
+    body: "Tablets and apps took the endless non-medical questions, visiting hours, parking, meal times. That freed nurses and doctors to spend their hours on care and the complex work only they can do. Automate the routine, give expertise back to the people who have it.",
+  },
+  {
+    tag: "Utilities",
+    title: "The utility that made its people sharper",
+    body: "A major UK utility gave its service agents AI that surfaced the right answer in real time. Handling times dropped, service levels rose, and the humans stayed in the conversation throughout. The technology didn't replace the relationship. It made the people better at it.",
+  },
+  {
+    tag: "Your organisation",
+    title: "The team that stopped competing on price",
+    body: "This is the one we build with you. We find where automation is quietly turning you into a commodity, and where your people should own the moments that decide whether a customer stays. Then your team leaves knowing exactly what to do about it.",
+  },
 ];

@@ -22,7 +22,7 @@ const steps = [
     label: "Where every engagement starts",
     title: "The Inspiration Session",
     body: "Before we audit anything, your team needs a shared foundation. In 60 to 90 minutes, we introduce your team to Brand Humanizing, not as a theory, but as a lens. This is the starting point.",
-    specs: "60–90 min · from €3,500 excl. VAT",
+    specs: "60–90 min · 15–50 people · scoped to your team",
     cta: { text: "Book an Inspiration Session", to: "/learning/inspiration-session" },
   },
   {

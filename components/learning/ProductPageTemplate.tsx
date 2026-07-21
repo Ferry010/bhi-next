@@ -8,7 +8,7 @@ import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Clock, Users, Euro, ArrowRight, Check, BookOpen } from "lucide-react";
-import { FACILITATOR, STATS, MARQUEE_LOGOS } from "@/lib/pricing";
+import { FACILITATOR, STATS, MARQUEE_LOGOS, DISPLAY_PRICES } from "@/lib/pricing";
 
 function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, isVisible } = useScrollReveal(0.1);
@@ -106,9 +106,11 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
             <span className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 text-sm font-medium text-foreground shadow-sm">
               <Users className="w-4 h-4 text-accent" /> {data.audience}
             </span>
-            <span className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 text-sm font-medium text-foreground shadow-sm">
-              <Euro className="w-4 h-4 text-accent" /> {shortPrice}
-            </span>
+            {DISPLAY_PRICES && (
+              <span className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 text-sm font-medium text-foreground shadow-sm">
+                <Euro className="w-4 h-4 text-accent" /> {shortPrice}
+              </span>
+            )}
           </div>
 
           <Link href={`/contact?product=${data.ctaProduct}`}>
@@ -116,6 +118,12 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
               {data.comingSoon ? "Join the waitlist" : data.ctaLabel} <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
+
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-sm text-muted-foreground">
+            <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> A founder in the room</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> The book for every participant</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> Shaped around your organisation</span>
+          </div>
 
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mt-10">
             {STATS.map((s) => (
@@ -222,20 +230,25 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
         <div className="container max-w-3xl">
           <Section>
             <div className="bg-navy-card rounded-3xl p-8 md:p-12 shadow-xl border border-accent/10 text-center">
-              <h2 className="font-heading text-2xl md:text-4xl font-bold mb-6 text-white">Investment</h2>
-              <p className="text-xl md:text-2xl text-accent font-heading font-semibold mb-2">{data.pricingSignal}</p>
+              <h2 className="font-heading text-2xl md:text-4xl font-bold mb-6 text-white">
+                {DISPLAY_PRICES ? "Investment" : "Ready when you are"}
+              </h2>
+              {DISPLAY_PRICES && (
+                <p className="text-3xl md:text-4xl text-accent font-heading font-bold mb-4">{shortPrice}</p>
+              )}
+              <p className="text-base md:text-lg text-white/80 leading-relaxed max-w-xl mx-auto">{data.pricingSignal}</p>
               {data.includesBook && (
-                <div className="flex items-center justify-center gap-2 mt-4 text-white/70">
-                  <BookOpen className="w-4 h-4" />
+                <div className="flex items-center justify-center gap-2 mt-6 text-white/70">
+                  <BookOpen className="w-4 h-4 text-accent" />
                   <span className="text-sm">Every participant receives a copy of the book.</span>
                 </div>
               )}
-              <p className="text-white/60 text-sm mt-4">All prices exclude VAT and travel costs outside Rotterdam.</p>
               <Link href={`/contact?product=${data.ctaProduct}`} className="inline-block mt-8">
                 <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                  {data.ctaLabel} <ArrowRight className="w-4 h-4" />
+                  {data.comingSoon ? "Join the waitlist" : "Get a proposal"} <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
+              <p className="text-white/40 text-xs mt-5">A real human replies, usually within 24 hours.</p>
             </div>
           </Section>
         </div>
