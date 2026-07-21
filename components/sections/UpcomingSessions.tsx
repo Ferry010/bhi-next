@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 const sessions = [
   {
@@ -73,11 +74,11 @@ export default function UpcomingSessions() {
                   Limited seats — reserve now
                 </div>
               </div>
-              <Link href={s.to}>
+              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm w-full">
                   Reserve your spot →
                 </Button>
-              </Link>
+              </a>
             </div>
           ))}
         </div>

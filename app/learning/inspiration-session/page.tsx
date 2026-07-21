@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/learning/inspiration-session" },
   title: "Brand Humanizing Inspiration Session | Keynote for Teams",
   description:
-    "A 60–90 minute keynote that gets your team ahead of the AI curve and hungry to change. Delivered by international speaker Ferry Hoes. For teams of 15–500+. From €3,500.",
+    "A 60–90 minute keynote that gets your team ahead of the AI curve and hungry to change. Delivered by international speaker Ferry Hoes. For teams of 15–500+.",
   openGraph: { images: [{ url: "/og/inspiration-session.jpg" }] },
 };
 

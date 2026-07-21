@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import { Check, BookOpen, ArrowRight } from "lucide-react";
-import { PRODUCTS, FACILITATOR, STATS, MARQUEE_LOGOS, EXAMPLES } from "@/lib/pricing";
+import { PRODUCTS, FACILITATOR, STATS, MARQUEE_LOGOS, EXAMPLES, TALK_TO_EXPERT } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
@@ -98,9 +98,9 @@ export default function PricingPage() {
             Three ways to give your people the human edge that keeps customers choosing you. A keynote, a day, or a programme. None of them come off a shelf.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-10">
-            <Link href="/contact" className="rounded-lg bg-[#C9A96E] text-[#0F1117] font-semibold text-base py-3.5 px-8 transition-shadow duration-300 hover:shadow-[0_0_28px_rgba(201,169,110,0.35)]">
-              Get a proposal
-            </Link>
+            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-[#C9A96E] text-[#0F1117] font-semibold text-base py-3.5 px-8 transition-shadow duration-300 hover:shadow-[0_0_28px_rgba(201,169,110,0.35)]">
+              {TALK_TO_EXPERT.label}
+            </a>
             <a href="#formats" className="rounded-lg border border-white/20 text-white font-semibold text-base py-3.5 px-8 transition-colors duration-300 hover:bg-white/5">
               See the three formats
             </a>
@@ -171,12 +171,14 @@ export default function PricingPage() {
                   <BookOpen className="w-4 h-4 text-[#C9A96E]" />
                   The book, for every participant
                 </div>
-                <Link
-                  href={`/contact?product=${product.slug}`}
+                <a
+                  href={TALK_TO_EXPERT.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-6 block text-center bg-[#C9A96E] text-[#0F1117] font-semibold text-sm py-3 px-6 rounded-lg transition-shadow duration-300 hover:shadow-[0_0_24px_rgba(201,169,110,0.3)]"
                 >
-                  Get a proposal
-                </Link>
+                  {TALK_TO_EXPERT.label}
+                </a>
                 <Link href={product.href} className="mt-3 block text-center text-[#5AA6B2] text-sm hover:text-[#C9A96E] transition-colors">
                   See what it looks like →
                 </Link>
@@ -275,13 +277,15 @@ export default function PricingPage() {
           <p className="text-lg text-[#E8E2D6]/60 mt-6 max-w-xl mx-auto">
             Tell us your team and your moment. We&apos;ll come back with the right format and an exact proposal. One message and you&apos;re on our radar.
           </p>
-          <Link
-            href="/contact"
+          <a
+            href={TALK_TO_EXPERT.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block mt-10 bg-[#C9A96E] text-[#0F1117] font-semibold py-3.5 px-9 rounded-lg transition-shadow duration-300 hover:shadow-[0_0_28px_rgba(201,169,110,0.35)]"
           >
-            Start the conversation
-          </Link>
-          <p className="text-[#E8E2D6]/35 text-xs mt-6">A real human replies, usually within 24 hours.</p>
+            {TALK_TO_EXPERT.label}
+          </a>
+          <p className="text-[#E8E2D6]/35 text-xs mt-6">Book a 30-minute call. A real human, not a bot.</p>
         </div>
       </section>
 

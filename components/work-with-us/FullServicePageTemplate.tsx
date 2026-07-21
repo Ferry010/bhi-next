@@ -8,7 +8,7 @@ import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Clock, Users, Euro, Check, ArrowRight } from "lucide-react";
-import StepProgressIndicator from "@/components/work-with-us/StepProgressIndicator";
+import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 /* ── Types ──────────────────────────────────────────── */
 
@@ -175,9 +175,6 @@ function RenderContent({ blocks, dark = false }: { blocks: ContentBlock[]; dark?
 /* ── Template ────────────────────────────────────────── */
 
 export default function FullServicePageTemplate({ data }: { data: FullServicePageData }) {
-  const stepMatch = data.label.match(/STEP\s+(\d+)/i);
-  const stepNum = stepMatch ? parseInt(stepMatch[1]) : null;
-
   return (
     <div className="min-h-screen bg-secondary text-foreground">
       {data.serviceSchema && (
@@ -193,15 +190,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
         <div className="container max-w-4xl relative z-10">
           <Breadcrumb items={data.breadcrumbs} variant="light" />
-          <div className="flex items-center gap-3 mb-4">
-            {stepNum && (
-              <span className="w-10 h-10 rounded-full bg-navy text-white flex items-center justify-center font-heading font-bold text-sm shrink-0">
-                {stepNum}
-              </span>
-            )}
-            <p className="text-xs font-heading font-semibold tracking-[0.2em] uppercase text-accent">{data.label}</p>
-          </div>
-          <h1 className="font-heading text-4xl md:text-6xl font-bold leading-[1.1] mb-6">{data.h1}</h1>
+          <h1 className="font-heading text-4xl md:text-6xl font-bold leading-[1.1] mb-6 mt-4">{data.h1}</h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mb-8">{data.subheading}</p>
           <div className="flex flex-wrap gap-3 mb-8">
             {data.specs.map((s, i) => (
@@ -210,21 +199,13 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
               </span>
             ))}
           </div>
-          <Link href={data.ctaTo}>
+          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-              {data.ctaLabel} <ArrowRight className="w-4 h-4" />
+              {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
-
-      {stepNum && (
-        <div className="bg-secondary border-t border-border/30">
-          <div className="container max-w-4xl">
-            <StepProgressIndicator currentStep={stepNum} />
-          </div>
-        </div>
-      )}
 
       <SectionDivider />
 
@@ -398,11 +379,11 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
           <Section>
             <AccentHeading text={data.finalCtaHeading} className="font-heading text-2xl md:text-4xl font-bold mb-4 text-white" />
             {data.finalCtaSubline && <p className="text-white/70 text-lg mb-8">{data.finalCtaSubline}</p>}
-            <Link href={data.finalCtaTo}>
+            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
               <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                {data.finalCtaLabel} <ArrowRight className="w-4 h-4" />
+                {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
               </Button>
-            </Link>
+            </a>
           </Section>
         </div>
       </section>

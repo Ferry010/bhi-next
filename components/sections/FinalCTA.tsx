@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 export default function FinalCTA() {
   const { ref, isVisible } = useScrollReveal();
@@ -17,14 +17,14 @@ export default function FinalCTA() {
           Book a session, scope a project, or just ask a question. One message and you&apos;re on our radar. No forms into the void, no bots, no sales script.
         </p>
         <div className="flex justify-center mt-8 md:mt-10">
-          <Link href="/contact">
+          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base">
-              Start the conversation →
+              {TALK_TO_EXPERT.label} →
             </Button>
-          </Link>
+          </a>
         </div>
         <p className="text-xs text-white/50 mt-5 font-heading">
-          A real human replies, usually within 24 hours.
+          One 30-minute call. A real human, not a bot.
         </p>
       </div>
     </section>

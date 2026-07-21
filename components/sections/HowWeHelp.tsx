@@ -4,6 +4,7 @@ import Link from "next/link";
 import { GraduationCap, Rocket, FlaskConical, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 const cards = [
   {
@@ -18,8 +19,8 @@ const cards = [
     icon: Rocket,
     title: "Rebuild how you work",
     body: "We find where automation is quietly making you generic, and where your people should own the moments that matter. Then we redesign it with your team, not above them. You end up cheaper to run and harder to leave.",
-    cta: "Start a project →",
-    to: "/contact",
+    cta: "Start with a brainstorm →",
+    to: "/work-with-us",
     primary: true,
   },
   {
@@ -75,9 +76,9 @@ export default function HowWeHelp() {
 
         <p className="text-center text-sm text-muted-foreground mt-8">
           Not sure which fits?{" "}
-          <Link href="/contact" className="font-heading font-semibold text-primary hover:text-accent transition-colors">
-            Talk to a human first →
-          </Link>
+          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-primary hover:text-accent transition-colors">
+            Talk to an expert →
+          </a>
         </p>
       </div>
     </section>

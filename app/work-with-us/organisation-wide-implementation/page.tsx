@@ -19,7 +19,6 @@ const data: FullServicePageData = {
   specs: [
     { icon: "clock", text: "3–6 months" },
     { icon: "users", text: "Multiple teams, multiple levels" },
-    { icon: "euro", text: "Quote-based. Most engagements €25,000–€60,000+" },
   ],
   ctaLabel: "Have a conversation",
   ctaTo: "/contact?product=organisation-wide-implementation",
@@ -86,7 +85,7 @@ const data: FullServicePageData = {
 
   investmentHeading: "Investment",
   investmentBody: [
-    "Quote-based. Most engagements sit between €25,000 and €60,000+ depending on organisation size, number of departments, and programme duration. We scope every engagement honestly. you won't be surprised by what the invoice says.",
+    "Every implementation is quote-based and scoped honestly to your organisation size, number of departments, and programme duration. Talk to an expert and you'll get a clear proposal, with no surprises on the invoice.",
     "All prices exclude VAT and travel costs outside Rotterdam.",
   ],
 

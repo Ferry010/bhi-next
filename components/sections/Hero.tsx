@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 export default function Hero() {
   return (
@@ -21,11 +22,11 @@ export default function Hero() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
-              <Link href="/contact">
+              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
-                  Book a session →
+                  {TALK_TO_EXPERT.label} →
                 </Button>
-              </Link>
+              </a>
               <Link href="/the-method">
                 <Button variant="outline" className="rounded-full border-2 border-foreground/20 hover:border-foreground/40 font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
                   See how it works →

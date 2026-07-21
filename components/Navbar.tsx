@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 interface DropdownItem {
   label: string;
@@ -27,7 +28,6 @@ const navLinks: NavItem[] = [
       { label: "Inspiration Session", to: "/learning/inspiration-session" },
       { label: "Full-Day Course", to: "/learning/full-day-course" },
       { label: "Multi-Day Programme", to: "/learning/multi-day-programme" },
-      { label: "Online Course", to: "/learning/online-course", badge: "Coming soon" },
       { label: "AI Literacy Certificate", to: "/learning/ai-literacy-certificate", badge: "Via AIGA" },
     ],
     footerLink: { label: "See all learning options →", to: "/learning" },
@@ -36,13 +36,13 @@ const navLinks: NavItem[] = [
     label: "Work With Us",
     to: "/work-with-us",
     children: [
-      { label: "Inspiration Session", to: "/work-with-us/inspiration-session" },
-      { label: "The Audit & Brainstorm", to: "/work-with-us/audit-and-brainstorm" },
-      { label: "Brand Humanizing Roadmap", to: "/work-with-us/brand-humanizing-roadmap" },
-      { label: "Organisation-Wide Implementation", to: "/work-with-us/organisation-wide-implementation" },
+      { label: "Start with a Brainstorm", to: "/work-with-us" },
+      { label: "The Audit", to: "/work-with-us/audit-and-brainstorm" },
+      { label: "The Roadmap", to: "/work-with-us/brand-humanizing-roadmap" },
+      { label: "Implementation", to: "/work-with-us/organisation-wide-implementation" },
       { label: "The Handover", to: "/work-with-us/handover" },
     ],
-    footerLink: { label: "See the full journey →", to: "/work-with-us" },
+    footerLink: { label: "How we work together →", to: "/work-with-us" },
   },
   { label: "Research", to: "/research" },
   { label: "Media", to: "/media" },
@@ -173,11 +173,11 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
               </Link>
             )
           )}
-          <Link href="/contact">
+          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
             <Button className="ml-2 rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-6">
-              Book a session
+              {TALK_TO_EXPERT.label}
             </Button>
-          </Link>
+          </a>
         </nav>
 
         {/* Mobile toggle */}
@@ -247,11 +247,11 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
                 </Link>
               )
             )}
-            <Link href="/contact" onClick={() => setMobileOpen(false)}>
+            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
               <Button className="mt-1 w-full rounded-full bg-accent text-accent-foreground font-heading font-semibold">
-                Book a session
+                {TALK_TO_EXPERT.label}
               </Button>
-            </Link>
+            </a>
           </nav>
         </div>
       )}

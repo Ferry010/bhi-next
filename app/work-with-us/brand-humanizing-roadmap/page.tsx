@@ -19,7 +19,6 @@ const data: FullServicePageData = {
   specs: [
     { icon: "clock", text: "4–8 weeks" },
     { icon: "users", text: "Leadership team + department leads" },
-    { icon: "euro", text: "From €12,500 excl. VAT" },
   ],
   ctaLabel: "Build our Roadmap",
   ctaTo: "/contact?product=brand-humanizing-roadmap",
@@ -72,7 +71,7 @@ const data: FullServicePageData = {
 
   investmentHeading: "Investment",
   investmentBody: [
-    "From €12,500 excl. VAT. Scoped to your organisation size, leadership team configuration, and the depth of the Audit findings. All prices exclude travel costs outside Rotterdam.",
+    "Scoped to your organisation size, your leadership team configuration, and the depth of the findings. Talk to an expert and we'll come back with a proposal your team can act on.",
   ],
 
   faqs: [

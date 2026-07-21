@@ -6,65 +6,53 @@ import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { ArrowRight, ArrowDown } from "lucide-react";
+import { ArrowRight, ArrowDown, Check } from "lucide-react";
+import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/work-with-us" },
-  title: "Work With Us | Brand Humanizing Projects",
+  title: "Work With Us | Start With a Brainstorm",
   description:
-    "From a Human-Technology Fit Audit to full Organisation-Wide Implementation. Project-based Brand Humanizing work that changes how your organization operates.",
+    "You don't need a six-month programme to work with us. You need half a day. Start with a brainstorm, then go as deep as it makes sense. The Brand Humanizing way of working.",
   openGraph: { images: [{ url: "/og/work-with-us.jpg" }] },
 };
 
-const steps = [
+const brainstormOutcomes = [
+  "A clear read on where technology is serving your people, and where it's quietly turning you into a commodity",
+  "The two or three human opportunities with the biggest upside, specific to your organisation",
+  "A shared language your leadership can use the very next morning",
+  "An honest answer to \"is there something bigger here?\" — with no obligation to say yes",
+];
+
+const deeperEngagements = [
   {
-    number: "01",
-    label: "Where every engagement starts",
-    title: "The Inspiration Session",
-    body: "Before we audit anything, your team needs a shared foundation. In 60 to 90 minutes, we introduce your team to Brand Humanizing, not as a theory, but as a lens. This is the starting point.",
-    specs: "60–90 min · 15–50 people · scoped to your team",
-    cta: { text: "Book an Inspiration Session", to: "/learning/inspiration-session" },
+    title: "The Audit",
+    body: "When the brainstorm surfaces something big, we go and get the data. We interview your people and map where human talent is wasted and where automation is missing the judgement it needs.",
+    to: "/work-with-us/audit-and-brainstorm",
   },
   {
-    number: "02",
-    label: "Understanding where you actually are",
-    title: "The Audit & Brainstorm",
-    body: "We interview key people across your organisation. We look at processes. We review your technology stack. We study where human talent is wasted on machine work, and where automation misses the human judgement it needs.",
-    specs: "4–6 weeks · On request",
-    cta: { text: "Explore the Audit", to: "/work-with-us/audit-and-brainstorm" },
-  },
-  {
-    number: "03",
-    label: "Turning diagnosis into decisions",
     title: "The Roadmap",
-    body: "The audit tells you where you are. The roadmap tells you where to go and in what order. We build this with your leadership team: not a document we hand over, but a working session that produces real decisions.",
-    specs: "4–8 weeks · On request",
-    cta: { text: "Explore the Roadmap", to: "/work-with-us/brand-humanizing-roadmap" },
+    body: "We turn the findings into decisions, not a document. A working session with your leadership that produces a 12–36 month plan your team actually owns.",
+    to: "/work-with-us/brand-humanizing-roadmap",
   },
   {
-    number: "04",
-    label: "Building it. Together.",
     title: "Implementation",
-    body: "This is where Brand Humanizing moves from strategy to reality. We work alongside your teams, department by department, process by process, redesigning workflows and training the people who need new skills.",
-    specs: "3–6 months · On request",
-    cta: { text: "Explore Implementation", to: "/work-with-us/organisation-wide-implementation" },
+    body: "Embedded work alongside your teams, redesigning the workflows and building the skills. We're in the room, not behind a glass wall of slides.",
+    to: "/work-with-us/organisation-wide-implementation",
   },
   {
-    number: "05",
-    label: "Your people take over",
-    title: "Handover",
-    body: "The goal was never to make you dependent on us. During implementation, we identify and develop your internal Brand Humanizers. The handover means the method lives inside your organization permanently.",
-    specs: "On request",
-    cta: { text: "Explore the Handover", to: "/work-with-us/handover" },
+    title: "The Handover",
+    body: "We develop your internal Brand Humanizers so the method lives inside your organisation permanently. The goal was never to make you dependent on us.",
+    to: "/work-with-us/handover",
   },
 ];
 
 const faqs = [
-  { q: "Do we have to start with step 1?", a: "Yes. The Inspiration Session is the foundation. Without it, the audit doesn't have the shared language it needs to work." },
-  { q: "How long does the full journey take?", a: "From Inspiration Session to Handover: typically 6–12 months. Most clients spend 3–4 months in implementation." },
-  { q: "Can we do just the audit?", a: "Yes. Some organisations come to us specifically for the audit and roadmap, then implement internally. We'll be clear about what that requires." },
-  { q: "What size organizations do you work with?", a: "We've worked with teams of 8 and companies of 10,000+. The framework scales. The engagement is scoped accordingly." },
-  { q: "How many organizations can you take on at once?", a: "We're deliberately small. We cap active project engagements to ensure quality. Reach out early if you're considering this." },
+  { q: "Do we have to commit to the whole thing?", a: "No. That's the point of starting with a brainstorm. Half a day, low commitment. If there's something bigger worth doing, we'll both see it. If there isn't, you still leave with real clarity." },
+  { q: "What actually happens in the brainstorm?", a: "A working session, usually half a day. Your team brings the reality of your organisation, we bring the framework and the patterns we've seen across 50+ organisations. Together we find where your human edge is hiding." },
+  { q: "How is this different from a consultancy?", a: "Consultancies analyse, present, hand over a deck, and leave. We work alongside your team and build the capability inside your organisation, so it keeps running after we're gone." },
+  { q: "What size organisations do you work with?", a: "We've worked with teams of 8 and companies of 10,000+. The brainstorm is the same either way. What comes after is scoped to you." },
+  { q: "How do we start?", a: "Talk to an expert. One 30-minute call to see if a brainstorm makes sense for your team, and to book it if it does." },
 ];
 
 export default function WorkWithUsPage() {
@@ -72,77 +60,78 @@ export default function WorkWithUsPage() {
     <>
       <Navbar variant="light" />
       <main>
-        <section className="bg-secondary min-h-screen flex items-center relative">
-          <div className="container max-w-4xl pt-28 md:pt-40 pb-16 md:pb-24">
+        {/* Hero */}
+        <section className="bg-secondary min-h-screen flex items-center relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="container max-w-4xl pt-28 md:pt-40 pb-16 md:pb-24 relative z-10">
             <Breadcrumb items={[{ label: "Work With Us" }]} variant="light" />
             <h1 className="text-hero md:text-hero-lg text-foreground mt-4 leading-[1.05]">
-              Come out the other side impossible to copy.
+              It starts with a <span className="text-accent">brainstorm.</span>
             </h1>
             <p className="text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              Not a slide deck we hand over and leave. We build Brand Humanizing into how your team actually works, in layers, until it runs without us. Here&apos;s the path from first spark to your people owning it.
+              You don&apos;t need to commit to a six-month programme to work with us. You need half a day. Your team, our team, your real challenges on the table. You leave knowing exactly where technology should serve your people, and where it&apos;s quietly costing you. Everything after that is optional, and follows from there.
             </p>
             <div className="flex flex-wrap gap-4 mt-10">
-              <a href="#journey">
+              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                  See the full journey <ArrowDown className="w-4 h-4" />
+                  {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>
               </a>
-              <Link href="/contact">
+              <a href="#deeper">
                 <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/70 font-heading font-semibold px-8 h-12 text-base gap-2">
-                  Talk to us first
+                  See how we go deeper <ArrowDown className="w-4 h-4" />
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </section>
 
-        <section id="journey" className="section-padding bg-navy">
-          <div className="container max-w-3xl space-y-20">
-            {steps.map((step, i) => (
-              <ScrollRevealSection key={step.number}>
-                <div className="relative">
-                  <span className="text-accent/20 font-heading font-bold text-7xl leading-none select-none">{step.number}</span>
-                  <div className="-mt-6">
-                    <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">{step.label}</span>
-                    <h2 className="text-2xl md:text-4xl font-heading font-bold text-white mt-2 mb-4">{step.title}</h2>
-                    <p className="text-body-lg text-white/70 leading-relaxed mb-4">{step.body}</p>
-                    <p className="text-sm text-white/40 font-heading">{step.specs}</p>
-                    {step.cta && (
-                      <Link href={step.cta.to} className="inline-block mt-6">
-                        <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-6 h-10 text-sm gap-2">
-                          {step.cta.text} <ArrowRight className="w-3.5 h-3.5" />
-                        </Button>
-                      </Link>
-                    )}
+        {/* The Brainstorm */}
+        <section className="section-padding bg-navy">
+          <div className="container max-w-3xl">
+            <ScrollRevealSection>
+              <h2 className="text-display md:text-display-lg text-white mb-6">Half a day that changes the conversation.</h2>
+              <p className="text-body-lg text-white/70 leading-relaxed mb-4">
+                No slides handed over from the outside. No generic advice. We sit down with your team, put the framework next to your reality, and work through where your people should be winning and where the technology is getting in the way.
+              </p>
+              <p className="text-body-lg text-white/70 leading-relaxed mb-10">
+                It&apos;s the lowest-risk way to find out whether there&apos;s something bigger worth doing, before anyone signs up for anything.
+              </p>
+              <p className="text-white font-heading font-semibold mb-5">You walk out with:</p>
+              <div className="grid md:grid-cols-2 gap-4">
+                {brainstormOutcomes.map((o, i) => (
+                  <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-3 items-start">
+                    <Check className="w-5 h-5 text-accent mt-0.5 shrink-0" />
+                    <span className="text-white/85 text-sm leading-relaxed">{o}</span>
                   </div>
-                </div>
-                {i < steps.length - 1 && (
-                  <div className="mt-16 flex justify-start pl-4">
-                    <ArrowDown className="w-6 h-6 text-accent/30" />
-                  </div>
-                )}
-              </ScrollRevealSection>
-            ))}
+                ))}
+              </div>
+              <div className="mt-10">
+                <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                    {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+              </div>
+            </ScrollRevealSection>
           </div>
         </section>
 
-        <section className="section-padding bg-cream">
+        {/* Where it can go from here */}
+        <section id="deeper" className="section-padding bg-cream">
           <div className="container max-w-4xl">
             <ScrollRevealSection>
-              <h2 className="text-display md:text-display-lg text-foreground text-center mb-3">Individual engagement pages</h2>
-              <p className="text-body-lg text-muted-foreground text-center mb-10">Each step is also available as a standalone engagement.</p>
+              <h2 className="text-display md:text-display-lg text-foreground text-center mb-3">Where it can go from here.</h2>
+              <p className="text-body-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+                Only if the brainstorm says so. These aren&apos;t steps you have to climb. They&apos;re how we go deeper when there&apos;s something worth building.
+              </p>
             </ScrollRevealSection>
             <div className="grid md:grid-cols-2 gap-4">
-              {[
-                { title: "Human-Technology Fit Audit", to: "/work-with-us/audit-and-brainstorm", desc: "Our diagnostic process for understanding where your organization actually stands." },
-                { title: "Brand Humanizing Roadmap", to: "/work-with-us/brand-humanizing-roadmap", desc: "A working session that produces decisions, not documents." },
-                { title: "Organisation-Wide Implementation", to: "/work-with-us/organisation-wide-implementation", desc: "Building Brand Humanizing into how your teams actually work." },
-                { title: "The Handover", to: "/work-with-us/handover", desc: "Developing your internal Brand Humanizers to carry this forward independently." },
-              ].map((item) => (
+              {deeperEngagements.map((item) => (
                 <ScrollRevealSection key={item.title}>
-                  <Link href={item.to} className="group block bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(18,21,46,0.08)] hover:shadow-lg hover:border-accent/30 border border-border/50 transition-all duration-300 h-full">
-                    <h3 className="font-heading font-bold text-foreground mb-2 group-hover:text-accent transition-colors">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{item.desc}</p>
+                  <Link href={item.to} className="group block bg-white rounded-2xl p-6 md:p-7 shadow-[0_4px_24px_rgba(18,21,46,0.08)] hover:shadow-lg hover:border-accent/30 border border-border/50 transition-all duration-300 h-full">
+                    <h3 className="font-heading font-bold text-lg text-foreground mb-2 group-hover:text-accent transition-colors">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{item.body}</p>
                     <span className="text-accent font-heading font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                       Learn more <ArrowRight className="w-3.5 h-3.5" />
                     </span>
@@ -155,15 +144,18 @@ export default function WorkWithUsPage() {
 
         <FAQSection faqs={faqs} variant="light" />
 
-        <section className="section-padding bg-navy">
-          <div className="container max-w-3xl text-center">
+        {/* Final CTA */}
+        <section className="section-padding bg-navy relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="container max-w-3xl text-center relative z-10">
             <ScrollRevealSection>
-              <h2 className="text-display md:text-display-lg text-white mb-6">Ready to start the conversation?</h2>
-              <Link href="/contact">
-                <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base">
-                  Talk to a human →
+              <h2 className="text-display md:text-display-lg text-white mb-6">Start with a brainstorm.</h2>
+              <p className="text-body-lg text-white/70 mb-8 max-w-xl mx-auto">One 30-minute call to see if it&apos;s a fit, and to book it if it is.</p>
+              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+                <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>
-              </Link>
+              </a>
             </ScrollRevealSection>
           </div>
         </section>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 const logos = [
   { src: "/assets/logos/atos.png", alt: "Atos" },
@@ -56,12 +57,14 @@ export default function SocialProofBar() {
           className={`${transitionBase} ${isVisible ? visible : hidden} mt-12 md:mt-16 flex flex-col md:flex-row items-center justify-center gap-4`}
           style={{ transitionDelay: "400ms" }}
         >
-          <Link
-            href="/contact"
+          <a
+            href={TALK_TO_EXPERT.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-full bg-[#5AA6B2] text-white px-8 py-3 font-medium text-sm md:text-base transition-colors duration-300 hover:bg-[#C9A96E]"
           >
-            Book a keynote
-          </Link>
+            {TALK_TO_EXPERT.label}
+          </a>
           <Link
             href="/the-method"
             className="rounded-full border border-[#5AA6B2] text-[#5AA6B2] px-8 py-3 font-medium text-sm md:text-base transition-colors duration-300 hover:bg-[#5AA6B2]/10"

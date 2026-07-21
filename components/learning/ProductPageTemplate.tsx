@@ -8,7 +8,7 @@ import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Clock, Users, Euro, ArrowRight, Check, BookOpen } from "lucide-react";
-import { FACILITATOR, STATS, MARQUEE_LOGOS, DISPLAY_PRICES } from "@/lib/pricing";
+import { FACILITATOR, STATS, MARQUEE_LOGOS, DISPLAY_PRICES, TALK_TO_EXPERT } from "@/lib/pricing";
 
 function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, isVisible } = useScrollReveal(0.1);
@@ -113,11 +113,19 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
             )}
           </div>
 
-          <Link href={`/contact?product=${data.ctaProduct}`}>
-            <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-              {data.comingSoon ? "Join the waitlist" : data.ctaLabel} <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
+          {data.comingSoon ? (
+            <Link href={`/contact?product=${data.ctaProduct}`}>
+              <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                Join the waitlist <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          ) : (
+            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+              <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
+              </Button>
+            </a>
+          )}
 
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> A founder in the room</span>
@@ -243,12 +251,12 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
                   <span className="text-sm">Every participant receives a copy of the book.</span>
                 </div>
               )}
-              <Link href={`/contact?product=${data.ctaProduct}`} className="inline-block mt-8">
+              <a href={data.comingSoon ? `/contact?product=${data.ctaProduct}` : TALK_TO_EXPERT.url} target={data.comingSoon ? undefined : "_blank"} rel={data.comingSoon ? undefined : "noopener noreferrer"} className="inline-block mt-8">
                 <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                  {data.comingSoon ? "Join the waitlist" : "Get a proposal"} <ArrowRight className="w-4 h-4" />
+                  {data.comingSoon ? "Join the waitlist" : TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>
-              </Link>
-              <p className="text-white/40 text-xs mt-5">A real human replies, usually within 24 hours.</p>
+              </a>
+              <p className="text-white/40 text-xs mt-5">Book a 30-minute call. A real human, not a bot.</p>
             </div>
           </Section>
         </div>

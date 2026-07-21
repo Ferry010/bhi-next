@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/learning/full-day-course" },
   title: "Full-Day Brand Humanizing Course | Human Skills for the AI Era",
   description:
-    "One focused day that teaches your team to out-human its competitors and leaves with a 90-day plan. Led by international speaker Ferry Hoes. For teams of 12–30. From €7,500.",
+    "One focused day that teaches your team to out-human its competitors and leaves with a 90-day plan. Led by international speaker Ferry Hoes. For teams of 12–30.",
   openGraph: { images: [{ url: "/og/full-day-course.jpg" }] },
 };
 

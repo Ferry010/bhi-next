@@ -7,7 +7,7 @@ import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Sparkles, GraduationCap, Settings, Monitor, ShieldCheck, ArrowRight } from "lucide-react";
-import { PRODUCTS } from "@/lib/pricing";
+import { PRODUCTS, TALK_TO_EXPERT } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/learning" },
@@ -176,11 +176,11 @@ export default function LearningPage() {
                     Start with the Inspiration Session <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
-                <Link href="/contact">
+                <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" className="rounded-full border-white/40 text-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base">
-                    Talk to a human
+                    {TALK_TO_EXPERT.label}
                   </Button>
-                </Link>
+                </a>
               </div>
             </ScrollRevealSection>
           </div>

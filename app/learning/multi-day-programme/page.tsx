@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/learning/multi-day-programme" },
   title: "Multi-Day Brand Humanizing Programme | Leadership Team Training",
   description:
-    "A 2–3 day programme that puts Brand Humanizing into how your leadership decides, and leaves it there. Led by Ferry Hoes and Jonathan Flores. For teams of 8–20. From €15,000.",
+    "A 2–3 day programme that puts Brand Humanizing into how your leadership decides, and leaves it there. Led by Ferry Hoes and Jonathan Flores. For teams of 8–20.",
   openGraph: { images: [{ url: "/og/multi-day-programme.jpg" }] },
 };
 
