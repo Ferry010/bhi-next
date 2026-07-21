@@ -8,6 +8,7 @@ import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Clock, Users, Euro, ArrowRight, Check, BookOpen } from "lucide-react";
+import { FACILITATOR, STATS, MARQUEE_LOGOS } from "@/lib/pricing";
 
 function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, isVisible } = useScrollReveal(0.1);
@@ -89,7 +90,7 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
         <div className="container max-w-4xl relative z-10">
           <Breadcrumb items={data.breadcrumbs} variant="light" />
           {data.badge && (
-            <span className="inline-block text-accent font-heading font-bold text-caption uppercase tracking-widest mb-4">
+            <span className="inline-flex items-center gap-2 bg-accent/10 text-accent font-heading font-semibold text-sm rounded-full px-4 py-1.5 mb-5">
               {data.badge}
             </span>
           )}
@@ -115,6 +116,29 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
               {data.comingSoon ? "Join the waitlist" : data.ctaLabel} <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
+
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mt-10">
+            {STATS.map((s) => (
+              <div key={s.label} className="flex items-baseline gap-2">
+                <span className="font-heading font-bold text-2xl text-foreground tabular-nums">{s.value}</span>
+                <span className="text-sm text-muted-foreground">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Client proof */}
+      <section className="bg-[#0F1117] py-12 md:py-16">
+        <div className="container max-w-5xl">
+          <p className="text-center text-white/40 text-xs uppercase tracking-[0.2em] mb-8">Trusted by the teams inside</p>
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-8 items-center">
+            {MARQUEE_LOGOS.map((logo) => (
+              <div key={logo.alt} className="flex items-center justify-center">
+                <img src={logo.src} alt={logo.alt} loading="lazy" className="h-8 md:h-10 w-auto brightness-0 invert opacity-40 object-contain" />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -166,6 +190,27 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
                   <span className="text-white/90 text-sm leading-relaxed">{item}</span>
                 </div>
               ))}
+            </div>
+          </Section>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* Facilitator authority band */}
+      <section className="bg-navy section-padding">
+        <div className="container max-w-4xl">
+          <Section>
+            <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-12 items-center">
+              <div className="mx-auto md:mx-0 w-40 h-40 md:w-full md:h-auto md:aspect-square rounded-2xl overflow-hidden shadow-xl">
+                <img src={FACILITATOR.photo} alt={FACILITATOR.name} loading="lazy" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <h2 className="font-heading text-2xl md:text-4xl font-bold text-white mb-4">Led by the people who wrote the book.</h2>
+                <p className="text-white/80 leading-relaxed mb-3">{FACILITATOR.stagesLine}</p>
+                <p className="text-white/60 text-sm leading-relaxed mb-3">{FACILITATOR.acknowledgementLine}</p>
+                <p className="text-accent font-heading font-semibold">{FACILITATOR.closingLine}</p>
+              </div>
             </div>
           </Section>
         </div>

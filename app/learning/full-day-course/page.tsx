@@ -1,62 +1,69 @@
 import type { Metadata } from "next";
 import ProductPageTemplate from "@/components/learning/ProductPageTemplate";
+import { PRODUCTS } from "@/lib/pricing";
+
+const P = PRODUCTS.fullDay;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/learning/full-day-course" },
   title: "Full-Day Brand Humanizing Course | Human Skills for the AI Era",
   description:
-    "The flagship full-day training. Build the complete four-skill framework, create a 90-day implementation plan. For teams of 12–30. From €6,500.",
+    "One focused day that teaches your team to out-human its competitors and leaves with a 90-day plan. Led by international speaker Ferry Hoes. For teams of 12–30. From €7,500.",
   openGraph: { images: [{ url: "/og/full-day-course.jpg" }] },
 };
 
 const data = {
   seoTitle: "Full-Day Brand Humanizing Course | Human Skills for the AI Era",
-  seoDescription: "The flagship full-day training. Build the complete four-skill framework, create a 90-day implementation plan.",
+  seoDescription: "One focused day that teaches your team to out-human its competitors and leaves with a 90-day plan.",
   path: "/learning/full-day-course",
   breadcrumbs: [{ label: "Learning", to: "/learning" }, { label: "Full-Day Course" }],
   badge: "Flagship training",
   title: "The Full-Day Course",
-  subtitle: "The inspiration session opens the conversation. The full-day training builds the skill. Over one focused day, your team works through the Brand Humanizing framework in depth and leaves with a plan.",
-  duration: "6–7 hours",
-  audience: "12–30 people",
+  subtitle:
+    "The Inspiration Session opens the conversation. This builds the skill. One focused day and your team goes from curious to genuinely capable, with a 90-day plan to prove it.",
+  duration: P.duration,
+  audience: P.audience,
   deliveredBy: "Ferry Hoes and/or Jonathan Flores",
-  description: "This is the flagship learning product. A full day dedicated to building your team's fluency in the Brand Humanizing framework. Not a lecture: a working session. Your team maps their own Human-Technology Fit, inventories their skills across all four dimensions, identifies opportunities they've been missing, and builds a 90-day implementation plan they can start executing the following week.",
+  description:
+    "This is the flagship. A full day dedicated to making your team fluent in the four skills technology can't replace, then turning that fluency into a plan you can run the following week. It's not a lecture, it's a working day. Your team maps their own Human-Technology Fit, takes an honest inventory of where they stand, spots the human opportunities their competitors are walking straight past, and learns to make AI a tool their people wield rather than a threat they fear. They leave sharper, aligned, and genuinely ahead.",
   agenda: [
     { time: "9:00", activity: "Intake review and context setting" },
     { time: "9:30", activity: "Framework deep-dive: the pyramid and four skills" },
     { time: "10:30", activity: "Break" },
     { time: "10:45", activity: "Workshop: mapping your Human-Technology Fit" },
     { time: "12:00", activity: "Lunch" },
-    { time: "13:00", activity: "Skills inventory: where your team stands across all four dimensions" },
-    { time: "14:00", activity: "Workshop: identifying human opportunities in your organization" },
+    { time: "13:00", activity: "Skills inventory: where your team really stands" },
+    { time: "14:00", activity: "Workshop: the human opportunities your competitors miss" },
     { time: "15:00", activity: "Break" },
-    { time: "15:15", activity: "Building your 90-day implementation roadmap" },
+    { time: "15:15", activity: "Building your 90-day plan" },
     { time: "16:00", activity: "Wrap-up: shared language, next steps, commitments" },
   ],
   leaveWith: [
-    "The complete Brand Humanizing four-skill framework, deeply understood and applied",
-    "A mapped assessment of your current Human-Technology Fit",
-    "An honest team skills inventory across AI literacy, creativity, human sciences, and EQ & ethics",
-    "A prioritized list of human opportunities your organization has been missing",
-    "A 90-day implementation plan with clear owners and milestones",
+    "The complete four-skill framework, understood deeply enough to use",
+    "A mapped read of your current Human-Technology Fit",
+    "An honest team skills inventory across AI, creativity, human sciences, and EQ & ethics",
+    "A prioritised list of human opportunities your competitors are missing",
+    "A 90-day plan with clear owners and milestones you can start Monday",
+    "The book in every pair of hands",
   ],
-  pricingSignal: "From €6,500. Every participant receives a copy of the book.",
+  pricingSignal: P.investmentLine,
   includesBook: true,
-  ctaLabel: "Book the full-day",
+  ctaLabel: "Book the full day",
   ctaProduct: "full-day-course",
   testimonials: [
     { quote: "Ferry is a fantastic speaker. He adapts perfectly to the audience and showed during the workshops that he's highly flexible and alert to reactions from the room.", who: "Almer, ASR" },
     { quote: "Even those without any experience came out of the workshop surprised and very enthusiastic. The full day gave us something we can actually work with.", who: "Maud, Chubb Fire & Security" },
   ],
   faqs: [
-    { q: "What makes this different from two half-day sessions?", a: "The full day creates momentum. Your team goes from framework understanding to skills inventory to implementation plan in one continuous arc. Splitting it breaks the flow." },
+    { q: "What makes this different from two half-day sessions?", a: "The full day creates momentum. Your team goes from framework to skills inventory to a plan in one continuous arc. Splitting it breaks the flow." },
     { q: "Can it be delivered online?", a: "Yes, though in-person is strongly recommended for the workshop intensity. We discuss formats during intake." },
-    { q: "What preparation is needed?", a: "We handle the preparation through a 30-minute intake conversation. Your team shows up ready to work." },
-    { q: "What happens after the training day?", a: "You leave with a 90-day plan. Many organizations follow up with a Multi-Day Programme or a project engagement to continue building." },
+    { q: "What preparation is needed?", a: "We handle it through a 30-minute intake conversation. Your team shows up ready to work." },
+    { q: "What's included in the investment?", a: "The full day led by a founder, all materials, the 90-day plan, and a copy of the book for every participant. Travel outside Rotterdam is billed separately." },
+    { q: "What happens after the training day?", a: "You leave with a 90-day plan. Many organisations follow up with a Multi-Day Programme or a project engagement to keep building." },
   ],
   crossSells: [
     { label: "Want this across the whole organisation?", description: "The Multi-Day Programme extends the training to leadership teams over 2–3 days.", to: "/learning/multi-day-programme" },
-    { label: "Ready to implement?", description: "Our project engagements embed Brand Humanizing into your operations.", to: "/work-with-us" },
+    { label: "Ready to implement?", description: "Our project engagements embed Brand Humanizing into how you actually operate.", to: "/work-with-us" },
   ],
   courseSchema: {
     "@context": "https://schema.org",

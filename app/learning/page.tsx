@@ -7,6 +7,7 @@ import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Sparkles, GraduationCap, Settings, Monitor, ShieldCheck, ArrowRight } from "lucide-react";
+import { PRODUCTS } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/learning" },
@@ -19,26 +20,26 @@ export const metadata: Metadata = {
 const products = [
   {
     icon: Sparkles,
-    title: "The Inspiration Session",
-    tagline: "The question that started everything. One session. One conversation. A room that leaves thinking differently.",
-    specs: "60–90 min · 15–500+ people · From €2,500",
-    to: "/learning/inspiration-session",
+    title: PRODUCTS.inspiration.name,
+    tagline: PRODUCTS.inspiration.promise,
+    specs: PRODUCTS.inspiration.specs,
+    to: PRODUCTS.inspiration.href,
     comingSoon: false,
   },
   {
     icon: GraduationCap,
-    title: "The Full-Day Course",
-    tagline: "The inspiration session opens the conversation. The full-day course builds the skill. A 90-day implementation plan included.",
-    specs: "6–7 hours · 12–30 people · From €6,500",
-    to: "/learning/full-day-course",
+    title: PRODUCTS.fullDay.name,
+    tagline: PRODUCTS.fullDay.promise,
+    specs: PRODUCTS.fullDay.specs,
+    to: PRODUCTS.fullDay.href,
     comingSoon: false,
   },
   {
     icon: Settings,
-    title: "The Multi-Day Programme",
-    tagline: "For leadership teams ready to make Brand Humanizing part of how they lead. Two to three days that change how your team thinks.",
-    specs: "2–3 days · 8–20 people · From €12,500",
-    to: "/learning/multi-day-programme",
+    title: PRODUCTS.multiDay.name,
+    tagline: PRODUCTS.multiDay.promise,
+    specs: PRODUCTS.multiDay.specs,
+    to: PRODUCTS.multiDay.href,
     comingSoon: false,
   },
   {
