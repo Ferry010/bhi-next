@@ -36,12 +36,12 @@ export default function UpcomingSessions() {
     <section ref={ref} className="bg-cream section-padding">
       <div className="container">
         <div className="text-center mb-10 md:mb-14">
-          <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">
-            Join us live
-          </span>
-          <h2 className="text-display md:text-display-lg text-foreground mt-4">
-            See Brand Humanizing in action.
+          <h2 className="text-display md:text-display-lg text-foreground">
+            The next sessions are filling up.
           </h2>
+          <p className="text-body-lg text-muted-foreground mt-4 max-w-xl mx-auto">
+            Small rooms, on purpose. When a date is gone, it&apos;s gone. Grab a seat while your competitors are still thinking about it.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 lg:gap-8">

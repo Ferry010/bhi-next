@@ -62,9 +62,8 @@ export default function FourSkillsSpotlight() {
     <section className="bg-cream section-padding" ref={sectionRef}>
       <div className="container max-w-5xl">
         <div className={`transition-all duration-700 ${sectionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">THE FOUR SKILLS</span>
-          <h2 className="text-display md:text-display-lg text-foreground mt-4 mb-4">The skills technology cannot replace.</h2>
-          <p className="text-body-lg text-muted-foreground mb-16 max-w-2xl">Brand Humanizing is not a single skill. It is a combination of four. The goal is organizational fluency: teams where all four are present.</p>
+          <h2 className="text-display md:text-display-lg text-foreground mb-4">The four skills technology can&apos;t replace.</h2>
+          <p className="text-body-lg text-muted-foreground mb-16 max-w-2xl">Master these four together and your team becomes something no competitor can download. Miss one and the whole thing wobbles. Here&apos;s what to build.</p>
         </div>
 
         <div className="relative">

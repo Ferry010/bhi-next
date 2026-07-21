@@ -69,8 +69,7 @@ export default function Testimonials() {
       <div className="container">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
         <div className="text-center mb-14">
-          <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">What people say</span>
-          <h2 className="text-display md:text-display-lg text-foreground mt-4">Trusted by real humans.</h2>
+          <h2 className="text-display md:text-display-lg text-foreground">The rooms remember it. Here&apos;s what they said.</h2>
         </div>
 
         <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>

@@ -8,25 +8,25 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const cards = [
   {
     icon: GraduationCap,
-    title: "Learning",
-    body: "From a 1-hour spark session that makes your team think differently, to a full-day deep dive that reshapes how your organization sees humans and technology. These aren't lectures. They're conversations that move things.",
-    cta: "See available sessions →",
+    title: "Wake your team up",
+    body: "Your people leave with a new lens on AI and their own work, and the shared language to act on it. From a 1-hour spark session to a full-day deep dive. Not a lecture. A shift you can feel in the room the next morning.",
+    cta: "Book a session →",
     to: "/learning",
     primary: true,
   },
   {
     icon: Rocket,
-    title: "Project-Based",
-    body: "Ready to implement Brand Humanizing across your organization? We work alongside your team, not above it. We roll up our sleeves, bring the research, and help you find where the human opportunities live inside your business.",
-    cta: "Schedule a call →",
+    title: "Rebuild how you work",
+    body: "We find where automation is quietly making you generic, and where your people should own the moments that matter. Then we redesign it with your team, not above them. You end up cheaper to run and harder to leave.",
+    cta: "Start a project →",
     to: "/contact",
     primary: true,
   },
   {
     icon: FlaskConical,
-    title: "Research",
-    body: "Ongoing, independent research on technology, organizational behavior, and what it means to be genuinely human at work. Freely available, because knowledge that sits behind a paywall isn't doing anyone any good.",
-    cta: "Read the studies",
+    title: "See the evidence",
+    body: "Independent research on technology, organisational behaviour, and what actually makes people choose one brand over another. Free, because proof shouldn't sit behind a paywall while your competitors guess.",
+    cta: "Read the research",
     to: "/research",
     primary: false,
   },
@@ -39,8 +39,7 @@ export default function HowWeHelp() {
     <section ref={ref} id="how-we-help" className="bg-cream section-padding">
       <div className="container">
         <div className="text-center mb-10 md:mb-14">
-          <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Three ways in</span>
-          <h2 className="text-display md:text-display-lg text-foreground mt-4">Three ways to apply the Brand Humanizing methodology.</h2>
+          <h2 className="text-display md:text-display-lg text-foreground">Pick where you want to start.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 lg:gap-8">

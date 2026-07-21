@@ -19,8 +19,7 @@ export default function BlogPodcast() {
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10 md:mb-14 gap-4">
           <div>
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Fresh thinking</span>
-            <h2 className="text-display md:text-display-lg text-foreground mt-4">From our blog</h2>
+            <h2 className="text-display md:text-display-lg text-foreground">Ideas worth stealing</h2>
           </div>
           <Link href="/blog">
             <Button variant="outline" className="rounded-full border-2 border-foreground/20 hover:border-foreground/40 font-heading font-semibold px-6">

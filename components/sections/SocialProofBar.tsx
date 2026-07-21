@@ -47,9 +47,9 @@ export default function SocialProofBar() {
           className={`${transitionBase} ${isVisible ? visible : hidden} text-white text-lg md:text-xl text-center max-w-2xl mx-auto mt-16 md:mt-20 font-body leading-relaxed`}
           style={{ transitionDelay: "200ms" }}
         >
-          We help organisations use technology to become more human.
+          50+ organisations in 12 countries turned automation into an edge
           <br className="hidden md:block" />
-          {" "}Through keynotes, training, and strategic guidance.
+          {" "}instead of a race to the bottom. Your competitors are on this list, or they will be.
         </p>
 
         <div
@@ -66,7 +66,7 @@ export default function SocialProofBar() {
             href="/the-method"
             className="rounded-full border border-[#5AA6B2] text-[#5AA6B2] px-8 py-3 font-medium text-sm md:text-base transition-colors duration-300 hover:bg-[#5AA6B2]/10"
           >
-            Explore our approach
+            See how it works
           </Link>
         </div>
         <p

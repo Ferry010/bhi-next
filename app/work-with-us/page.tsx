@@ -75,12 +75,11 @@ export default function WorkWithUsPage() {
         <section className="bg-secondary min-h-screen flex items-center relative">
           <div className="container max-w-4xl pt-28 md:pt-40 pb-16 md:pb-24">
             <Breadcrumb items={[{ label: "Work With Us" }]} variant="light" />
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Projects</span>
             <h1 className="text-hero md:text-hero-lg text-foreground mt-4 leading-[1.05]">
-              A journey, not a project.
+              Come out the other side impossible to copy.
             </h1>
             <p className="text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              Brand Humanizing isn&apos;t implemented in a sprint. It&apos;s built in layers, with your team, starting with a shared foundation and ending with internal ownership.
+              Not a slide deck we hand over and leave. We build Brand Humanizing into how your team actually works, in layers, until it runs without us. Here&apos;s the path from first spark to your people owning it.
             </p>
             <div className="flex flex-wrap gap-4 mt-10">
               <a href="#journey">

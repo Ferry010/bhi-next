@@ -19,11 +19,8 @@ export default function MeetTheHumans() {
           </div>
 
           <div className="space-y-5 md:space-y-6">
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">
-              Who&apos;s behind this
-            </span>
             <h2 className="text-display md:text-display-lg text-foreground">
-              The people behind this are actual humans.
+              You&apos;ll be dealing with these two.
             </h2>
             <div className="space-y-4 text-sm md:text-body-lg text-muted-foreground max-w-lg">
               <p>

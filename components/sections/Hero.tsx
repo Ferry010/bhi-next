@@ -9,29 +9,26 @@ export default function Hero() {
       <div className="container">
         <div className="grid lg:grid-cols-[55%_45%] gap-8 lg:gap-8 items-center">
           <div className="space-y-5 md:space-y-8 min-w-0">
-            <span className="inline-block text-accent font-heading font-bold text-caption uppercase tracking-widest">
-              The Human Edge in a Digital World
-            </span>
             <h1 className="text-hero md:text-hero-lg text-foreground break-words">
               Everyone can copy your technology. No one can copy your <span className="text-primary">people.</span>
             </h1>
             <div className="max-w-lg space-y-2">
               <p className="text-base md:text-lg font-heading font-semibold text-foreground">
-                Every organisation is automating. Most are becoming less human in the process.
+                You&apos;re automating. So is every competitor you have. Right now, you&apos;re all starting to look the same.
               </p>
               <p className="text-sm md:text-body-lg text-text-light">
-                Brand Humanizing is the philosophy, strategy, and way of working for organisations that understand this is a choice and choose differently.
+                We help you use technology to make your people impossible to copy, so customers keep choosing you while the rest blur into each other. The teams that move first pull ahead. The ones that wait compete on price.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
-              <Link href="/the-method">
+              <Link href="/contact">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
-                  See what Brand Humanizing is →
+                  Book a session →
                 </Button>
               </Link>
-              <Link href="/work-with-us">
+              <Link href="/the-method">
                 <Button variant="outline" className="rounded-full border-2 border-foreground/20 hover:border-foreground/40 font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
-                  Work with us →
+                  See how it works →
                 </Button>
               </Link>
             </div>

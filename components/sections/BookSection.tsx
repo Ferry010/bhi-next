@@ -53,7 +53,6 @@ export default function BookSection() {
           </div>
 
           <div className={`space-y-5 md:space-y-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`} style={{ transitionDelay: "200ms" }}>
-            <span className="text-text-light text-caption uppercase tracking-widest font-heading font-semibold">The book</span>
             <h2 className="text-display md:text-display-lg text-foreground">
               We wrote the book on it. Literally.
             </h2>

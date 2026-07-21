@@ -1,16 +1,18 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const setupLines = [
-  "Every organisation is plugging in technology and automation. And it's working. Things are faster. Cheaper. More efficient.",
-  "But your competitors are embedding the same technology. Automating the processes. Generating the same content. Building the same customer journeys.",
-  "You're all becoming copies of each other. And the thing that made people choose you is quietly disappearing.",
+  "You plugged in the technology. It's working. Faster, cheaper, more efficient. Good.",
+  "So did your competitors. Same tools. Same automations. Same AI-generated content. Same customer journeys.",
+  "You're becoming copies of each other. And the reason people chose you in the first place is quietly disappearing.",
 ];
 
 const payoffLines = [
-  "The organisations that win the next decade won't be the ones with the best technology. They'll be the ones that use technology to make their people matter more.",
-  "That's Brand Humanizing.",
+  "The organisations that win the next decade won't have the best technology. They'll be the ones that use it to make their people matter more. That gap is opening now, and it compounds.",
+  "This is the part your competitors haven't figured out yet.",
 ];
 
 export default function DisruptionStatement() {
@@ -19,8 +21,7 @@ export default function DisruptionStatement() {
   return (
     <section ref={ref} className="bg-navy section-padding">
       <div className="container-narrow">
-        <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">THE SHIFT</span>
-        <div className="space-y-6 md:space-y-8 mt-8">
+        <div className="space-y-6 md:space-y-8">
           {setupLines.map((line, i) => (
             <p
               key={i}
@@ -43,6 +44,15 @@ export default function DisruptionStatement() {
               {line}
             </p>
           ))}
+          <div
+            className={`pt-2 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+            style={{ transitionDelay: `${200 + (setupLines.length + payoffLines.length) * 150}ms` }}
+          >
+            <Link href="/the-method" className="inline-flex items-center gap-2 font-heading font-semibold text-white hover:text-accent transition-colors group">
+              See exactly how they do it
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

@@ -107,14 +107,11 @@ export default function PricingPage() {
           />
         </div>
         <div className="container text-center relative z-10 py-32 md:py-40 pt-44 md:pt-52">
-          <p className="uppercase tracking-[0.16em] text-[#5AA6B2] text-xs md:text-sm font-medium mb-6">
-            Training Programs
-          </p>
           <h1 className="font-heading text-hero md:text-hero-lg text-white max-w-3xl mx-auto">
-            Invest in the Skill of the Future
+            Buy your team the edge everyone else is racing toward.
           </h1>
           <p className="text-body-lg text-[#E8E2D6]/70 mt-6 max-w-2xl mx-auto leading-relaxed">
-            Brand Humanizing training programs for organizations that want to lead, not follow. From a one-hour inspiration to a full transformation program.
+            Pick a starting point below. From a one-hour session that wakes the room up to a full transformation program. Every one ends with a real human, not a checkout.
           </p>
         </div>
       </section>

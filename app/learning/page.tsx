@@ -77,13 +77,12 @@ export default function LearningPage() {
         <section className="bg-secondary pt-28 md:pt-40 pb-16 md:pb-24 overflow-hidden">
           <div className="container max-w-4xl">
             <Breadcrumb items={[{ label: "Learning" }]} variant="light" />
-            <span className="inline-block text-accent font-heading font-bold text-caption uppercase tracking-widest mb-4">Learning &amp; Training</span>
             <h1 className="text-hero md:text-hero-lg text-foreground">
               Your competitors are already rethinking their people strategy.{" "}
               <span className="text-accent">Are you?</span>
             </h1>
             <p className="text-sm md:text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              From a one-hour inspiration to a full transformation programme. Find the format that fits your team.
+              Give your team a sharper way to think about AI and their own work, in an hour or a full day. They walk out changed, with a shared language and something to do on Monday.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8">
               <a href="#products">

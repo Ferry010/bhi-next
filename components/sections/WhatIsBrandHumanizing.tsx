@@ -12,20 +12,19 @@ export default function WhatIsBrandHumanizing() {
       <div className="container">
         <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="space-y-5 md:space-y-6">
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">The concept</span>
             <h2 className="text-display md:text-display-lg text-foreground">
-              AI strategy training that keeps humans at the&nbsp;centre.
+              Use AI to make your people matter more, not&nbsp;less.
             </h2>
             <div className="space-y-4 text-sm md:text-body-lg text-muted-foreground">
               <p>
-                As AI automates the predictable, it frees space for what technology has never been able to do: genuine empathy, real creativity, and human connection.
+                Let AI take the predictable work. That frees your people for the things technology will never do: genuine empathy, real creativity, and the human connection customers actually remember.
               </p>
               <p>
-                Brand Humanizing is the skillset and mindset for organisations that want to use technology to amplify their people, not replace them. It is not a feel-good idea. It is a proven competitive strategy.
+                The result is an organisation that costs less to run and is harder to leave. Lower overhead, higher loyalty, a brand competitors can&apos;t copy. We&apos;ve spent eight years proving it works. Here&apos;s exactly how.
               </p>
             </div>
             <Link href="/the-method" className="inline-flex items-center gap-1.5 font-heading font-semibold text-sm text-primary hover:text-accent transition-colors pt-2">
-              Explore the full methodology → <ArrowRight className="w-4 h-4" />
+              See the method → <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 

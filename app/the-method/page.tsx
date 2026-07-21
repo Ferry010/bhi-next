@@ -51,13 +51,12 @@ export default function TheMethodPage() {
         <section className="bg-secondary min-h-screen flex items-center relative">
           <div className="container max-w-4xl pt-28 md:pt-40 pb-16 md:pb-24">
             <Breadcrumb items={[{ label: "The Method" }]} variant="light" />
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">THE METHODOLOGY</span>
             <h1 className="text-hero md:text-hero-lg text-foreground mt-4 leading-[1.05]">
               The framework that makes your brand{" "}
               <span className="text-accent">impossible to copy.</span>
             </h1>
             <p className="text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              Eight years. 50+ organizations. One question that would not leave us alone.
+              Eight years and 50+ organisations went into this. Ten minutes to understand it. Then you&apos;ll see why the teams using it don&apos;t compete on price.
             </p>
             <div className="flex flex-wrap gap-4 mt-10">
               <a href="#pyramid">
@@ -99,8 +98,7 @@ export default function TheMethodPage() {
           <div className="container max-w-5xl">
             <ScrollRevealSection>
               <div className="text-center mb-10 md:mb-14">
-                <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">IN THE REAL WORLD</span>
-                <h2 className="text-display md:text-display-lg text-foreground mt-4">Brand Humanizing in action.</h2>
+                <h2 className="text-display md:text-display-lg text-foreground">You already admire companies doing this.</h2>
               </div>
             </ScrollRevealSection>
             <div className="grid md:grid-cols-3 gap-5 lg:gap-8">
