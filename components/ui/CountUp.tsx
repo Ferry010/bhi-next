@@ -21,10 +21,12 @@ export default function CountUp({ value, duration = 1100 }: { value: string; dur
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (reduce) { setDisplay(value); done.current = true; return; }
 
+    let safety: ReturnType<typeof setTimeout>;
     const obs = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting || done.current) return;
       done.current = true;
       obs.disconnect();
+      const final = value; // guaranteed end state
       const start = performance.now();
       const tick = (now: number) => {
         const p = Math.min(1, (now - start) / duration);
@@ -34,10 +36,13 @@ export default function CountUp({ value, duration = 1100 }: { value: string; dur
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
+      // Guarantee the final value even if requestAnimationFrame is throttled
+      // (e.g. background tab), so the number never gets stuck mid-count.
+      safety = setTimeout(() => setDisplay(final), duration + 250);
     }, { threshold: 0.4 });
 
     obs.observe(el);
-    return () => obs.disconnect();
+    return () => { obs.disconnect(); clearTimeout(safety); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

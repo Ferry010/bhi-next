@@ -146,13 +146,13 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
       </section>
 
       {/* Client proof */}
-      <section className="bg-[#0F1117] py-12 md:py-16">
+      <section className="bg-white py-12 md:py-16 border-y border-border">
         <div className="container max-w-5xl">
-          <p className="text-center text-white/40 text-xs uppercase tracking-[0.2em] mb-8">Trusted by the teams inside</p>
+          <p className="text-center text-muted-foreground text-xs uppercase tracking-[0.2em] mb-8">Trusted by the teams inside</p>
           <div className="grid grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-8 items-center">
             {MARQUEE_LOGOS.map((logo) => (
               <div key={logo.alt} className="flex items-center justify-center">
-                <img src={logo.src} alt={logo.alt} loading="lazy" className="h-8 md:h-10 w-auto brightness-0 invert opacity-40 object-contain" />
+                <img src={logo.src} alt={logo.alt} loading="lazy" className="h-8 md:h-10 w-auto brightness-0 opacity-50 object-contain" />
               </div>
             ))}
           </div>

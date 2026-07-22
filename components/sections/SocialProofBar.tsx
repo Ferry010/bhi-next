@@ -27,9 +27,8 @@ export default function SocialProofBar() {
   const visible = "opacity-100 translate-y-0";
 
   return (
-    <section ref={ref} className="bg-[#0F1117] py-20 md:py-28 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] glow-teal pointer-events-none" />
-      <div className="container max-w-5xl relative z-10">
+    <section ref={ref} className="bg-white py-20 md:py-28 border-y border-border">
+      <div className="container max-w-5xl">
         <div
           className={`${transitionBase} ${isVisible ? visible : hidden} grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-x-12 lg:gap-y-8`}
         >
@@ -39,14 +38,14 @@ export default function SocialProofBar() {
                 src={logo.src}
                 alt={logo.alt}
                 loading="lazy"
-                className="h-14 md:h-12 lg:h-[60px] w-auto brightness-0 invert opacity-[0.45] object-contain"
+                className="h-14 md:h-12 lg:h-[60px] w-auto brightness-0 opacity-50 object-contain"
               />
             </div>
           ))}
         </div>
 
         <p
-          className={`${transitionBase} ${isVisible ? visible : hidden} text-white text-lg md:text-xl text-center max-w-2xl mx-auto mt-16 md:mt-20 font-body leading-relaxed`}
+          className={`${transitionBase} ${isVisible ? visible : hidden} text-foreground text-lg md:text-xl text-center max-w-2xl mx-auto mt-16 md:mt-20 font-body leading-relaxed`}
           style={{ transitionDelay: "200ms" }}
         >
           50+ organisations across Europe turned automation into an edge
@@ -62,19 +61,19 @@ export default function SocialProofBar() {
             href={TALK_TO_EXPERT.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-[#5AA6B2] text-white px-8 py-3 font-medium text-sm md:text-base transition-colors duration-300 hover:bg-[#C9A96E]"
+            className="rounded-full bg-primary text-primary-foreground px-8 py-3 font-medium text-sm md:text-base btn-scale transition-all duration-300"
           >
             {TALK_TO_EXPERT.label}
           </a>
           <Link
             href="/the-method"
-            className="rounded-full border border-[#5AA6B2] text-[#5AA6B2] px-8 py-3 font-medium text-sm md:text-base transition-colors duration-300 hover:bg-[#5AA6B2]/10"
+            className="rounded-full border-2 border-primary text-primary px-8 py-3 font-medium text-sm md:text-base transition-colors duration-300 hover:bg-primary/5"
           >
             See how it works
           </Link>
         </div>
         <p
-          className={`${transitionBase} ${isVisible ? visible : hidden} text-[#666] text-xs md:text-sm text-center mt-6 italic`}
+          className={`${transitionBase} ${isVisible ? visible : hidden} text-muted-foreground text-xs md:text-sm text-center mt-6 italic`}
           style={{ transitionDelay: "400ms" }}
         >
           Most clients start with a keynote. Some never stop.

@@ -8,14 +8,12 @@ export default function FinalCTA() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section ref={ref} className="bg-navy section-padding relative overflow-hidden">
-      <div className="absolute -top-28 left-1/4 w-[520px] h-[520px] glow-teal pointer-events-none" />
-      <div className="absolute -bottom-28 right-1/4 w-[460px] h-[460px] glow-amber pointer-events-none" />
-      <div className={`container text-center relative z-10 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-        <h2 className="text-display md:text-display-lg lg:text-hero text-white max-w-3xl mx-auto">
+    <section ref={ref} className="bg-sunny section-padding">
+      <div className={`container text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <h2 className="text-display md:text-display-lg lg:text-hero text-foreground max-w-3xl mx-auto">
           Every quarter you wait, you look a little more like everyone else.
         </h2>
-        <p className="text-sm md:text-body-lg text-white/65 mt-4 md:mt-6 max-w-xl mx-auto">
+        <p className="text-sm md:text-body-lg text-foreground/75 mt-4 md:mt-6 max-w-xl mx-auto">
           Book a course, start with the book, or just ask a question. One message and you&apos;re on our radar. No forms into the void, no bots, no sales script.
         </p>
         <div className="flex justify-center mt-8 md:mt-10">
@@ -25,7 +23,7 @@ export default function FinalCTA() {
             </Button>
           </a>
         </div>
-        <p className="text-xs text-white/50 mt-5 font-heading">
+        <p className="text-xs text-foreground/55 mt-5 font-heading">
           One 30-minute call. A real human, not a bot.
         </p>
       </div>

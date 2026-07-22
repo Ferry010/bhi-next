@@ -72,6 +72,10 @@ export default {
         navy: "hsl(var(--navy))",
         "navy-card": "hsl(var(--navy-card))",
         cream: "hsl(var(--cream))",
+        sunny: {
+          DEFAULT: "hsl(var(--sunny))",
+          foreground: "hsl(var(--sunny-foreground))",
+        },
         "text-light": "hsl(var(--text-light))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
