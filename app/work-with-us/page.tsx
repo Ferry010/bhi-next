@@ -101,14 +101,14 @@ export default function WorkWithUsPage() {
               <div className="grid md:grid-cols-2 gap-4">
                 {brainstormOutcomes.map((o, i) => (
                   <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5 flex gap-3 items-start">
-                    <Check className="w-5 h-5 text-accent mt-0.5 shrink-0" />
+                    <Check className="w-5 h-5 text-sunny mt-0.5 shrink-0" />
                     <span className="text-white/85 text-sm leading-relaxed">{o}</span>
                   </div>
                 ))}
               </div>
               <div className="mt-10">
                 <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
-                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  <Button className="rounded-full bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                     {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
@@ -152,7 +152,7 @@ export default function WorkWithUsPage() {
               <h2 className="text-display md:text-display-lg text-white mb-6">Start with a brainstorm.</h2>
               <p className="text-body-lg text-white/70 mb-8 max-w-xl mx-auto">One 30-minute call to see if it&apos;s a fit, and to book it if it is.</p>
               <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
-                <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                <Button className="rounded-full bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                   {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>
               </a>

@@ -159,7 +159,7 @@ function RenderContent({ blocks, dark = false }: { blocks: ContentBlock[]; dark?
               const [time, ...rest] = item.split(". ");
               return (
                 <div key={j} className="flex gap-4 items-baseline">
-                  <span className="text-accent font-heading font-semibold whitespace-nowrap text-sm">{time}</span>
+                  <span className="text-sunny font-heading font-semibold whitespace-nowrap text-sm">{time}</span>
                   <span className="text-white/80 text-sm">{rest.join(". ")}</span>
                 </div>
               );
@@ -242,9 +242,9 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
               {data.outputs.map((o, i) => (
                 <div
                   key={i}
-                  className="bg-navy rounded-2xl p-6 h-full flex gap-4 items-start shadow-lg border border-accent/10"
+                  className="bg-navy rounded-2xl p-6 h-full flex gap-4 items-start shadow-lg border border-white/10"
                 >
-                  <Check className="w-5 h-5 text-accent mt-0.5 shrink-0" />
+                  <Check className="w-5 h-5 text-sunny mt-0.5 shrink-0" />
                   <span className="text-white/90 text-sm leading-relaxed">{o}</span>
                 </div>
               ))}
@@ -315,11 +315,11 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
             {data.testimonials.map((t, i) => (
               <Section key={i} className={i > 0 ? "mt-10" : ""}>
                 <div className="relative">
-                  <span className="absolute -top-6 -left-2 text-accent/20 text-8xl font-heading leading-none select-none">&ldquo;</span>
+                  <span className="absolute -top-6 -left-2 text-sunny/30 text-8xl font-heading leading-none select-none">&ldquo;</span>
                   <blockquote className="text-white text-xl md:text-2xl font-heading italic leading-relaxed mb-4 relative z-10 pl-4">
                     {t.quote}
                   </blockquote>
-                  <p className="text-accent font-heading text-sm pl-4"> - {t.who}</p>
+                  <p className="text-sunny font-heading text-sm pl-4"> - {t.who}</p>
                 </div>
               </Section>
             ))}
@@ -357,10 +357,10 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
             <AccentHeading text={data.relatedHeading || "Related engagements"} className="font-heading text-2xl md:text-3xl font-bold mb-8 text-foreground" />
             <div className="grid md:grid-cols-3 gap-6">
               {data.relatedEngagements.map((r, i) => (
-                <Link key={i} href={r.to} className="group block bg-navy-card rounded-2xl p-6 border border-transparent hover:border-accent/30 transition-all duration-300 h-full">
-                  <h3 className="font-heading font-bold text-white mb-2 group-hover:text-accent transition-colors">{r.label}</h3>
+                <Link key={i} href={r.to} className="group block bg-navy-card rounded-2xl p-6 border border-transparent hover:border-sunny/40 transition-all duration-300 h-full">
+                  <h3 className="font-heading font-bold text-white mb-2 group-hover:text-sunny transition-colors">{r.label}</h3>
                   <p className="text-sm text-white/70 mb-4">{r.description}</p>
-                  <span className="text-accent font-heading font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <span className="text-sunny font-heading font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                     Learn more <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </Link>
@@ -380,7 +380,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
             <AccentHeading text={data.finalCtaHeading} className="font-heading text-2xl md:text-4xl font-bold mb-4 text-white" />
             {data.finalCtaSubline && <p className="text-white/70 text-lg mb-8">{data.finalCtaSubline}</p>}
             <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
-              <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+              <Button className="rounded-lg bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                 {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
               </Button>
             </a>

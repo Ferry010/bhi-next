@@ -48,7 +48,7 @@ export default function DisruptionStatement() {
             className={`pt-2 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
             style={{ transitionDelay: `${200 + (setupLines.length + payoffLines.length) * 150}ms` }}
           >
-            <Link href="/the-method" className="inline-flex items-center gap-2 font-heading font-semibold text-white hover:text-sunny transition-colors group">
+            <Link href="/the-method" className="inline-flex items-center gap-2 font-heading font-semibold text-sunny hover:brightness-90 transition-all group">
               See exactly how they do it
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>

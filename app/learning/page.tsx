@@ -159,7 +159,7 @@ export default function LearningPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/learning/inspiration-session">
-                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  <Button className="rounded-full bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                     Start with the Spark Session <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>

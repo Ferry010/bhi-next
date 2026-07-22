@@ -103,10 +103,10 @@ export default function FourSkillsSpotlight() {
               showCenter ? "opacity-100 scale-100" : "opacity-0 scale-90"
             }`}
           >
-            <div className="bg-navy/90 backdrop-blur-sm border-2 border-accent rounded-2xl px-6 py-4 shadow-[0_0_40px_hsl(21_100%_58%/0.3)]">
+            <div className="bg-navy/90 backdrop-blur-sm border-2 border-sunny rounded-2xl px-6 py-4 shadow-[0_0_40px_hsl(44_100%_50%/0.3)]">
               <div className="flex items-center gap-2">
-                <Heart className="w-5 h-5 text-accent" />
-                <span className="font-heading font-bold text-lg text-accent">Brand Humanizer</span>
+                <Heart className="w-5 h-5 text-sunny" />
+                <span className="font-heading font-bold text-lg text-sunny">Brand Humanizer</span>
               </div>
               <p className="text-xs text-white/60 mt-1">The intersection of all four skills</p>
             </div>
