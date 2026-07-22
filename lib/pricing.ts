@@ -16,7 +16,14 @@ export const DISPLAY_PRICES = false;
 // scheduling tool changes.
 export const TALK_TO_EXPERT = {
   label: "Talk to an expert",
-  url: "https://calendly.com/ferryhoes",
+  url: "https://calendly.com/ferryhoes/meeting",
+};
+
+// Keynote-specific booking goes through Speakers Academy, not this site.
+// Swap the URL in once it's confirmed.
+export const SPEAKERS_ACADEMY = {
+  label: "Book Ferry for a keynote",
+  url: "[PLACEHOLDER: Speakers Academy URL]",
 };
 
 export interface ProductPricing {
@@ -38,19 +45,32 @@ export interface ProductPricing {
   href: string;
 }
 
-export const PRODUCTS: Record<"inspiration" | "fullDay" | "multiDay", ProductPricing> = {
+export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay", ProductPricing> = {
   inspiration: {
     slug: "inspiration-session",
-    name: "The Inspiration Session",
+    name: "The Spark Session",
     promise: "The keynote that stops your team defending the old way of working and gets them hungry for the new one.",
-    duration: "60–90 minutes",
-    audience: "15–500+ people",
+    duration: "1 hour",
+    audience: "Whole team or event audience",
     bestFor: "A whole department, or the entire company, in one room",
     priceFrom: "€3,500",
-    specs: "60–90 min · 15–500+ people",
+    specs: "1 hour · whole team / event audience",
     investmentLine:
       "Every session is shaped around your organisation and scoped in a short intake. Tell us the room and the moment, and we come back with the right format and an exact proposal.",
     href: "/learning/inspiration-session",
+  },
+  halfDay: {
+    slug: "half-day-deep-dive",
+    name: "The Half-Day Deep Dive",
+    promise: "One theme, taken deep. Your team leaves able to apply it, not just nod along to it.",
+    duration: "3–4 hours",
+    audience: "One team, one theme",
+    bestFor: "One team that wants to go hands-on with a single Brand Humanizing theme",
+    priceFrom: "€5,000",
+    specs: "3–4 hours · one team, one theme",
+    investmentLine:
+      "Pick the theme that fits your moment, from AI Ethics to Staying Human. We shape the half day around it and scope it in a short intake.",
+    href: "/learning/half-day-deep-dive",
   },
   fullDay: {
     slug: "full-day-course",
@@ -99,9 +119,8 @@ export const FACILITATOR = {
 
 export const STATS = [
   { value: "50+", label: "organisations" },
-  { value: "12", label: "countries" },
-  { value: "9.2", label: "average rating" },
-  { value: "2017", label: "researching this" },
+  { value: "~40", label: "keynotes a year" },
+  { value: "2017", label: "founded" },
 ];
 
 export const MARQUEE_LOGOS = [

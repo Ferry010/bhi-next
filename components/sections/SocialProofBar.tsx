@@ -48,7 +48,7 @@ export default function SocialProofBar() {
           className={`${transitionBase} ${isVisible ? visible : hidden} text-white text-lg md:text-xl text-center max-w-2xl mx-auto mt-16 md:mt-20 font-body leading-relaxed`}
           style={{ transitionDelay: "200ms" }}
         >
-          50+ organisations in 12 countries turned automation into an edge
+          50+ organisations across Europe turned automation into an edge
           <br className="hidden md:block" />
           {" "}instead of a race to the bottom. Your competitors are on this list, or they will be.
         </p>

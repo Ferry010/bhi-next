@@ -6,20 +6,20 @@ const P = PRODUCTS.inspiration;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/learning/inspiration-session" },
-  title: "Brand Humanizing Inspiration Session | Keynote for Teams",
+  title: "Brand Humanizing Spark Session | 60-Minute Keynote for Teams",
   description:
-    "A 60–90 minute keynote that gets your team ahead of the AI curve and hungry to change. Delivered by international speaker Ferry Hoes. For teams of 15–500+.",
+    "A one-hour keynote that gets your team ahead of the AI curve and hungry to change. Delivered by international speaker Ferry Hoes. For a whole team or event audience.",
   openGraph: { images: [{ url: "/og/inspiration-session.jpg" }] },
 };
 
 const data = {
-  seoTitle: "Brand Humanizing Inspiration Session | Keynote for Teams",
-  seoDescription: "A 60–90 minute keynote that gets your team ahead of the AI curve and hungry to change.",
+  seoTitle: "Brand Humanizing Spark Session | 60-Minute Keynote for Teams",
+  seoDescription: "A one-hour keynote that gets your team ahead of the AI curve and hungry to change.",
   seoOgImage: "/og/inspiration-session.jpg",
   path: "/learning/inspiration-session",
-  breadcrumbs: [{ label: "Learning", to: "/learning" }, { label: "Inspiration Session" }],
+  breadcrumbs: [{ label: "Learning", to: "/learning" }, { label: "Spark Session" }],
   badge: "Most teams start here",
-  title: "The Inspiration Session",
+  title: "The Spark Session",
   subtitle:
     "One keynote that stops your team defending the old way of working and gets them hungry for the new one. They walk out seeing AI, their work and their edge over the competition completely differently.",
   duration: P.duration,

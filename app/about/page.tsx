@@ -28,7 +28,7 @@ const teamMembers = [
     rotation: "-rotate-2",
     bio: [
       "Ferry spent a decade in corporate marketing and sales before co-creating Brand Humanizing with Jonathan Flores in 2017.",
-      "He is a public speaker, represented by Speakers Academy, and has delivered keynotes and workshops for organizations across 12 countries. He won the Dutch Government AI Hackathon in 2020.",
+      "He is a public speaker, represented by Speakers Academy, and has delivered keynotes and workshops for organizations across Europe. He won the Dutch Government AI Hackathon in 2020.",
       "His background spans social psychology, change management, and innovation management.",
     ],
     email: "ferry@brandhumanizing.com",
@@ -50,7 +50,7 @@ const teamMembers = [
 
 const faqs = [
   { q: "Where are you based?", a: "Rotterdam, the Netherlands. We deliver sessions across Europe and remotely worldwide." },
-  { q: "How many organisations have you worked with?", a: "50+ organisations across 12 countries, spanning financial services, healthcare, tech, FMCG, government, and education." },
+  { q: "How many organisations have you worked with?", a: "50+ organisations across Europe, spanning financial services, healthcare, tech, FMCG, government, and education." },
   { q: "Can Ferry speak at our event?", a: "Yes. Keynotes and event appearances go through Speakers Academy. Workshops and sessions are booked directly through this website." },
   { q: "Do you work with non-profits?", a: "Yes, and we offer a reduced rate for non-profit organizations. Reach out directly." },
 ];

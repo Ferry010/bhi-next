@@ -6,68 +6,63 @@ import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { Sparkles, GraduationCap, Settings, Monitor, ShieldCheck, ArrowRight } from "lucide-react";
-import { PRODUCTS, TALK_TO_EXPERT } from "@/lib/pricing";
+import { Sparkles, Layers, GraduationCap, Users2, ArrowRight, ExternalLink } from "lucide-react";
+import { TALK_TO_EXPERT, SPEAKERS_ACADEMY } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/learning" },
-  title: "Learning & Training",
+  title: "Live Training | Brand Humanizing Institute",
   description:
-    "From a 90-minute inspiration session to a multi-day leadership programme. Find the right format for your team.",
+    "Four ways to train your team in the Brand Humanizing way, from a one-hour spark to a two-day leadership programme. Pick how deep you want to go.",
   openGraph: { images: [{ url: "/og/learning.jpg" }] },
 };
 
-const products = [
+const formats = [
   {
     icon: Sparkles,
-    title: PRODUCTS.inspiration.name,
-    tagline: PRODUCTS.inspiration.promise,
-    specs: PRODUCTS.inspiration.specs,
-    to: PRODUCTS.inspiration.href,
-    comingSoon: false,
+    name: "The Spark Session",
+    duration: "1 hour",
+    who: "Whole team or event audience",
+    theme: "Brand Humanizing in 60 Minutes",
+    outcome: "A wake-up and a shared language. A shift you feel in the room the next morning.",
+    to: "/learning/inspiration-session",
+  },
+  {
+    icon: Layers,
+    name: "The Half-Day Deep Dive",
+    duration: "3–4 hours",
+    who: "One team, one theme",
+    theme: "AI Ethics & The Human Edge",
+    outcome: "Your team takes one theme hands-on and leaves able to apply it, not just discuss it.",
+    to: "/learning/half-day-deep-dive",
   },
   {
     icon: GraduationCap,
-    title: PRODUCTS.fullDay.name,
-    tagline: PRODUCTS.fullDay.promise,
-    specs: PRODUCTS.fullDay.specs,
-    to: PRODUCTS.fullDay.href,
-    comingSoon: false,
+    name: "The Full-Day Course",
+    duration: "6–7 hours",
+    who: "A team, the full method",
+    theme: "The complete method, applied to your work",
+    outcome: "The team leaves working differently, with a 90-day plan they can run on Monday.",
+    to: "/learning/full-day-course",
   },
   {
-    icon: Settings,
-    title: PRODUCTS.multiDay.name,
-    tagline: PRODUCTS.multiDay.promise,
-    specs: PRODUCTS.multiDay.specs,
-    to: PRODUCTS.multiDay.href,
-    comingSoon: false,
-  },
-  {
-    icon: Monitor,
-    title: "The Online Course",
-    tagline: "Learn the Brand Humanizing framework at your own pace. Coming soon.",
-    specs: "Self-paced · 4–6 modules · Individual",
-    to: "/learning/online-course",
-    comingSoon: true,
-  },
-  {
-    icon: ShieldCheck,
-    title: "AI Literacy Certificate",
-    tagline: "EU AI Act Article 4 compliant training. Built on the Brand Humanizing foundation, delivered via AIGA.",
-    specs: "3–4 hours · Individual or team · EU AI Act compliant",
-    to: "/learning/ai-literacy-certificate",
-    comingSoon: false,
-    badge: "Via AIGA",
+    icon: Users2,
+    name: "The Multi-Day Leadership Programme",
+    duration: "2 days",
+    who: "Leadership",
+    theme: "Staying Human in a Digital World",
+    outcome: "Deep, leadership-level transformation that outlives the room.",
+    to: "/learning/multi-day-programme",
   },
 ];
 
 const faqs = [
   { q: "Can sessions be delivered online or hybrid?", a: "Yes. Both formats work well. We discuss what's best for your situation during intake." },
-  { q: "How much advance notice do you need?", a: "For sessions: 3–6 weeks. For multi-day programmes: 4–8 weeks." },
+  { q: "How much advance notice do you need?", a: "For a Spark Session or Deep Dive: 3–6 weeks. For the Multi-Day Programme: 4–8 weeks." },
   { q: "Can sessions be delivered in English?", a: "Yes. Both Ferry and Jonathan deliver in Dutch and English with equal fluency." },
   { q: "Do participants get the book?", a: "Yes. Every participant in our in-person sessions receives a copy of Brand Humanizing, the book." },
-  { q: "What is the intake process?", a: "A 30-minute conversation to understand your organization. No questionnaires. A real conversation that shapes the session." },
-  { q: "Can you come to us?", a: "Yes. We deliver in-house sessions anywhere in Europe, and can host in Rotterdam. Remote delivery also available." },
+  { q: "What is the intake process?", a: "A short conversation to understand your organisation. No questionnaires. A real conversation that shapes the session." },
+  { q: "Can you come to us?", a: "Yes. We deliver in-house anywhere in Europe, and can host in Rotterdam. Remote delivery is also available." },
 ];
 
 export default function LearningPage() {
@@ -83,12 +78,12 @@ export default function LearningPage() {
               <span className="text-accent">Are you?</span>
             </h1>
             <p className="text-sm md:text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              Give your team a sharper way to think about AI and their own work, in an hour or a full day. They walk out changed, with a shared language and something to do on Monday.
+              Four ways to train your team in the Brand Humanizing way. Pick how deep you want to go. They walk out changed, with a shared language and something to do on Monday.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8">
-              <a href="#products">
+              <a href="#formats">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto">
-                  See all formats →
+                  See the training formats →
                 </Button>
               </a>
               <Link href="/assessment">
@@ -100,66 +95,44 @@ export default function LearningPage() {
           </div>
         </section>
 
-        <section id="products" className="section-padding bg-cream">
+        <section id="formats" className="section-padding bg-cream">
           <div className="container max-w-5xl">
             <ScrollRevealSection>
-              <h2 className="text-display md:text-display-lg text-foreground mb-3 text-center">Choose your format</h2>
-              <p className="text-body-lg text-muted-foreground text-center mb-12">Pick the format that fits your team and your moment.</p>
+              <h2 className="text-display md:text-display-lg text-foreground mb-3 text-center">Pick how deep you want to go.</h2>
+              <p className="text-body-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">Same method, four depths. Each format carries a theme, and every one includes the book.</p>
             </ScrollRevealSection>
             <div className="grid md:grid-cols-2 gap-6">
-              {products.slice(0, 4).map((p) => (
-                <ScrollRevealSection key={p.title}>
-                  <div className={`rounded-2xl p-7 h-full flex flex-col transition-all duration-300 ${
-                    p.comingSoon
-                      ? "opacity-50 bg-white/60 border border-border/30"
-                      : "bg-white shadow-[0_4px_24px_rgba(18,21,46,0.08)] border border-border/50 hover:shadow-lg hover:border-accent/30"
-                  }`}>
-                    <div className="w-12 h-12 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center mb-4">
-                      <p.icon className="w-6 h-6 text-accent" />
+              {formats.map((f) => (
+                <ScrollRevealSection key={f.name}>
+                  <Link href={f.to} className="group block bg-white rounded-2xl p-7 md:p-8 h-full shadow-[0_4px_24px_rgba(18,21,46,0.08)] border border-border/50 hover:shadow-lg hover:border-accent/30 transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center shrink-0">
+                        <f.icon className="w-5 h-5 text-accent" />
+                      </div>
+                      <h3 className="font-heading font-bold text-lg md:text-xl text-foreground group-hover:text-accent transition-colors">{f.name}</h3>
                     </div>
-                    <h3 className="font-heading font-bold text-lg md:text-xl text-foreground mb-2">{p.title}</h3>
-                    {p.comingSoon && (
-                      <span className="text-xs font-heading font-semibold text-accent uppercase tracking-wider mb-2">Coming Soon</span>
-                    )}
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{p.tagline}</p>
-                    <p className="text-caption text-muted-foreground/60 font-heading font-semibold mb-4">{p.specs}</p>
-                    {!p.comingSoon ? (
-                      <Link href={p.to}>
-                        <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm gap-2">
-                          Learn more <ArrowRight className="w-3.5 h-3.5" />
-                        </Button>
-                      </Link>
-                    ) : (
-                      <Link href={p.to}>
-                        <Button variant="outline" className="rounded-full border-foreground/20 font-heading font-semibold px-5 h-10 text-sm gap-2">
-                          Join waitlist <ArrowRight className="w-3.5 h-3.5" />
-                        </Button>
-                      </Link>
-                    )}
-                  </div>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <span className="text-xs font-heading font-semibold text-muted-foreground bg-cream rounded-full px-3 py-1">{f.duration}</span>
+                      <span className="text-xs font-heading font-semibold text-muted-foreground bg-cream rounded-full px-3 py-1">{f.who}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-1"><span className="font-heading font-semibold text-foreground">Theme:</span> {f.theme}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5"><span className="font-heading font-semibold text-foreground">You get:</span> {f.outcome}</p>
+                    <span className="text-accent font-heading font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+                      See the format <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </Link>
                 </ScrollRevealSection>
               ))}
             </div>
-            <div className="mt-6">
-              <ScrollRevealSection>
-                <div className="rounded-2xl p-7 bg-navy-card border border-accent/20 flex flex-col md:flex-row gap-6 items-start md:items-center">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <ShieldCheck className="w-5 h-5 text-accent" />
-                      <h3 className="font-heading font-bold text-lg text-white">AI Literacy Certificate</h3>
-                      <span className="text-xs font-heading font-semibold text-accent bg-accent/10 rounded-full px-2 py-0.5">Via AIGA</span>
-                    </div>
-                    <p className="text-sm text-white/70 leading-relaxed mb-2">{products[4].tagline}</p>
-                    <p className="text-caption text-accent/70 font-heading font-semibold">{products[4].specs}</p>
-                  </div>
-                  <Link href="/learning/ai-literacy-certificate">
-                    <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm gap-2 shrink-0">
-                      Learn more <ArrowRight className="w-3.5 h-3.5" />
-                    </Button>
-                  </Link>
-                </div>
-              </ScrollRevealSection>
-            </div>
+
+            <ScrollRevealSection>
+              <p className="text-center text-sm text-muted-foreground mt-10">
+                Booking Ferry for a keynote specifically?{" "}
+                <a href={SPEAKERS_ACADEMY.url} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-primary hover:text-accent transition-colors inline-flex items-center gap-1">
+                  That goes through Speakers Academy <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </p>
+            </ScrollRevealSection>
           </div>
         </section>
 
@@ -168,12 +141,12 @@ export default function LearningPage() {
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-white mb-6">Not sure where to start?</h2>
               <p className="text-body-lg text-white/70 mb-8">
-                Most teams start with the Inspiration Session. It&apos;s the fastest way to get everyone on the same page.
+                Most teams start with the Spark Session. It&apos;s the fastest way to get everyone on the same page.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/learning/inspiration-session">
                   <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                    Start with the Inspiration Session <ArrowRight className="w-4 h-4" />
+                    Start with the Spark Session <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">

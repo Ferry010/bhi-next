@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/the-method" },
   title: "The Brand Humanizing Method | Four Skills Framework",
   description:
-    "The research-backed pyramid and four skills that make your brand impossible to copy. Used by 50+ organizations in 12 countries.",
+    "The research-backed pyramid and four skills that make your brand impossible to copy. Used by 50+ organizations across Europe.",
   openGraph: { images: [{ url: "/og/the-method.jpg" }] },
 };
 
@@ -64,9 +64,9 @@ export default function TheMethodPage() {
                   Explore the framework <ArrowRight className="w-4 h-4" />
                 </Button>
               </a>
-              <Link href="/work-with-us">
+              <Link href="/learning">
                 <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/70 text-foreground hover:border-foreground hover:bg-foreground/5 font-heading font-semibold px-8 h-12 text-base gap-2">
-                  See it in practice <ArrowRight className="w-4 h-4" />
+                  See the training <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>
@@ -138,13 +138,13 @@ export default function TheMethodPage() {
               </ScrollRevealSection>
               <ScrollRevealSection>
                 <div className="bg-white rounded-2xl shadow-[0_4px_24px_rgba(18,21,46,0.08)] p-8 md:p-10 h-full flex flex-col">
-                  <h3 className="font-heading font-bold text-xl text-foreground mb-3">Build it with us</h3>
+                  <h3 className="font-heading font-bold text-xl text-foreground mb-3">Become one</h3>
                   <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
-                    Ready to go beyond learning? We work alongside your team to map, strategize, and implement Brand Humanizing across your organization.
+                    Ready to go beyond a session? Certify your team&apos;s AI literacy now, or join the waitlist to become a certified Brand Humanizer.
                   </p>
-                  <Link href="/work-with-us">
+                  <Link href="/certification">
                     <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/70 text-foreground hover:border-foreground hover:bg-foreground/5 font-heading font-semibold px-8 h-12 text-base gap-2">
-                      Start a project <ArrowRight className="w-4 h-4" />
+                      Get certified <ArrowRight className="w-4 h-4" />
                     </Button>
                   </Link>
                 </div>
@@ -165,9 +165,9 @@ export default function TheMethodPage() {
                     Book a session <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
-                <Link href="/work-with-us">
+                <Link href="/certification">
                   <Button variant="outline" className="rounded-full border-[1.5px] border-white/70 text-white hover:border-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base gap-2">
-                    Start a project <ArrowRight className="w-4 h-4" />
+                    Get certified <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>

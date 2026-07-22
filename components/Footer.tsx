@@ -5,19 +5,18 @@ const navCols = [
     title: "Learning",
     links: [
       { label: "Inspiration Session", to: "/learning/inspiration-session" },
+      { label: "Half-Day Deep Dive", to: "/learning/half-day-deep-dive" },
       { label: "Full-Day Course", to: "/learning/full-day-course" },
       { label: "Multi-Day Programme", to: "/learning/multi-day-programme" },
-      { label: "AI Literacy Certificate", to: "/learning/ai-literacy-certificate" },
-      { label: "All Learning Options", to: "/learning" },
+      { label: "All Learning Formats", to: "/learning" },
     ],
   },
   {
-    title: "Work With Us",
+    title: "Certification",
     links: [
-      { label: "Human-Technology Fit Audit", to: "/work-with-us/audit-and-brainstorm" },
-      { label: "Brand Humanizing Roadmap", to: "/work-with-us/brand-humanizing-roadmap" },
-      { label: "Organisation-Wide Implementation", to: "/work-with-us/organisation-wide-implementation" },
-      { label: "All Projects", to: "/work-with-us" },
+      { label: "AI Literacy Certificate", to: "/certification" },
+      { label: "Brand Humanizer Certification", to: "/certification" },
+      { label: "See both certifications", to: "/certification" },
     ],
   },
   {

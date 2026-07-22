@@ -38,8 +38,8 @@ export default function Hero() {
               <Link href="/learning" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
                 Train my team
               </Link>
-              <Link href="/work-with-us" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
-                Start a project
+              <Link href="/certification" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
+                Get certified
               </Link>
               <Link href="/research" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
                 Read the research

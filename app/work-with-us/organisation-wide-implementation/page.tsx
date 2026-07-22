@@ -94,7 +94,7 @@ const data: FullServicePageData = {
     { q: "How many people from our organisation are involved?", a: "Everyone, eventually. but it's structured. We start with leadership, move to department leads, then to the broader team. The internal champion programme runs in parallel. Most organisations have 2–5 people designated as internal Brand Humanizers by the end of the engagement." },
     { q: "What happens when you leave?", a: "That's what the Handover is for. The final phase of every implementation is a structured transition to your internal Brand Humanizers. They've been trained throughout the engagement. The Handover formalises their readiness and establishes a quarterly check-in structure so you're never without support." },
     { q: "Do you sign NDAs?", a: "Yes, standard practice. Get in touch and we'll handle the paperwork before any scoping conversations." },
-    { q: "Can you work with organisations outside the Netherlands?", a: "Yes. We've worked across 12 countries. Remote delivery is available for the right engagements. Travel costs for in-person elements outside Rotterdam are billed at cost." },
+    { q: "Can you work with organisations outside the Netherlands?", a: "Yes. We've worked across Europe. Remote delivery is available for the right engagements. Travel costs for in-person elements outside Rotterdam are billed at cost." },
   ],
 
   relatedEngagements: [

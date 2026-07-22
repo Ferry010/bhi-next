@@ -24,7 +24,7 @@ export default function MeetTheHumans() {
             </h2>
             <div className="space-y-4 text-sm md:text-body-lg text-muted-foreground max-w-lg">
               <p>
-                Ferry Hoes and Jonathan Flores founded Brand Humanizing in 2017 after years of working inside organizations that were using data and automation in ways that felt increasingly wrong. They&apos;ve since worked with 50+ organisations across 12 countries, helping them find their human edge.
+                Ferry Hoes and Jonathan Flores founded Brand Humanizing in 2017 after years of working inside organizations that were using data and automation in ways that felt increasingly wrong. They&apos;ve since worked with 50+ organisations across Europe, helping them find their human edge.
               </p>
               <p className="font-heading font-semibold text-foreground">
                 When you message this website, a real human replies. Always.
