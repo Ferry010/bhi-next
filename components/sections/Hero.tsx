@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 export default function Hero() {
   return (
@@ -14,22 +13,22 @@ export default function Hero() {
               Everyone can copy your technology. No one can copy your <span className="text-primary">people.</span>
             </h1>
             <div className="max-w-lg space-y-2">
-              <p className="text-base md:text-lg font-heading font-semibold text-foreground">
-                You&apos;re automating. So is every competitor you have. Right now, you&apos;re all starting to look the same.
+              <p className="text-lg md:text-xl font-heading font-semibold text-foreground">
+                We train your team to work with AI and stay the reason customers choose you.
               </p>
               <p className="text-sm md:text-body-lg text-text-light">
-                We help you use technology to make your people impossible to copy, so customers keep choosing you while the rest blur into each other. The teams that move first pull ahead. The ones that wait compete on price.
+                Book a course for your team, or dive into the method first.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
-              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <Link href="/learning" className="w-full sm:w-auto">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
-                  {TALK_TO_EXPERT.label} →
+                  See the training formats →
                 </Button>
-              </a>
+              </Link>
               <Link href="/the-method">
                 <Button variant="outline" className="rounded-full border-2 border-foreground/20 hover:border-foreground/40 font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
-                  See how it works →
+                  Dive into the method →
                 </Button>
               </Link>
             </div>
