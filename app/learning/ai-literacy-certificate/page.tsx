@@ -1,6 +1,6 @@
 import { permanentRedirect } from "next/navigation";
 
-// The AI Literacy Certificate now lives on the Certification page.
+// AI literacy is an external AIGA product, surfaced on the Learning page.
 export default function AILiteracyCertificateRedirect() {
-  permanentRedirect("/certification");
+  permanentRedirect("/learning");
 }

@@ -32,28 +32,18 @@ const navLinks: NavItem[] = [
     ],
     footerLink: { label: "See all learning formats →", to: "/learning" },
   },
-  {
-    label: "Certification",
-    to: "/certification",
-    children: [
-      { label: "AI Literacy Certificate", to: "/certification", badge: "Via AIGA" },
-      { label: "Brand Humanizer Certification", to: "/certification", badge: "Waitlist" },
-    ],
-    footerLink: { label: "See both certifications →", to: "/certification" },
-  },
+  { label: "Book", to: "/book" },
   { label: "Research", to: "/research" },
-  { label: "Media", to: "/media" },
   {
     label: "About",
     to: "/about",
     children: [
       { label: "About Us", to: "/about" },
       { label: "Our Story", to: "/our-story" },
-      { label: "The Book", to: "/book" },
       { label: "Podcast", to: "/podcast" },
+      { label: "Media", to: "/media" },
     ],
   },
-  { label: "Book", to: "/book" },
 ];
 
 export default function Navbar({ variant = "light" }: { variant?: "light" | "dark" }) {

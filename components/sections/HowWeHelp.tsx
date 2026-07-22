@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { GraduationCap, Award, FlaskConical, ArrowRight } from "lucide-react";
+import { GraduationCap, BookOpen, FlaskConical, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { TALK_TO_EXPERT } from "@/lib/pricing";
@@ -16,11 +16,11 @@ const cards = [
     primary: true,
   },
   {
-    icon: Award,
-    title: "Get certified",
-    body: "Become the person your organisation turns to for staying human through the AI shift. Certify your team in AI literacy now, or join the waitlist to become a certified Brand Humanizer.",
-    cta: "Get certified →",
-    to: "/certification",
+    icon: BookOpen,
+    title: "Become a Brand Humanizer",
+    body: "Want to lead this yourself? Start where the whole method lives, in the book. Read it, apply it, and become the person your organisation turns to for staying human through the AI shift.",
+    cta: "Start with the book →",
+    to: "/book",
     primary: true,
   },
   {

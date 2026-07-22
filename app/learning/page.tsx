@@ -133,6 +133,20 @@ export default function LearningPage() {
                 </a>
               </p>
             </ScrollRevealSection>
+
+            <ScrollRevealSection>
+              <div className="mt-10 rounded-2xl border border-border/60 bg-white p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5 justify-between">
+                <div>
+                  <h3 className="font-heading font-bold text-lg text-foreground mb-1">Need EU AI Act literacy training?</h3>
+                  <p className="text-sm text-muted-foreground">That runs through AIGA, our sister academy for AI literacy and Article 4 compliance.</p>
+                </div>
+                <a href="https://aigeletterdheid.academy" target="_blank" rel="noopener noreferrer" className="shrink-0">
+                  <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/40 font-heading font-semibold px-6 h-11 gap-2">
+                    Visit AIGA <ExternalLink className="w-4 h-4" />
+                  </Button>
+                </a>
+              </div>
+            </ScrollRevealSection>
           </div>
         </section>
 

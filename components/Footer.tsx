@@ -4,19 +4,11 @@ const navCols = [
   {
     title: "Learning",
     links: [
-      { label: "Inspiration Session", to: "/learning/inspiration-session" },
+      { label: "Spark Session", to: "/learning/inspiration-session" },
       { label: "Half-Day Deep Dive", to: "/learning/half-day-deep-dive" },
       { label: "Full-Day Course", to: "/learning/full-day-course" },
       { label: "Multi-Day Programme", to: "/learning/multi-day-programme" },
       { label: "All Learning Formats", to: "/learning" },
-    ],
-  },
-  {
-    title: "Certification",
-    links: [
-      { label: "AI Literacy Certificate", to: "/certification" },
-      { label: "Brand Humanizer Certification", to: "/certification" },
-      { label: "See both certifications", to: "/certification" },
     ],
   },
   {

@@ -138,13 +138,13 @@ export default function TheMethodPage() {
               </ScrollRevealSection>
               <ScrollRevealSection>
                 <div className="bg-white rounded-2xl shadow-[0_4px_24px_rgba(18,21,46,0.08)] p-8 md:p-10 h-full flex flex-col">
-                  <h3 className="font-heading font-bold text-xl text-foreground mb-3">Become one</h3>
+                  <h3 className="font-heading font-bold text-xl text-foreground mb-3">Become a Brand Humanizer</h3>
                   <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
-                    Ready to go beyond a session? Certify your team&apos;s AI literacy now, or join the waitlist to become a certified Brand Humanizer.
+                    Want to lead this yourself? The whole method lives in the book. Read it, apply it, and become the person your organisation turns to.
                   </p>
-                  <Link href="/certification">
+                  <Link href="/book">
                     <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/70 text-foreground hover:border-foreground hover:bg-foreground/5 font-heading font-semibold px-8 h-12 text-base gap-2">
-                      Get certified <ArrowRight className="w-4 h-4" />
+                      Start with the book <ArrowRight className="w-4 h-4" />
                     </Button>
                   </Link>
                 </div>
@@ -165,9 +165,9 @@ export default function TheMethodPage() {
                     Book a session <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
-                <Link href="/certification">
+                <Link href="/book">
                   <Button variant="outline" className="rounded-full border-[1.5px] border-white/70 text-white hover:border-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base gap-2">
-                    Get certified <ArrowRight className="w-4 h-4" />
+                    Start with the book <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
               </div>
