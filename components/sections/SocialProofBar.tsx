@@ -27,8 +27,9 @@ export default function SocialProofBar() {
   const visible = "opacity-100 translate-y-0";
 
   return (
-    <section ref={ref} className="bg-[#0F1117] py-20 md:py-28">
-      <div className="container max-w-5xl">
+    <section ref={ref} className="bg-[#0F1117] py-20 md:py-28 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] glow-teal pointer-events-none" />
+      <div className="container max-w-5xl relative z-10">
         <div
           className={`${transitionBase} ${isVisible ? visible : hidden} grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-x-12 lg:gap-y-8`}
         >

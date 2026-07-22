@@ -19,8 +19,10 @@ export default function DisruptionStatement() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section ref={ref} className="bg-navy section-padding">
-      <div className="container-narrow">
+    <section ref={ref} className="bg-navy section-padding relative overflow-hidden">
+      <div className="absolute -top-24 -left-24 w-[520px] h-[520px] glow-teal pointer-events-none" />
+      <div className="absolute -bottom-32 -right-24 w-[460px] h-[460px] glow-amber pointer-events-none" />
+      <div className="container-narrow relative z-10">
         <div className="space-y-6 md:space-y-8">
           {setupLines.map((line, i) => (
             <p

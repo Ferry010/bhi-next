@@ -5,6 +5,7 @@ import FAQSection from "@/components/FAQSection";
 import CertificationWaitlist from "@/components/certification/CertificationWaitlist";
 import { Check, ExternalLink, ArrowRight, ShieldCheck, Star } from "lucide-react";
 import { FACILITATOR, STATS, TALK_TO_EXPERT } from "@/lib/pricing";
+import CountUp from "@/components/ui/CountUp";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/certification" },
@@ -62,7 +63,7 @@ export default function CertificationPage() {
             <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 mt-14">
               {STATS.map((s) => (
                 <div key={s.label} className="flex items-baseline gap-2">
-                  <span className="font-heading font-bold text-3xl text-[#C9A96E] tabular-nums">{s.value}</span>
+                  <span className="font-heading font-bold text-3xl text-[#C9A96E] tabular-nums"><CountUp value={s.value} /></span>
                   <span className="text-[#E8E2D6]/50 text-sm">{s.label}</span>
                 </div>
               ))}

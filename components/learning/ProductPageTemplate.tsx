@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Clock, Users, Euro, ArrowRight, Check, BookOpen } from "lucide-react";
 import { FACILITATOR, STATS, MARQUEE_LOGOS, DISPLAY_PRICES, TALK_TO_EXPERT } from "@/lib/pricing";
+import CountUp from "@/components/ui/CountUp";
 
 function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, isVisible } = useScrollReveal(0.1);
@@ -136,7 +137,7 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mt-10">
             {STATS.map((s) => (
               <div key={s.label} className="flex items-baseline gap-2">
-                <span className="font-heading font-bold text-2xl text-foreground tabular-nums">{s.value}</span>
+                <span className="font-heading font-bold text-2xl text-foreground tabular-nums"><CountUp value={s.value} /></span>
                 <span className="text-sm text-muted-foreground">{s.label}</span>
               </div>
             ))}

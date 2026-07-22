@@ -137,6 +137,9 @@
   .btn-scale {
     @apply transition-all duration-200 hover:scale-105 hover:brightness-110;
   }
+  .btn-scale:hover {
+    box-shadow: 0 8px 26px rgba(255, 107, 43, 0.38);
+  }
 }
 
 @layer utilities {
@@ -155,6 +158,32 @@
 
   .container-narrow {
     @apply max-w-3xl mx-auto px-4 md:px-6;
+  }
+
+  /* Bioluminescent Dusk glow for dark sections */
+  .glow-teal {
+    background: radial-gradient(circle, rgba(90,166,178,0.18) 0%, rgba(90,166,178,0) 70%);
+  }
+  .glow-amber {
+    background: radial-gradient(circle, rgba(201,169,110,0.14) 0%, rgba(201,169,110,0) 70%);
+  }
+
+  /* Alive hover for primary CTAs */
+  .hover-glow {
+    @apply transition-shadow duration-300;
+  }
+  .hover-glow:hover {
+    box-shadow: 0 0 26px rgba(255,107,43,0.45);
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
