@@ -37,9 +37,9 @@ const reports = [
     year: "2022",
     icon: GraduationCap,
     title: "Brand Humanizing: Towards a Human-Technology Fit",
-    desc: "The academic foundation of the Human-Technology Fit concept. Peer-reviewed and freely available.",
+    desc: "The academic foundation of the Human-Technology Fit concept, built with Erasmus University Rotterdam. Peer-reviewed and freely available.",
     badge: "Peer-reviewed",
-    to: null,
+    to: "/research/towards-a-human-technology-fit",
   },
 ];
 
@@ -64,7 +64,6 @@ export default function ResearchPage() {
         <section className="bg-secondary min-h-[60vh] flex items-center pt-28 md:pt-36 pb-16">
           <div className="container max-w-4xl">
             <Breadcrumb items={[{ label: "Research" }]} variant="light" />
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Research</span>
             <h1 className="text-hero md:text-hero-lg text-foreground mt-4">
               The evidence behind the thinking.
             </h1>
@@ -96,11 +95,11 @@ export default function ResearchPage() {
             <div className="space-y-6">
               {reports.map((r) => (
                 <ScrollRevealSection key={r.title}>
-                  <div className={`rounded-2xl p-6 md:p-8 ${r.featured ? "bg-navy text-white border border-accent/20" : "bg-cream"}`}>
+                  <div className={`rounded-2xl p-6 md:p-8 ${r.featured ? "bg-navy text-white border border-sunny/30" : "bg-cream"}`}>
                     <div className="flex items-start justify-between gap-4 flex-wrap">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-3">
-                          <span className={`text-caption font-heading font-semibold uppercase tracking-wider ${r.featured ? "text-accent" : "text-accent"}`}>
+                          <span className={`text-caption font-heading font-semibold uppercase tracking-wider ${r.featured ? "text-sunny" : "text-accent"}`}>
                             {r.year}
                           </span>
                           {r.badge && (
@@ -114,7 +113,7 @@ export default function ResearchPage() {
                       </div>
                       {r.to && (
                         <Link href={r.to}>
-                          <Button className={`rounded-full font-heading font-semibold px-5 h-10 text-sm gap-2 shrink-0 ${r.featured ? "bg-accent text-accent-foreground hover:bg-soft-coral" : "bg-foreground text-background hover:bg-foreground/80"}`}>
+                          <Button className={`rounded-full font-heading font-semibold px-5 h-10 text-sm gap-2 shrink-0 ${r.featured ? "bg-sunny text-sunny-foreground hover:brightness-95" : "bg-foreground text-background hover:bg-foreground/80"}`}>
                             Read <ArrowRight className="w-3.5 h-3.5" />
                           </Button>
                         </Link>
