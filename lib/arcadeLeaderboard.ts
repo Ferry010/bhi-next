@@ -3,12 +3,11 @@
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Leaderboard for the 404 arcade game.
+// Leaderboard for the 404 arcade games.
 //
-// Global board: tries the Supabase `arcade_scores` table first. Until that table
-// exists it transparently falls back to this browser's localStorage, so the
-// feature works today and becomes a shared, promotable leaderboard the moment
-// the SQL in supabase/arcade_scores.sql is applied. No code change needed.
+// Per-game board: tries the Supabase `arcade_scores` table (with a `game`
+// column) first. Falls back to localStorage transparently, so each game has
+// its own isolated board from day one without requiring the DB to exist.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface ScoreEntry {
@@ -17,13 +16,17 @@ export interface ScoreEntry {
 }
 
 const TABLE = "arcade_scores";
-const LS_KEY = "bh_arcade_leaderboard";
 export const MAX_ENTRIES = 10;
 
-function readLocal(): ScoreEntry[] {
+function lsKey(game: string) {
+  // Preserve the original key for breakout so existing local scores survive.
+  return game === "breakout" ? "bh_arcade_leaderboard" : `bh_arcade_${game}_leaderboard`;
+}
+
+function readLocal(game: string): ScoreEntry[] {
   if (typeof window === "undefined") return [];
   try {
-    const raw = window.localStorage.getItem(LS_KEY);
+    const raw = window.localStorage.getItem(lsKey(game));
     const list = raw ? (JSON.parse(raw) as ScoreEntry[]) : [];
     return list.sort((a, b) => b.score - a.score).slice(0, MAX_ENTRIES);
   } catch {
@@ -31,27 +34,30 @@ function readLocal(): ScoreEntry[] {
   }
 }
 
-function writeLocal(entry: ScoreEntry) {
+function writeLocal(game: string, entry: ScoreEntry) {
   if (typeof window === "undefined") return;
   try {
-    const list = [...readLocal(), entry].sort((a, b) => b.score - a.score).slice(0, MAX_ENTRIES);
-    window.localStorage.setItem(LS_KEY, JSON.stringify(list));
+    const list = [...readLocal(game), entry]
+      .sort((a, b) => b.score - a.score)
+      .slice(0, MAX_ENTRIES);
+    window.localStorage.setItem(lsKey(game), JSON.stringify(list));
   } catch {
     // ignore
   }
 }
 
-export async function fetchTopScores(): Promise<ScoreEntry[]> {
+export async function fetchTopScores(game = "breakout"): Promise<ScoreEntry[]> {
   try {
     const { data, error } = await createSupabaseBrowserClient()
       .from(TABLE as any)
       .select("name,score")
+      .eq("game", game)
       .order("score", { ascending: false })
       .limit(MAX_ENTRIES);
     if (error || !data) throw error ?? new Error("no data");
     return data as unknown as ScoreEntry[];
   } catch {
-    return readLocal();
+    return readLocal(game);
   }
 }
 
@@ -62,15 +68,20 @@ export function qualifies(score: number, board: ScoreEntry[]): boolean {
   return score > board[board.length - 1].score;
 }
 
-export async function submitScore(name: string, score: number): Promise<ScoreEntry[]> {
+export async function submitScore(
+  name: string,
+  score: number,
+  game = "breakout"
+): Promise<ScoreEntry[]> {
   const clean = name.trim().toUpperCase().slice(0, 10) || "ANON";
   const entry: ScoreEntry = { name: clean, score };
-  // Best-effort global write; always keep a local copy as fallback.
   try {
-    await createSupabaseBrowserClient().from(TABLE as any).insert(entry as any);
+    await createSupabaseBrowserClient()
+      .from(TABLE as any)
+      .insert({ ...entry, game } as any);
   } catch {
     // table not there yet — local only
   }
-  writeLocal(entry);
-  return fetchTopScores();
+  writeLocal(game, entry);
+  return fetchTopScores(game);
 }
