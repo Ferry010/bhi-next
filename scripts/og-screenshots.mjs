@@ -2,9 +2,9 @@
  * Takes 1200×630 screenshots of every live page and saves them as the
  * Open Graph images in public/og/. Run from the project root:
  *
+ *   npm install playwright   # one-time, local only — not in package.json
+ *   npx playwright install chromium
  *   node scripts/og-screenshots.mjs
- *
- * Requires a Playwright browser: npx playwright install chromium
  */
 
 import { chromium } from 'playwright';
