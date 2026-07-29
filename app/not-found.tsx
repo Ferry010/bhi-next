@@ -253,7 +253,7 @@ export default function NotFound() {
         ctx.fillText('Press SPACE or click to start', CW / 2, midY - 14);
         ctx.fillStyle = 'rgba(255,255,255,0.45)';
         ctx.font = '15px system-ui, sans-serif';
-        ctx.fillText("Arrow keys or WASD to steer. Don't hit the walls.", CW / 2, midY + 22);
+        ctx.fillText('Swipe · arrow keys · WASD to steer. No walls.', CW / 2, midY + 22);
       }
 
       // Game-over dim (modal rendered in HTML above)
@@ -299,14 +299,43 @@ export default function NotFound() {
       if (gs.status === 'waiting') { gs.status = 'playing'; gs.lastTick = performance.now(); }
     }
 
+    let touchStartX = 0;
+    let touchStartY = 0;
+    function onTouchStart(e: TouchEvent) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      const gs = gsRef.current;
+      if (gs.status === 'waiting') { gs.status = 'playing'; gs.lastTick = performance.now(); }
+    }
+    function onTouchMove(e: TouchEvent) {
+      if (gsRef.current.status === 'playing') e.preventDefault();
+    }
+    function onTouchEnd(e: TouchEvent) {
+      const gs = gsRef.current;
+      if (gs.status !== 'playing') return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) < 15 && Math.abs(dy) < 15) return;
+      const d: Dir = Math.abs(dx) > Math.abs(dy)
+        ? (dx > 0 ? 'right' : 'left')
+        : (dy > 0 ? 'down' : 'up');
+      if (d !== OPPOSITE[gs.dir]) gs.nextDir = d;
+    }
+
     window.addEventListener('keydown', onKeyDown);
     canvas.addEventListener('click', onClick);
+    canvas.addEventListener('touchstart', onTouchStart, { passive: true });
+    canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+    canvas.addEventListener('touchend', onTouchEnd, { passive: true });
 
     return () => {
       running = false;
       cancelAnimationFrame(rafRef.current);
       window.removeEventListener('keydown', onKeyDown);
       canvas.removeEventListener('click', onClick);
+      canvas.removeEventListener('touchstart', onTouchStart);
+      canvas.removeEventListener('touchmove', onTouchMove);
+      canvas.removeEventListener('touchend', onTouchEnd);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showGame]);
@@ -374,7 +403,7 @@ export default function NotFound() {
           className="mt-10 relative rounded-2xl overflow-hidden w-full"
           style={{ maxWidth: `${CW}px`, border: '1px solid rgba(155,63,245,0.35)', boxShadow: '0 0 60px rgba(155,63,245,0.14), 0 0 120px rgba(224,64,200,0.07)' }}
         >
-          <canvas ref={canvasRef} width={CW} height={CH} className="block w-full" />
+          <canvas ref={canvasRef} width={CW} height={CH} className="block w-full" style={{ touchAction: 'none' }} />
 
           {ended && (
             <div className="absolute inset-0 flex items-center justify-center p-4">
@@ -432,7 +461,7 @@ export default function NotFound() {
 
       {showGame && (
         <p className="text-white/30 text-xs mt-4 text-center">
-          Eat <span style={{ color: '#38E8B0' }}>green food +10</span> · <span style={{ color: '#FFC64B' }}>gold food +50</span> · speed increases as you grow
+          Swipe to steer · <span style={{ color: '#38E8B0' }}>green +10</span> · <span style={{ color: '#FFC64B' }}>gold +50</span> · speed grows with you
         </p>
       )}
     </div>
