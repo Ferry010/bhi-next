@@ -390,8 +390,8 @@ export default function NotFound() {
         </Link>
       </div>
 
-      {/* Standalone leaderboard */}
-      {showBoard && !showGame && (
+      {/* Leaderboard — shows whether the game is open or not */}
+      {showBoard && (
         <div className="mt-8 w-full" style={{ maxWidth: 380 }}>
           <Leaderboard board={board} title="HIGH SCORES — SNAKE" />
         </div>
