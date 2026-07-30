@@ -28,7 +28,7 @@ const teamMembers = [
     rotation: "-rotate-2",
     bio: [
       "Ferry spent a decade in corporate marketing and sales before co-creating Brand Humanizing with Jonathan Flores in 2017.",
-      "He is a public speaker, represented by Speakers Academy, and has delivered keynotes and workshops for organizations across Europe. He won the Dutch Government AI Hackathon in 2020.",
+      "He is a public speaker, represented by Speakers Academy, and has delivered keynotes and workshops for organizations across the globe. He won the Dutch Government AI Hackathon in 2020.",
       "His background spans social psychology, change management, and innovation management.",
     ],
     email: "ferry@brandhumanizing.com",
@@ -36,13 +36,13 @@ const teamMembers = [
   {
     id: "jonathan",
     name: "Jonathan Flores",
-    role: "Co-founder, Researcher, Methodologist",
+    role: "Co-founder, Growth Hacker, Researcher",
     photo: "/assets/jonathan.jpg",
     alt: "Jonathan Flores, co-founder Brand Humanizing Institute",
     rotation: "rotate-2",
     bio: [
-      "Jonathan is the research architecture behind Brand Humanizing.",
-      "While Ferry is typically the one in the room, Jonathan is typically the one making sure what Ferry says is actually right. He co-founded Brand Humanizing in 2017 and has been building the methodological and research foundation ever since.",
+      "Jonathan co-founded Brand Humanizing with Ferry in 2017 and set up the institute's first research.",
+      "An early-stage growth hacker by background, he's typically the one making sure what Ferry says in the room actually holds up. He's built the research and methodological foundation from the start.",
     ],
     email: "jonathan@brandhumanizing.com",
   },

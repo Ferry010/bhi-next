@@ -86,7 +86,6 @@ export default function Testimonials() {
                 <p className="text-sm font-heading font-semibold text-foreground">
                   {t.name ? `${t.name}, ` : ""}{t.company}
                 </p>
-                <p className="text-xs text-muted-foreground mt-0.5">{t.context}</p>
               </div>
             </div>
           ))}
