@@ -6,6 +6,7 @@ import DisruptionStatement from "@/components/sections/DisruptionStatement";
 import SocialProofBar from "@/components/sections/SocialProofBar";
 import WhatIsBrandHumanizing from "@/components/sections/WhatIsBrandHumanizing";
 import HowWeHelp from "@/components/sections/HowWeHelp";
+import InCompany from "@/components/sections/InCompany";
 import Testimonials from "@/components/sections/Testimonials";
 import MeetTheHumans from "@/components/sections/MeetTheHumans";
 import BookSection from "@/components/sections/BookSection";
@@ -97,6 +98,7 @@ export default function HomePage() {
         <SocialProofBar />
         <WhatIsBrandHumanizing />
         <HowWeHelp />
+        <InCompany />
         <Testimonials />
         <MeetTheHumans />
         <BookSection />
