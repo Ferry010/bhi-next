@@ -6,7 +6,6 @@ import DisruptionStatement from "@/components/sections/DisruptionStatement";
 import SocialProofBar from "@/components/sections/SocialProofBar";
 import WhatIsBrandHumanizing from "@/components/sections/WhatIsBrandHumanizing";
 import HowWeHelp from "@/components/sections/HowWeHelp";
-import UpcomingSessions from "@/components/sections/UpcomingSessions";
 import Testimonials from "@/components/sections/Testimonials";
 import MeetTheHumans from "@/components/sections/MeetTheHumans";
 import BookSection from "@/components/sections/BookSection";
@@ -83,43 +82,6 @@ const BOOK_SCHEMA = {
   url: "https://brandhumanizing.com/book",
 };
 
-const EVENT_SCHEMAS = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    name: "Brand Humanizing in 60 Minutes — Spark Session",
-    startDate: "2026-09-18",
-    location: { "@type": "Place", name: "Rotterdam", address: { "@type": "PostalAddress", addressLocality: "Rotterdam", addressCountry: "NL" } },
-    organizer: { "@type": "Organization", name: "Brand Humanizing Institute", url: "https://brandhumanizing.com" },
-    eventStatus: "https://schema.org/EventScheduled",
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    url: "https://brandhumanizing.com/contact",
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    name: "AI Ethics & The Human Edge — Deep Dive Workshop",
-    startDate: "2026-10-02",
-    location: { "@type": "Place", name: "Amsterdam", address: { "@type": "PostalAddress", addressLocality: "Amsterdam", addressCountry: "NL" } },
-    organizer: { "@type": "Organization", name: "Brand Humanizing Institute", url: "https://brandhumanizing.com" },
-    eventStatus: "https://schema.org/EventScheduled",
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    url: "https://brandhumanizing.com/contact",
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    name: "Staying Human in a Digital World — Leadership Programme",
-    startDate: "2026-10-16",
-    endDate: "2026-10-17",
-    location: { "@type": "Place", name: "Utrecht", address: { "@type": "PostalAddress", addressLocality: "Utrecht", addressCountry: "NL" } },
-    organizer: { "@type": "Organization", name: "Brand Humanizing Institute", url: "https://brandhumanizing.com" },
-    eventStatus: "https://schema.org/EventScheduled",
-    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    url: "https://brandhumanizing.com/contact",
-  },
-];
-
 export default function HomePage() {
   return (
     <>
@@ -128,9 +90,6 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FERRY_SCHEMA) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JONATHAN_SCHEMA) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BOOK_SCHEMA) }} />
-      {EVENT_SCHEMAS.map((e) => (
-        <script key={e.name} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(e) }} />
-      ))}
       <Navbar />
       <main>
         <Hero />
@@ -138,7 +97,6 @@ export default function HomePage() {
         <SocialProofBar />
         <WhatIsBrandHumanizing />
         <HowWeHelp />
-        <UpcomingSessions />
         <Testimonials />
         <MeetTheHumans />
         <BookSection />
