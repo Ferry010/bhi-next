@@ -12,12 +12,9 @@ export default function Hero() {
             <h1 className="text-hero md:text-hero-lg text-foreground break-words">
               Everyone can copy your technology. No one can copy your <span className="text-primary">people.</span>
             </h1>
-            <div className="max-w-lg space-y-2">
+            <div className="max-w-lg">
               <p className="text-lg md:text-xl font-heading font-semibold text-foreground">
-                We train your team to work with AI and stay the reason customers choose you.
-              </p>
-              <p className="text-sm md:text-body-lg text-text-light">
-                Book a course for your team, or dive into the method first.
+                As AI does more, the winners get measurably better at what only humans can do. We build that into your team.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
