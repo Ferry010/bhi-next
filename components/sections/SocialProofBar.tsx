@@ -29,11 +29,18 @@ export default function SocialProofBar() {
   return (
     <section ref={ref} className="bg-white py-20 md:py-28 border-y border-border">
       <div className="container max-w-5xl">
-        <div
-          className={`${transitionBase} ${isVisible ? visible : hidden} grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-x-12 lg:gap-y-8`}
-        >
-          {logos.map((logo) => (
-            <div key={logo.alt} className="flex items-center justify-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-x-12 lg:gap-y-8">
+          {logos.map((logo, i) => (
+            <div
+              key={logo.alt}
+              className="flex items-center justify-center"
+              style={{
+                transition: "opacity 350ms cubic-bezier(0.23, 1, 0.32, 1), transform 350ms cubic-bezier(0.23, 1, 0.32, 1)",
+                transitionDelay: `${i * 40}ms`,
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(8px)",
+              }}
+            >
               <img
                 src={logo.src}
                 alt={logo.alt}

@@ -138,12 +138,8 @@
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
 
-  .btn-scale {
-    @apply transition-all duration-200 hover:scale-105 hover:brightness-110;
-  }
-  .btn-scale:hover {
-    box-shadow: 0 8px 26px rgba(219, 42, 42, 0.32);
-  }
+  /* .btn-scale motion is defined un-layered further down (so it wins over the
+     base Button's transition-colors). */
 }
 
 @layer utilities {
@@ -189,6 +185,84 @@
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Emil Kowalski interaction polish (un-layered so it beats Tailwind utilities).
+   Transform + opacity only. Custom ease-out curve. Hover gated to fine pointers.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* 1. Press feedback on every button that isn't already handled by .btn-scale */
+button:not(.btn-scale),
+[role="button"]:not(.btn-scale) {
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+button:not(.btn-scale):active,
+[role="button"]:not(.btn-scale):active {
+  transform: scale(0.97);
+}
+
+/* .btn-scale motion, un-layered so it beats the base Button's transition-colors */
+.btn-scale {
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 200ms ease-out,
+              filter 200ms ease-out,
+              background-color 200ms ease-out,
+              color 200ms ease-out,
+              border-color 200ms ease-out;
+}
+.btn-scale:active {
+  transform: scale(0.97);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-scale:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 8px 26px rgba(219, 42, 42, 0.32);
+  }
+  .btn-scale:active:hover {
+    transform: scale(0.97);
+  }
+}
+
+/* 2. Arrow nudge on hover — covers lucide ArrowRight icons and wrapped literals */
+.cta-arrow,
+.lucide-arrow-right {
+  display: inline-block;
+  transition: transform 160ms ease-out;
+}
+@media (hover: hover) and (pointer: fine) {
+  a:hover .cta-arrow,
+  button:hover .cta-arrow,
+  a:hover .lucide-arrow-right,
+  button:hover .lucide-arrow-right {
+    transform: translateX(4px);
+  }
+}
+
+/* 6. Hero display typography */
+.hero-headline {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+
+/* 3/4/5. Staggered entrance for on-load hero elements */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-rise {
+  animation: riseIn 500ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+/* Reduced motion: keep press feedback subtle but remove entrance movement */
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise { animation: none; opacity: 1; transform: none; }
+  .cta-arrow, .lucide-arrow-right { transition: none; }
+  a:hover .cta-arrow, a:hover .lucide-arrow-right,
+  button:hover .cta-arrow, button:hover .lucide-arrow-right { transform: none; }
 }
 
 /* Print styles */

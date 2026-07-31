@@ -9,27 +9,27 @@ export default function Hero() {
       <div className="container">
         <div className="grid lg:grid-cols-[55%_45%] gap-8 lg:gap-8 items-center">
           <div className="space-y-5 md:space-y-8 min-w-0">
-            <h1 className="text-hero md:text-hero-lg text-foreground break-words">
+            <h1 className="hero-headline hero-rise text-hero md:text-hero-lg text-foreground break-words" style={{ animationDelay: "0ms" }}>
               Everyone can copy your technology. No one can copy your <span className="text-primary">people.</span>
             </h1>
-            <div className="max-w-lg">
+            <div className="max-w-lg hero-rise" style={{ animationDelay: "40ms" }}>
               <p className="text-lg md:text-xl font-heading font-semibold text-foreground">
                 As AI does more, the winners get measurably better at what only humans can do. We build that into your team.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 hero-rise" style={{ animationDelay: "80ms" }}>
               <Link href="/learning" className="w-full sm:w-auto">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
-                  See the training formats →
+                  See the training formats <span className="cta-arrow">→</span>
                 </Button>
               </Link>
               <Link href="/the-method">
                 <Button variant="outline" className="rounded-full border-2 border-foreground/20 hover:border-foreground/40 font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
-                  Dive into the method →
+                  Dive into the method <span className="cta-arrow">→</span>
                 </Button>
               </Link>
             </div>
-            <div className="flex flex-wrap items-center gap-2 pt-3">
+            <div className="flex flex-wrap items-center gap-2 pt-3 hero-rise" style={{ animationDelay: "120ms" }}>
               <span className="text-xs text-muted-foreground font-heading">I want to:</span>
               <Link href="/learning" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
                 Train my team

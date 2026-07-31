@@ -18,10 +18,15 @@ export default function InCompany() {
 
   return (
     <section ref={ref} className="bg-navy section-padding">
-      <div
-        className={`container max-w-5xl transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      >
-        <div className="max-w-2xl">
+      <div className="container max-w-5xl">
+        <div
+          className="max-w-2xl"
+          style={{
+            transition: "opacity 400ms cubic-bezier(0.23, 1, 0.32, 1), transform 400ms cubic-bezier(0.23, 1, 0.32, 1)",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(16px)",
+          }}
+        >
           <h2 className="text-display md:text-display-lg text-white">
             You don&apos;t wait for a date. We come to you.
           </h2>
@@ -31,11 +36,17 @@ export default function InCompany() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
-          {formats.map((f) => (
+          {formats.map((f, i) => (
             <Link
               key={f.name}
               href={f.to}
-              className="group rounded-2xl bg-white/5 border border-white/10 p-5 transition-colors duration-300 hover:bg-white/10 hover:border-sunny/40"
+              className="group rounded-2xl bg-white/5 border border-white/10 p-5 hover:bg-white/10 hover:border-sunny/40"
+              style={{
+                transition: "opacity 400ms cubic-bezier(0.23, 1, 0.32, 1), transform 400ms cubic-bezier(0.23, 1, 0.32, 1), background-color 300ms ease-out, border-color 300ms ease-out",
+                transitionDelay: `${80 + i * 50}ms`,
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? "translateY(0)" : "translateY(16px)",
+              }}
             >
               <f.icon className="w-6 h-6 text-sunny mb-3" />
               <h3 className="font-heading font-bold text-white text-base leading-snug group-hover:text-sunny transition-colors">
@@ -46,7 +57,15 @@ export default function InCompany() {
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 mt-10">
+        <div
+          className="flex flex-col sm:flex-row gap-3 mt-10"
+          style={{
+            transition: "opacity 400ms cubic-bezier(0.23, 1, 0.32, 1), transform 400ms cubic-bezier(0.23, 1, 0.32, 1)",
+            transitionDelay: "280ms",
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(16px)",
+          }}
+        >
           <Link href="/learning">
             <Button className="rounded-full bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
               See the training formats <ArrowRight className="w-4 h-4" />
