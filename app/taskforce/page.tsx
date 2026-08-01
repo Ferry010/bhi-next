@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "The Taskforce | Working Together | Brand Humanizing Institute",
   description:
     "Sixteen weeks. A taskforce of your own people takes one real business challenge to a working pilot, guided by the method. When we leave, the capability stays.",
-  openGraph: { images: [{ url: "/og/work-with-us.jpg" }] },
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const facts = [
