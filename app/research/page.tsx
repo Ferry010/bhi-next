@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Research | Brand Humanizing Institute",
   description:
     "Independent, primary research on technology, organizational behavior, and human-technology strategy. Freely available, no registration required.",
-  openGraph: { images: [{ url: "/og/research.jpg" }] },
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const reports = [

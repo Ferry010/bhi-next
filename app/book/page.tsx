@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "The Book | Brand Humanizing",
   description:
     "Brand Humanizing: The superpower that makes your brand more human and your business grow faster. By Ferry Hoes and Jonathan Flores.",
-  openGraph: { images: [{ url: "/og/book.jpg" }] },
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const bookSchema = {

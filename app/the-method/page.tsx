@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "The Brand Humanizing Method | Four Skills Framework",
   description:
     "The research-backed pyramid and four skills that make your brand impossible to copy. Used by 50+ organizations across Europe.",
-  openGraph: { images: [{ url: "/og/the-method.jpg" }] },
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const realWorldExamples = [

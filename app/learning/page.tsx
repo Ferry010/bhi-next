@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Live Training | Brand Humanizing Institute",
   description:
     "Four ways to train your team in the Brand Humanizing way, from a one-hour spark to a two-day leadership programme. Pick how deep you want to go.",
-  openGraph: { images: [{ url: "/og/learning.jpg" }] },
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const formats = [
