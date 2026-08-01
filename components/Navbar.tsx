@@ -32,6 +32,7 @@ const navLinks: NavItem[] = [
     ],
     footerLink: { label: "See all learning formats →", to: "/learning" },
   },
+  { label: "Taskforce", to: "/taskforce" },
   { label: "Book", to: "/book" },
   { label: "Research", to: "/research" },
   {

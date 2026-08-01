@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
+import MessageUs from "@/components/MessageUs";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Sparkles, Layers, GraduationCap, Users2, ArrowRight, ExternalLink } from "lucide-react";
@@ -174,6 +175,18 @@ export default function LearningPage() {
         </section>
 
         <FAQSection faqs={faqs} variant="light" />
+
+        <section className="section-padding bg-cream">
+          <div className="container max-w-5xl">
+            <ScrollRevealSection>
+              <MessageUs
+                context="learning"
+                heading="Not sure which format fits?"
+                subheading="Tell us about your team and the moment you're in. We'll come back with the format that actually fits, even if it's the smallest one."
+              />
+            </ScrollRevealSection>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

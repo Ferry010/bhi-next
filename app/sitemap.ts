@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/work-with-us/brand-humanizing-roadmap`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/work-with-us/organisation-wide-implementation`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/work-with-us/handover`, lastModified: new Date(), changeFrequency: "monthly" },
+    { url: `${base}/taskforce`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/research`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/research/towards-a-human-technology-fit`, lastModified: new Date(), changeFrequency: "yearly" },
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: "monthly" },

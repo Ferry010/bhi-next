@@ -12,6 +12,13 @@ const navCols = [
     ],
   },
   {
+    title: "Working Together",
+    links: [
+      { label: "The Taskforce", to: "/taskforce" },
+      { label: "Is it a fit?", to: "/taskforce#fit" },
+    ],
+  },
+  {
     title: "More",
     links: [
       { label: "The Method", to: "/the-method" },
