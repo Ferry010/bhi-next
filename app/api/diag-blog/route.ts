@@ -44,6 +44,17 @@ export async function GET() {
   // "something about this particular query".
   const simple = await supabase.from("blog_posts").select("slug").limit(50);
 
+  // The same query as the page, but with a limit appended so the request URL
+  // differs. If this returns rows while the identical-but-previously-issued
+  // query above returns none, the response is coming from a cache keyed on the
+  // URL rather than from the database.
+  const busted = await supabase
+    .from("blog_posts")
+    .select("*")
+    .eq("published", true)
+    .order("published_at", { ascending: false, nullsFirst: false })
+    .limit(999);
+
   return NextResponse.json({
     supabaseHost: host,
     anonKeyShape,
@@ -55,6 +66,10 @@ export async function GET() {
     simpleQuery: {
       rows: simple.data?.length ?? null,
       error: simple.error ? { message: simple.error.message, code: simple.error.code } : null,
+    },
+    sameQueryDifferentUrl: {
+      rows: busted.data?.length ?? null,
+      error: busted.error ? { message: busted.error.message, code: busted.error.code } : null,
     },
   });
 }
