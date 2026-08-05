@@ -1,12 +1,6 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 import { scoreImpactGap, type TeamAggregate } from "./scoring";
-import {
-  leaderPayload,
-  internalPayload,
-  LEADER_TEMPLATE,
-  INTERNAL_TEMPLATE,
-  INTERNAL_RECIPIENTS,
-} from "./emails";
+import { renderLeaderReportReady, renderInternalAlert, INTERNAL_RECIPIENTS } from "./emails";
 import type { LeaderAnswers } from "./questions";
 
 // Server only. Runs when a report opens, and never anywhere else.
@@ -26,26 +20,40 @@ type SessionRow = {
   internal_notified_at: string | null;
 };
 
-/**
- * The edge function renders a registered React template with templateData as
- * its props and resolves the subject from the template. It has no way to send
- * arbitrary HTML, so nothing here builds any.
- */
+// Sent straight from here rather than through the Supabase edge function.
+//
+// That function hands off to Lovable's own email service, which stops working
+// once the project is not on Lovable Cloud. This is a single HTTP request with
+// no SDK, so there is nothing to install and nothing to deploy separately.
+const FROM =
+  process.env.IMPACT_GAP_FROM_EMAIL ??
+  "Brand Humanizing Institute <hello@brandhumanizing.com>";
+
 async function sendEmail(args: {
   to: string;
-  templateName: string;
-  templateData: Record<string, unknown>;
+  subject: string;
+  html: string;
   idempotencyKey: string;
 }): Promise<void> {
-  const { error } = await createAdminClient().functions.invoke("send-transactional-email", {
-    body: {
-      templateName: args.templateName,
-      recipientEmail: args.to,
-      idempotencyKey: args.idempotencyKey,
-      templateData: args.templateData,
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) throw new Error("RESEND_API_KEY is not set, so no email can be sent");
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      // Belt and braces alongside the claim in the database: even if this were
+      // somehow called twice for the same report, the provider deduplicates.
+      "Idempotency-Key": args.idempotencyKey,
     },
+    body: JSON.stringify({ from: FROM, to: [args.to], subject: args.subject, html: args.html }),
   });
-  if (error) throw error;
+
+  if (!res.ok) {
+    // The body carries the actual reason, usually an unverified sending domain.
+    throw new Error(`Resend returned ${res.status}: ${await res.text()}`);
+  }
 }
 
 /**
@@ -116,14 +124,15 @@ export async function notifyReportReady(code: string): Promise<void> {
 
     if (claimed && claimed.length > 0) {
       try {
+        const { subject, html } = renderLeaderReportReady({
+          code,
+          leaderName: session.leader_name,
+          responseCount: result.responseCount,
+        });
         await sendEmail({
           to: session.leader_email,
-          templateName: LEADER_TEMPLATE,
-          templateData: { ...leaderPayload({
-            code,
-            leaderName: session.leader_name,
-            responseCount: result.responseCount,
-          }) },
+          subject,
+          html,
           idempotencyKey: `impact-gap-ready-${code}`,
         });
       } catch (err) {
@@ -149,7 +158,7 @@ export async function notifyReportReady(code: string): Promise<void> {
 
     if (claimed && claimed.length > 0) {
       try {
-        const payload = internalPayload({
+        const { subject, html } = renderInternalAlert({
           code,
           organisation: session.organisation,
           leaderName: session.leader_name,
@@ -159,12 +168,7 @@ export async function notifyReportReady(code: string): Promise<void> {
         });
         await Promise.all(
           INTERNAL_RECIPIENTS.map((to) =>
-            sendEmail({
-              to,
-              templateName: INTERNAL_TEMPLATE,
-              templateData: { ...payload },
-              idempotencyKey: `impact-gap-internal-${code}-${to}`,
-            }),
+            sendEmail({ to, subject, html, idempotencyKey: `impact-gap-internal-${code}-${to}` }),
           ),
         );
       } catch (err) {

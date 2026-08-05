@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { buildDraft } from "@/lib/impactGap/draftEmail";
-import { leaderPayload, internalPayload, LEADER_TEMPLATE, INTERNAL_TEMPLATE } from "@/lib/impactGap/emails";
+import { renderLeaderReportReady, renderInternalAlert, INTERNAL_RECIPIENTS } from "@/lib/impactGap/emails";
 import { scoreImpactGap, type TeamAggregate } from "@/lib/impactGap/scoring";
 import type { LeaderAnswers } from "@/lib/impactGap/questions";
 
@@ -76,32 +76,34 @@ describe("the draft personal email", () => {
   });
 });
 
-describe("the leader email payload", () => {
-  const p = leaderPayload({ code: "ABCDEFGHJK", leaderName: "Sam Okafor", responseCount: 8 });
+describe("the leader email", () => {
+  const mail = renderLeaderReportReady({ code: "ABCDEFGHJK", leaderName: "Sam Okafor", responseCount: 8 });
 
-  it("names a template the edge function actually has registered", () => {
-    // These two strings are a contract with registry.ts in the Supabase
-    // function. An unregistered name is rejected outright, so a typo here means
-    // silence rather than a bad email.
-    expect(LEADER_TEMPLATE).toBe("impact-gap-report-ready");
-    expect(INTERNAL_TEMPLATE).toBe("impact-gap-internal");
+  it("links to the report with an absolute url", () => {
+    expect(mail.html).toContain("/impact-gap/report/ABCDEFGHJK");
+    expect(mail.html).toMatch(/https?:\/\/[^"]+\/impact-gap\/report\/ABCDEFGHJK/);
   });
 
-  it("carries a full report link and the response count", () => {
-    expect(p.reportUrl).toContain("/impact-gap/report/ABCDEFGHJK");
-    expect(p.reportUrl.startsWith("http")).toBe(true);
-    expect(p.responseCount).toBe(8);
+  it("greets on the first name only", () => {
+    expect(mail.html).toContain("Hi Sam,");
+    expect(mail.html).not.toContain("Okafor");
   });
 
-  it("sends an empty string rather than null when there is no name", () => {
-    // The template greets on the first word of this, and null would render as
-    // the word "null" in someone's inbox.
-    expect(leaderPayload({ code: "ABCDEFGHJK", leaderName: null, responseCount: 5 }).leaderName).toBe("");
+  it("promises the personal follow-up and denies any sequence", () => {
+    expect(mail.html).toContain("Ferry or Jonathan");
+    expect(mail.html).toContain("working days");
+    expect(mail.html).toContain("only automatic email");
+  });
+
+  it("greets without a name rather than saying null", () => {
+    const m = renderLeaderReportReady({ code: "ABCDEFGHJK", leaderName: null, responseCount: 5 });
+    expect(m.html).toContain("Hi,");
+    expect(m.html).not.toContain("null");
   });
 });
 
-describe("the internal alert payload", () => {
-  const p = internalPayload({
+describe("the internal alert", () => {
+  const mail = renderInternalAlert({
     code: "ABCDEFGHJK",
     organisation: "Northwind",
     leaderName: "Sam Okafor",
@@ -110,35 +112,38 @@ describe("the internal alert payload", () => {
     result,
   });
 
-  it("carries everything needed to triage without opening anything", () => {
-    expect(p.organisation).toBe("Northwind");
-    expect(p.score).toBe(65);
-    expect(p.band).toBe("Wide gap");
-    expect(p.responseCount).toBe(8);
-    expect(p.adminUrl).toContain("/impact-gap/admin/ABCDEFGHJK");
+  it("goes to both of us", () => {
+    expect(INTERNAL_RECIPIENTS).toEqual([
+      "ferry@brandhumanizing.com",
+      "jonathan@brandhumanizing.com",
+    ]);
   });
 
-  it("names the widest gap, rounded", () => {
-    expect(p.biggestGapName).toBe("Where the time went");
-    expect(p.biggestGapValue).toBe(100);
-    expect(Number.isInteger(p.biggestGapValue)).toBe(true);
+  it("puts the organisation, score and band in the subject", () => {
+    expect(mail.subject).toBe("Impact Gap: Northwind scored 65, wide gap");
   });
 
-  it("flags the mechanism and the literacy pointer as booleans", () => {
-    expect(p.mechanismFired).toBe(true);
-    expect(p.literacyLikely).toBe(false);
+  it("carries the biggest gap and a link to the admin record", () => {
+    expect(mail.html).toContain("Biggest gap");
+    expect(mail.html).toContain("Where the time went");
+    expect(mail.html).toContain("/impact-gap/admin/ABCDEFGHJK");
   });
 
-  it("degrades to empty strings when contact details were never given", () => {
-    const q = internalPayload({
-      code: "ABCDEFGHJK",
-      organisation: null,
-      leaderName: null,
-      leaderEmail: null,
-      leaderRole: null,
-      result,
+  it("says so when there is no address to reply to", () => {
+    const m = renderInternalAlert({
+      code: "ABCDEFGHJK", organisation: null, leaderName: null,
+      leaderEmail: null, leaderRole: null, result,
     });
-    expect(q.organisation).toBe("");
-    expect(q.leaderEmail).toBe("");
+    expect(m.html).toContain("no personal email possible");
+    expect(m.subject).toContain("Unknown organisation");
+  });
+
+  it("escapes free text so a stray angle bracket cannot break the markup", () => {
+    const m = renderInternalAlert({
+      code: "ABCDEFGHJK", organisation: '<script>alert("x")</script>', leaderName: null,
+      leaderEmail: null, leaderRole: null, result,
+    });
+    expect(m.html).not.toContain("<script>");
+    expect(m.html).toContain("&lt;script&gt;");
   });
 });
