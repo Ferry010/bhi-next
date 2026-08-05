@@ -69,6 +69,24 @@ async function sendEmail(args: {
 export async function notifyReportReady(code: string): Promise<void> {
   const supabase = createAdminClient();
 
+  // The record stops being "awaiting responses" the moment the report opens.
+  // This happens first and unconditionally, because when email is switched off
+  // the admin list is the only way anyone finds out a report is ready, and a
+  // list that still says "awaiting" for a finished report is worse than no list.
+  // Scoped to 'awaiting' so a status a human has already moved on is never
+  // dragged backwards.
+  await supabase
+    .from("impact_gap_sessions" as never)
+    .update({ status: "ready" } as never)
+    .eq("code", code)
+    .eq("status", "awaiting");
+
+  // No provider configured means notifications are deliberately switched off,
+  // which is a setting rather than a fault. Stopping here leaves the claim
+  // columns untouched, so nothing is recorded as sent that was not, and the
+  // logs do not fill with the same error on every response after the fifth.
+  if (!process.env.RESEND_API_KEY) return;
+
   const { data: sessionData, error: sessionError } = await supabase
     .from("impact_gap_sessions" as never)
     .select("code, leader_name, leader_email, organisation, leader_role, notified_at, internal_notified_at")
@@ -103,15 +121,6 @@ export async function notifyReportReady(code: string): Promise<void> {
   };
 
   const result = scoreImpactGap(d.leader as LeaderAnswers, aggregate);
-
-  // The record stops being "awaiting responses" the moment the report opens.
-  // Scoped to 'awaiting' so a status a human has already moved on is never
-  // dragged backwards.
-  await supabase
-    .from("impact_gap_sessions" as never)
-    .update({ status: "ready" } as never)
-    .eq("code", code)
-    .eq("status", "awaiting");
 
   // ── The leader's email ──
   if (!session.notified_at && session.leader_email) {
