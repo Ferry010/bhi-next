@@ -32,6 +32,10 @@ export interface ProductPricing {
   name: string;
   /** One-line experience promise (outcome, not format) */
   promise: string;
+  /** Outcome headline. What they get, not how long they sit. */
+  outcome: string;
+  /** Short format label for listings, e.g. "Half day". */
+  formatLabel: string;
   duration: string;
   audience: string;
   /** Who it's for — used as the differentiator when prices are hidden */
@@ -49,6 +53,8 @@ export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay"
   inspiration: {
     slug: "inspiration-session",
     name: "The Spark Session",
+    outcome: "An hour that changes the conversation",
+    formatLabel: "1 hour",
     promise: "The keynote that stops your team defending the old way of working and gets them hungry for the new one.",
     duration: "1 hour",
     audience: "Whole team or event audience",
@@ -62,6 +68,8 @@ export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay"
   halfDay: {
     slug: "half-day-deep-dive",
     name: "The Half-Day Deep Dive",
+    outcome: "Give your team the language",
+    formatLabel: "Half day",
     promise: "One theme, taken deep. Your team leaves able to apply it, not just nod along to it.",
     duration: "3–4 hours",
     audience: "One team, one theme",
@@ -75,6 +83,8 @@ export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay"
   fullDay: {
     slug: "full-day-course",
     name: "The Full-Day Course",
+    outcome: "Give your team a plan they can act on",
+    formatLabel: "Full day",
     promise: "One focused day that turns a curious team into one that knows exactly how to out-human its competitors.",
     duration: "A full day (6–7 hrs)",
     audience: "12–30 people",
@@ -88,12 +98,14 @@ export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay"
   multiDay: {
     slug: "multi-day-programme",
     name: "The Multi-Day Programme",
+    outcome: "Change how your team actually works",
+    formatLabel: "3 days across 6 weeks",
     promise: "The programme that puts Brand Humanizing into how your leadership actually decides, and leaves it there.",
-    duration: "2–3 days",
+    duration: "3 days across 6 weeks",
     audience: "8–20 people",
     bestFor: "A leadership team ready to change how it decides",
     priceFrom: "€15,000",
-    specs: "2–3 days · 8–20 people",
+    specs: "3 days across 6 weeks · 8–20 people",
     investmentLine:
       "A programme this deep is always built to fit. We scope the days, the depth and the outcomes with you, then come back with a proposal your board can sign off.",
     href: "/learning/multi-day-programme",
@@ -110,7 +122,7 @@ export const FACILITATOR = {
   name: "Ferry Hoes",
   role: "Founder & international keynote speaker on Brand Humanizing and AI",
   stagesLine:
-    "Ferry has taken Brand Humanizing to stages across Europe, in front of teams at Unilever, VodafoneZiggo, GlaxoSmithKline, Toshiba, Atos and the Dutch government.",
+    "Ferry has taken Brand Humanizing to stages across the globe, in front of teams at Unilever, VodafoneZiggo, GlaxoSmithKline, Toshiba, Atos and the Dutch government.",
   acknowledgementLine:
     "His work has been acknowledged by Steven Kotler, UN AI advisor Neil Sahota, and former State Secretary Mona Keijzer.",
   closingLine: "He doesn't send a junior trainer. He shows up himself.",

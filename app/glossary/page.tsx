@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { yearsActiveWord } from "@/lib/facts";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/glossary" },
@@ -25,7 +26,7 @@ const TERMS: Term[] = [
     id: "brand-humanizing",
     name: "Brand Humanizing",
     short: "A strategic framework that helps organisations build sustainable competitive advantage by deliberately combining human talent and technology.",
-    long: "Brand Humanizing was developed by Ferry Hoes and Jonathan Flores in 2017 after observing that organisations investing most heavily in technology were often losing the human qualities that made them distinctive. The framework provides a structured, evidence-based approach to identifying where human skills create the most value and where technology should take over. It is not a marketing concept; it is a competitive strategy built on eight years of applied research.",
+    long: `Brand Humanizing was developed by Ferry Hoes and Jonathan Flores in 2017 after observing that organisations investing most heavily in technology were often losing the human qualities that made them distinctive. The framework provides a structured, evidence-based approach to identifying where human skills create the most value and where technology should take over. It is not a marketing concept; it is a competitive strategy built on ${yearsActiveWord()} years of applied research.`,
     links: [
       { label: "Full definition", to: "/what-is-brand-humanizing" },
       { label: "The methodology", to: "/the-method" },

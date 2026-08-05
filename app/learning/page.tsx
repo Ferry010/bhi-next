@@ -8,53 +8,21 @@ import MessageUs from "@/components/MessageUs";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Sparkles, Layers, GraduationCap, Users2, ArrowRight, ExternalLink } from "lucide-react";
-import { TALK_TO_EXPERT, SPEAKERS_ACADEMY } from "@/lib/pricing";
+import { PRODUCTS, TALK_TO_EXPERT, SPEAKERS_ACADEMY } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/learning" },
   title: "Live Training | Brand Humanizing Institute",
   description:
-    "Four ways to train your team in the Brand Humanizing way, from a one-hour spark to a two-day leadership programme. Pick how deep you want to go.",
+    "Four ways to train your team in the Brand Humanizing way, from a one-hour spark to a leadership programme across six weeks. Pick how deep you want to go.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const formats = [
-  {
-    icon: Sparkles,
-    name: "The Spark Session",
-    duration: "1 hour",
-    who: "Whole team or event audience",
-    theme: "Brand Humanizing in 60 Minutes",
-    outcome: "A wake-up and a shared language. A shift you feel in the room the next morning.",
-    to: "/learning/inspiration-session",
-  },
-  {
-    icon: Layers,
-    name: "The Half-Day Deep Dive",
-    duration: "3–4 hours",
-    who: "One team, one theme",
-    theme: "AI Ethics & The Human Edge",
-    outcome: "Your team takes one theme hands-on and leaves able to apply it, not just discuss it.",
-    to: "/learning/half-day-deep-dive",
-  },
-  {
-    icon: GraduationCap,
-    name: "The Full-Day Course",
-    duration: "6–7 hours",
-    who: "A team, the full method",
-    theme: "The complete method, applied to your work",
-    outcome: "The team leaves working differently, with a 90-day plan they can run on Monday.",
-    to: "/learning/full-day-course",
-  },
-  {
-    icon: Users2,
-    name: "The Multi-Day Leadership Programme",
-    duration: "2 days",
-    who: "Leadership",
-    theme: "Staying Human in a Digital World",
-    outcome: "Deep, leadership-level transformation that outlives the room.",
-    to: "/learning/multi-day-programme",
-  },
+  { icon: Sparkles, product: PRODUCTS.inspiration, who: "Whole team or event audience", theme: "Brand Humanizing in 60 Minutes" },
+  { icon: Layers, product: PRODUCTS.halfDay, who: "One team, one theme", theme: "AI Ethics & The Human Edge" },
+  { icon: GraduationCap, product: PRODUCTS.fullDay, who: "A team, the full method", theme: "The complete method, applied to your work" },
+  { icon: Users2, product: PRODUCTS.multiDay, who: "Leadership", theme: "Staying Human in a Digital World" },
 ];
 
 const faqs = [
@@ -104,20 +72,20 @@ export default function LearningPage() {
             </ScrollRevealSection>
             <div className="grid md:grid-cols-2 gap-6">
               {formats.map((f) => (
-                <ScrollRevealSection key={f.name}>
-                  <Link href={f.to} className="group block bg-white rounded-2xl p-7 md:p-8 h-full shadow-[0_4px_24px_rgba(18,21,46,0.08)] border border-border/50 hover:shadow-lg hover:border-accent/30 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-4">
+                <ScrollRevealSection key={f.product.slug}>
+                  <Link href={f.product.href} className="group block bg-white rounded-2xl p-7 md:p-8 h-full shadow-[0_4px_24px_rgba(18,21,46,0.08)] border border-border/50 hover:shadow-lg hover:border-accent/30 transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-3">
                       <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center shrink-0">
                         <f.icon className="w-5 h-5 text-accent" />
                       </div>
-                      <h3 className="font-heading font-bold text-lg md:text-xl text-foreground group-hover:text-accent transition-colors">{f.name}</h3>
+                      <span className="text-sm font-heading font-semibold text-muted-foreground">{f.product.name.replace(/^The /, "")}</span>
                     </div>
+                    <h3 className="font-heading font-bold text-lg md:text-xl text-foreground group-hover:text-accent transition-colors mb-4">{f.product.outcome}</h3>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="text-xs font-heading font-semibold text-muted-foreground bg-cream rounded-full px-3 py-1">{f.duration}</span>
+                      <span className="text-xs font-heading font-semibold text-muted-foreground bg-cream rounded-full px-3 py-1">{f.product.formatLabel}</span>
                       <span className="text-xs font-heading font-semibold text-muted-foreground bg-cream rounded-full px-3 py-1">{f.who}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-1"><span className="font-heading font-semibold text-foreground">Theme:</span> {f.theme}</p>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-5"><span className="font-heading font-semibold text-foreground">You get:</span> {f.outcome}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-5"><span className="font-heading font-semibold text-foreground">Theme:</span> {f.theme}</p>
                     <span className="text-accent font-heading font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                       See the format <ArrowRight className="w-3.5 h-3.5" />
                     </span>

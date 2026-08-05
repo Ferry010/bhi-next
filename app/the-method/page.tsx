@@ -8,13 +8,14 @@ import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { ArrowRight, Apple, Stethoscope, Zap } from "lucide-react";
 import PyramidScrollReveal from "@/components/sections/PyramidScrollReveal";
+import { YearsActiveWord } from "@/lib/facts";
 import FourSkillsSpotlight from "@/components/sections/FourSkillsSpotlight";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/the-method" },
   title: "The Brand Humanizing Method | Four Skills Framework",
   description:
-    "The research-backed pyramid and four skills that make your brand impossible to copy. Used by 50+ organizations across Europe.",
+    "The research-backed pyramid and four skills that make your brand impossible to copy. Used by 50+ organizations across the globe.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
@@ -56,7 +57,7 @@ export default function TheMethodPage() {
               <span className="text-accent">impossible to copy.</span>
             </h1>
             <p className="text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              Eight years and 50+ organisations went into this. Ten minutes to understand it. Then you&apos;ll see why the teams using it don&apos;t compete on price.
+              {YearsActiveWord()} years and 50+ organisations went into this. Ten minutes to understand it. Then you&apos;ll see why the teams using it don&apos;t compete on price.
             </p>
             <div className="flex flex-wrap gap-4 mt-10">
               <a href="#pyramid">

@@ -161,11 +161,11 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
               </Link>
             )
           )}
-          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+          <Link href="/trust-gap">
             <Button className="ml-2 rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-6">
-              {TALK_TO_EXPERT.label}
+              Free: AI Trust Gap
             </Button>
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile toggle */}
@@ -235,10 +235,19 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
                 </Link>
               )
             )}
-            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
+            <Link href="/trust-gap" onClick={() => setMobileOpen(false)}>
               <Button className="mt-1 w-full rounded-full bg-accent text-accent-foreground font-heading font-semibold">
-                {TALK_TO_EXPERT.label}
+                Free: AI Trust Gap
               </Button>
+            </Link>
+            <a
+              href={TALK_TO_EXPERT.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 block text-center text-sm font-heading font-semibold text-muted-foreground underline"
+            >
+              {TALK_TO_EXPERT.label}
             </a>
           </nav>
         </div>

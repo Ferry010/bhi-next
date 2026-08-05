@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { yearsActiveWord } from "@/lib/facts";
 
 export default function WhatIsBrandHumanizing() {
   const { ref, isVisible } = useScrollReveal();
@@ -20,7 +21,7 @@ export default function WhatIsBrandHumanizing() {
                 Let AI take the predictable work. That frees your people for the things technology will never do: genuine empathy, real creativity, and the human connection customers actually remember.
               </p>
               <p>
-                The result is an organisation that costs less to run and is harder to leave. Lower overhead, higher loyalty, a brand competitors can&apos;t copy. We&apos;ve spent eight years proving it works. Here&apos;s exactly how.
+                The result is an organisation that costs less to run and is harder to leave. Lower overhead, higher loyalty, a brand competitors can&apos;t copy. We&apos;ve spent {yearsActiveWord()} years proving it works. Here&apos;s exactly how.
               </p>
             </div>
             <Link href="/the-method" className="inline-flex items-center gap-1.5 font-heading font-semibold text-sm text-primary hover:text-accent transition-colors pt-2">

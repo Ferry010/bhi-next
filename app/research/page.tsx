@@ -8,6 +8,7 @@ import Newsletter from "@/components/sections/Newsletter";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { ArrowRight, TrendingUp, Globe, GraduationCap, Search, FileText, Beaker } from "lucide-react";
+import { YearsActiveWord } from "@/lib/facts";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/research" },
@@ -23,7 +24,7 @@ const reports = [
     year: "2026",
     icon: TrendingUp,
     title: "The State of Brand Humanizing 2026",
-    desc: "Eight years after the original idea. Here is where we are, what changed, and what it means for your organization in 2026.",
+    desc: `${YearsActiveWord()} years after the original idea. Here is where we are, what changed, and what it means for your organization in 2026.`,
     to: "/research/state-of-brand-humanizing-2026",
   },
   {

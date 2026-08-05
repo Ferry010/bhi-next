@@ -53,7 +53,7 @@ export default function BookEnglishEditionPage() {
               <span className="text-accent">Now in English.</span>
             </h1>
             <p className="text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              The Dutch edition helped over 50 organizations rethink their relationship with technology. The English edition brings the same framework, the same research, and the same honest voice to a global audience.
+              The Dutch edition helped over 50+ organizations rethink their relationship with technology. The English edition brings the same framework, the same research, and the same honest voice to a global audience.
             </p>
           </div>
         </section>

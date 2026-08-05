@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Download, ArrowRight } from "lucide-react";
+import { yearsActiveWord } from "@/lib/facts";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/research/state-of-human-2020" },
@@ -47,7 +48,7 @@ export default function StateOfHuman2020Page() {
             <p className="text-caption font-heading font-semibold text-accent uppercase tracking-widest mb-4">WHAT CHANGED SINCE 2020</p>
             <h2 className="text-display md:text-display-lg text-foreground mb-4">Five years later, we asked again.</h2>
             <p className="text-body-lg text-muted-foreground mb-8">
-              The State of Brand Humanizing 2026 builds on this foundation with eight years of applied research, 50+ organisations, and a world that has changed considerably since this report was written.
+              The State of Brand Humanizing 2026 builds on this foundation with {yearsActiveWord()} years of applied research, 50+ organisations, and a world that has changed considerably since this report was written.
             </p>
             <Link href="/research/state-of-brand-humanizing-2026">
               <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">

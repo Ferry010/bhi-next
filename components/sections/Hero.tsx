@@ -18,29 +18,21 @@ export default function Hero() {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 hero-rise" style={{ animationDelay: "80ms" }}>
-              <Link href="/learning" className="w-full sm:w-auto">
+              <Link href="/trust-gap" className="w-full sm:w-auto">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
-                  See the training formats <span className="cta-arrow">→</span>
+                  Find your team&apos;s AI Trust Gap <span className="cta-arrow">→</span>
                 </Button>
               </Link>
-              <Link href="/the-method">
+              <Link href="/learning">
                 <Button variant="outline" className="rounded-full border-2 border-foreground/20 hover:border-foreground/40 font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base w-full sm:w-auto">
-                  Dive into the method <span className="cta-arrow">→</span>
+                  See the training <span className="cta-arrow">→</span>
                 </Button>
               </Link>
             </div>
-            <div className="flex flex-wrap items-center gap-2 pt-3 hero-rise" style={{ animationDelay: "120ms" }}>
-              <span className="text-xs text-muted-foreground font-heading">I want to:</span>
-              <Link href="/learning" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
-                Train my team
-              </Link>
-              <Link href="/book" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
-                Become a Brand Humanizer
-              </Link>
-              <Link href="/research" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
-                Read the research
-              </Link>
-            </div>
+            <p className="text-sm text-muted-foreground hero-rise" style={{ animationDelay: "120ms" }}>
+              Free, and it takes two minutes. Six questions for you, six for your team, and the
+              difference between the two answers.
+            </p>
 
           </div>
 

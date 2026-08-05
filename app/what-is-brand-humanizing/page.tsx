@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { Button } from "@/components/ui/button";
+import { yearsActiveWord } from "@/lib/facts";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/what-is-brand-humanizing" },
@@ -78,7 +79,7 @@ export default function WhatIsBrandHumanizingPage() {
               In 2017, Ferry Hoes and Jonathan Flores were working with McDonald&apos;s when they noticed something that would change the direction of their careers. The organisations investing most heavily in technology were not necessarily becoming better at what they did. In many cases, they were losing the very thing that made them distinctive: the human element.
             </p>
             <p className="text-body-lg text-muted-foreground leading-relaxed">
-              That observation led to eight years of applied research, working with organisations across industries and developing a framework for what it takes to remain irreplaceably human in an increasingly automated world. The result is <Link href="/the-method" className="text-accent hover:underline">the Brand Humanizing methodology</Link>: a structured, evidence-based approach to building organisations where technology and people work together deliberately, not accidentally.
+              That observation led to {yearsActiveWord()} years of applied research, working with organisations across industries and developing a framework for what it takes to remain irreplaceably human in an increasingly automated world. The result is <Link href="/the-method" className="text-accent hover:underline">the Brand Humanizing methodology</Link>: a structured, evidence-based approach to building organisations where technology and people work together deliberately, not accidentally.
             </p>
           </div>
         </section>

@@ -9,16 +9,16 @@ import { TALK_TO_EXPERT } from "@/lib/pricing";
 const cards = [
   {
     icon: GraduationCap,
-    title: "Wake your team up",
-    body: "Your people leave with a new lens on AI and their own work, and the shared language to act on it. From a 1-hour spark session to a full-day deep dive. Not a lecture. A shift you can feel in the room the next morning.",
-    cta: "Book a session →",
+    title: "Become a Brand Humanizer",
+    body: "The practitioner path. Training takes you from understanding the idea to running it yourself, from an hour that changes the conversation to a programme that changes how your team works.",
+    cta: "See the training →",
     to: "/learning",
     primary: true,
   },
   {
     icon: BookOpen,
-    title: "Become a Brand Humanizer",
-    body: "Want to lead this yourself? Start where the whole method lives, in the book. Read it, apply it, and become the person your organisation turns to for staying human through the AI shift.",
+    title: "An easy way to start",
+    body: "The whole method lives in the book, so you can read it before you ever speak to us. It is also the cheapest way to find out whether this way of thinking is for you.",
     cta: "Start with the book →",
     to: "/book",
     primary: true,
@@ -26,7 +26,7 @@ const cards = [
   {
     icon: FlaskConical,
     title: "See the evidence",
-    body: "Independent research on technology, organisational behaviour, and what actually makes people choose one brand over another. Free, because proof shouldn't sit behind a paywall while your competitors guess.",
+    body: "Independent research on technology, organisational behaviour, and what actually makes people choose one brand over another. Free, because proof that sits behind a paywall is not doing anyone any good.",
     cta: "Read the research",
     to: "/research",
     primary: false,
@@ -40,7 +40,10 @@ export default function HowWeHelp() {
     <section ref={ref} id="how-we-help" className="bg-cream section-padding">
       <div className="container">
         <div className="text-center mb-10 md:mb-14">
-          <h2 className="text-display md:text-display-lg text-foreground">Pick where you want to start.</h2>
+          <h2 className="text-display md:text-display-lg text-foreground">Or go straight to what you need.</h2>
+          <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+            If you already know what you are looking for, these are the other ways in.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 lg:gap-8">
