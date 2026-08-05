@@ -39,6 +39,7 @@ export interface RecordDetail extends RecordSummary {
   leader: LeaderAnswers;
   result: ImpactGapResult | null;
   teamCounts: Record<string, number>;
+  /** When Slack was told. There is no automatic email to a leader. */
   notifiedAt: string | null;
 }
 

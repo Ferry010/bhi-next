@@ -157,9 +157,8 @@ export default function TeamSurveyPage({ params }: { params: { code: string } })
                   replied, because below that number single answers become easy to guess at.
                 </li>
                 <li>
-                  Your manager only ever sees a summary. The one thing shown in your own words is
-                  the answer to question 4, which appears without any name next to it, mixed in with
-                  everyone else&apos;s.
+                  Your manager only ever sees a summary. Every question is multiple choice, so
+                  there is nothing you could write that could be traced back to you.
                 </li>
                 <li>
                   It takes about a minute, and it works fine on a phone. There is no way to save

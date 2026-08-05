@@ -47,8 +47,8 @@ const included = [
     body: "Your answer against your team's answer, one card per question, with the gap on each stated plainly.",
   },
   {
-    title: "Your team's own words",
-    body: "Their unedited answers to the hardest question in the test, quoted in full. This does more work than any chart.",
+    title: "What your team actually said",
+    body: "Every answer to the hardest question in the test, laid out against your own. The people with nothing to point to are shown rather than averaged away.",
   },
   {
     title: "Three things to do about it",
@@ -62,6 +62,7 @@ const privacy = [
   `Individual answers are never visible to anyone, including us. The database is built so that they cannot be read out one at a time.`,
   `We never sell any of this, and we never pass it to anyone.`,
   `Once a year we publish the aggregate findings, with nothing in them that identifies a company or a person, as free research.`,
+  `Your team is never asked for an email address. You share the link however you like, so we do not know who was invited, only how many answered.`,
 ];
 
 export default function ImpactGapLandingPage() {
@@ -182,16 +183,19 @@ export default function ImpactGapLandingPage() {
             </h2>
             <p className="mt-6 text-body-lg text-white/80">
               The score is calculated automatically, because scoring is arithmetic and a machine is
-              better at arithmetic than we are. Reading the result is a different job. Once your
-              report is ready, Ferry or Jonathan opens it, reads what your team wrote, and writes
-              back with what they make of it. Within two working days.
+              better at arithmetic than we are. Reading the result is a different job. Your report
+              appears on your own page the moment enough of your team has answered, and then Ferry
+              or Jonathan opens it, reads it properly, and writes back with what they make of it.
+              Within two working days.
             </p>
             <p className="mt-4 text-body-lg text-white/80">
               That is one of us at a desk with your results in front of us, not a sequence that
               fires on a timer with your first name pasted into the top of it. There is no drip
-              campaign behind this and nothing gets added to a list. We spend our working lives
-              arguing that technology should take the predictable part so that people are free to do
-              the rest, so it would be strange to run our own test any other way.
+              campaign behind this, nothing gets added to a list, and this tool has no way to send
+              you an automated email even if we changed our minds, because there is no email service
+              behind it. We spend our working lives arguing that technology should take the
+              predictable part so that people are free to do the rest, so it would be strange to run
+              our own test any other way.
             </p>
           </div>
         </section>

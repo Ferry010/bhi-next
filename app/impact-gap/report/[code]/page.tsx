@@ -32,7 +32,7 @@ export default function ReportPage({ params }: { params: { code: string } }) {
       // Below the threshold the database returns no answer data at all, so
       // there is nothing here to accidentally render.
       if (!r.data.unlocked) {
-        router.replace(`/impact-gap/waiting/${code}`);
+        router.replace(`/impact-gap/share/${code}`);
         return;
       }
       if (r.data.leader && r.data.team) {

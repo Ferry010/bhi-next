@@ -24,8 +24,8 @@ export type { StatusValue, RecordSummary, RecordDetail, AggregateStats, RecordUp
 //
 // Raw team responses are read here and turned into aggregates immediately.
 // They are never returned to a browser, not even to ours. The only individual
-// answers that leave this file are the D4 verbatims, which the leader already
-// sees in their own report, shuffled and without timestamps.
+// Since Q4 became a multiple choice there is no free text anywhere in the tool,
+// so nothing that leaves this file could identify anyone even in principle.
 
 type SessionRow = Record<string, unknown> & {
   code: string;
@@ -36,7 +36,7 @@ type SessionRow = Record<string, unknown> & {
   leader_email: string | null;
   leader_role: string | null;
   notes: string | null;
-  notified_at: string | null;
+  internal_notified_at: string | null;
   personal_email_sent_at: string | null;
   last_touched_at: string | null;
 };
@@ -44,7 +44,7 @@ type SessionRow = Record<string, unknown> & {
 type ResponseRow = TeamAnswers & { session_code: string };
 
 const SESSION_COLUMNS =
-  "code, created_at, status, organisation, leader_name, leader_email, leader_role, notes, notified_at, personal_email_sent_at, last_touched_at, " +
+  "code, created_at, status, organisation, leader_name, leader_email, leader_role, notes, internal_notified_at, personal_email_sent_at, last_touched_at, " +
   "d1_adoption_estimate, d2_time_freed, d3_time_went, d3_mechanism, d4_capability, d5_reallocation, d6_human_work";
 
 function leaderFrom(row: SessionRow): LeaderAnswers {
@@ -170,7 +170,7 @@ export async function loadRecord(code: string): Promise<RecordDetail | null> {
     notes: row.notes,
     leader: leaderFrom(row),
     teamCounts: summary.result ? aggregateTeamAnswers(rows).d4_counts : {},
-    notifiedAt: row.notified_at,
+    notifiedAt: row.internal_notified_at,
   };
 }
 

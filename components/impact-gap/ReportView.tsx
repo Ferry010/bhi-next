@@ -4,6 +4,7 @@ import Link from "next/link";
 import DimensionCard from "@/components/impact-gap/DimensionCard";
 import D4Breakdown from "@/components/impact-gap/D4Breakdown";
 import type { ImpactGapResult } from "@/lib/impactGap/scoring";
+import { REPORT_PRINT_CSS } from "@/components/impact-gap/reportPrint.css";
 import { MOVES, LIMITATIONS, LITERACY_NOTE, HUMAN_STEP, CLOSING_LINE } from "@/lib/impactGap/content";
 
 // The report itself, split from the page that fetches it so that the thing on
@@ -27,7 +28,20 @@ export default function ReportView({
   const sharedDimension = result.dimensions.find((d) => d.sharedBlindSpot);
 
   return (
-    <main>
+    <main className="print-ink">
+      <style dangerouslySetInnerHTML={{ __html: REPORT_PRINT_CSS }} />
+
+      {/* Print button. Hidden from the printout itself, obviously. */}
+      <div className="print-hide fixed bottom-5 right-5 z-40">
+        <button
+          type="button"
+          onClick={() => window.print()}
+          className="rounded-full bg-foreground px-5 py-3 font-heading text-sm font-semibold text-white shadow-lg transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Save as PDF
+        </button>
+      </div>
+
       {/* 1. The score and the band */}
       <section className="bg-secondary pt-28 pb-12 md:pt-36">
         <div className="container max-w-3xl">
@@ -76,7 +90,9 @@ export default function ReportView({
           </p>
           <div className="mt-8 space-y-5">
             {result.dimensions.map((d) => (
-              <DimensionCard key={d.id} d={d} />
+              <div key={d.id} className="print-keep">
+                <DimensionCard d={d} />
+              </div>
             ))}
           </div>
 
@@ -135,7 +151,7 @@ export default function ReportView({
       )}
 
       {/* 6. Three moves */}
-      <section className="section-padding bg-cream">
+      <section className="section-padding bg-cream print-break-before">
         <div className="container max-w-3xl">
           <h2 className="text-display text-foreground">Three things to do about it</h2>
           <p className="mt-3 text-body-lg text-muted-foreground">

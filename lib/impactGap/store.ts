@@ -13,6 +13,7 @@ import type { TeamAggregate } from "./scoring";
 
 const LS_CODE = "bh_impact_gap_code";
 const LS_ANSWERED = "bh_impact_gap_answered";
+const LS_CONTACT = "bh_impact_gap_contact";
 
 export type StoreError = "not_provisioned" | "not_found" | "failed";
 
@@ -205,6 +206,33 @@ export function recallCode(): string | null {
     return window.localStorage.getItem(LS_CODE);
   } catch {
     return null;
+  }
+}
+
+/**
+ * Whether this browser has already handed over contact details for this code.
+ * The dashboard is a page leaders bookmark and come back to, and asking for
+ * their name and email every single visit would be absurd. The sessions table
+ * cannot be read from a browser, so this is remembered locally instead.
+ */
+export function markContactSaved(code: string) {
+  try {
+    const raw = window.localStorage.getItem(LS_CONTACT);
+    const list: string[] = raw ? JSON.parse(raw) : [];
+    if (!list.includes(code)) list.push(code);
+    window.localStorage.setItem(LS_CONTACT, JSON.stringify(list));
+  } catch {
+    /* ignore */
+  }
+}
+
+export function hasContactSaved(code: string): boolean {
+  try {
+    const raw = window.localStorage.getItem(LS_CONTACT);
+    const list: string[] = raw ? JSON.parse(raw) : [];
+    return list.includes(code);
+  } catch {
+    return false;
   }
 }
 

@@ -167,7 +167,7 @@ export default function AdminRecordPage({ params }: { params: { code: string } }
                   ? String(record.responseCount)
                   : `${record.responseCount} of ${MIN_TEAM_RESPONSES} needed`,
             },
-            { k: "Report email sent", v: day(record.notifiedAt) },
+            { k: "Slack notified", v: day(record.notifiedAt) },
             { k: "Personal email sent", v: day(record.personalEmailSentAt) },
           ].map((i) => (
             <div key={i.k}>
@@ -230,7 +230,7 @@ export default function AdminRecordPage({ params }: { params: { code: string } }
 
         {!unlocked && (
           <p className="mt-5 rounded-2xl border border-border bg-white p-6 text-muted-foreground">
-            This team is still collecting answers. There is no report, no draft and no verbatims
+            This team is still collecting answers. There is no report and no draft
             until {MIN_TEAM_RESPONSES} people have replied.
           </p>
         )}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ToolHeader, ToolFooter } from "@/components/impact-gap/ToolShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { getStatus, setContact, rememberCode } from "@/lib/impactGap/store";
+import { getStatus, setContact, rememberCode, markContactSaved, hasContactSaved } from "@/lib/impactGap/store";
 import { isValidCodeShape } from "@/lib/impactGap/code";
 import { MIN_TEAM_RESPONSES } from "@/lib/impactGap/questions";
 import { Check, Copy, ArrowRight } from "lucide-react";
@@ -31,21 +31,45 @@ export default function ImpactGapSharePage({ params }: { params: { code: string 
   const [revealed, setRevealed] = useState(false);
   const [saving, setSaving] = useState(false);
 
+  // This page is the leader's dashboard, and the only link they need to keep.
+  // It checks itself every fifteen seconds so that a leader who leaves it open
+  // while chasing their team watches the number climb, and sees the report
+  // appear the moment the fifth reply lands. No email tells them: there is no
+  // email service in this tool, on purpose.
   useEffect(() => {
     if (!isValidCodeShape(code)) {
       setState("missing");
       return;
     }
-    getStatus(code).then((r) => {
+    let cancelled = false;
+
+    const check = async () => {
+      const r = await getStatus(code);
+      if (cancelled) return;
       if (!r.ok || !r.exists) {
-        setState("missing");
+        setState((prev) => (prev === "loading" ? "missing" : prev));
         return;
       }
       rememberCode(code);
       setCount(r.count);
       setState("ok");
-    });
+
+      // Anyone coming back to their dashboard should land on the dashboard, not
+      // on the form again. Already given their details, or already collected
+      // replies, means they are past that step.
+      if (hasContactSaved(code)) setSaved(true);
+      if (hasContactSaved(code) || r.count > 0) setRevealed(true);
+    };
+
+    check();
+    const id = setInterval(check, 15000);
+    return () => {
+      cancelled = true;
+      clearInterval(id);
+    };
   }, [code]);
+
+  const ready = count >= MIN_TEAM_RESPONSES;
 
   const link = typeof window !== "undefined" ? `${window.location.origin}/impact-gap/t/${code}` : "";
 
@@ -82,6 +106,7 @@ ${link}`;
     setSaving(true);
     await setContact(code, values);
     setSaving(false);
+    markContactSaved(code);
     setSaved(true);
     setRevealed(true);
   };
@@ -127,12 +152,13 @@ ${link}`;
       <main>
         <section className="bg-secondary pt-28 pb-16 md:pt-36">
           <div className="container max-w-2xl">
-            <h1 className="text-hero text-foreground">Now the half that matters</h1>
+            <h1 className="text-hero text-foreground">
+              {ready ? "Your team has answered" : "Now the half that matters"}
+            </h1>
             <p className="mt-5 text-body-lg text-muted-foreground">
-              Your answers are saved. What you have so far is one opinion about your team, which is
-              the thing you already had this morning. The test only becomes worth anything once your
-              team has answered the same six questions, so this step is the whole exercise rather
-              than an extra one.
+              {ready
+                ? "Enough of your team has answered the same six questions, so there is now something to compare your answers against. This page stays here: it is your link back to the report, and to the message if you want more people to reply."
+                : "Your answers are saved. What you have so far is one opinion about your team, which is the thing you already had this morning. The test only becomes worth anything once your team has answered the same six questions, so this step is the whole exercise rather than an extra one."}
             </p>
 
             {/* Contact. Asked once, here, and nowhere else in the flow. */}
@@ -143,8 +169,10 @@ ${link}`;
                     Thank you, {values.name.split(" ")[0]}.
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    We will email you the moment your report is ready, and then Ferry or Jonathan
-                    will read it and write to you personally within two working days.
+                    Keep this page bookmarked. It updates itself, and your report appears here the
+                    moment enough of your team has replied. Once it does, Ferry or Jonathan will
+                    read it and write to you personally within two working days. That is the only
+                    message you will get from us about this, and a person types it.
                   </p>
                 </div>
               ) : (
@@ -153,9 +181,10 @@ ${link}`;
                     Where should the report go?
                   </h2>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    We use this for two things and nothing else: telling you when your report is
-                    ready, and letting Ferry or Jonathan write to you personally about what it says.
-                    No list, no sequence, and we never pass it to anyone.
+                    We use this for one thing: so Ferry or Jonathan can write to you about what your
+                    result actually means. There is no mailing list, no automated sequence and no
+                    third party. This tool cannot send you an email even if we wanted it to, because
+                    there is no email service behind it.
                   </p>
 
                   <div className="mt-5 grid gap-4 sm:grid-cols-2">
@@ -263,24 +292,43 @@ ${link}`;
                   </p>
                 </div>
 
-                <div className="mt-8 rounded-2xl bg-cream p-6">
-                  <p className="font-heading text-lg font-bold text-foreground">
-                    {count} of {MIN_TEAM_RESPONSES} replies so far
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Your report opens at {MIN_TEAM_RESPONSES}. Below that number it becomes possible
-                    to work out who said what, so the report stays shut until that risk is gone. Send
-                    the link to more people than you need, because not everyone answers.
-                  </p>
-                  <Link href={`/impact-gap/report/${code}`} className="mt-4 inline-block">
-                    <Button
-                      variant="outline"
-                      className="btn-scale rounded-full border-2 font-heading font-semibold"
-                    >
-                      Check my report <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
+                <div
+                  className={`mt-8 rounded-2xl p-6 ${
+                    ready ? "border-2 border-primary bg-primary/5" : "bg-cream"
+                  }`}
+                  aria-live="polite"
+                >
+                  {ready ? (
+                    <>
+                      <p className="font-heading text-lg font-bold text-primary">
+                        Your report is ready
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {count} {count === 1 ? "person has" : "people have"} answered, which is
+                        enough to show you the result without anyone being identifiable. Ferry or
+                        Jonathan will read it and write to you within two working days.
+                      </p>
+                      <Link href={`/impact-gap/report/${code}`} className="mt-4 inline-block">
+                        <Button className="btn-scale h-12 rounded-full bg-accent px-8 font-heading font-semibold text-accent-foreground hover:bg-soft-coral">
+                          Read my report <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <p className="font-heading text-lg font-bold text-foreground">
+                        {count} of {MIN_TEAM_RESPONSES} replies so far
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        Your report opens at {MIN_TEAM_RESPONSES}. Below that number it becomes
+                        possible to work out who said what, so it stays shut until that risk is
+                        gone. Send the link to more people than you need, because not everyone
+                        answers. This page checks for itself, so you can leave it open.
+                      </p>
+                    </>
+                  )}
                 </div>
+
               </>
             )}
           </div>
