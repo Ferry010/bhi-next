@@ -40,10 +40,7 @@ export default function HowWeHelp() {
     <section ref={ref} id="how-we-help" className="bg-cream section-padding">
       <div className="container">
         <div className="text-center mb-10 md:mb-14">
-          <h2 className="text-display md:text-display-lg text-foreground">Or go straight to what you need.</h2>
-          <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
-            If you already know what you are looking for, these are the other ways in.
-          </p>
+          <h2 className="text-display md:text-display-lg text-foreground">Pick where you want to start.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 lg:gap-8">
