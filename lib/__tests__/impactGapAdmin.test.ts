@@ -9,9 +9,7 @@ const answer = (over: Partial<TeamAnswers> = {}): TeamAnswers => ({
   d2_time_saved: "1to3",
   d3_time_use: "more_same",
   d3_mechanism: "quiet_same_pace",
-  d4_capability_text: null,
-  d4_cannot_name: true,
-  d4_genuinely_new: null,
+  d4_capability: "nothing",
   d5_told: "no",
   d6_human_work: "same",
   ...over,
@@ -83,17 +81,22 @@ describe("aggregateTeamAnswers", () => {
     expect(agg.d2_hours_mean).toBeCloseTo(2.5, 5);
   });
 
-  it("counts both blanks and 'same work faster' as nothing genuinely new", () => {
+  it("counts everything except 'genuinely new' as no new capability", () => {
+    // Faster and higher standard are both worth having. Neither is a thing the
+    // team could not do before, so both count towards the gap.
     const agg = aggregateTeamAnswers([
-      answer({ d4_cannot_name: true }),
-      answer({ d4_cannot_name: false, d4_genuinely_new: "faster" }),
-      answer({ d4_cannot_name: false, d4_genuinely_new: "new" }),
-      answer({ d4_cannot_name: false, d4_genuinely_new: "new" }),
+      answer({ d4_capability: "nothing" }),
+      answer({ d4_capability: "faster" }),
+      answer({ d4_capability: "higher_standard" }),
+      answer({ d4_capability: "new" }),
     ]);
-    expect(agg.d4_cannot_name_count).toBe(1);
-    expect(agg.d4_faster_count).toBe(1);
-    expect(agg.d4_new_count).toBe(2);
-    expect(agg.d4_no_new_pct).toBe(50);
+    expect(agg.d4_counts).toEqual({ nothing: 1, faster: 1, higher_standard: 1, new: 1 });
+    expect(agg.d4_no_new_pct).toBe(75);
+  });
+
+  it("reports no gap at all when everyone found something genuinely new", () => {
+    const agg = aggregateTeamAnswers([answer({ d4_capability: "new" }), answer({ d4_capability: "new" })]);
+    expect(agg.d4_no_new_pct).toBe(0);
   });
 
   it("puts D5 and D6 on the same 0 to 100 scale as the leader", () => {

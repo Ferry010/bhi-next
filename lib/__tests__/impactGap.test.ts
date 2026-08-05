@@ -9,9 +9,7 @@ const optimisticLeader: LeaderAnswers = {
   d2_time_freed: "3to5",
   d3_time_went: "new_work",
   d3_mechanism: "recognition",
-  d4_capability_text: "We run our own customer research now",
-  d4_cannot_name: false,
-  d4_genuinely_new: "new",
+  d4_capability: "new",
   d5_reallocation: "explicit",
   d6_human_work: "more",
 };
@@ -24,9 +22,7 @@ const disappointingTeam: TeamAggregate = {
   d3_time_use_counts: { new_work: 1, more_same: 4, breathing_room: 2, fill_time: 1 },
   d3_mechanism_counts: { tell_manager: 1, quiet_other_work: 4, quiet_same_pace: 3 },
   d4_no_new_pct: 75,
-  d4_cannot_name_count: 4,
-  d4_faster_count: 2,
-  d4_new_count: 2,
+  d4_counts: { nothing: 4, faster: 2, new: 2 },
   d5_mean: 12.5,
   d6_mean: 37.5,
 };
@@ -39,9 +35,7 @@ const alignedTeam: TeamAggregate = {
   d3_time_use_counts: { new_work: 4, more_same: 1, breathing_room: 1, fill_time: 0 },
   d3_mechanism_counts: { tell_manager: 5, quiet_other_work: 1, quiet_same_pace: 0 },
   d4_no_new_pct: 17,
-  d4_cannot_name_count: 1,
-  d4_faster_count: 0,
-  d4_new_count: 5,
+  d4_counts: { nothing: 1, new: 5 },
   d5_mean: 92,
   d6_mean: 92,
 };

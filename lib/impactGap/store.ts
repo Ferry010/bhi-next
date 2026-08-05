@@ -2,7 +2,7 @@
 
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { LeaderAnswers, TeamAnswers } from "./questions";
-import type { TeamAggregate, Verbatim } from "./scoring";
+import type { TeamAggregate } from "./scoring";
 
 // Persistence for the Impact Gap.
 //
@@ -30,7 +30,6 @@ export interface ReportPayload {
   required: number;
   leader?: LeaderAnswers;
   team?: TeamAggregate;
-  verbatims?: Verbatim[];
 }
 
 function isMissingTable(err: unknown): boolean {
@@ -150,14 +149,11 @@ export async function getReport(
               d3_time_use_counts: (team.d3_time_use_counts as Record<string, number>) ?? {},
               d3_mechanism_counts: (team.d3_mechanism_counts as Record<string, number>) ?? {},
               d4_no_new_pct: Number(team.d4_no_new_pct ?? 0),
-              d4_cannot_name_count: Number(team.d4_cannot_name_count ?? 0),
-              d4_faster_count: Number(team.d4_faster_count ?? 0),
-              d4_new_count: Number(team.d4_new_count ?? 0),
+              d4_counts: (team.d4_counts as Record<string, number>) ?? {},
               d5_mean: Number(team.d5_mean ?? 0),
               d6_mean: Number(team.d6_mean ?? 0),
             } as TeamAggregate)
           : undefined,
-        verbatims: (d.verbatims as Verbatim[] | undefined) ?? [],
       },
     };
   } catch (err) {

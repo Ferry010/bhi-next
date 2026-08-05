@@ -1,4 +1,4 @@
-import type { ImpactGapResult, Verbatim } from "./scoring";
+import type { ImpactGapResult } from "./scoring";
 import type { LeaderAnswers } from "./questions";
 
 // The client-safe half of the admin module.
@@ -38,7 +38,7 @@ export interface RecordDetail extends RecordSummary {
   notes: string | null;
   leader: LeaderAnswers;
   result: ImpactGapResult | null;
-  verbatims: Verbatim[];
+  teamCounts: Record<string, number>;
   notifiedAt: string | null;
 }
 

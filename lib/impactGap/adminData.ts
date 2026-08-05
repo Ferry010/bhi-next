@@ -4,7 +4,6 @@ import {
   aggregateTeamAnswers,
   biggestGap,
   type ImpactGapResult,
-  type Verbatim,
 } from "./scoring";
 import { MIN_TEAM_RESPONSES, type LeaderAnswers, type TeamAnswers } from "./questions";
 import {
@@ -46,7 +45,7 @@ type ResponseRow = TeamAnswers & { session_code: string };
 
 const SESSION_COLUMNS =
   "code, created_at, status, organisation, leader_name, leader_email, leader_role, notes, notified_at, personal_email_sent_at, last_touched_at, " +
-  "d1_adoption_estimate, d2_time_freed, d3_time_went, d3_mechanism, d4_capability_text, d4_cannot_name, d4_genuinely_new, d5_reallocation, d6_human_work";
+  "d1_adoption_estimate, d2_time_freed, d3_time_went, d3_mechanism, d4_capability, d5_reallocation, d6_human_work";
 
 function leaderFrom(row: SessionRow): LeaderAnswers {
   return {
@@ -54,9 +53,7 @@ function leaderFrom(row: SessionRow): LeaderAnswers {
     d2_time_freed: String(row.d2_time_freed),
     d3_time_went: String(row.d3_time_went),
     d3_mechanism: String(row.d3_mechanism),
-    d4_capability_text: (row.d4_capability_text as string | null) ?? null,
-    d4_cannot_name: Boolean(row.d4_cannot_name),
-    d4_genuinely_new: (row.d4_genuinely_new as string | null) ?? null,
+    d4_capability: String(row.d4_capability),
     d5_reallocation: String(row.d5_reallocation),
     d6_human_work: String(row.d6_human_work),
   };
@@ -93,7 +90,7 @@ export async function loadRecords(): Promise<{ records: RecordSummary[]; stats: 
 
   const [{ data: sessions, error: sErr }, { data: responses, error: rErr }] = await Promise.all([
     supabase.from("impact_gap_sessions" as never).select(SESSION_COLUMNS).order("created_at", { ascending: false }),
-    supabase.from("impact_gap_responses" as never).select("session_code, d1_frequency, d2_time_saved, d3_time_use, d3_mechanism, d4_cannot_name, d4_genuinely_new, d5_told, d6_human_work"),
+    supabase.from("impact_gap_responses" as never).select("session_code, d1_frequency, d2_time_saved, d3_time_use, d3_mechanism, d4_capability, d5_told, d6_human_work"),
   ]);
 
   if (sErr) throw sErr;
@@ -160,29 +157,19 @@ export async function loadRecord(code: string): Promise<RecordDetail | null> {
 
   const { data: responses, error: rErr } = await supabase
     .from("impact_gap_responses" as never)
-    .select("d1_frequency, d2_time_saved, d3_time_use, d3_mechanism, d4_capability_text, d4_cannot_name, d4_genuinely_new, d5_told, d6_human_work")
+    .select("d1_frequency, d2_time_saved, d3_time_use, d3_mechanism, d4_capability, d5_told, d6_human_work")
     .eq("session_code", code);
 
   if (rErr) throw rErr;
 
-  const rows = (responses ?? []) as unknown as (TeamAnswers & { d4_capability_text: string | null })[];
+  const rows = (responses ?? []) as unknown as TeamAnswers[];
   const summary = summarise(row, rows);
-
-  // Shuffled here for the same reason the database shuffles them: the order
-  // responses arrived in is a thin thread back to who wrote what.
-  const verbatims: Verbatim[] = rows
-    .map((r) => ({
-      text: r.d4_capability_text,
-      cannot_name: r.d4_cannot_name,
-      genuinely_new: r.d4_genuinely_new,
-    }))
-    .sort(() => Math.random() - 0.5);
 
   return {
     ...summary,
     notes: row.notes,
     leader: leaderFrom(row),
-    verbatims: summary.result ? verbatims : [],
+    teamCounts: summary.result ? aggregateTeamAnswers(rows).d4_counts : {},
     notifiedAt: row.notified_at,
   };
 }

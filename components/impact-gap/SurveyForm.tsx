@@ -3,7 +3,11 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { CAPABILITY_MAX_LENGTH } from "@/lib/impactGap/questions";
+import {
+  isQuestionAnswered,
+  missingMessage as missingMessageFor,
+  isFilled,
+} from "@/lib/impactGap/validation";
 
 // One survey component, used for both the leader and the team, so the two
 // sides of every question are asked in visibly the same way.
@@ -14,15 +18,9 @@ import { CAPABILITY_MAX_LENGTH } from "@/lib/impactGap/questions";
 
 type Option = { readonly value: string; readonly label: string };
 
-export type CapabilityValue = {
-  text: string;
-  cannotName: boolean;
-  genuinelyNew: string | null;
-};
-
 export type Question = {
   id: string;
-  kind: "slider" | "single" | "capability";
+  kind: "slider" | "single";
   question: string;
   help?: string;
   options?: readonly Option[];
@@ -37,10 +35,6 @@ export type Question = {
     help?: string;
     options: readonly Option[];
   };
-  /** Capability questions only. */
-  cannotLabel?: string;
-  followUpQuestion?: string;
-  followUpOptions?: readonly Option[];
 };
 
 const focusRing =
@@ -92,88 +86,6 @@ function Choice({
   );
 }
 
-/**
- * The D4 question. A short free text answer, an explicit way to say there isn't
- * one, and a follow-up that turns the text into something scoreable without
- * anyone trying to interpret the words. The text itself is never classified
- * automatically. It is quoted back in the report exactly as written.
- */
-function Capability({
-  q,
-  value,
-  onChange,
-}: {
-  q: Question;
-  value: CapabilityValue;
-  onChange: (v: CapabilityValue) => void;
-}) {
-  const remaining = CAPABILITY_MAX_LENGTH - value.text.length;
-
-  return (
-    <div>
-      <label htmlFor={`text-${q.id}`} className="sr-only">
-        {q.question}
-      </label>
-      <textarea
-        id={`text-${q.id}`}
-        value={value.text}
-        maxLength={CAPABILITY_MAX_LENGTH}
-        rows={3}
-        disabled={value.cannotName}
-        onChange={(e) => onChange({ ...value, text: e.target.value })}
-        placeholder="One thing. In your own words."
-        aria-describedby={`count-${q.id}`}
-        className={`w-full rounded-xl border-2 border-border bg-white p-4 text-foreground placeholder:text-muted-foreground/70 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground ${focusRing}`}
-      />
-      <p id={`count-${q.id}`} className="mt-1 text-sm text-muted-foreground">
-        {value.cannotName
-          ? "Not needed, you have ticked the box below."
-          : `${remaining} character${remaining === 1 ? "" : "s"} left`}
-      </p>
-
-      <label className="mt-3 flex cursor-pointer items-center gap-3 rounded-xl border-2 border-border bg-white p-4 transition-colors hover:border-primary/40 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
-        <input
-          type="checkbox"
-          checked={value.cannotName}
-          onChange={(e) =>
-            onChange(
-              e.target.checked
-                ? { text: "", cannotName: true, genuinelyNew: null }
-                : { ...value, cannotName: false },
-            )
-          }
-          className="sr-only"
-        />
-        <span
-          aria-hidden="true"
-          className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border-2 ${
-            value.cannotName ? "border-primary bg-primary" : "border-muted-foreground/40"
-          }`}
-        >
-          {value.cannotName && <span className="block h-2 w-2 rounded-sm bg-white" />}
-        </span>
-        <span className="text-foreground">{q.cannotLabel}</span>
-      </label>
-
-      {!value.cannotName && value.text.trim().length > 0 && q.followUpOptions && (
-        <fieldset className="mt-6 rounded-xl bg-cream p-5">
-          <legend className="px-1 font-heading font-bold text-foreground">{q.followUpQuestion}</legend>
-          <div className="mt-3">
-            <Choice
-              name={`${q.id}-followup`}
-              options={q.followUpOptions}
-              value={value.genuinelyNew ?? undefined}
-              onChange={(v) => onChange({ ...value, genuinelyNew: v })}
-            />
-          </div>
-        </fieldset>
-      )}
-    </div>
-  );
-}
-
-export const emptyCapability: CapabilityValue = { text: "", cannotName: false, genuinelyNew: null };
-
 export default function SurveyForm({
   questions,
   submitLabel,
@@ -187,43 +99,22 @@ export default function SurveyForm({
   busy?: boolean;
   error?: string | null;
 }) {
-  const [answers, setAnswers] = useState<Record<string, unknown>>({ d1: 50 });
+  // Deliberately empty. A slider that starts at 50 and counts as answered
+  // collects a number nobody chose, and "half my team, probably" is exactly the
+  // guess this tool exists to test. The slider sits at 50 visually until it is
+  // touched, and until then the question is not answered.
+  const [answers, setAnswers] = useState<Record<string, unknown>>({});
   const [showErrors, setShowErrors] = useState(false);
 
-  const capabilityOf = (id: string) => (answers[id] as CapabilityValue | undefined) ?? emptyCapability;
+  const filled = (id: string) => isFilled(answers, id);
 
-  const filled = (id: string) => {
-    const v = answers[id];
-    return v !== undefined && v !== null && v !== "";
-  };
-
-  const isAnswered = (q: Question) => {
-    if (q.sub && !filled(q.sub.id)) return false;
-    if (q.kind === "capability") {
-      const v = capabilityOf(q.id);
-      if (v.cannotName) return true;
-      return v.text.trim().length > 0 && v.genuinelyNew !== null;
-    }
-    return filled(q.id);
-  };
+  const isAnswered = (q: Question) => isQuestionAnswered(q, answers);
 
   const missing = questions.filter((q) => !isAnswered(q));
 
   const set = (id: string, v: unknown) => setAnswers((a) => ({ ...a, [id]: v }));
 
-  const missingMessage = (q: Question) => {
-    if (q.kind === "capability") {
-      const v = capabilityOf(q.id);
-      if (v.cannotName) return "Answer both parts of this question to continue.";
-      if (v.text.trim().length === 0)
-        return "Write one thing, or tick the box to say there isn't one.";
-      if (v.genuinelyNew === null)
-        return "Say whether that is genuinely new or the same work done faster.";
-    }
-    if (q.sub && !filled(q.sub.id) && filled(q.id))
-      return "Answer both parts of this question to continue.";
-    return "Choose an answer to continue.";
-  };
+  const missingMessage = (q: Question) => missingMessageFor(q, answers);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -256,8 +147,13 @@ export default function SurveyForm({
                 <label htmlFor={`slider-${q.id}`} className="sr-only">
                   {q.question}
                 </label>
-                <div className="mb-3 font-heading text-3xl font-bold text-primary">
-                  {String(answers[q.id] ?? 50)}%
+                <div
+                  className={`mb-3 font-heading text-3xl font-bold ${
+                    filled(q.id) ? "text-primary" : "text-muted-foreground/50"
+                  }`}
+                  aria-live="polite"
+                >
+                  {filled(q.id) ? `${String(answers[q.id])}%` : "Not set"}
                 </div>
                 <input
                   id={`slider-${q.id}`}
@@ -266,8 +162,15 @@ export default function SurveyForm({
                   max={100}
                   step={5}
                   value={Number(answers[q.id] ?? 50)}
+                  aria-valuetext={filled(q.id) ? `${String(answers[q.id])} percent` : "not set"}
                   onChange={(e) => set(q.id, Number(e.target.value))}
-                  className={`w-full accent-primary ${focusRing}`}
+                  // A click or a key press that lands on the value already shown
+                  // fires no change event, so someone who genuinely means 50
+                  // would be stuck. Any deliberate interaction commits the
+                  // current value.
+                  onPointerUp={() => set(q.id, Number(answers[q.id] ?? 50))}
+                  onKeyUp={() => set(q.id, Number(answers[q.id] ?? 50))}
+                  className={`w-full ${filled(q.id) ? "accent-primary" : "accent-muted-foreground/40"} ${focusRing}`}
                 />
                 <div className="flex justify-between text-sm text-muted-foreground">
                   <span>0%</span>
@@ -283,10 +186,6 @@ export default function SurveyForm({
                 value={answers[q.id] as string | undefined}
                 onChange={(v) => set(q.id, v)}
               />
-            )}
-
-            {q.kind === "capability" && (
-              <Capability q={q} value={capabilityOf(q.id)} onChange={(v) => set(q.id, v)} />
             )}
 
             {q.sub && (

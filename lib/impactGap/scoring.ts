@@ -7,6 +7,8 @@ import {
   TIME_OPTIONS,
   D3_LEADER_OPTIONS,
   D3_TEAM_OPTIONS,
+  D4_OPTIONS,
+  D4_NEW_VALUE,
   MECHANISM_LEADER_OPTIONS,
   type DimensionId,
   type LeaderAnswers,
@@ -24,9 +26,9 @@ import {
 // Note on shape: scoring consumes an AGGREGATE, never a list of individual
 // responses. In a team of five, individual rows can be cross referenced back to
 // a person even with no name attached, so the aggregation happens in the
-// database and raw rows never reach the browser. The one exception is the D4
-// free text, which is returned shuffled and without timestamps because quoting
-// the team's own words is the point of the report.
+// database and raw rows never reach the browser at all. Since D4 became a
+// multiple choice question there is no free text anywhere in the tool, so there
+// is nothing left that could identify anyone even in principle.
 
 export type BandId = "aligned" | "minor" | "significant" | "wide";
 
@@ -38,21 +40,14 @@ export interface TeamAggregate {
   d2_hours_mean: number;
   d3_time_use_counts: Record<string, number>;
   d3_mechanism_counts: Record<string, number>;
-  /** % who could not name one, or named one and called it the same work faster. */
+  /** % whose answer was anything other than "something genuinely new". */
   d4_no_new_pct: number;
-  d4_cannot_name_count: number;
-  d4_faster_count: number;
-  d4_new_count: number;
+  /** How many chose each of the four D4 answers. */
+  d4_counts: Record<string, number>;
   /** Mean of D5 on a 0 to 100 scale. */
   d5_mean: number;
   /** Mean of D6 on a 0 to 100 scale. */
   d6_mean: number;
-}
-
-export interface Verbatim {
-  text: string | null;
-  cannot_name: boolean;
-  genuinely_new: string | null;
 }
 
 export interface Band {
@@ -148,9 +143,11 @@ export function aggregateTeamAnswers(team: TeamAnswers[]): TeamAggregate {
       return acc;
     }, {});
 
-  const cannotName = team.filter((t) => t.d4_cannot_name).length;
-  const faster = team.filter((t) => !t.d4_cannot_name && t.d4_genuinely_new === "faster").length;
-  const genuinelyNew = team.filter((t) => !t.d4_cannot_name && t.d4_genuinely_new === "new").length;
+  const d4Counts = team.reduce<Record<string, number>>((acc, t) => {
+    acc[t.d4_capability] = (acc[t.d4_capability] ?? 0) + 1;
+    return acc;
+  }, {});
+  const genuinelyNew = d4Counts[D4_NEW_VALUE] ?? 0;
 
   return {
     count: n,
@@ -158,10 +155,8 @@ export function aggregateTeamAnswers(team: TeamAnswers[]): TeamAggregate {
     d2_hours_mean: mean(team.map((t) => TIME_MIDPOINTS[t.d2_time_saved] ?? 0)),
     d3_time_use_counts: tally("d3_time_use"),
     d3_mechanism_counts: tally("d3_mechanism"),
-    d4_no_new_pct: pct(cannotName + faster),
-    d4_cannot_name_count: cannotName,
-    d4_faster_count: faster,
-    d4_new_count: genuinelyNew,
+    d4_no_new_pct: pct(n - genuinelyNew),
+    d4_counts: d4Counts,
     d5_mean: mean(team.map((t) => THREE_POINT_SCALE[t.d5_told] ?? 0)),
     d6_mean: mean(team.map((t) => THREE_POINT_SCALE[t.d6_human_work] ?? 0)),
   };
@@ -300,29 +295,27 @@ function scoreD3(leader: LeaderAnswers, t: TeamAggregate): DimensionResult {
 }
 
 function scoreD4(leader: LeaderAnswers, t: TeamAggregate): DimensionResult {
-  // The team metric is the gap directly. No interpretation of anybody's free
-  // text, by us or by a model. The follow-up question is what makes this
-  // scoreable, and the words themselves are quoted rather than classified.
+  // The team metric is the gap directly: everyone whose answer was not
+  // "something genuinely new". Faster is worth having and so is a higher
+  // standard, but neither is a capability that did not exist before, and only
+  // one of those three changes what an organisation can take on.
   const gap = clamp(t.d4_no_new_pct);
-  const noNew = t.d4_cannot_name_count + t.d4_faster_count;
+  const noNew = t.count - (t.d4_counts[D4_NEW_VALUE] ?? 0);
+  const leaderSaysNew = leader.d4_capability === D4_NEW_VALUE;
 
   return {
     id: "d4",
     name: DIMENSION_NAMES.d4,
     gap,
     weight: DIMENSION_WEIGHTS.d4,
-    leaderView: leader.d4_cannot_name
-      ? "You could not name one either"
-      : leader.d4_genuinely_new === "faster"
-        ? "You named one, and called it the same work faster"
-        : "You named something genuinely new",
+    leaderView: label(D4_OPTIONS, leader.d4_capability),
     teamView: `${noNew} of ${t.count} named nothing genuinely new`,
     note:
       gap < 25
-        ? "Most of your team can point at something they can do now that was out of reach before. That is the thing everyone else in this test is failing to find, and it did not happen by accident."
-        : leader.d4_cannot_name
-          ? "You could not name one, and most of your team could not either. That agreement is worth something: there is no argument to have here about whether the problem is real, only a decision to make about what to do next."
-          : "Most of your team either could not think of anything, or named something and said honestly that it was the same work done faster. Faster is worth having. It is not the same as being able to do something you could not do before, and only one of those two things changes what an organisation is capable of.",
+        ? "Most of your team can point at something they can do now that was out of reach before. That is the thing almost every other team taking this test cannot find, and it did not happen by accident."
+        : leaderSaysNew
+          ? "You believe something genuinely new became possible. Most of your team describe faster, better, or nothing at all. Those are all worth having and none of them is a new capability, which is the difference this whole test exists to surface."
+          : "You and your team broadly agree that nothing genuinely new has arrived yet. That agreement is worth something: there is no argument to have about whether the problem is real, only a decision to make about what to do next.",
   };
 }
 
@@ -429,17 +422,17 @@ export function scoreImpactGap(leader: LeaderAnswers, team: TeamAggregate): Impa
   ];
 
   const score = clamp(dimensions.reduce((sum, d) => sum + d.gap * d.weight, 0));
-  const noNew = team.d4_cannot_name_count + team.d4_faster_count;
+  const noNew = team.count - (team.d4_counts[D4_NEW_VALUE] ?? 0);
 
   // Written to be forwarded. One sentence, two numbers, no jargon, and nothing
   // in it that needs the rest of the report to make sense.
   const headline =
     `Your team reports saving roughly ${formatHours(team.d2_hours_mean)} per person per week, ` +
-    `and ${noNew} of the ${team.count} people who answered could not name a single thing they can ` +
-    `do now that they could not do eighteen months ago. ` +
+    `and ${noNew} of the ${team.count} people who answered say nothing genuinely new has become ` +
+    `possible in the last eighteen months. ` +
     (noNew === 0
-      ? "Everyone named something genuinely new, which almost never happens."
-      : "Either nothing came to mind, or what came to mind was the same work done faster.");
+      ? "Everyone pointed at something genuinely new, which almost never happens."
+      : "They describe the same work, done faster or to a higher standard, or nothing they can point to at all.");
 
   // AI literacy is a different problem from reallocation, and it needs a
   // different answer. It looks like this: the tools are barely in use, or they

@@ -2,11 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ToolHeader, ToolFooter } from "@/components/impact-gap/ToolShell";
-import SurveyForm, {
-  emptyCapability,
-  type CapabilityValue,
-  type Question,
-} from "@/components/impact-gap/SurveyForm";
+import SurveyForm, { type Question } from "@/components/impact-gap/SurveyForm";
 import { TEAM_QUESTIONS, MIN_TEAM_RESPONSES, type TeamAnswers } from "@/lib/impactGap/questions";
 import { isValidCodeShape } from "@/lib/impactGap/code";
 import { getStatus, submitTeamResponse, hasAnswered } from "@/lib/impactGap/store";
@@ -18,9 +14,6 @@ const questions: Question[] = TEAM_QUESTIONS.map((q) => ({
   help: "help" in q ? q.help : undefined,
   options: "options" in q ? q.options : undefined,
   sub: "sub" in q ? q.sub : undefined,
-  cannotLabel: "cannotLabel" in q ? q.cannotLabel : undefined,
-  followUpQuestion: "followUpQuestion" in q ? q.followUpQuestion : undefined,
-  followUpOptions: "followUpOptions" in q ? q.followUpOptions : undefined,
 }));
 
 type State = "loading" | "ready" | "missing" | "already" | "done";
@@ -47,16 +40,13 @@ export default function TeamSurveyPage({ params }: { params: { code: string } })
     setBusy(true);
     setError(null);
 
-    const capability = (a.d4 as CapabilityValue | undefined) ?? emptyCapability;
 
     const answers: TeamAnswers = {
       d1_frequency: String(a.d1),
       d2_time_saved: String(a.d2),
       d3_time_use: String(a.d3),
       d3_mechanism: String(a.mechanism),
-      d4_capability_text: capability.cannotName ? null : capability.text.trim(),
-      d4_cannot_name: capability.cannotName,
-      d4_genuinely_new: capability.cannotName ? null : capability.genuinelyNew,
+      d4_capability: String(a.d4),
       d5_told: String(a.d5),
       d6_human_work: String(a.d6),
     };

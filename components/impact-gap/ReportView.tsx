@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import DimensionCard from "@/components/impact-gap/DimensionCard";
-import Verbatims from "@/components/impact-gap/Verbatims";
-import type { ImpactGapResult, Verbatim } from "@/lib/impactGap/scoring";
+import D4Breakdown from "@/components/impact-gap/D4Breakdown";
+import type { ImpactGapResult } from "@/lib/impactGap/scoring";
 import { MOVES, LIMITATIONS, LITERACY_NOTE, HUMAN_STEP, CLOSING_LINE } from "@/lib/impactGap/content";
 
 // The report itself, split from the page that fetches it so that the thing on
@@ -16,10 +16,12 @@ import { MOVES, LIMITATIONS, LITERACY_NOTE, HUMAN_STEP, CLOSING_LINE } from "@/l
 
 export default function ReportView({
   result,
-  verbatims,
+  teamCounts,
+  leaderAnswer,
 }: {
   result: ImpactGapResult;
-  verbatims: Verbatim[];
+  teamCounts: Record<string, number>;
+  leaderAnswer: string;
 }) {
   const unsureDimension = result.dimensions.find((d) => d.leaderUnsure);
   const sharedDimension = result.dimensions.find((d) => d.sharedBlindSpot);
@@ -105,16 +107,20 @@ export default function ReportView({
         </div>
       </section>
 
-      {/* 4. Your team's own words */}
+      {/* 4. What the team answered on the question the test is built around */}
       <section className="section-padding bg-white">
         <div className="container max-w-3xl">
-          <h2 className="text-display text-foreground">Your team&apos;s own words</h2>
+          <h2 className="text-display text-foreground">What your team actually said</h2>
           <p className="mt-3 text-body-lg text-muted-foreground">
             Every answer to the question about what they can do now that they could not do eighteen
-            months ago, unedited and shuffled. The blanks are shown too, because a blank is an
-            answer. There is no way to tell who wrote which, by design.
+            months ago. Your own answer is marked. The people with nothing to point to are shown
+            rather than averaged away, because they are the point.
           </p>
-          <Verbatims items={verbatims} />
+          <D4Breakdown
+            counts={teamCounts}
+            total={result.responseCount}
+            leaderAnswer={leaderAnswer}
+          />
         </div>
       </section>
 

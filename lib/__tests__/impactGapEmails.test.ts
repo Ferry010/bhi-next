@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { buildDraft, pickVerbatim } from "@/lib/impactGap/draftEmail";
-import { renderLeaderReportReady, renderInternalAlert } from "@/lib/impactGap/emails";
-import { scoreImpactGap, type TeamAggregate, type Verbatim } from "@/lib/impactGap/scoring";
+import { buildDraft } from "@/lib/impactGap/draftEmail";
+import { leaderPayload, internalPayload, LEADER_TEMPLATE, INTERNAL_TEMPLATE } from "@/lib/impactGap/emails";
+import { scoreImpactGap, type TeamAggregate } from "@/lib/impactGap/scoring";
 import type { LeaderAnswers } from "@/lib/impactGap/questions";
 
 const leader: LeaderAnswers = {
@@ -9,9 +9,7 @@ const leader: LeaderAnswers = {
   d2_time_freed: "3to5",
   d3_time_went: "new_work",
   d3_mechanism: "recognition",
-  d4_capability_text: "We run our own customer research now",
-  d4_cannot_name: false,
-  d4_genuinely_new: "new",
+  d4_capability: "new",
   d5_reallocation: "explicit",
   d6_human_work: "more",
 };
@@ -23,47 +21,19 @@ const team: TeamAggregate = {
   d3_time_use_counts: { new_work: 1, more_same: 4, breathing_room: 2, fill_time: 1 },
   d3_mechanism_counts: { tell_manager: 1, quiet_other_work: 4, quiet_same_pace: 3 },
   d4_no_new_pct: 75,
-  d4_cannot_name_count: 4,
-  d4_faster_count: 2,
-  d4_new_count: 2,
+  d4_counts: { nothing: 4, faster: 2, new: 2 },
   d5_mean: 12.5,
   d6_mean: 37.5,
 };
 
 const result = scoreImpactGap(leader, team);
 
-const verbatims: Verbatim[] = [
-  { text: "I analyse the whole support inbox now instead of a sample.", cannot_name: false, genuinely_new: "new" },
-  { text: null, cannot_name: true, genuinely_new: null },
-  { text: "I get through the same list quicker.", cannot_name: false, genuinely_new: "faster" },
-];
-
-describe("pickVerbatim", () => {
-  it("prefers an honest 'same work, faster' answer over a new capability", () => {
-    expect(pickVerbatim(verbatims)?.genuinely_new).toBe("faster");
-  });
-
-  it("falls back to a genuinely new one when nobody said faster", () => {
-    const only = verbatims.filter((v) => v.genuinely_new !== "faster");
-    expect(pickVerbatim(only)?.genuinely_new).toBe("new");
-  });
-
-  it("returns null when every answer was blank", () => {
-    expect(pickVerbatim([{ text: null, cannot_name: true, genuinely_new: null }])).toBeNull();
-  });
-
-  it("never picks a blank, even one with leftover whitespace text", () => {
-    const picked = pickVerbatim([{ text: "   ", cannot_name: false, genuinely_new: "new" }]);
-    expect(picked).toBeNull();
-  });
-});
-
 describe("the draft personal email", () => {
   const draft = buildDraft({
     leaderName: "Sam Okafor",
     organisation: "Northwind",
     result,
-    verbatims,
+    teamCounts: team.d4_counts,
   });
 
   it("greets by first name only", () => {
@@ -77,8 +47,9 @@ describe("the draft personal email", () => {
     expect(draft.body).toContain("where the time went");
   });
 
-  it("quotes one of the team's own answers", () => {
-    expect(draft.body).toContain("I get through the same list quicker.");
+  it("leads with how many people had nothing to point to", () => {
+    expect(draft.body).toContain("4 of the 8 people");
+    expect(draft.body).toContain("nothing they can point to");
   });
 
   it("includes the mechanism when the pair revealed it", () => {
@@ -93,40 +64,44 @@ describe("the draft personal email", () => {
     expect(draft.body).toContain("[Ferry or Jonathan]");
   });
 
-  it("describes the blanks in words when nobody wrote anything", () => {
+  it("changes shape when nobody found anything genuinely new", () => {
     const d = buildDraft({
       leaderName: null,
       organisation: null,
       result,
-      verbatims: [
-        { text: null, cannot_name: true, genuinely_new: null },
-        { text: null, cannot_name: true, genuinely_new: null },
-      ],
+      teamCounts: { faster: 5, higher_standard: 3 },
     });
-    expect(d.body).toContain("what was not written");
+    expect(d.body).toContain("Nobody on your team said anything genuinely new");
     expect(d.body).toContain("Hi [first name],");
   });
 });
 
-describe("the leader email", () => {
-  const mail = renderLeaderReportReady({ code: "ABCDEFGHJK", leaderName: "Sam", responseCount: 8 });
+describe("the leader email payload", () => {
+  const p = leaderPayload({ code: "ABCDEFGHJK", leaderName: "Sam Okafor", responseCount: 8 });
 
-  it("links to the report", () => {
-    expect(mail.html).toContain("/impact-gap/report/ABCDEFGHJK");
+  it("names a template the edge function actually has registered", () => {
+    // These two strings are a contract with registry.ts in the Supabase
+    // function. An unregistered name is rejected outright, so a typo here means
+    // silence rather than a bad email.
+    expect(LEADER_TEMPLATE).toBe("impact-gap-report-ready");
+    expect(INTERNAL_TEMPLATE).toBe("impact-gap-internal");
   });
 
-  it("promises the personal follow-up", () => {
-    expect(mail.html).toContain("Ferry or Jonathan");
-    expect(mail.html).toContain("working days");
+  it("carries a full report link and the response count", () => {
+    expect(p.reportUrl).toContain("/impact-gap/report/ABCDEFGHJK");
+    expect(p.reportUrl.startsWith("http")).toBe(true);
+    expect(p.responseCount).toBe(8);
   });
 
-  it("says plainly that no sequence follows", () => {
-    expect(mail.html).toContain("only automatic email");
+  it("sends an empty string rather than null when there is no name", () => {
+    // The template greets on the first word of this, and null would render as
+    // the word "null" in someone's inbox.
+    expect(leaderPayload({ code: "ABCDEFGHJK", leaderName: null, responseCount: 5 }).leaderName).toBe("");
   });
 });
 
-describe("the internal alert", () => {
-  const mail = renderInternalAlert({
+describe("the internal alert payload", () => {
+  const p = internalPayload({
     code: "ABCDEFGHJK",
     organisation: "Northwind",
     leaderName: "Sam Okafor",
@@ -135,17 +110,27 @@ describe("the internal alert", () => {
     result,
   });
 
-  it("puts the organisation, score and band in the subject", () => {
-    expect(mail.subject).toBe("Impact Gap: Northwind scored 65, wide gap");
+  it("carries everything needed to triage without opening anything", () => {
+    expect(p.organisation).toBe("Northwind");
+    expect(p.score).toBe(65);
+    expect(p.band).toBe("Wide gap");
+    expect(p.responseCount).toBe(8);
+    expect(p.adminUrl).toContain("/impact-gap/admin/ABCDEFGHJK");
   });
 
-  it("carries the biggest gap and a link to the admin record", () => {
-    expect(mail.html).toContain("Biggest gap");
-    expect(mail.html).toContain("/impact-gap/admin/ABCDEFGHJK");
+  it("names the widest gap, rounded", () => {
+    expect(p.biggestGapName).toBe("Where the time went");
+    expect(p.biggestGapValue).toBe(100);
+    expect(Number.isInteger(p.biggestGapValue)).toBe(true);
   });
 
-  it("says so when there is no address to reply to", () => {
-    const m = renderInternalAlert({
+  it("flags the mechanism and the literacy pointer as booleans", () => {
+    expect(p.mechanismFired).toBe(true);
+    expect(p.literacyLikely).toBe(false);
+  });
+
+  it("degrades to empty strings when contact details were never given", () => {
+    const q = internalPayload({
       code: "ABCDEFGHJK",
       organisation: null,
       leaderName: null,
@@ -153,20 +138,7 @@ describe("the internal alert", () => {
       leaderRole: null,
       result,
     });
-    expect(m.html).toContain("no personal email possible");
-    expect(m.subject).toContain("Unknown organisation");
-  });
-
-  it("escapes free text so a stray angle bracket cannot break the markup", () => {
-    const m = renderInternalAlert({
-      code: "ABCDEFGHJK",
-      organisation: '<script>alert("x")</script>',
-      leaderName: null,
-      leaderEmail: null,
-      leaderRole: null,
-      result,
-    });
-    expect(m.html).not.toContain("<script>");
-    expect(m.html).toContain("&lt;script&gt;");
+    expect(q.organisation).toBe("");
+    expect(q.leaderEmail).toBe("");
   });
 });

@@ -1,4 +1,5 @@
-import { biggestGap, type ImpactGapResult, type Verbatim } from "./scoring";
+import { biggestGap, type ImpactGapResult } from "./scoring";
+import { D4_OPTIONS, D4_NEW_VALUE } from "./questions";
 
 // The drafting aid for the personal email.
 //
@@ -17,55 +18,35 @@ export interface Draft {
   body: string;
 }
 
-/**
- * Picks the line worth quoting back.
- *
- * Preference order is deliberate. Something the team called "the same work,
- * faster" is the most useful quote in the whole report, because it is an honest
- * answer that proves the point without anybody having to argue it. A genuinely
- * new capability is the next best thing to open with when there is one. If
- * every answer was blank, that is said in words instead, because "they all left
- * it empty" is a stronger sentence than any quotation would be.
- */
-export function pickVerbatim(verbatims: Verbatim[]): Verbatim | null {
-  const withText = verbatims.filter((v) => !v.cannot_name && v.text?.trim());
-  return (
-    withText.find((v) => v.genuinely_new === "faster") ??
-    withText.find((v) => v.genuinely_new === "new") ??
-    withText[0] ??
-    null
-  );
-}
-
 export function buildDraft(args: {
   leaderName: string | null;
   organisation: string | null;
   result: ImpactGapResult;
-  verbatims: Verbatim[];
+  teamCounts: Record<string, number>;
 }): Draft {
-  const { result, verbatims } = args;
+  const { result, teamCounts } = args;
   const first = args.leaderName?.trim().split(/\s+/)[0];
   const top = biggestGap(result.dimensions);
-  const quote = pickVerbatim(verbatims);
-  const blanks = verbatims.filter((v) => v.cannot_name || !v.text?.trim()).length;
+  const nothing = teamCounts.nothing ?? 0;
+  const faster = teamCounts.faster ?? 0;
+  const higher = teamCounts.higher_standard ?? 0;
+  const genuinelyNew = teamCounts[D4_NEW_VALUE] ?? 0;
+  const labelFor = (v: string) => D4_OPTIONS.find((o) => o.value === v)?.label ?? v;
 
   const org = args.organisation?.trim();
   const subject = org
     ? `Your Impact Gap result, and one thing that stood out`
     : `Your Impact Gap result`;
 
-  // The quote paragraph changes shape depending on what the team actually gave
-  // us, because a paragraph that says "one of your team wrote: nothing" reads
-  // like a bug rather than a finding.
-  const quoteBlock = quote
-    ? `The line I keep coming back to is this one, from someone on your team:\n\n  "${quote.text?.trim()}"\n\n${
-        quote.genuinely_new === "faster"
-          ? "They were asked whether that was genuinely new or the same work done faster, and they said faster. That is an honest answer and a common one, and it is the whole finding in a single sentence."
-          : "That is a real capability, and it is worth noticing who is already doing this so that it spreads rather than stays in one place."
-      }`
-    : blanks > 0
-      ? `The thing that stood out is what was not written. ${blanks} of the ${result.responseCount} people who answered could not name a single thing they can do now that they could not do eighteen months ago. Nobody wrote anything unkind. They simply had nothing to put down, which is a harder result to read than a complaint would have been.`
-      : `[No free text came back on this one, so open with something from the six comparisons instead.]`;
+  // Shaped by what the team actually said, because "4 people had nothing to
+  // point to" and "everyone found something new" need completely different
+  // opening paragraphs.
+  const quoteBlock =
+    nothing > 0
+      ? `The number I keep coming back to is this one: ${nothing} of the ${result.responseCount} people who answered said there is nothing they can point to at all. Not that AI is useless to them, and not a complaint about anything. They simply had nothing to put down, which is a harder result to read than a complaint would have been.`
+      : genuinelyNew === 0
+        ? `Nobody on your team said anything genuinely new has become possible. ${faster} described the same work done faster and ${higher} described it done to a higher standard. Both of those are worth having. Neither is a thing the team could not do before, and only one of the three changes what you can take on.`
+        : `${genuinelyNew} of the ${result.responseCount} people who answered pointed at something genuinely new, and the rest chose "${labelFor(faster >= higher ? "faster" : "higher_standard")}". That split is worth looking at, because whatever those ${genuinelyNew} are doing is the thing worth spreading.`;
 
   const mechanismBlock = result.mechanism.revealed
     ? `\n\nOne pattern worth pointing out. You said that halving a task would earn someone recognition, and ${Math.round(

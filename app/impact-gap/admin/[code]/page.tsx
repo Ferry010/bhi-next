@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import AdminGate from "@/components/impact-gap/AdminGate";
 import DimensionCard from "@/components/impact-gap/DimensionCard";
-import Verbatims from "@/components/impact-gap/Verbatims";
+import D4Breakdown from "@/components/impact-gap/D4Breakdown";
 import { Button } from "@/components/ui/button";
 import { STATUSES, type RecordDetail } from "@/lib/impactGap/adminTypes";
 import { MIN_TEAM_RESPONSES } from "@/lib/impactGap/questions";
@@ -304,9 +304,13 @@ export default function AdminRecordPage({ params }: { params: { code: string } }
 
             <section className="mt-8">
               <h2 className="font-heading text-lg font-bold text-foreground">
-                All {record.verbatims.length} answers in their own words
+                What the team said on Q4
               </h2>
-              <Verbatims items={record.verbatims} />
+              <D4Breakdown
+                counts={record.teamCounts}
+                total={record.responseCount}
+                leaderAnswer={record.leader.d4_capability}
+              />
             </section>
 
             <p className="mt-8 text-sm text-muted-foreground">

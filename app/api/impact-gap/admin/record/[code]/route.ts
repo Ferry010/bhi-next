@@ -27,7 +27,7 @@ export async function GET(_request: Request, { params }: { params: { code: strin
           leaderName: record.leaderName,
           organisation: record.organisation,
           result: record.result,
-          verbatims: record.verbatims,
+          teamCounts: record.teamCounts,
         })
       : null;
 

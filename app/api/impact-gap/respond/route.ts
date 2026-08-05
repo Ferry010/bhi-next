@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { isValidCodeShape } from "@/lib/impactGap/code";
-import { MIN_TEAM_RESPONSES, CAPABILITY_MAX_LENGTH } from "@/lib/impactGap/questions";
+import { MIN_TEAM_RESPONSES } from "@/lib/impactGap/questions";
 import { notifyReportReady } from "@/lib/impactGap/notify";
 
 export const dynamic = "force-dynamic";
@@ -20,6 +20,7 @@ const ALLOWED: Record<string, readonly string[]> = {
   d2_time_saved: ["none", "under1", "1to3", "3to5", "over5"],
   d3_time_use: ["new_work", "more_same", "breathing_room", "fill_time"],
   d3_mechanism: ["tell_manager", "quiet_other_work", "quiet_same_pace"],
+  d4_capability: ["new", "higher_standard", "faster", "nothing"],
   d5_told: ["yes", "somewhat", "no"],
   d6_human_work: ["more", "same", "less"],
 };
@@ -60,15 +61,6 @@ export async function POST(request: Request) {
     if (!values.includes(String(a[field]))) return fail("bad_request", 400);
   }
 
-  const cannotName = a.d4_cannot_name === true;
-  const rawText = typeof a.d4_capability_text === "string" ? a.d4_capability_text.trim() : "";
-  const genuinelyNew = a.d4_genuinely_new === "new" || a.d4_genuinely_new === "faster"
-    ? String(a.d4_genuinely_new)
-    : null;
-
-  if (!cannotName && (rawText.length === 0 || genuinelyNew === null)) return fail("bad_request", 400);
-  if (rawText.length > CAPABILITY_MAX_LENGTH) return fail("bad_request", 400);
-
   try {
     // Inside the try on purpose. This throws when the service role key is
     // missing, and a team member halfway through answering should get a
@@ -92,9 +84,7 @@ export async function POST(request: Request) {
       d2_time_saved: a.d2_time_saved,
       d3_time_use: a.d3_time_use,
       d3_mechanism: a.d3_mechanism,
-      d4_capability_text: cannotName ? null : rawText,
-      d4_cannot_name: cannotName,
-      d4_genuinely_new: cannotName ? null : genuinelyNew,
+      d4_capability: a.d4_capability,
       d5_told: a.d5_told,
       d6_human_work: a.d6_human_work,
     } as never);

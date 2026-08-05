@@ -10,9 +10,6 @@ export type DimensionId = "d1" | "d2" | "d3" | "d4" | "d5" | "d6";
 
 export const MIN_TEAM_RESPONSES = 5;
 
-/** Free text answers are capped at both ends of the tool and in the database. */
-export const CAPABILITY_MAX_LENGTH = 200;
-
 export const DIMENSION_WEIGHTS: Record<DimensionId, number> = {
   d1: 0.10, // Adoption. Usually small, and that is the point.
   d2: 0.15, // Time freed
@@ -89,11 +86,21 @@ export const MECHANISM_TEAM_OPTIONS = [
   { value: "quiet_same_pace", label: "Keep quiet and keep the same pace" },
 ] as const;
 
-/** D4 follow-up, asked of both sides in the same words. */
-export const GENUINELY_NEW_OPTIONS = [
-  { value: "new", label: "Genuinely new" },
-  { value: "faster", label: "Same work, faster" },
+/**
+ * D4, asked of both sides in exactly the same words so the two answers compare
+ * directly. Only "new" counts as a capability that did not exist before. Faster
+ * and higher standard are both worth having, and neither is the same thing as
+ * being able to do something you could not do at all.
+ */
+export const D4_OPTIONS = [
+  { value: "new", label: "Something genuinely new, that was not possible before" },
+  { value: "higher_standard", label: "The same work, to a noticeably higher standard" },
+  { value: "faster", label: "The same work, just faster" },
+  { value: "nothing", label: "Nothing I can point to" },
 ] as const;
+
+/** The only answer that counts as a new capability. */
+export const D4_NEW_VALUE = "new";
 
 export const D5_LEADER_OPTIONS = [
   { value: "explicit", label: "Yes, explicitly" },
@@ -132,9 +139,7 @@ export interface LeaderAnswers {
   d2_time_freed: string;
   d3_time_went: string;
   d3_mechanism: string;
-  d4_capability_text: string | null;
-  d4_cannot_name: boolean;
-  d4_genuinely_new: string | null;
+  d4_capability: string;
   d5_reallocation: string;
   d6_human_work: string;
 }
@@ -144,9 +149,7 @@ export interface TeamAnswers {
   d2_time_saved: string;
   d3_time_use: string;
   d3_mechanism: string;
-  d4_capability_text: string | null;
-  d4_cannot_name: boolean;
-  d4_genuinely_new: string | null;
+  d4_capability: string;
   d5_told: string;
   d6_human_work: string;
 }
@@ -184,12 +187,10 @@ export const LEADER_QUESTIONS = [
   },
   {
     id: "d4",
-    kind: "capability",
-    question: "Name one thing your team can do now that it could not do eighteen months ago.",
-    help: "One sentence is plenty. This is the question the whole test is built around, so take a moment on it.",
-    cannotLabel: "I cannot think of one",
-    followUpQuestion: "Is that genuinely new, or the same work done faster?",
-    followUpOptions: GENUINELY_NEW_OPTIONS,
+    kind: "single",
+    question: "What can your team do now that it could not do eighteen months ago?",
+    help: "This is the question the whole test is built around, so take a moment on it. \"Nothing I can point to\" is a real answer and a common one.",
+    options: D4_OPTIONS,
   },
   {
     id: "d5",
@@ -234,12 +235,10 @@ export const TEAM_QUESTIONS = [
   },
   {
     id: "d4",
-    kind: "capability",
-    question: "Name one thing you can do now that you could not do eighteen months ago.",
-    help: "One sentence is plenty. If nothing comes to mind, tick the box. That is a real answer and it counts.",
-    cannotLabel: "I cannot think of one",
-    followUpQuestion: "Is that genuinely new, or the same work done faster?",
-    followUpOptions: GENUINELY_NEW_OPTIONS,
+    kind: "single",
+    question: "What can you do now that you could not do eighteen months ago?",
+    help: "Answer with what is true. \"Nothing I can point to\" is a real answer, it is a common one, and it is genuinely useful here.",
+    options: D4_OPTIONS,
   },
   {
     id: "d5",

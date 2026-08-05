@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { ToolHeader, ToolFooter } from "@/components/impact-gap/ToolShell";
 import ReportView from "@/components/impact-gap/ReportView";
 import { getReport } from "@/lib/impactGap/store";
-import { scoreImpactGap, type ImpactGapResult, type Verbatim } from "@/lib/impactGap/scoring";
+import { scoreImpactGap, type ImpactGapResult } from "@/lib/impactGap/scoring";
 import { isValidCodeShape } from "@/lib/impactGap/code";
 
 type State = "loading" | "ok" | "missing" | "offline";
@@ -16,7 +16,8 @@ export default function ReportPage({ params }: { params: { code: string } }) {
   const router = useRouter();
   const [state, setState] = useState<State>("loading");
   const [result, setResult] = useState<ImpactGapResult | null>(null);
-  const [verbatims, setVerbatims] = useState<Verbatim[]>([]);
+  const [teamCounts, setTeamCounts] = useState<Record<string, number>>({});
+  const [leaderAnswer, setLeaderAnswer] = useState("");
 
   useEffect(() => {
     if (!isValidCodeShape(code)) {
@@ -36,7 +37,8 @@ export default function ReportPage({ params }: { params: { code: string } }) {
       }
       if (r.data.leader && r.data.team) {
         setResult(scoreImpactGap(r.data.leader, r.data.team));
-        setVerbatims(r.data.verbatims ?? []);
+        setTeamCounts(r.data.team.d4_counts);
+        setLeaderAnswer(r.data.leader.d4_capability);
         setState("ok");
       } else {
         setState("offline");
@@ -94,7 +96,7 @@ export default function ReportPage({ params }: { params: { code: string } }) {
   return (
     <>
       <ToolHeader />
-      <ReportView result={result} verbatims={verbatims} />
+      <ReportView result={result} teamCounts={teamCounts} leaderAnswer={leaderAnswer} />
       <ToolFooter />
     </>
   );

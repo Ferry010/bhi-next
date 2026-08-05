@@ -3,11 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ToolHeader, ToolFooter } from "@/components/impact-gap/ToolShell";
-import SurveyForm, {
-  emptyCapability,
-  type CapabilityValue,
-  type Question,
-} from "@/components/impact-gap/SurveyForm";
+import SurveyForm, { type Question } from "@/components/impact-gap/SurveyForm";
 import { LEADER_QUESTIONS, type LeaderAnswers } from "@/lib/impactGap/questions";
 import { generateCode } from "@/lib/impactGap/code";
 import { createSession } from "@/lib/impactGap/store";
@@ -19,9 +15,6 @@ const questions: Question[] = LEADER_QUESTIONS.map((q) => ({
   help: "help" in q ? q.help : undefined,
   options: "options" in q ? q.options : undefined,
   sub: "sub" in q ? q.sub : undefined,
-  cannotLabel: "cannotLabel" in q ? q.cannotLabel : undefined,
-  followUpQuestion: "followUpQuestion" in q ? q.followUpQuestion : undefined,
-  followUpOptions: "followUpOptions" in q ? q.followUpOptions : undefined,
 }));
 
 export default function ImpactGapStartPage() {
@@ -33,18 +26,13 @@ export default function ImpactGapStartPage() {
     setBusy(true);
     setError(null);
 
-    const capability = (a.d4 as CapabilityValue | undefined) ?? emptyCapability;
 
     const answers: LeaderAnswers = {
       d1_adoption_estimate: Number(a.d1 ?? 50),
       d2_time_freed: String(a.d2),
       d3_time_went: String(a.d3),
       d3_mechanism: String(a.mechanism),
-      // The text and the follow-up are cleared together when someone says there
-      // isn't one, so a stale sentence can never be quoted back in the report.
-      d4_capability_text: capability.cannotName ? null : capability.text.trim(),
-      d4_cannot_name: capability.cannotName,
-      d4_genuinely_new: capability.cannotName ? null : capability.genuinelyNew,
+      d4_capability: String(a.d4),
       d5_reallocation: String(a.d5),
       d6_human_work: String(a.d6),
     };
