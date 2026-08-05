@@ -63,7 +63,7 @@ const faqs = [
   },
   {
     q: "Where does the training take place?",
-    a: "In-company at your location anywhere in Europe, at our Rotterdam office, or at an off-site venue. Remote and hybrid formats are available too.",
+    a: "In-company at your location wherever you are, at our Rotterdam office, or at an off-site venue. Remote and hybrid formats are available too.",
   },
   {
     q: "Can we customise the programme?",

@@ -31,7 +31,7 @@ const faqs = [
   { q: "Can sessions be delivered in English?", a: "Yes. Both Ferry and Jonathan deliver in Dutch and English with equal fluency." },
   { q: "Do participants get the book?", a: "Yes. Every participant in our in-person sessions receives a copy of Brand Humanizing, the book." },
   { q: "What is the intake process?", a: "A short conversation to understand your organisation. No questionnaires. A real conversation that shapes the session." },
-  { q: "Can you come to us?", a: "Yes. We deliver in-house anywhere in Europe, and can host in Rotterdam. Remote delivery is also available." },
+  { q: "Can you come to us?", a: "Yes. We deliver in-house wherever you are, and can host in Rotterdam. Remote delivery is also available." },
 ];
 
 export default function LearningPage() {

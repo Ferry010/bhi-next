@@ -49,7 +49,7 @@ const teamMembers = [
 ];
 
 const faqs = [
-  { q: "Where are you based?", a: "Rotterdam, the Netherlands. We deliver sessions across Europe and remotely worldwide." },
+  { q: "Where are you based?", a: "Rotterdam, the Netherlands. We deliver sessions worldwide, in person and remotely." },
   { q: "How many organisations have you worked with?", a: "50+ organisations across the globe, spanning financial services, healthcare, tech, FMCG, government, and education." },
   { q: "Can Ferry speak at our event?", a: "Yes. Keynotes and event appearances go through Speakers Academy. Workshops and sessions are booked directly through this website." },
   { q: "Do you work with non-profits?", a: "Yes, and we offer a reduced rate for non-profit organizations. Reach out directly." },
