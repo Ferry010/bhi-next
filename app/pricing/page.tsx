@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Train Your Team | Brand Humanizing Institute",
   description:
     "Three ways to give your team the human edge in the AI era: a keynote, a full-day course, or a multi-day leadership programme. Every one includes the book. Trusted by teams at Unilever, VodafoneZiggo, GSK and more.",
-  openGraph: { images: [{ url: "/og/pricing.jpg" }] },
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const tiers = [

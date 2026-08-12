@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Certification | Brand Humanizing Institute",
   description:
     "Two ways to prove it. Certify your team's AI literacy today via AIGA, or join the waitlist to become a certified Brand Humanizer, the person organisations call to stay human through the AI shift.",
-  openGraph: { images: [{ url: "/og/pricing.jpg" }] },
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const aiLiteracyOutcomes = [
