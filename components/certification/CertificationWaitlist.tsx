@@ -35,7 +35,7 @@ export default function CertificationWaitlist() {
 
   if (submitted) {
     return (
-      <p className="text-[#C9A96E] font-heading font-semibold mt-4">
+      <p className="text-primary font-heading font-semibold mt-4">
         You&apos;re on the list. We&apos;ll tell you the moment it opens.
       </p>
     );
@@ -50,19 +50,19 @@ export default function CertificationWaitlist() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="rounded-full h-11 px-5 flex-1 border border-white/20 bg-white/5 text-white placeholder:text-white/40 focus-visible:ring-[#5AA6B2]"
+          className="rounded-full h-11 px-5 flex-1 bg-white"
         />
         <Button
           type="submit"
           disabled={loading}
-          className="rounded-full bg-[#C9A96E] text-[#0F1117] hover:brightness-110 btn-scale font-heading font-semibold h-11 px-6 whitespace-nowrap"
+          className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold h-11 px-6 whitespace-nowrap"
         >
           {loading ? "Adding you…" : "Join the waitlist →"}
         </Button>
       </form>
-      <p className="text-caption text-white/40 mt-3">
+      <p className="text-caption text-muted-foreground mt-3">
         No spam. One email when the certification opens. By joining you agree to our{" "}
-        <a href="/privacy" className="underline hover:text-white/70">Privacy Policy</a>.
+        <a href="/privacy" className="underline hover:text-foreground">Privacy Policy</a>.
       </p>
     </>
   );
