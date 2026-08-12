@@ -159,7 +159,10 @@ export default function PyramidScrollReveal() {
                   <g key={layer.label}>
                     <polygon
                       points={`${cx - halfTop},${y} ${cx + halfTop},${y} ${cx + halfBot},${y + layerHeight} ${cx - halfBot},${y + layerHeight}`}
-                      fill={isActive ? layer.activeColor : "hsl(240, 20%, 20%)"}
+                      // Inactive layers dim to a muted brand navy rather than a
+                      // near-black hole, so their label stays legible before the
+                      // scroll reveal lights them up.
+                      fill={isActive ? layer.activeColor : "hsl(240, 26%, 32%)"}
                       stroke={isCurrent ? "hsl(21, 100%, 58%)" : "transparent"}
                       strokeWidth={isCurrent ? 2 : 0}
                       className="transition-all duration-500"
@@ -169,7 +172,10 @@ export default function PyramidScrollReveal() {
                       x={cx}
                       y={y + layerHeight / 2 + 5}
                       textAnchor="middle"
-                      fill={isActive ? "white" : "hsl(240, 20%, 50%)"}
+                      // Always a light tone: white when active, a readable light
+                      // lavender when not. The reveal is carried by the fill
+                      // colour, never by making the text disappear.
+                      fill={isActive ? "white" : "hsl(240, 25%, 85%)"}
                       fontSize="11"
                       fontWeight="700"
                       fontFamily="Plus Jakarta Sans, sans-serif"
