@@ -2,7 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+// On-brand palette: a monochrome royal-blue pyramid on a light cream section.
+// Layers deepen toward the foundation and brighten toward the apex, all dark
+// enough to carry white labels. The current layer is picked out in the brand
+// red. Inactive layers are a pale blue-grey with dark text, so every label is
+// readable from the moment the section appears, before the scroll reveal.
+const BRAND = {
+  inactiveFill: "hsl(214, 30%, 88%)",
+  inactiveText: "hsl(214, 40%, 34%)",
+  currentStroke: "hsl(2, 74%, 52%)",
+};
 
 const layers = [
   {
@@ -11,8 +21,7 @@ const layers = [
     title: "Human-Technology Fit",
     desc: "Before any strategy is possible, your organization needs a clear, honest map. Which parts of your work does technology genuinely do better than humans? Which parts should only ever be human? This is the foundation everything else is built on.",
     why: "Without this clarity, every decision above it is guesswork.",
-    color: "hsl(240, 33%, 25%)",
-    activeColor: "hsl(240, 33%, 35%)",
+    activeColor: "hsl(214, 82%, 30%)",
   },
   {
     label: "Company / Employee Fit",
@@ -20,8 +29,7 @@ const layers = [
     title: "Company / Employee Fit",
     desc: "Your employees are your first brand. Before any customer encounters your organization, a human being inside it decided how to show up. Disengaged employees produce disengaged customer experiences.",
     why: "Culture is not a department. It is the compound effect of every human decision inside your organization.",
-    color: "hsl(241, 50%, 40%)",
-    activeColor: "hsl(241, 50%, 50%)",
+    activeColor: "hsl(214, 82%, 35%)",
   },
   {
     label: "Product / Market Fit",
@@ -29,8 +37,7 @@ const layers = [
     title: "Product / Market Fit",
     desc: "You need something real. Something people genuinely want, in a form that actually works for them. This is not a startup concept. It applies at every stage of organizational growth.",
     why: "No amount of branding saves a product nobody needs.",
-    color: "hsl(241, 60%, 50%)",
-    activeColor: "hsl(241, 60%, 60%)",
+    activeColor: "hsl(214, 80%, 40%)",
   },
   {
     label: "Branding & Positioning",
@@ -38,8 +45,7 @@ const layers = [
     title: "Branding and Positioning",
     desc: "The honest story of why your organization exists and who it genuinely serves. Human brands are built on truth, not on what the marketing department wishes were true.",
     why: "A brand that does not match reality is not a brand. It is a liability.",
-    color: "hsl(21, 80%, 45%)",
-    activeColor: "hsl(21, 100%, 58%)",
+    activeColor: "hsl(214, 78%, 45%)",
   },
   {
     label: "Company / Client Fit",
@@ -47,8 +53,7 @@ const layers = [
     title: "Company / Client Fit",
     desc: "Not all growth is good growth. The right clients for the right organization. Brand Humanizing organizations are honest about who they serve best. And who they do not.",
     why: "Saying no to the wrong client is as important as saying yes to the right one.",
-    color: "hsl(21, 90%, 52%)",
-    activeColor: "hsl(21, 100%, 58%)",
+    activeColor: "hsl(214, 76%, 49%)",
   },
   {
     label: "Growth",
@@ -56,8 +61,7 @@ const layers = [
     title: "Growth",
     desc: "Not just financial growth. Growth in trust, reputation, and the quality of relationships. The compound effect of getting every layer below this right.",
     why: "Sustainable growth is not a goal. It is a symptom of a healthy organization.",
-    color: "hsl(21, 100%, 58%)",
-    activeColor: "hsl(21, 100%, 65%)",
+    activeColor: "hsl(214, 74%, 52%)",
   },
 ];
 
@@ -72,12 +76,12 @@ function MobilePyramid() {
               className="rounded-2xl p-1 mb-3"
               style={{ background: layer.activeColor, height: "8px", width: `${widthPercent}%`, marginLeft: "auto", marginRight: "auto" }}
             />
-            <div className="bg-primary-foreground/5 border border-accent/20 rounded-2xl p-6">
+            <div className="bg-white border border-border rounded-2xl p-6 shadow-[0_4px_24px_rgba(18,21,46,0.06)]">
               <span className="text-accent text-xs font-heading font-semibold uppercase tracking-wider">{layer.overline}</span>
-              <h3 className="font-heading font-bold text-lg text-primary-foreground mt-2 mb-3">{layer.title}</h3>
-              <p className="text-sm text-primary-foreground/70 leading-relaxed mb-3">{layer.desc}</p>
-              <div className="bg-accent/5 border border-accent/10 rounded-xl p-3">
-                <p className="text-xs text-accent/80 italic">{layer.why}</p>
+              <h3 className="font-heading font-bold text-lg text-foreground mt-2 mb-3">{layer.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">{layer.desc}</p>
+              <div className="bg-cream rounded-xl p-3">
+                <p className="text-xs text-primary italic">{layer.why}</p>
               </div>
             </div>
           </div>
@@ -90,7 +94,6 @@ function MobilePyramid() {
 export default function PyramidScrollReveal() {
   const isMobile = useIsMobile();
   const [activeLayer, setActiveLayer] = useState(-1);
-  const [allDone, setAllDone] = useState(false);
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -101,12 +104,7 @@ export default function PyramidScrollReveal() {
       if (!el) return;
       const obs = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveLayer(i);
-            if (i === layers.length - 1) {
-              setTimeout(() => setAllDone(true), 600);
-            }
-          }
+          if (entry.isIntersecting) setActiveLayer(i);
         },
         { threshold: 0.5, rootMargin: "-20% 0px -20% 0px" }
       );
@@ -119,10 +117,10 @@ export default function PyramidScrollReveal() {
 
   if (isMobile) {
     return (
-      <section className="bg-near-black text-primary-foreground section-padding" id="pyramid">
+      <section className="bg-cream text-foreground section-padding" id="pyramid">
         <div className="container max-w-xl">
-          <h2 className="text-display text-primary-foreground mb-3">The Brand Humanizing Pyramid</h2>
-          <p className="text-body-lg text-primary-foreground/70 mb-10">Every layer depends on everything beneath it. You cannot skip ahead.</p>
+          <h2 className="text-display text-foreground mb-3">The Brand Humanizing Pyramid</h2>
+          <p className="text-body-lg text-muted-foreground mb-10">Every layer depends on everything beneath it. You cannot skip ahead.</p>
           <MobilePyramid />
         </div>
       </section>
@@ -138,11 +136,11 @@ export default function PyramidScrollReveal() {
   const step = (maxHalf - minHalf) / totalLayers;
 
   return (
-    <section className="bg-near-black text-primary-foreground" id="pyramid">
+    <section className="bg-cream text-foreground" id="pyramid">
       <div className="container max-w-6xl">
         <div className="py-16">
-          <h2 className="text-display md:text-display-lg text-primary-foreground mb-3">The Brand Humanizing Pyramid</h2>
-          <p className="text-body-lg text-primary-foreground/70 mb-4 max-w-2xl">Every layer depends on everything beneath it. You cannot skip ahead.</p>
+          <h2 className="text-display md:text-display-lg text-foreground mb-3">The Brand Humanizing Pyramid</h2>
+          <p className="text-body-lg text-muted-foreground mb-4 max-w-2xl">Every layer depends on everything beneath it. You cannot skip ahead.</p>
         </div>
 
         <div className="relative flex gap-12" style={{ minHeight: `${layers.length * 80}vh` }}>
@@ -159,23 +157,19 @@ export default function PyramidScrollReveal() {
                   <g key={layer.label}>
                     <polygon
                       points={`${cx - halfTop},${y} ${cx + halfTop},${y} ${cx + halfBot},${y + layerHeight} ${cx - halfBot},${y + layerHeight}`}
-                      // Inactive layers dim to a muted brand navy rather than a
-                      // near-black hole, so their label stays legible before the
-                      // scroll reveal lights them up.
-                      fill={isActive ? layer.activeColor : "hsl(240, 26%, 32%)"}
-                      stroke={isCurrent ? "hsl(21, 100%, 58%)" : "transparent"}
+                      fill={isActive ? layer.activeColor : BRAND.inactiveFill}
+                      stroke={isCurrent ? BRAND.currentStroke : "transparent"}
                       strokeWidth={isCurrent ? 2 : 0}
                       className="transition-all duration-500"
-                      style={{ filter: isCurrent ? "drop-shadow(0 0 12px hsl(21 100% 58% / 0.4))" : "none" }}
+                      style={{ filter: isCurrent ? "drop-shadow(0 0 12px hsl(2 74% 52% / 0.35))" : "none" }}
                     />
                     <text
                       x={cx}
                       y={y + layerHeight / 2 + 5}
                       textAnchor="middle"
-                      // Always a light tone: white when active, a readable light
-                      // lavender when not. The reveal is carried by the fill
-                      // colour, never by making the text disappear.
-                      fill={isActive ? "white" : "hsl(240, 25%, 85%)"}
+                      // White on the saturated blue fills, dark on the pale
+                      // inactive fill. Readable in both states.
+                      fill={isActive ? "white" : BRAND.inactiveText}
                       fontSize="11"
                       fontWeight="700"
                       fontFamily="Plus Jakarta Sans, sans-serif"
@@ -194,13 +188,13 @@ export default function PyramidScrollReveal() {
               <div
                 key={layer.label}
                 ref={(el) => { panelRefs.current[i] = el; }}
-                className={`transition-all duration-700 ${activeLayer >= i ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
+                className={`transition-all duration-700 ${activeLayer >= i ? "opacity-100 translate-x-0" : "opacity-40 translate-x-8"}`}
               >
                 <span className="text-accent text-xs font-heading font-semibold uppercase tracking-wider">{layer.overline}</span>
-                <h3 className="font-heading font-bold text-2xl text-primary-foreground mt-2 mb-4">{layer.title}</h3>
-                <p className="text-primary-foreground/70 leading-relaxed mb-4">{layer.desc}</p>
-                <div className="bg-primary-foreground/5 border border-accent/10 rounded-xl p-4">
-                  <p className="text-sm text-accent/80 italic">&ldquo;{layer.why}&rdquo;</p>
+                <h3 className="font-heading font-bold text-2xl text-foreground mt-2 mb-4">{layer.title}</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">{layer.desc}</p>
+                <div className="bg-white border border-border rounded-xl p-4 shadow-[0_4px_24px_rgba(18,21,46,0.05)]">
+                  <p className="text-sm text-primary italic">&ldquo;{layer.why}&rdquo;</p>
                 </div>
               </div>
             ))}
