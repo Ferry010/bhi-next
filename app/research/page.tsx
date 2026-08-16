@@ -127,6 +127,44 @@ export default function ResearchPage() {
           </div>
         </section>
 
+        {/* The method in practice — proof, kept distinct from the formal studies.
+            White section (cream FAQ follows it) with a cream card, matching the
+            pattern used by the Published research block above. */}
+        <section className="section-padding bg-white">
+          <div className="container max-w-4xl">
+            <ScrollRevealSection>
+              <h2 className="text-display md:text-display-lg text-foreground mb-3">The method, in practice</h2>
+              <p className="text-body-lg text-muted-foreground mb-8 max-w-2xl">
+                Not a study. A thing we built. Brand Humanizing applied to our own work, until it
+                turned into a product.
+              </p>
+            </ScrollRevealSection>
+            <ScrollRevealSection>
+              <div className="rounded-2xl bg-cream border-2 border-accent/30 p-6 md:p-8">
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div className="flex-1">
+                    <span className="text-caption font-heading font-semibold uppercase tracking-wider text-accent">
+                      Proof
+                    </span>
+                    <h3 className="font-heading font-bold text-xl mt-3 mb-3 text-foreground">Saylience</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      We let technology take the predictable half of interview work, transcription
+                      and sourcing, and reinvested the time into deeper human interviews. It became a
+                      product used by teams in two countries. The clearest proof we have that the
+                      method works, tested on ourselves.
+                    </p>
+                  </div>
+                  <Link href="/research/saylience">
+                    <Button className="rounded-full font-heading font-semibold px-5 h-10 text-sm gap-2 shrink-0 bg-foreground text-background hover:bg-foreground/80">
+                      See the story <ArrowRight className="w-3.5 h-3.5" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </ScrollRevealSection>
+          </div>
+        </section>
+
         <FAQSection faqs={faqs} variant="light" />
         <Newsletter />
       </main>
