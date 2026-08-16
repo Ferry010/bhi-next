@@ -33,7 +33,7 @@ const humanWork = [
   "Sitting in the room long enough to earn the real answer",
 ];
 
-export default function SaylienceProofPage() {
+export default function SaylienceInPracticePage() {
   return (
     <>
       <Navbar variant="light" />
@@ -107,12 +107,12 @@ export default function SaylienceProofPage() {
           </div>
         </section>
 
-        {/* Why this is the proof — the two columns */}
+        {/* Where the human/machine line falls — the two columns */}
         <section className="section-padding bg-cream">
           <div className="container max-w-5xl">
             <ScrollRevealSection>
               <div className="text-center mb-14">
-                <h2 className="text-display md:text-display-lg text-foreground">Why this is the proof</h2>
+                <h2 className="text-display md:text-display-lg text-foreground">Where technology stops and people begin</h2>
                 <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
                   The base of the Brand Humanizing pyramid is Human-Technology Fit: a clear, honest
                   line between the work technology does better and the work that should stay human.

@@ -127,9 +127,9 @@ export default function ResearchPage() {
           </div>
         </section>
 
-        {/* The method in practice — proof, kept distinct from the formal studies.
-            White section (cream FAQ follows it) with a cream card, matching the
-            pattern used by the Published research block above. */}
+        {/* The method in practice: a built thing, kept distinct from the formal
+            studies. White section (cream FAQ follows it) with a cream card,
+            matching the pattern used by the Published research block above. */}
         <section className="section-padding bg-white">
           <div className="container max-w-4xl">
             <ScrollRevealSection>
@@ -144,14 +144,14 @@ export default function ResearchPage() {
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div className="flex-1">
                     <span className="text-caption font-heading font-semibold uppercase tracking-wider text-accent">
-                      Proof
+                      In practice
                     </span>
                     <h3 className="font-heading font-bold text-xl mt-3 mb-3 text-foreground">Saylience</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       We let technology take the predictable half of interview work, transcription
                       and sourcing, and reinvested the time into deeper human interviews. It became a
-                      product used by teams in two countries. The clearest proof we have that the
-                      method works, tested on ourselves.
+                      product used by teams in two countries. The clearest example we have of the
+                      method working, tested on ourselves.
                     </p>
                   </div>
                   <Link href="/research/saylience">
