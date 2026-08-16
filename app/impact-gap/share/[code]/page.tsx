@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { getStatus, setContact, rememberCode, markContactSaved, hasContactSaved } from "@/lib/impactGap/store";
 import { isValidCodeShape } from "@/lib/impactGap/code";
 import { MIN_TEAM_RESPONSES } from "@/lib/impactGap/questions";
-import { Check, Copy, ArrowRight } from "lucide-react";
+import { Check, Copy, ArrowRight, Mail } from "lucide-react";
 
 type State = "loading" | "ok" | "missing";
 
@@ -80,6 +80,12 @@ This is six anonymous questions and takes about a minute. I never see anyone's a
 Please answer honestly rather than kindly. An honest answer is the only kind that is any use to me here.
 
 ${link}`;
+
+  // Opens the leader's own email app with the message ready to go, no email
+  // service on our side. They add their team's addresses and hit send, which
+  // keeps the promise that every email from this tool is one a person sent.
+  const emailSubject = "A quick, anonymous question for the team";
+  const mailtoHref = `mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(message)}`;
 
   const copy = async (text: string, what: "link" | "message") => {
     try {
@@ -285,7 +291,21 @@ ${link}`;
                   <pre className="mt-4 whitespace-pre-wrap rounded-xl bg-cream p-4 font-body text-sm leading-relaxed text-muted-foreground">
                     {message}
                   </pre>
-                  <p className="mt-3 text-sm text-muted-foreground">
+                  <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center">
+                    <a href={mailtoHref}>
+                      <Button
+                        type="button"
+                        className="btn-scale h-12 w-full rounded-full bg-accent px-8 font-heading font-semibold text-accent-foreground hover:bg-soft-coral sm:w-auto"
+                      >
+                        <Mail className="h-4 w-4" />
+                        <span className="ml-2">Email my team</span>
+                      </Button>
+                    </a>
+                    <span className="text-sm text-muted-foreground">
+                      Opens your own email app with this ready to send. Add your team and go.
+                    </span>
+                  </div>
+                  <p className="mt-4 text-sm text-muted-foreground">
                     The line asking for honesty rather than kindness does more work than the rest of
                     the message put together. Rewrite the whole thing in your own words if you like,
                     but keep that part.

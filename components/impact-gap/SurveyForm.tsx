@@ -148,13 +148,24 @@ export default function SurveyForm({
                   {q.question}
                 </label>
                 <div
-                  className={`mb-3 font-heading text-3xl font-bold ${
+                  className={`mb-1 font-heading text-3xl font-bold ${
                     filled(q.id) ? "text-primary" : "text-muted-foreground/50"
                   }`}
                   aria-live="polite"
                 >
                   {filled(q.id) ? `${String(answers[q.id])}%` : "Not set"}
                 </div>
+                {/* The slider is easy to miss as something you interact with,
+                    so the instruction is explicit and coloured until touched. */}
+                <p
+                  className={`mb-3 text-sm font-semibold ${
+                    filled(q.id) ? "text-muted-foreground" : "text-accent"
+                  }`}
+                >
+                  {filled(q.id)
+                    ? "Drag the handle again any time to adjust."
+                    : "Drag the handle along the bar to your best estimate."}
+                </p>
                 <input
                   id={`slider-${q.id}`}
                   type="range"
