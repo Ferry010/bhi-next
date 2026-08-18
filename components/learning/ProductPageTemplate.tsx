@@ -62,8 +62,17 @@ export interface ProductPageData {
   audience: string;
   deliveredBy: string;
   description: string;
-  agenda: AgendaItem[];
+  /** Optional. Formats short enough not to need one (e.g. the one-hour Spark)
+   *  omit it and use `fomo` instead. */
+  agenda?: AgendaItem[];
   agendaLabel?: string;
+  /** An urgency block shown in place of an agenda, for formats where the reason
+   *  to book matters more than the timetable. */
+  fomo?: {
+    heading: string;
+    lead?: string;
+    points: string[];
+  };
   leaveWith: string[];
   pricingSignal: string;
   includesBook?: boolean;
@@ -172,25 +181,55 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
 
       <SectionDivider />
 
-      <section className="section-padding bg-white">
-        <div className="container max-w-3xl">
-          <Section>
-            <h2 className="font-heading text-2xl md:text-4xl font-bold mb-8 text-foreground text-center">
-              {data.agendaLabel || "Example agenda"}
-            </h2>
-            <div className="bg-navy-card rounded-2xl p-6 md:p-8 shadow-lg border border-accent/10 space-y-3">
-              {data.agenda.map((item, i) => (
-                <div key={i} className="flex gap-4 items-baseline">
-                  <span className="text-sunny font-heading font-semibold whitespace-nowrap text-sm min-w-[80px]">{item.time}</span>
-                  <span className="text-white/80 text-sm">{item.activity}</span>
+      {data.agenda && data.agenda.length > 0 && (
+        <>
+          <section className="section-padding bg-white">
+            <div className="container max-w-3xl">
+              <Section>
+                <h2 className="font-heading text-2xl md:text-4xl font-bold mb-8 text-foreground text-center">
+                  {data.agendaLabel || "Example agenda"}
+                </h2>
+                <div className="bg-navy-card rounded-2xl p-6 md:p-8 shadow-lg border border-accent/10 space-y-3">
+                  {data.agenda.map((item, i) => (
+                    <div key={i} className="flex gap-4 items-baseline">
+                      <span className="text-sunny font-heading font-semibold whitespace-nowrap text-sm min-w-[92px]">{item.time}</span>
+                      <span className="text-white/80 text-sm">{item.activity}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </Section>
             </div>
-          </Section>
-        </div>
-      </section>
+          </section>
+          <SectionDivider />
+        </>
+      )}
 
-      <SectionDivider />
+      {data.fomo && (
+        <>
+          <section className="section-padding bg-white">
+            <div className="container max-w-3xl">
+              <Section>
+                <h2 className="font-heading text-2xl md:text-4xl font-bold mb-3 text-foreground text-center">
+                  {data.fomo.heading}
+                </h2>
+                {data.fomo.lead && (
+                  <p className="text-body-lg text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
+                    {data.fomo.lead}
+                  </p>
+                )}
+                <div className="space-y-3">
+                  {data.fomo.points.map((pt, i) => (
+                    <div key={i} className="rounded-2xl bg-cream border-l-4 border-accent p-5 md:p-6">
+                      <p className="text-foreground text-sm md:text-base leading-relaxed">{pt}</p>
+                    </div>
+                  ))}
+                </div>
+              </Section>
+            </div>
+          </section>
+          <SectionDivider />
+        </>
+      )}
 
       <section className="section-padding bg-cream">
         <div className="container max-w-3xl">

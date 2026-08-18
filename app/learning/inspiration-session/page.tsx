@@ -27,14 +27,16 @@ const data = {
   deliveredBy: "Ferry Hoes",
   description:
     "This is where it clicks for most organisations. In 60 to 90 minutes, Ferry takes your team through the thinking that has put dozens of European organisations ahead of their competitors. Not slides full of bullets. Not generic AI hype. A sharp, funny, honest keynote about what your organisation is actually for, why the teams that learn to work with technology instead of against it are pulling away, and what that means for the people in the room. They leave energised and, for once, aligned.",
-  agenda: [
-    { time: "0:00", activity: "The question that started everything" },
-    { time: "0:15", activity: "Where your industry is quietly becoming a commodity" },
-    { time: "0:30", activity: "The Brand Humanizing framework: four skills, one pyramid" },
-    { time: "0:45", activity: "How the best teams turn AI into an edge instead of a threat" },
-    { time: "1:00", activity: "What your people can start doing differently on Monday" },
-    { time: "1:15", activity: "Open, honest Q&A" },
-  ],
+  fomo: {
+    heading: "Why not next quarter. Why now.",
+    lead: "It is one hour. The cost of putting it off is measured in quarters.",
+    points: [
+      "Your competitors' teams are already learning to work with AI instead of around it. That gap does not stay still. It compounds every week you spend scheduling a meeting about it.",
+      "Your best people are quietly deciding whether this is still where the interesting work happens. One hour that shows them what is possible here changes that answer while you still can.",
+      "The teams that move first set the standard everyone else spends years catching up to. Right now that standard is still open. It will not be for long.",
+      "Standing still feels safe and reads as falling behind. Every month you wait, your team drifts further from the one across the street that did not.",
+    ],
+  },
   leaveWith: [
     "A team that finally sees why standing still is the real risk",
     "A shared language for the conversations you've been having in fragments",

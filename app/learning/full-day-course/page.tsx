@@ -27,16 +27,18 @@ const data = {
   description:
     "This is the flagship. A full day dedicated to making your team fluent in the four skills technology can't replace, then turning that fluency into a plan you can run the following week. It's not a lecture, it's a working day. Your team maps their own Human-Technology Fit, takes an honest inventory of where they stand, spots the human opportunities their competitors are walking straight past, and learns to make AI a tool their people wield rather than a threat they fear. They leave sharper, aligned, and genuinely ahead.",
   agenda: [
-    { time: "9:00", activity: "Intake review and context setting" },
-    { time: "9:30", activity: "Framework deep-dive: the pyramid and four skills" },
-    { time: "10:30", activity: "Break" },
+    { time: "08:45", activity: "Walk-in and coffee" },
+    { time: "09:00", activity: "Kick off: intake review and context setting" },
+    { time: "09:30", activity: "Framework deep-dive: the pyramid and four skills" },
+    { time: "10:30", activity: "Coffee break" },
     { time: "10:45", activity: "Workshop: mapping your Human-Technology Fit" },
     { time: "12:00", activity: "Lunch" },
     { time: "13:00", activity: "Skills inventory: where your team really stands" },
     { time: "14:00", activity: "Workshop: the human opportunities your competitors miss" },
-    { time: "15:00", activity: "Break" },
+    { time: "15:00", activity: "Coffee break" },
     { time: "15:15", activity: "Building your 90-day plan" },
     { time: "16:00", activity: "Wrap-up: shared language, next steps, commitments" },
+    { time: "16:30", activity: "Close" },
   ],
   leaveWith: [
     "The complete four-skill framework, understood deeply enough to use",
