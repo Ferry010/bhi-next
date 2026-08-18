@@ -25,6 +25,8 @@ const data = {
   duration: P.duration,
   audience: P.audience,
   deliveredBy: "Ferry Hoes",
+  urgencyLine:
+    "Every quarter you wait, the room gets a little more like everyone else’s.",
   description:
     "This is where it clicks for most organisations. In 60 to 90 minutes, Ferry takes your team through the thinking that has put dozens of European organisations ahead of their competitors. Not slides full of bullets. Not generic AI hype. A sharp, funny, honest keynote about what your organisation is actually for, why the teams that learn to work with technology instead of against it are pulling away, and what that means for the people in the room. They leave energised and, for once, aligned.",
   fomo: {

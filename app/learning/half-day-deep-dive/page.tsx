@@ -24,6 +24,8 @@ const data = {
   duration: P.duration,
   audience: P.audience,
   deliveredBy: "Ferry Hoes",
+  urgencyLine:
+    "The theme you keep half-addressing does not get less urgent while it waits for a clear afternoon.",
   description:
     "Pick the theme that fits your moment. AI Ethics and the Human Edge, when your team is deploying AI and needs a spine. Staying Human in a Digital World, when the culture is drifting. Whatever the theme, this is three to four hours of hands-on work, not a talk. Your team takes the framework, applies it to their own cases, and walks out with something they can use, not just notes they'll forget.",
   agendaLabel: "How a deep dive runs",

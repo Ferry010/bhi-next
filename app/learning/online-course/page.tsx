@@ -19,6 +19,8 @@ const data = {
   duration: "Self-paced · 4–6 modules",
   audience: "Individual",
   deliveredBy: "Ferry Hoes (video)",
+  urgencyLine:
+    "The waitlist sets the launch order, and who gets the introductory rate.",
   description: "The full Brand Humanizing framework (the pyramid, the four skills, the real-world case studies) in a format you can learn at your desk. We're building this now based on demand. Join the waitlist to be first.",
   agenda: [
     { time: "Module 1", activity: "Introduction: The human-technology question" },

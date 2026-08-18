@@ -24,6 +24,8 @@ const data = {
   duration: P.duration,
   audience: P.audience,
   deliveredBy: "Ferry Hoes and/or Jonathan Flores",
+  urgencyLine:
+    "The teams that book this would rather be a year ahead than spend next year catching up to the ones who did.",
   description:
     "This is the flagship. A full day dedicated to making your team fluent in the four skills technology can't replace, then turning that fluency into a plan you can run the following week. It's not a lecture, it's a working day. Your team maps their own Human-Technology Fit, takes an honest inventory of where they stand, spots the human opportunities their competitors are walking straight past, and learns to make AI a tool their people wield rather than a threat they fear. They leave sharper, aligned, and genuinely ahead.",
   agenda: [

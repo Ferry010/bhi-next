@@ -65,7 +65,13 @@ export interface ProductPageData {
   /** Optional. Formats short enough not to need one (e.g. the one-hour Spark)
    *  omit it and use `fomo` instead. */
   agenda?: AgendaItem[];
+  /** For multi-day formats: one block per day, so the schedule reads as days
+   *  rather than one long list. Takes precedence over `agenda` when present. */
+  agendaDays?: { day: string; items: AgendaItem[] }[];
   agendaLabel?: string;
+  /** A single subtle line under the hero CTA, on the cost of waiting. Not a
+   *  scarcity claim, just a nudge. */
+  urgencyLine?: string;
   /** An urgency block shown in place of an agenda, for formats where the reason
    *  to book matters more than the timetable. */
   fomo?: {
@@ -137,6 +143,10 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
             </a>
           )}
 
+          {data.urgencyLine && (
+            <p className="mt-4 text-sm text-muted-foreground max-w-xl">{data.urgencyLine}</p>
+          )}
+
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> A founder in the room</span>
             <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> The book for every participant</span>
@@ -181,7 +191,7 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
 
       <SectionDivider />
 
-      {data.agenda && data.agenda.length > 0 && (
+      {(data.agendaDays?.length || data.agenda?.length) && (
         <>
           <section className="section-padding bg-white">
             <div className="container max-w-3xl">
@@ -189,14 +199,33 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
                 <h2 className="font-heading text-2xl md:text-4xl font-bold mb-8 text-foreground text-center">
                   {data.agendaLabel || "Example agenda"}
                 </h2>
-                <div className="bg-navy-card rounded-2xl p-6 md:p-8 shadow-lg border border-accent/10 space-y-3">
-                  {data.agenda.map((item, i) => (
-                    <div key={i} className="flex gap-4 items-baseline">
-                      <span className="text-sunny font-heading font-semibold whitespace-nowrap text-sm min-w-[92px]">{item.time}</span>
-                      <span className="text-white/80 text-sm">{item.activity}</span>
-                    </div>
-                  ))}
-                </div>
+                {data.agendaDays?.length ? (
+                  // Multi-day: one card per day, so it reads as a programme.
+                  <div className="space-y-5">
+                    {data.agendaDays.map((day, di) => (
+                      <div key={di} className="bg-navy-card rounded-2xl p-6 md:p-8 shadow-lg border border-accent/10">
+                        <h3 className="font-heading font-bold text-white text-lg mb-4">{day.day}</h3>
+                        <div className="space-y-3">
+                          {day.items.map((item, i) => (
+                            <div key={i} className="flex gap-4 items-baseline">
+                              <span className="text-sunny font-heading font-semibold whitespace-nowrap text-sm min-w-[64px]">{item.time}</span>
+                              <span className="text-white/80 text-sm">{item.activity}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="bg-navy-card rounded-2xl p-6 md:p-8 shadow-lg border border-accent/10 space-y-3">
+                    {data.agenda!.map((item, i) => (
+                      <div key={i} className="flex gap-4 items-baseline">
+                        <span className="text-sunny font-heading font-semibold whitespace-nowrap text-sm min-w-[92px]">{item.time}</span>
+                        <span className="text-white/80 text-sm">{item.activity}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </Section>
             </div>
           </section>
