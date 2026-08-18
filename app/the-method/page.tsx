@@ -162,7 +162,7 @@ export default function TheMethodPage() {
               <h2 className="text-display md:text-display-lg text-white mb-6">Ready to go beyond the framework?</h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/learning">
-                  <Button className="rounded-full bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                     Book a session <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>

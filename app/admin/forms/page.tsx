@@ -381,7 +381,7 @@ export default function AdminFormSubmissions() {
                     size="sm"
                     onClick={() => updateSubmission(selected.id, { status: "in_progress" })}
                     disabled={saving}
-                    className="bg-accent text-accent-foreground hover:brightness-110 text-xs"
+                    className="bg-accent text-accent-foreground hover:bg-accent hover:brightness-110 text-xs"
                   >
                     <Clock className="w-3.5 h-3.5 mr-1" /> Mark In Progress
                   </Button>

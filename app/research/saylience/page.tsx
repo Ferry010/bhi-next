@@ -164,7 +164,7 @@ export default function SaylienceInPracticePage() {
                   it, including on ourselves.
                 </p>
                 <Link href="/impact-gap" className="inline-block mt-6">
-                  <Button className="rounded-full bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-7 h-11 gap-2">
+                  <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-7 h-11 gap-2">
                     Take the Impact Gap test <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>

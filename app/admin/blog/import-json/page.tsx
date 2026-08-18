@@ -434,7 +434,7 @@ export default function ImportJsonPage() {
             <Button
               disabled={!canSave || saving}
               onClick={() => initSave("publish")}
-              className="bg-accent text-accent-foreground hover:brightness-110"
+              className="bg-accent text-accent-foreground hover:bg-accent hover:brightness-110"
             >
               {saving ? <Loader2 className="w-4 h-4 animate-spin mr-1.5" /> : null}
               Save and publish

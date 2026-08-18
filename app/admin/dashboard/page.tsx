@@ -32,7 +32,7 @@ export default function AdminDashboard() {
       <div className="flex items-center justify-between">
         <h1 className="font-heading font-bold text-2xl text-foreground">Blog Posts</h1>
         <Link href="/admin/posts/new">
-          <Button className="rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110 transition-all">
+          <Button className="rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:bg-accent hover:brightness-110 transition-all">
             <Plus className="w-4 h-4 mr-1.5" />New Post
           </Button>
         </Link>

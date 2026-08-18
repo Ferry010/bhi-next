@@ -184,7 +184,7 @@ export default function CertificationPage() {
               Not sure which path fits? Talk it through with us. One 30-minute call, a real human, no script.
             </p>
             <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="inline-block mt-10">
-              <Button className="rounded-full bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-9 h-12 text-base gap-2">
+              <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-9 h-12 text-base gap-2">
                 {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
               </Button>
             </a>

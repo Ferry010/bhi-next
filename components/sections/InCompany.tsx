@@ -67,7 +67,7 @@ export default function InCompany() {
           }}
         >
           <Link href="/learning">
-            <Button className="rounded-full bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
+            <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
               See the training formats <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>

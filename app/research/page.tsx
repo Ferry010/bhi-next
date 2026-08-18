@@ -114,7 +114,7 @@ export default function ResearchPage() {
                       </div>
                       {r.to && (
                         <Link href={r.to}>
-                          <Button className={`rounded-full font-heading font-semibold px-5 h-10 text-sm gap-2 shrink-0 ${r.featured ? "bg-sunny text-sunny-foreground hover:brightness-95" : "bg-foreground text-background hover:bg-foreground/80"}`}>
+                          <Button className={`rounded-full font-heading font-semibold px-5 h-10 text-sm gap-2 shrink-0 ${r.featured ? "bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95" : "bg-foreground text-background hover:bg-foreground/80"}`}>
                             Read <ArrowRight className="w-3.5 h-3.5" />
                           </Button>
                         </Link>

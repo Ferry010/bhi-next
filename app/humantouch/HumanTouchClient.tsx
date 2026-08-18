@@ -198,7 +198,7 @@ export default function HumanTouchClient() {
                 <button
                   onClick={handleGenerate}
                   disabled={!canGenerate}
-                  className="w-full py-3 rounded-lg font-body font-semibold text-sm transition-all disabled:opacity-30 disabled:cursor-not-allowed bg-accent text-accent-foreground hover:brightness-110"
+                  className="w-full py-3 rounded-lg font-body font-semibold text-sm transition-all disabled:opacity-30 disabled:cursor-not-allowed bg-accent text-accent-foreground hover:bg-accent hover:brightness-110"
                 >
                   {loading ? "Generating..." : "Generate Human Touch"}
                 </button>
@@ -224,7 +224,7 @@ export default function HumanTouchClient() {
                 <div className="space-y-3">
                   <button
                     onClick={copyBadge}
-                    className="w-full py-3 rounded-lg font-body font-semibold text-sm transition-all bg-accent text-accent-foreground hover:brightness-110"
+                    className="w-full py-3 rounded-lg font-body font-semibold text-sm transition-all bg-accent text-accent-foreground hover:bg-accent hover:brightness-110"
                   >
                     {copied === "badge" ? "Copied ✓" : "Copy badge for email"}
                   </button>

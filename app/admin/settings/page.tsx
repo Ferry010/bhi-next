@@ -92,7 +92,7 @@ export default function AdminSettings() {
             <Separator className="bg-border" />
             <Button
               type="submit"
-              className="rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110"
+              className="rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:bg-accent hover:brightness-110"
               disabled={submitting}
             >
               {submitting ? "Updating…" : "Update Password"}

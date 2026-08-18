@@ -118,7 +118,7 @@ export default function PostEditor({ id }: { id?: string }) {
             Save Draft
           </Button>
           <Button
-            className="rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110"
+            className="rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:bg-accent hover:brightness-110"
             onClick={() => handleSave(true)}
             disabled={saving}
           >

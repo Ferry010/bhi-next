@@ -253,7 +253,7 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
                 </div>
               )}
               <a href={data.comingSoon ? `/contact?product=${data.ctaProduct}` : TALK_TO_EXPERT.url} target={data.comingSoon ? undefined : "_blank"} rel={data.comingSoon ? undefined : "noopener noreferrer"} className="inline-block mt-8">
-                <Button className="rounded-lg bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                <Button className="rounded-lg bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                   {data.comingSoon ? "Join the waitlist" : TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>
               </a>

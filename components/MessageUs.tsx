@@ -61,7 +61,7 @@ export default function MessageUs({
           <Button
             className={`rounded-full btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 ${
               dark
-                ? "bg-sunny text-sunny-foreground hover:brightness-95"
+                ? "bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95"
                 : "bg-accent text-accent-foreground hover:bg-soft-coral"
             }`}
           >
@@ -119,7 +119,7 @@ export default function MessageUs({
               disabled={loading}
               className={`w-full rounded-lg btn-scale font-heading font-semibold h-11 ${
                 dark
-                  ? "bg-sunny text-sunny-foreground hover:brightness-95"
+                  ? "bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95"
                   : "bg-accent text-accent-foreground hover:bg-soft-coral"
               }`}
             >

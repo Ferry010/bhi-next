@@ -257,7 +257,7 @@ export default function PricingPage() {
                 Training wakes people up and builds the skill. When you want Brand Humanizing built into how your whole organisation works, that&apos;s a project. We scope it with you from audit to handover, until it runs without us.
               </p>
               <Link href="/work-with-us" className="inline-block mt-8">
-                <Button className="rounded-full bg-sunny text-sunny-foreground hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                   See how we work together <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>

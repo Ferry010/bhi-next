@@ -178,7 +178,7 @@ export default function HumanTouchVerifyClient({ token }: { token: string }) {
             </p>
             <Link
               href="/humantouch"
-              className="inline-block px-8 py-3.5 rounded-lg bg-accent text-accent-foreground font-body font-semibold text-sm hover:brightness-110 transition-all"
+              className="inline-block px-8 py-3.5 rounded-lg bg-accent text-accent-foreground font-body font-semibold text-sm hover:bg-accent hover:brightness-110 transition-all"
             >
               Try it yourself
             </Link>

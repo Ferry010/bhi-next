@@ -76,7 +76,7 @@ export default function AdminPage() {
           </div>
           <Button
             type="submit"
-            className="w-full rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:brightness-110 transition-all"
+            className="w-full rounded-lg bg-accent text-accent-foreground font-heading font-semibold hover:bg-accent hover:brightness-110 transition-all"
             disabled={submitting}
           >
             {submitting ? "Signing in…" : "Sign In"}
