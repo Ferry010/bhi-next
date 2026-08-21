@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function OurStoryPage() {
   return (
     <>
-      <Navbar variant="dark" />
+      <Navbar variant="light" />
       <OriginTour />
     </>
   );

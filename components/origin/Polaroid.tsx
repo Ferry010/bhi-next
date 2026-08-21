@@ -22,7 +22,7 @@ export default function Polaroid({
 }: PolaroidProps) {
   return (
     <figure
-      className={`bg-white px-2.5 pt-2.5 pb-1 shadow-[0_18px_50px_-12px_rgba(0,0,0,0.65)] ring-1 ring-black/5 ${widthClass} ${className}`}
+      className={`bg-white px-2.5 pt-2.5 pb-1 shadow-[0_18px_45px_-12px_rgba(18,21,46,0.28)] ring-1 ring-black/[0.04] ${widthClass} ${className}`}
       style={{ transform: `rotate(${rotate}deg)` }}
     >
       <img src={src} alt={alt} loading="lazy" className="block w-full h-auto object-cover" />
