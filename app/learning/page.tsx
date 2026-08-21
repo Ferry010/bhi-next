@@ -7,7 +7,7 @@ import FAQSection from "@/components/FAQSection";
 import MessageUs from "@/components/MessageUs";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { Sparkles, GraduationCap, ArrowRight, ExternalLink, BookOpen, Users } from "lucide-react";
+import { Sparkles, GraduationCap, ArrowRight, ExternalLink, BookOpen, Users, Check, type LucideIcon } from "lucide-react";
 import { PRODUCTS, BOOK, TALK_TO_EXPERT, SPEAKERS_ACADEMY, FACILITATOR, STATS, MARQUEE_LOGOS, EXAMPLES } from "@/lib/pricing";
 import CountUp from "@/components/ui/CountUp";
 
@@ -19,9 +19,93 @@ export const metadata: Metadata = {
   // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
-const formats = [
-  { icon: Sparkles, product: PRODUCTS.inspiration, who: "Whole team or event audience", theme: "Brand Humanizing in 60 Minutes" },
-  { icon: GraduationCap, product: PRODUCTS.fullDay, who: "A team, the full method", theme: "The complete method, applied to your work" },
+// The offering as a guide: four rungs, each with "pick this if" situations so a
+// reader can locate themselves rather than compare feature lists. Ordered from
+// lightest to deepest. Full-Day is the flagship (accent).
+type Rung = {
+  key: string;
+  step: string;
+  icon: LucideIcon;
+  name: string;
+  spec: string;
+  pickIf: string[];
+  gist: string;
+  outcome: string;
+  primaryCta: { label: string; href: string; external?: boolean };
+  secondaryCta?: { label: string; href: string };
+  includesBook: boolean;
+  accent: boolean;
+};
+const ladder: Rung[] = [
+  {
+    key: "book",
+    step: "The lightest way in",
+    icon: BookOpen,
+    name: BOOK.name,
+    spec: `${BOOK.price} · ${BOOK.edition}`,
+    pickIf: [
+      "You're curious, but not ready to book anything yet",
+      "You want to know if this thinking fits before you spend real budget",
+      "You'd rather walk into a conversation already knowing the ideas",
+    ],
+    gist: "The whole method, the research and the real-world cases, in one book you can read this weekend.",
+    outcome: "Read it, then we'll talk.",
+    primaryCta: { label: BOOK.purchase.label, href: BOOK.purchase.url, external: true },
+    secondaryCta: { label: "About the book", href: BOOK.href },
+    includesBook: false,
+    accent: false,
+  },
+  {
+    key: "spark",
+    step: "Bring the story to your team",
+    icon: Sparkles,
+    name: PRODUCTS.inspiration.name,
+    spec: `${PRODUCTS.inspiration.duration} · ${PRODUCTS.inspiration.audience}`,
+    pickIf: [
+      "You've seen it land on stage and want your whole team to feel it",
+      "You need the room aligned and energised in a single sitting",
+      "You want a fast, honest wake-up, not a full course yet",
+    ],
+    gist: "A 60 to 90 minute keynote, shaped around your organisation, that gets everyone seeing AI and their own work differently.",
+    outcome: "They walk out hungry to change, with a shared language and first moves for Monday.",
+    primaryCta: { label: "See the Spark Session", href: PRODUCTS.inspiration.href },
+    includesBook: true,
+    accent: false,
+  },
+  {
+    key: "fullday",
+    step: "Build the capability",
+    icon: GraduationCap,
+    name: PRODUCTS.fullDay.name,
+    spec: `${PRODUCTS.fullDay.duration} · ${PRODUCTS.fullDay.audience}`,
+    pickIf: [
+      "Your team is past interested and ready to get genuinely capable",
+      "You want them to leave with a plan, not just inspiration",
+      "You're picking one team to go deep with",
+    ],
+    gist: "The complete four-skill framework, worked through with your team on your own real challenges.",
+    outcome: "A curious team walks in. A capable one walks out, with a 90-day plan for Monday.",
+    primaryCta: { label: "See the Full-Day Course", href: PRODUCTS.fullDay.href },
+    includesBook: true,
+    accent: true,
+  },
+  {
+    key: "taskforce",
+    step: "Make it stick",
+    icon: Users,
+    name: "The Taskforce",
+    spec: "16 weeks · your own people",
+    pickIf: [
+      "Training alone won't cut it, you want change that outlasts us",
+      "You can name one real business challenge in a single sentence",
+      "You have an executive sponsor and appetite for four months",
+    ],
+    gist: "Your own people take that one challenge to a working pilot, guided by the method, over sixteen weeks.",
+    outcome: "When we leave, the capability stays, with a named owner inside your team.",
+    primaryCta: { label: "See the Taskforce", href: "/taskforce" },
+    includesBook: false,
+    accent: false,
+  },
 ];
 
 const faqs = [
@@ -80,77 +164,79 @@ export default function LearningPage() {
         <section id="formats" className="section-padding bg-cream">
           <div className="container max-w-5xl">
             <ScrollRevealSection>
-              <h2 className="text-display md:text-display-lg text-foreground mb-3 text-center">Pick how deep you want to go.</h2>
-              <p className="text-body-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">Start with the book, then bring it to your team. Every training format carries a theme, and every one includes the book.</p>
+              <h2 className="text-display md:text-display-lg text-foreground mb-3 text-center">Where&apos;s your team right now?</h2>
+              <p className="text-body-lg text-muted-foreground text-center mb-4 max-w-2xl mx-auto">There&apos;s no wrong door. Each step matches a different moment. Read the &ldquo;pick this if&rdquo; lines and start where you actually are. Most teams climb from one to the next, and every training format includes the book.</p>
+              <p className="text-center text-sm text-muted-foreground mb-12">
+                Rather be pointed to one?{" "}
+                <Link href="/assessment" className="font-heading font-semibold text-primary hover:text-accent transition-colors">Take the 2-minute assessment →</Link>
+              </p>
             </ScrollRevealSection>
 
-            {/* Entry rung — the book. Lightest, cheapest way in. */}
-            <ScrollRevealSection>
-              <div className="mb-6 rounded-2xl border border-border/60 bg-white p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5 justify-between shadow-[0_4px_24px_rgba(18,21,46,0.06)]">
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center shrink-0">
-                    <BookOpen className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-sm font-heading font-semibold text-muted-foreground">Start here · {BOOK.name}</span>
-                      <span className="text-xs font-heading font-semibold text-primary bg-cream rounded-full px-3 py-1">{BOOK.price}</span>
-                    </div>
-                    <h3 className="font-heading font-bold text-lg md:text-xl text-foreground mt-1">Read the book, then we&apos;ll talk.</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-1 max-w-xl">{BOOK.promise} {BOOK.edition}.</p>
-                  </div>
-                </div>
-                <Link href={BOOK.href} className="shrink-0">
-                  <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/40 font-heading font-semibold px-6 h-11 gap-2">
-                    About the book <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
-            </ScrollRevealSection>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {formats.map((f) => (
-                <ScrollRevealSection key={f.product.slug}>
-                  <Link href={f.product.href} className="group block bg-white rounded-2xl p-7 md:p-8 h-full shadow-[0_4px_24px_rgba(18,21,46,0.08)] border border-border/50 hover:shadow-lg hover:border-accent/30 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center shrink-0">
-                        <f.icon className="w-5 h-5 text-accent" />
+            <div className="space-y-5 md:space-y-6">
+              {ladder.map((rung) => (
+                <ScrollRevealSection key={rung.key}>
+                  <div className={`relative rounded-2xl bg-white p-6 md:p-8 shadow-[0_4px_24px_rgba(18,21,46,0.08)] transition-all duration-300 hover:shadow-lg ${rung.accent ? "border-2 border-accent" : "border border-border/50"}`}>
+                    {rung.accent && (
+                      <span className="absolute -top-3 left-8 bg-accent text-accent-foreground text-xs font-semibold tracking-wide uppercase px-4 py-1 rounded-md">
+                        Most chosen
+                      </span>
+                    )}
+                    <div className="grid md:grid-cols-[220px_1fr] gap-6 md:gap-8">
+                      {/* Left rail — what this rung is */}
+                      <div>
+                        <span className="text-xs font-heading font-semibold uppercase tracking-widest text-accent">{rung.step}</span>
+                        <div className="flex items-center gap-3 mt-3">
+                          <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center shrink-0">
+                            <rung.icon className="w-5 h-5 text-accent" />
+                          </div>
+                          <h3 className="font-heading font-bold text-xl text-foreground leading-tight">{rung.name.replace(/^The /, "")}</h3>
+                        </div>
+                        <span className="inline-block mt-3 text-xs font-heading font-semibold text-primary bg-cream rounded-full px-3 py-1">{rung.spec}</span>
                       </div>
-                      <span className="text-sm font-heading font-semibold text-muted-foreground">{f.product.name.replace(/^The /, "")}</span>
+
+                      {/* Right — help them decide */}
+                      <div>
+                        <p className="text-xs font-heading font-semibold uppercase tracking-widest text-muted-foreground mb-3">Pick this if</p>
+                        <ul className="space-y-2 mb-5">
+                          {rung.pickIf.map((p, i) => (
+                            <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground leading-relaxed">
+                              <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" /> {p}
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{rung.gist}</p>
+                        <p className="text-foreground font-heading font-semibold mt-3">{rung.outcome}</p>
+                        {rung.includesBook && (
+                          <p className="text-xs text-muted-foreground mt-3 inline-flex items-center gap-1.5">
+                            <BookOpen className="w-3.5 h-3.5 text-accent" /> Includes the book for every participant
+                          </p>
+                        )}
+                        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-6">
+                          {rung.primaryCta.external ? (
+                            <a href={rung.primaryCta.href} target="_blank" rel="noopener noreferrer">
+                              <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-6 h-11 gap-2">
+                                {rung.primaryCta.label} <ArrowRight className="w-4 h-4" />
+                              </Button>
+                            </a>
+                          ) : (
+                            <Link href={rung.primaryCta.href}>
+                              <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-6 h-11 gap-2">
+                                {rung.primaryCta.label} <ArrowRight className="w-4 h-4" />
+                              </Button>
+                            </Link>
+                          )}
+                          {rung.secondaryCta && (
+                            <Link href={rung.secondaryCta.href} className="font-heading font-semibold text-sm text-primary hover:text-accent transition-colors">
+                              {rung.secondaryCta.label} →
+                            </Link>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="font-heading font-bold text-lg md:text-xl text-foreground group-hover:text-accent transition-colors mb-4">{f.product.outcome}</h3>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="text-xs font-heading font-semibold text-muted-foreground bg-cream rounded-full px-3 py-1">{f.product.formatLabel}</span>
-                      <span className="text-xs font-heading font-semibold text-muted-foreground bg-cream rounded-full px-3 py-1">{f.who}</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-5"><span className="font-heading font-semibold text-foreground">Theme:</span> {f.theme}</p>
-                    <span className="text-accent font-heading font-semibold text-sm inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                      See the format <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
-                  </Link>
+                  </div>
                 </ScrollRevealSection>
               ))}
             </div>
-
-            {/* Go-deeper rung — the Taskforce. */}
-            <ScrollRevealSection>
-              <div className="mt-6 rounded-2xl border border-border/60 bg-white p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5 justify-between shadow-[0_4px_24px_rgba(18,21,46,0.06)]">
-                <div className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center shrink-0">
-                    <Users className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg md:text-xl text-foreground">Want it to actually stick?</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-1 max-w-xl">Training wakes people up. The Taskforce turns one real challenge into a working pilot, run by your own people, over sixteen weeks. When we leave, the capability stays.</p>
-                  </div>
-                </div>
-                <Link href="/taskforce" className="shrink-0">
-                  <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/40 font-heading font-semibold px-6 h-11 gap-2">
-                    See the Taskforce <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
-              </div>
-            </ScrollRevealSection>
 
             <ScrollRevealSection>
               <p className="text-center text-sm text-muted-foreground mt-10">
