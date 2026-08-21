@@ -127,11 +127,11 @@ export default function LearningPage() {
           <div className="container max-w-4xl">
             <Breadcrumb items={[{ label: "Learning" }]} variant="light" />
             <h1 className="text-hero md:text-hero-lg text-foreground">
-              Your competitors are already rethinking their people strategy.{" "}
-              <span className="text-accent">Are you?</span>
+              AI is making every team look the same.{" "}
+              <span className="text-accent">We make yours the one customers choose.</span>
             </h1>
             <p className="text-sm md:text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              Start with the book. Bring the story to your team in-house. Or train the whole team for a day. Pick how deep you want to go. They walk out changed, with a shared language and something to do on Monday.
+              Everyone is automating toward the same grey middle. We train your team to be the human reason customers pick you, and keep picking you, while the teams around you still sound like everyone else. Start wherever you are below.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8">
               <a href="#formats">
