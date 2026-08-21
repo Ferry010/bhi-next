@@ -1,33 +1,23 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import Breadcrumb from "@/components/Breadcrumb";
-import OriginStory from "@/components/sections/OriginStory";
-import Manifesto from "@/components/sections/Manifesto";
+import OriginTour from "@/components/origin/OriginTour";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/our-story" },
   title: "Our Story | Brand Humanizing Institute",
   description:
-    "How Ferry Hoes and Jonathan Flores started Brand Humanizing in 2017 over fast food in Rotterdam.",
+    "From a line in a notebook in a Rotterdam McDonald's in 2017 to a framework, 40 keynotes a year and a book. The origin story of Brand Humanizing, told screen by screen.",
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
+// An immersive, scroll-snap story page. It manages its own full-height scroll
+// container, so there is no global Footer here; the final screen closes it out
+// with the CTAs and the essential links.
 export default function OurStoryPage() {
   return (
     <>
-      <Navbar variant="light" />
-      <main>
-        <section className="bg-secondary pt-28 md:pt-36 pb-12">
-          <div className="container max-w-3xl">
-            <Breadcrumb items={[{ label: "About", to: "/about" }, { label: "Our Story" }]} variant="light" />
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">2017, Rotterdam</span>
-            <h1 className="text-hero md:text-hero-lg text-foreground mt-4">Our story</h1>
-          </div>
-        </section>
-        <OriginStory />
-        <Manifesto />
-      </main>
-      <Footer />
+      <Navbar variant="dark" />
+      <OriginTour />
     </>
   );
 }

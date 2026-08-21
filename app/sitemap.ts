@@ -25,6 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/research/towards-a-human-technology-fit`, lastModified: new Date(), changeFrequency: "yearly" },
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/our-story`, lastModified: new Date(), changeFrequency: "yearly" },
+    { url: `${base}/our-beliefs`, lastModified: new Date(), changeFrequency: "yearly" },
     { url: `${base}/book`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/blog`, lastModified: new Date(), changeFrequency: "daily" },
     { url: `${base}/podcast`, lastModified: new Date(), changeFrequency: "weekly" },

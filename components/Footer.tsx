@@ -22,6 +22,8 @@ const navCols = [
     links: [
       { label: "The Method", to: "/the-method" },
       { label: "About", to: "/about" },
+      { label: "Our Story", to: "/our-story" },
+      { label: "Our Beliefs", to: "/our-beliefs" },
       { label: "Book", to: "/book" },
       { label: "Blog", to: "/blog" },
       { label: "Podcast", to: "/podcast" },

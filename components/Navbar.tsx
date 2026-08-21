@@ -21,6 +21,7 @@ interface NavItem {
 
 const navLinks: NavItem[] = [
   { label: "The Method", to: "/the-method" },
+  { label: "Our Story", to: "/our-story" },
   {
     label: "Learning",
     to: "/learning",
@@ -38,7 +39,7 @@ const navLinks: NavItem[] = [
     to: "/about",
     children: [
       { label: "About Us", to: "/about" },
-      { label: "Our Story", to: "/our-story" },
+      { label: "Our Beliefs", to: "/our-beliefs" },
       { label: "Podcast", to: "/podcast" },
       { label: "Media", to: "/media" },
     ],
