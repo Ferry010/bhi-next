@@ -201,16 +201,16 @@ export default function OriginTour() {
           <div className="order-2 md:order-1 flex justify-center items-center">
             <div className="relative">
               <Polaroid
-                src="/assets/origin/speaking-2.jpg"
-                alt="Ferry on stage delivering a Brand Humanizing keynote."
+                src="/assets/origin/speaking-1.jpg"
+                alt="Ferry delivering a Brand Humanizing keynote to a full room."
                 caption="On stage"
                 rotate={-5}
-                widthClass="w-32 sm:w-48 md:w-56"
+                widthClass="w-40 sm:w-48 md:w-56"
                 className="relative z-20"
               />
               <Polaroid
-                src="/assets/origin/speaking-1.jpg"
-                alt="A packed room during a Brand Humanizing keynote."
+                src="/assets/origin/speaking-2.jpg"
+                alt="Ferry on stage during a Brand Humanizing keynote."
                 caption="The room"
                 rotate={4}
                 widthClass="w-40 sm:w-48 md:w-56"
