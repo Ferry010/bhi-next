@@ -62,8 +62,8 @@ const data = {
     { q: "What's included in the investment?", a: "Ferry on your stage, a session shaped around your organisation in intake, and a copy of the book for every participant. Travel outside Rotterdam is billed separately." },
   ],
   crossSells: [
+    { label: "Want to get acquainted first?", description: "The book is the cheapest way in. Read it, then we'll talk. Every session participant gets a copy anyway.", to: "/book" },
     { label: "Want to go deeper?", description: "The Full-Day Course builds the complete four-skill framework with your team and sends them home with a 90-day plan.", to: "/learning/full-day-course" },
-    { label: "Ready for leadership alignment?", description: "The Multi-Day Programme embeds Brand Humanizing into how your leadership team decides.", to: "/learning/multi-day-programme" },
   ],
   courseSchema: {
     "@context": "https://schema.org",

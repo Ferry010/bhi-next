@@ -76,7 +76,7 @@ const data: FullServicePageData = {
   ],
 
   faqs: [
-    { q: "Can we do the Handover without doing the full Implementation?", a: "Not as a standalone. The Handover only works because your internal Brand Humanizers have been developing throughout the Implementation engagement. Without that foundation, the training would be theory without practice. If you're interested in a shorter internal capability pathway, the Multi-Day Programme is the right starting point." },
+    { q: "Can we do the Handover without doing the full Implementation?", a: "Not as a standalone. The Handover only works because your internal Brand Humanizers have been developing throughout the Implementation engagement. Without that foundation, the training would be theory without practice. If you're interested in a shorter internal capability pathway, the Full-Day Course is the right starting point." },
     { q: "What does a certified internal Brand Humanizer actually do?", a: "They run the Audit process internally when new departments or challenges emerge. They facilitate Brainstorms. They train new team members in the four-skill framework. They act as the internal voice of Brand Humanizing when technology or automation decisions are being made. the person who asks the question nobody else thought to ask." },
     { q: "What if the people we designate leave the organisation?", a: "This is a real risk and worth planning for. We recommend designating at least 3 internal Brand Humanizers, not one or two, to build redundancy into the capability. And because your methodology is documented, onboarding a new internal champion is significantly faster than starting from scratch." },
     { q: "Is there ongoing support after the Handover?", a: "Yes. quarterly check-ins are available. These are typically 90-minute sessions where we review how the methodology is being applied, discuss any new challenges, and share relevant research and developments. Think of it as a standing conversation rather than a consulting retainer." },
@@ -85,7 +85,7 @@ const data: FullServicePageData = {
   relatedEngagements: [
     { label: "The Inspiration Session", description: "Every journey through the five steps starts here. If you're reading this page and haven't started yet, this is where to go.", to: "/work-with-us/inspiration-session" },
     { label: "Organisation-Wide Implementation", description: "The Handover is the final phase of the Implementation. Learn what the full engagement looks like.", to: "/work-with-us/organisation-wide-implementation" },
-    { label: "The Multi-Day Programme", description: "The people you're planning to designate as internal Brand Humanizers will move through the Handover faster if they've already done the Multi-Day Programme.", to: "/learning/multi-day-programme" },
+    { label: "The Full-Day Course", description: "The people you're planning to designate as internal Brand Humanizers will move through the Handover faster if they've already done the Full-Day Course.", to: "/learning/full-day-course" },
   ],
 
   finalCtaHeading: "The goal was always your independence.",

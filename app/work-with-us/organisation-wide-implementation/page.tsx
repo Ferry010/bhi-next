@@ -99,7 +99,7 @@ const data: FullServicePageData = {
 
   relatedEngagements: [
     { label: "The Audit & Brainstorm", description: "The Audit gives you the honest baseline every successful implementation is built on.", to: "/work-with-us/audit-and-brainstorm" },
-    { label: "The Multi-Day Programme", description: "Leadership teams that complete the Multi-Day Programme before implementation begins move significantly faster through the strategic alignment phases.", to: "/learning/multi-day-programme" },
+    { label: "The Full-Day Course", description: "Teams that complete the Full-Day Course before implementation begins move significantly faster through the strategic alignment phases.", to: "/learning/full-day-course" },
     { label: "The Handover", description: "Implementation doesn't end when we stop showing up. The Handover trains your internal Brand Humanizers and sets your organisation up for permanent independence.", to: "/work-with-us/handover" },
   ],
 

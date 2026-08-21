@@ -85,7 +85,7 @@ const data: FullServicePageData = {
   relatedEngagements: [
     { label: "The Inspiration Session", description: "The Audit builds on the foundation the Inspiration Session creates. It's where every engagement starts.", to: "/work-with-us/inspiration-session" },
     { label: "The Brand Humanizing Roadmap", description: "The Audit tells you where you are. The Roadmap decides where you go.", to: "/work-with-us/brand-humanizing-roadmap" },
-    { label: "The Multi-Day Programme", description: "For leadership teams who want deeper framework fluency before the diagnostic work starts.", to: "/learning/multi-day-programme" },
+    { label: "The Full-Day Course", description: "For teams who want deeper framework fluency before the diagnostic work starts.", to: "/learning/full-day-course" },
   ],
 
   finalCtaHeading: "Find out where you actually are.",

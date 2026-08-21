@@ -85,7 +85,7 @@ const data: FullServicePageData = {
   relatedEngagements: [
     { label: "The Audit & Brainstorm", description: "The Roadmap is only as good as the data it's built on. The Audit gives you that data.", to: "/work-with-us/audit-and-brainstorm" },
     { label: "Organisation-Wide Implementation", description: "The Roadmap points the direction. Implementation builds the capability to go there. across every team, every level, for the long term.", to: "/work-with-us/organisation-wide-implementation" },
-    { label: "The Multi-Day Programme", description: "Some leadership teams benefit from a 2–3 day deep-dive on the Brand Humanizing framework before the Roadmap sessions begin. It shortens the strategy work considerably.", to: "/learning/multi-day-programme" },
+    { label: "The Full-Day Course", description: "Some teams benefit from a full day on the Brand Humanizing framework before the Roadmap sessions begin. It shortens the strategy work considerably.", to: "/learning/full-day-course" },
   ],
 
   finalCtaHeading: "Build the strategy your organisation will actually follow.",

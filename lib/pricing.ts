@@ -26,6 +26,32 @@ export const SPEAKERS_ACADEMY = {
   url: "[PLACEHOLDER: Speakers Academy URL]",
 };
 
+// ─────────────────────────────────────────────────────────────────────────────
+// THE BOOK — the entry rung of the public ladder.
+// The cheap way to get acquainted with Brand Humanizing: read it, then we talk.
+// Unlike the training tiers (scoped in a conversation, no public price), a book
+// has a real retail price, so this rung shows it and carries a purchase CTA.
+//
+// Purchase happens on the book's own sales site, brandhumanizingboek.nl. The
+// CTA opens it in a new tab. If a direct-checkout or retailer path is ever
+// preferred, swap `purchase.url` here (site-wide single source of truth).
+// ─────────────────────────────────────────────────────────────────────────────
+export const BOOK = {
+  name: "The Book",
+  edition: "Dutch edition",
+  price: "€24,95",
+  outcome: "Get acquainted for the price of lunch",
+  promise:
+    "Read the book, then we'll talk. The lightest way into Brand Humanizing, and the cheapest.",
+  bestFor: "Anyone who wants to understand the thinking before booking a session",
+  href: "/book",
+  purchase: {
+    label: "Get the book",
+    url: "https://brandhumanizingboek.nl",
+    external: true,
+  },
+};
+
 export interface ProductPricing {
   slug: string;
   /** Full display name, e.g. "The Inspiration Session" */
@@ -53,9 +79,9 @@ export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay"
   inspiration: {
     slug: "inspiration-session",
     name: "The Spark Session",
-    outcome: "An hour that changes the conversation",
+    outcome: "Your team hears the story in-house",
     formatLabel: "1 hour",
-    promise: "The keynote that stops your team defending the old way of working and gets them hungry for the new one.",
+    promise: "You heard it on stage. Now your whole team hears it in-house, and walks out hungry to change.",
     duration: "1 hour",
     audience: "Whole team or event audience",
     bestFor: "A whole department, or the entire company, in one room",
@@ -83,9 +109,9 @@ export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay"
   fullDay: {
     slug: "full-day-course",
     name: "The Full-Day Course",
-    outcome: "Give your team a plan they can act on",
+    outcome: "Get your team ready to work with AI, and stay the reason customers choose you",
     formatLabel: "Full day",
-    promise: "One focused day that turns a curious team into one that knows exactly how to out-human its competitors.",
+    promise: "One focused day that gets your team working with AI instead of around it, and keeps them the reason customers choose you.",
     duration: "A full day (6–7 hrs)",
     audience: "12–30 people",
     bestFor: "One team that needs to go from curious to genuinely capable",
@@ -112,7 +138,11 @@ export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay"
   },
 };
 
-export const PRODUCT_LIST = [PRODUCTS.inspiration, PRODUCTS.fullDay, PRODUCTS.multiDay];
+// The public training ladder, in order. Book is the entry rung above these
+// (see BOOK), Full-Day is the flagship. Half-day and multi-day are kept in
+// PRODUCTS above but deliberately left out here — they are "back pocket":
+// their pages still render, they're just unlinked from the public offer.
+export const PRODUCT_LIST = [PRODUCTS.inspiration, PRODUCTS.fullDay];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Credibility — reused on product pages and the pricing page.

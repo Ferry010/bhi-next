@@ -10,7 +10,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/learning`, lastModified: new Date(), changeFrequency: "weekly" },
     { url: `${base}/learning/inspiration-session`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/learning/full-day-course`, lastModified: new Date(), changeFrequency: "monthly" },
-    { url: `${base}/learning/multi-day-programme`, lastModified: new Date(), changeFrequency: "monthly" },
+    // half-day-deep-dive and multi-day-programme are intentionally kept out of the
+    // sitemap and nav: they are "back pocket" formats. The pages still render, they
+    // are just unlinked from the public offer so they can be resurfaced instantly.
     { url: `${base}/learning/online-course`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/learning/ai-literacy-certificate`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/work-with-us`, lastModified: new Date(), changeFrequency: "monthly" },

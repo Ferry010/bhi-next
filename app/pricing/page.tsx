@@ -7,47 +7,74 @@ import FAQSection from "@/components/FAQSection";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
 import { Check, BookOpen, ArrowRight } from "lucide-react";
-import { PRODUCTS, FACILITATOR, STATS, MARQUEE_LOGOS, EXAMPLES, TALK_TO_EXPERT } from "@/lib/pricing";
+import { PRODUCTS, BOOK, FACILITATOR, STATS, MARQUEE_LOGOS, EXAMPLES, TALK_TO_EXPERT } from "@/lib/pricing";
 import CountUp from "@/components/ui/CountUp";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
   title: "Train Your Team | Brand Humanizing Institute",
   description:
-    "Three ways to give your team the human edge in the AI era: a keynote, a full-day course, or a multi-day leadership programme. Every one includes the book. Trusted by teams at Unilever, VodafoneZiggo, GSK and more.",
+    "Three ways to give your team the human edge in the AI era: the book, an in-house keynote, or a full-day course. Every session includes the book. Trusted by teams at Unilever, VodafoneZiggo, GSK and more.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
+// The public ladder, three equal cards: Book (entry, real price + purchase),
+// Spark and Full-Day (scoped in a conversation, no public price). Full-Day is
+// the flagship. The book's purchase URL is a placeholder until the mechanism is
+// decided; until then the CTA falls back to the About page (/book).
+const bookPurchaseConfigured = !BOOK.purchase.url.startsWith("[");
 const tiers = [
   {
-    product: PRODUCTS.inspiration,
+    key: "book",
+    name: BOOK.name,
+    subtitle: "Read it, then we'll talk",
+    specLine: `${BOOK.price} · ${BOOK.edition}`,
+    bestFor: BOOK.bestFor,
+    includes: [
+      "The full Brand Humanizing methodology and research",
+      "The real-world cases behind the framework",
+      "The cheapest way to see if this fits your organisation",
+    ],
+    booksLine: "The whole method, in your hands",
+    cta: {
+      label: BOOK.purchase.label,
+      href: bookPurchaseConfigured ? BOOK.purchase.url : BOOK.href,
+      external: bookPurchaseConfigured && BOOK.purchase.external,
+    },
+    detail: { label: "About the book →", href: BOOK.href },
+    popular: false,
+  },
+  {
+    key: "spark",
+    name: PRODUCTS.inspiration.name,
     subtitle: "The spark that gets everyone moving",
+    specLine: `${PRODUCTS.inspiration.duration} · ${PRODUCTS.inspiration.audience}`,
+    bestFor: PRODUCTS.inspiration.bestFor,
     includes: [
       "A keynote shaped around your organisation",
       "An honest first read of where you stand",
       "Concrete first moves for Monday morning",
     ],
+    booksLine: "The book, for every participant",
+    cta: { label: TALK_TO_EXPERT.label, href: TALK_TO_EXPERT.url, external: true },
+    detail: { label: "See what it looks like →", href: PRODUCTS.inspiration.href },
     popular: false,
   },
   {
-    product: PRODUCTS.fullDay,
+    key: "fullday",
+    name: PRODUCTS.fullDay.name,
     subtitle: "Curious team in, capable team out",
+    specLine: `${PRODUCTS.fullDay.duration} · ${PRODUCTS.fullDay.audience}`,
+    bestFor: PRODUCTS.fullDay.bestFor,
     includes: [
       "The complete four-skill framework, applied to you",
       "The human opportunities your competitors miss",
       "A 90-day implementation plan you can run Monday",
     ],
+    booksLine: "The book, for every participant",
+    cta: { label: TALK_TO_EXPERT.label, href: TALK_TO_EXPERT.url, external: true },
+    detail: { label: "See what it looks like →", href: PRODUCTS.fullDay.href },
     popular: true,
-  },
-  {
-    product: PRODUCTS.multiDay,
-    subtitle: "For the people who set direction",
-    includes: [
-      "Both founders, across 2 to 3 days",
-      "Full leadership alignment on the framework",
-      "A 12 to 36 month strategic roadmap",
-    ],
-    popular: false,
   },
 ];
 
@@ -95,7 +122,7 @@ export default function PricingPage() {
               <span className="text-accent">what AI can&apos;t do.</span>
             </h1>
             <p className="text-sm md:text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              Three ways to give your people the human edge that keeps customers choosing you. A keynote, a day, or a programme. None of them come off a shelf.
+              Three ways to give your people the human edge that keeps customers choosing you. Start with the book, bring us in for a keynote, or train the team for a day.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8">
               <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
@@ -105,7 +132,7 @@ export default function PricingPage() {
               </a>
               <a href="#formats">
                 <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/70 font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto">
-                  See the three formats →
+                  See the three ways in →
                 </Button>
               </a>
             </div>
@@ -147,13 +174,13 @@ export default function PricingPage() {
             <ScrollRevealSection>
               <div className="text-center mb-14">
                 <h2 className="text-display md:text-display-lg text-foreground">Three ways in.</h2>
-                <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">Start where your team is. Most begin with a keynote and grow from there.</p>
+                <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">Start where your team is. Read the book, or bring us in. Most teams grow from a keynote into a full day.</p>
               </div>
             </ScrollRevealSection>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
-              {tiers.map(({ product, subtitle, includes, popular }) => (
+              {tiers.map(({ key, name, subtitle, specLine, bestFor, includes, booksLine, cta, detail, popular }) => (
                 <div
-                  key={product.slug}
+                  key={key}
                   className={`relative flex flex-col h-full rounded-2xl p-8 lg:p-10 bg-white shadow-[0_4px_24px_rgba(18,21,46,0.08)] transition-all duration-300 hover:shadow-lg ${
                     popular ? "border-2 border-accent md:-mt-4 md:mb-4" : "border border-border/50"
                   }`}
@@ -163,10 +190,15 @@ export default function PricingPage() {
                       Most chosen
                     </span>
                   )}
-                  <h3 className="font-heading font-bold text-2xl text-foreground">{product.name}</h3>
+                  {key === "book" && (
+                    <span className="absolute -top-3 left-8 bg-primary text-primary-foreground text-xs font-semibold tracking-wide uppercase px-4 py-1 rounded-md">
+                      Start here
+                    </span>
+                  )}
+                  <h3 className="font-heading font-bold text-2xl text-foreground">{name}</h3>
                   <p className="text-muted-foreground text-sm mt-1">{subtitle}</p>
-                  <p className="text-primary font-heading font-semibold text-sm mt-5">{product.duration} · {product.audience}</p>
-                  <p className="text-muted-foreground text-sm mt-4 leading-relaxed">{product.bestFor}.</p>
+                  <p className="text-primary font-heading font-semibold text-sm mt-5">{specLine}</p>
+                  <p className="text-muted-foreground text-sm mt-4 leading-relaxed">{bestFor}.</p>
                   <ul className="mt-6 space-y-3 flex-1">
                     {includes.map((f, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
@@ -177,21 +209,29 @@ export default function PricingPage() {
                   </ul>
                   <div className="flex items-center gap-2 mt-6 pt-6 border-t border-border text-muted-foreground text-sm">
                     <BookOpen className="w-4 h-4 text-accent" />
-                    The book, for every participant
+                    {booksLine}
                   </div>
-                  <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="mt-6 block">
-                    <Button className="w-full rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold h-11">
-                      {TALK_TO_EXPERT.label}
-                    </Button>
-                  </a>
-                  <Link href={product.href} className="mt-3 block text-center text-primary font-heading font-semibold text-sm hover:text-accent transition-colors">
-                    See what it looks like →
+                  {cta.external ? (
+                    <a href={cta.href} target="_blank" rel="noopener noreferrer" className="mt-6 block">
+                      <Button className="w-full rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold h-11">
+                        {cta.label}
+                      </Button>
+                    </a>
+                  ) : (
+                    <Link href={cta.href} className="mt-6 block">
+                      <Button className="w-full rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold h-11">
+                        {cta.label}
+                      </Button>
+                    </Link>
+                  )}
+                  <Link href={detail.href} className="mt-3 block text-center text-primary font-heading font-semibold text-sm hover:text-accent transition-colors">
+                    {detail.label}
                   </Link>
                 </div>
               ))}
             </div>
             <p className="text-center text-muted-foreground text-sm mt-10 max-w-2xl mx-auto">
-              No two engagements are the same, so we don&apos;t sell packages off a shelf. Tell us your team and your moment, and we come back with the right format and an exact proposal.
+              Start with the book, or bring us in. No two engagements are the same, so we don&apos;t sell training off a shelf. Tell us your team and your moment, and we come back with the right format and an exact proposal.
             </p>
           </div>
         </section>

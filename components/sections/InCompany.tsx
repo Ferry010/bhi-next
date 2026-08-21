@@ -2,15 +2,13 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Layers, GraduationCap, Users2, ArrowRight } from "lucide-react";
+import { Sparkles, GraduationCap, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { PRODUCTS, TALK_TO_EXPERT } from "@/lib/pricing";
 
 const formats = [
   { icon: Sparkles, name: PRODUCTS.inspiration.name, duration: PRODUCTS.inspiration.duration, to: PRODUCTS.inspiration.href },
-  { icon: Layers, name: PRODUCTS.halfDay.name, duration: PRODUCTS.halfDay.duration, to: PRODUCTS.halfDay.href },
   { icon: GraduationCap, name: PRODUCTS.fullDay.name, duration: PRODUCTS.fullDay.duration, to: PRODUCTS.fullDay.href },
-  { icon: Users2, name: PRODUCTS.multiDay.name, duration: PRODUCTS.multiDay.duration, to: PRODUCTS.multiDay.href },
 ];
 
 export default function InCompany() {
@@ -35,7 +33,7 @@ export default function InCompany() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10">
           {formats.map((f, i) => (
             <Link
               key={f.name}

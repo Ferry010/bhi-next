@@ -10,7 +10,7 @@ const cards = [
   {
     icon: GraduationCap,
     title: "Become a Brand Humanizer",
-    body: "The practitioner path. Training takes you from understanding the idea to running it yourself, from an hour that changes the conversation to a programme that changes how your team works.",
+    body: "The practitioner path. Training takes you from understanding the idea to running it yourself, from an hour that changes the conversation to a full day that changes how your team works.",
     cta: "See the training →",
     to: "/learning",
     primary: true,

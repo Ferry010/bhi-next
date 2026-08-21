@@ -63,10 +63,10 @@ const data = {
     { q: "Can it be delivered online?", a: "Yes, though in-person is strongly recommended for the workshop intensity. We discuss formats during intake." },
     { q: "What preparation is needed?", a: "We handle it through a 30-minute intake conversation. Your team shows up ready to work." },
     { q: "What's included in the investment?", a: "The full day led by a founder, all materials, the 90-day plan, and a copy of the book for every participant. Travel outside Rotterdam is billed separately." },
-    { q: "What happens after the training day?", a: "You leave with a 90-day plan. Many organisations follow up with a Multi-Day Programme or a project engagement to keep building." },
+    { q: "What happens after the training day?", a: "You leave with a 90-day plan. Many organisations follow up with the Taskforce to turn it into a working pilot run by their own people." },
   ],
   crossSells: [
-    { label: "Want this across the whole organisation?", description: "The Multi-Day Programme extends the training to leadership teams over 2–3 days.", to: "/learning/multi-day-programme" },
+    { label: "Want it to actually stick?", description: "The Taskforce turns one real challenge into a working pilot over sixteen weeks, run by your own people. When we leave, the capability stays.", to: "/taskforce" },
     { label: "Ready to implement?", description: "Our project engagements embed Brand Humanizing into how you actually operate.", to: "/work-with-us" },
   ],
   courseSchema: {

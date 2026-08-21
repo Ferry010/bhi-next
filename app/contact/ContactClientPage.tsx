@@ -17,7 +17,7 @@ import { ArrowRight, ArrowLeft } from "lucide-react";
 
 type Intent = "session" | "project" | "course" | "question";
 
-const sessionTypes = ["Inspiration Session", "Full-Day Course", "Multi-Day Programme", "Not sure yet (take the assessment)"];
+const sessionTypes = ["Inspiration Session", "Full-Day Course", "Not sure yet (take the assessment)"];
 const projectTypes = ["The Audit & Brainstorm", "Brand Humanizing Roadmap", "Organisation-Wide Implementation", "The Handover"];
 const teamSizes = ["Under 15", "15–30", "30–100", "100–500", "500+"];
 const orgSizes = ["1–50 employees", "50–250", "250–1,000", "1,000–10,000", "10,000+"];
@@ -28,6 +28,8 @@ const productToSessionType: Record<string, string> = {
   "inspiration-session": "Inspiration Session",
   "work-with-us-inspiration-session": "Inspiration Session",
   "full-day-course": "Full-Day Course",
+  // Back-pocket format: not in the visible dropdown, kept so the preserved
+  // multi-day page still pre-fills correctly if it is ever resurfaced.
   "multi-day-programme": "Multi-Day Programme",
   "audit-and-brainstorm": "The Audit & Brainstorm",
   "human-technology-fit-audit": "The Audit & Brainstorm",

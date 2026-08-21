@@ -20,6 +20,9 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // /pricing merged into /learning (the single training offer page). The old
+      // page file is kept for reference but is never reached because of this 301.
+      { source: "/pricing", destination: "/learning", permanent: true },
       { source: "/learning/half-day-workshop", destination: "/learning", permanent: true },
       { source: "/learning/full-day-training", destination: "/learning/full-day-course", permanent: true },
       { source: "/work-with-us/human-technology-fit-audit", destination: "/work-with-us/audit-and-brainstorm", permanent: true },

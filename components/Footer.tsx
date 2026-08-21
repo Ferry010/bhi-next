@@ -4,10 +4,9 @@ const navCols = [
   {
     title: "Learning",
     links: [
+      { label: "The Book", to: "/book" },
       { label: "Spark Session", to: "/learning/inspiration-session" },
-      { label: "Half-Day Deep Dive", to: "/learning/half-day-deep-dive" },
       { label: "Full-Day Course", to: "/learning/full-day-course" },
-      { label: "Multi-Day Programme", to: "/learning/multi-day-programme" },
       { label: "All Learning Formats", to: "/learning" },
     ],
   },

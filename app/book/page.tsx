@@ -7,6 +7,12 @@ import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { ArrowRight } from "lucide-react";
 import BookSection from "@/components/sections/BookSection";
+import { BOOK } from "@/lib/pricing";
+
+// The book's purchase mechanism is not decided yet (external retailer vs. direct
+// checkout). Until BOOK.purchase.url is set to a real URL, we show the price with
+// a "coming" note instead of shipping a broken link.
+const bookPurchaseConfigured = !BOOK.purchase.url.startsWith("[");
 
 export const metadata: Metadata = {
   alternates: { canonical: "/book" },
@@ -45,6 +51,24 @@ export default function BookPage() {
             <p className="text-body-lg text-muted-foreground mt-6 max-w-2xl">
               <em>Brand Humanizing: The superpower that makes your brand more human and your business grow faster.</em> By Ferry Hoes and Jonathan Flores.
             </p>
+            <p className="text-muted-foreground mt-4 max-w-2xl">
+              The cheapest way to get acquainted. Read it, then we&apos;ll talk.
+            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mt-6">
+              <span className="font-heading font-bold text-2xl text-foreground">{BOOK.price}</span>
+              <span className="text-sm text-muted-foreground">{BOOK.edition}</span>
+              {bookPurchaseConfigured ? (
+                <a href={BOOK.purchase.url} target={BOOK.purchase.external ? "_blank" : undefined} rel={BOOK.purchase.external ? "noopener noreferrer" : undefined} className="sm:ml-2">
+                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
+                    {BOOK.purchase.label} <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+              ) : (
+                <span className="sm:ml-2 inline-flex items-center gap-2 rounded-full border border-border bg-cream px-4 py-2 text-sm font-heading font-semibold text-primary">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" /> Purchase link coming. Want a copy now? <Link href="/contact" className="underline hover:text-accent">Message us</Link>.
+                </span>
+              )}
+            </div>
           </div>
         </section>
 
