@@ -52,7 +52,7 @@ const faqs = [
   { q: "What actually happens in the brainstorm?", a: "A working session, usually half a day. Your team brings the reality of your organisation, we bring the framework and the patterns we've seen across 50+ organisations. Together we find where your human edge is hiding." },
   { q: "How is this different from a consultancy?", a: "Consultancies analyse, present, hand over a deck, and leave. We work alongside your team and build the capability inside your organisation, so it keeps running after we're gone." },
   { q: "What size organisations do you work with?", a: "We've worked with teams of 8 and companies of 10,000+. The brainstorm is the same either way. What comes after is scoped to you." },
-  { q: "How do we start?", a: "Talk to an expert. One 30-minute call to see if a brainstorm makes sense for your team, and to book it if it does." },
+  { q: "How do we start?", a: "Book a free 30-minute call with a Brand Humanizer. An actual human who tells you honestly whether a brainstorm makes sense for your team, and books it if it does." },
 ];
 
 export default function WorkWithUsPage() {
@@ -150,7 +150,7 @@ export default function WorkWithUsPage() {
           <div className="container max-w-3xl text-center relative z-10">
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-white mb-6">Start with a brainstorm.</h2>
-              <p className="text-body-lg text-white/70 mb-8 max-w-xl mx-auto">One 30-minute call to see if it&apos;s a fit, and to book it if it is.</p>
+              <p className="text-body-lg text-white/70 mb-8 max-w-xl mx-auto">A free 30-minute call with a Brand Humanizer, to see if it&apos;s a fit.</p>
               <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
                 <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                   {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
