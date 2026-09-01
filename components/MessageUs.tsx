@@ -69,7 +69,7 @@ export default function MessageUs({
           </Button>
         </a>
         <p className={`text-sm mt-4 ${dark ? "text-white/50" : "text-muted-foreground"}`}>
-          A 30 minute call. A real human replies, usually within 24 hours.
+          A free 30-minute call with a Brand Humanizer. An actual human, no sales script.
         </p>
       </div>
 

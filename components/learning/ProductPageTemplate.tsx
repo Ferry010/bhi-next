@@ -325,7 +325,7 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
                   {data.comingSoon ? "Join the waitlist" : TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>
               </a>
-              <p className="text-white/40 text-xs mt-5">Book a 30-minute call. A real human, not a bot.</p>
+              <p className="text-white/40 text-xs mt-5">A free 30-minute call with a Brand Humanizer. An actual human, no sales script.</p>
             </div>
           </Section>
         </div>

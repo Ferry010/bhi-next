@@ -24,7 +24,7 @@ export default function FinalCTA() {
           </a>
         </div>
         <p className="text-xs text-foreground/55 mt-5 font-heading">
-          One 30-minute call. A real human, not a bot.
+          A free 30-minute call with a Brand Humanizer. An actual human, no sales script.
         </p>
       </div>
     </section>
