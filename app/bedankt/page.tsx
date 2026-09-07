@@ -133,13 +133,13 @@ export default function BedanktPage() {
               <h2 className="text-display md:text-display-lg text-foreground mt-3 leading-tight">Waar het over ging</h2>
               <div className="mt-6 space-y-5 text-body-lg text-muted-foreground leading-relaxed">
                 <p>
-                  AI en techniek maken elk team steeds meer op elkaar lijken. Iedereen automatiseert, iedereen gebruikt dezelfde tools, en zo zakt iedereen langzaam weg in hetzelfde grijze midden.
+                  AI en andere vormen van technologie zorgen ervoor dat teams, organisaties en producten steeds meer op elkaar gaan lijken. Iedereen automatiseert, iedereen gebruikt dezelfde tools, en zo zakt iedereen langzaam weg in hetzelfde grijze midden.
                 </p>
                 <p>
-                  Brand Humanizing draait het om. Niet de techniek tegenhouden, maar hem inzetten om juist menselijker te worden. Precies daar, waar menselijke kracht en technologie elkaar versterken, ontstaat het voordeel dat niemand kan kopiëren.
+                  Brand Humanizing draait het om. Niet de technologie tegenhouden, maar hem inzetten om juist menselijker te worden. Precies daar, waar menselijke kracht en technologie elkaar versterken, ontstaat het voordeel dat niemand kan kopiëren.
                 </p>
                 <p className="text-foreground font-heading font-semibold">
-                  De techniek neemt het saaie werk. De mens wordt de reden dat klanten voor je kiezen, en blijven kiezen.
+                  De technologie neemt het saaie werk over. De mens wordt de reden dat klanten voor je kiezen, en blijven kiezen.
                 </p>
               </div>
             </div>
