@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Users, Cpu, Lightbulb, Heart } from "lucide-react";
 import { BOOK, TALK_TO_EXPERT, MARQUEE_LOGOS } from "@/lib/pricing";
 import ShareAndContact from "@/components/bedankt/ShareAndContact";
+import Polaroid from "@/components/origin/Polaroid";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/bedankt" },
@@ -112,14 +113,14 @@ export default function BedanktPage() {
               </div>
               <p className="mt-6 font-heading font-semibold text-foreground">Ferry Hoes</p>
             </div>
-            <div className="md:justify-self-end w-full max-w-sm">
-              <div className="rounded-2xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(18,21,46,0.35)]">
-                <img
-                  src="/assets/origin/speaking-2.jpg"
-                  alt="Ferry Hoes op het podium tijdens een Brand Humanizing keynote."
-                  className="w-full h-auto object-cover"
-                />
-              </div>
+            <div className="flex justify-center md:justify-end">
+              <Polaroid
+                src="/assets/origin/speaking-2.jpg"
+                alt="Ferry Hoes op het podium tijdens een Brand Humanizing keynote."
+                caption="Tot de volgende keer"
+                rotate={-2.5}
+                widthClass="w-64 sm:w-72 md:w-80"
+              />
             </div>
           </div>
         </section>
