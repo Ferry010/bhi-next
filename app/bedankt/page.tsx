@@ -37,7 +37,7 @@ const takeaways = [
   },
   {
     title: "Maak je mensen je oneerlijke voordeel.",
-    body: "Zet de Brand Humanizing skills in om het beste in je mensen naar boven te halen, en geef ze de tools om daar het maximale uit te halen. Dat is precies waar techniek alleen niet bij komt.",
+    body: "Zet de Brand Humanizing skills in om het beste in je mensen naar boven te halen, en geef ze de tools om daar het maximale uit te halen. Dat is precies waar technologie alleen niet bij komt.",
   },
 ];
 
@@ -45,7 +45,7 @@ const skills = [
   {
     icon: Cpu,
     title: "Programmeren, automatisering en AI",
-    desc: "Weten wat techniek beter, sneller en goedkoper doet, en de helderheid hebben om het ook echt in te zetten.",
+    desc: "Weten wat technologie beter, sneller en goedkoper doet, en de helderheid hebben om het ook echt in te zetten.",
   },
   {
     icon: Lightbulb,
@@ -158,7 +158,7 @@ export default function BedanktPage() {
             <ScrollRevealSection>
               <div className="text-center mb-12">
                 <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Het framework</span>
-                <h2 className="text-display md:text-display-lg text-foreground mt-3">De vier skills die techniek niet overneemt</h2>
+                <h2 className="text-display md:text-display-lg text-foreground mt-3">De vier skills die technologie niet overneemt</h2>
                 <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
                   Automatiseren kan iedereen. Het verschil zit in de vier vaardigheden die je inzet zodra de machine het routinewerk overneemt. Brand Humanizing is waar ze samenkomen.
                 </p>
@@ -220,7 +220,7 @@ export default function BedanktPage() {
                 &ldquo;Waar doe ik in mijn werk <span className="text-accent">robotwerk</span>? En waar laat ik een robot het <span className="text-accent">mensenwerk</span> doen?&rdquo;
               </blockquote>
               <p className="text-body-lg text-muted-foreground mt-6 max-w-xl mx-auto">
-                Het klinkt simpel, maar het is precies de vraag waar de hele methode op rust. Zet de techniek op het voorspelbare werk, en je mensen op de momenten die er echt toe doen.
+                Het klinkt simpel, maar het is precies de vraag waar de hele methode op rust. Zet de technologie op het voorspelbare werk, en je mensen op de momenten die er echt toe doen.
               </p>
             </ScrollRevealSection>
           </div>
