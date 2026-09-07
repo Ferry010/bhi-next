@@ -219,33 +219,65 @@ export default function BedanktPage() {
           </div>
         </section>
 
-        {/* CTA — the navy moment */}
-        <section className="section-padding bg-navy">
-          <div className="container max-w-3xl text-center">
-            <ScrollRevealSection>
-              <h2 className="text-display md:text-display-lg text-white leading-tight">Meer weten?</h2>
-              <p className="text-white/70 text-body-lg mt-5 max-w-xl mx-auto">
-                Het hele verhaal en het complete framework staan in het boek. Of laten we praten over hoe we dit naar jouw team brengen.
+        {/* CTA 1 — the book */}
+        <section className="section-padding bg-white">
+          <div className="container max-w-5xl grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+            <div>
+              <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Het boek</span>
+              <h2 className="text-display md:text-display-lg text-foreground mt-3 leading-tight">
+                Over een week ben je het grootste deel weer kwijt.
+              </h2>
+              <p className="text-body-lg text-muted-foreground mt-5 max-w-xl">
+                Een keynote blijft een paar dagen hangen. Het boek zet het complete framework zwart op wit, met de research en de voorbeelden erbij. Zodat je er over een maand nog steeds naar handelt. Voor de prijs van een lunch.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-9">
-                <a href={BOOK.purchase.url} target="_blank" rel="noopener noreferrer">
-                  <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
-                    <BookOpen className="w-4 h-4" /> Haal het boek
-                  </Button>
-                </a>
-                <Link href="/learning">
-                  <Button variant="outline" className="rounded-full border-white/40 text-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
-                    <Users className="w-4 h-4" /> Breng dit naar je team
-                  </Button>
-                </Link>
+              <a href={BOOK.purchase.url} target="_blank" rel="noopener noreferrer" className="inline-block mt-7">
+                <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  <BookOpen className="w-4 h-4" /> Haal het boek · {BOOK.price}
+                </Button>
+              </a>
+            </div>
+            <div className="flex justify-center md:justify-end">
+              <img
+                src="/assets/book-cover.jpg"
+                alt="Brand Humanizing, het boek van Ferry Hoes en Jonathan Flores."
+                className="w-52 md:w-64 rounded-lg shadow-[0_24px_60px_-15px_rgba(18,21,46,0.45)] rotate-2"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* CTA 2 — bring it to the team */}
+        <section className="section-padding bg-navy">
+          <div className="container max-w-5xl grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+            <div className="order-2 md:order-1 flex justify-center md:justify-start">
+              <div className="rounded-2xl overflow-hidden shadow-[0_24px_60px_-15px_rgba(0,0,0,0.55)] w-full max-w-md">
+                <img
+                  src="/assets/origin/ferry-in-company.jpg"
+                  alt="Ferry Hoes brengt Brand Humanizing in-house bij een team."
+                  className="w-full h-auto object-cover"
+                />
               </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <span className="text-sunny text-caption uppercase tracking-widest font-heading font-semibold">Naar je team</span>
+              <h2 className="text-display md:text-display-lg text-white mt-3 leading-tight">
+                Elk kwartaal dat je wacht, lijkt je team meer op de rest.
+              </h2>
+              <p className="text-white/70 text-body-lg mt-5 max-w-xl">
+                De talk is de vonk. De echte verandering komt als je hele team het doorleeft en er maandag naar handelt. Wij brengen Brand Humanizing naar binnen, op maat, met een founder in de zaal. Geen junior trainer.
+              </p>
+              <Link href="/learning" className="inline-block mt-7">
+                <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  <Users className="w-4 h-4" /> Breng dit naar je team
+                </Button>
+              </Link>
               <p className="text-white/50 text-sm mt-6">
                 Liever eerst even sparren?{" "}
                 <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-white hover:text-sunny transition-colors inline-flex items-center gap-1">
                   Plan een gratis gesprek <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </p>
-            </ScrollRevealSection>
+            </div>
           </div>
         </section>
       </main>
