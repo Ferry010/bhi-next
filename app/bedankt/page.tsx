@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Users, Cpu, Lightbulb, Heart } from "lucide-react";
-import { BOOK, TALK_TO_EXPERT } from "@/lib/pricing";
+import { BOOK, TALK_TO_EXPERT, MARQUEE_LOGOS } from "@/lib/pricing";
 import ShareAndContact from "@/components/bedankt/ShareAndContact";
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ const takeaways = [
   },
   {
     title: "Maak je mensen je oneerlijke voordeel.",
-    body: "Zet de Brand Humanizing skills in om het beste in je mensen naar boven te halen, en geef ze de tools om daar het maximale uit te halen. Dat is het stuk dat niemand van je kan kopiëren.",
+    body: "Zet de Brand Humanizing skills in om het beste in je mensen naar boven te halen, en geef ze de tools om daar het maximale uit te halen. Dat is precies waar techniek alleen niet bij komt.",
   },
 ];
 
@@ -54,7 +54,7 @@ const skills = [
   {
     icon: Users,
     title: "Human sciences en onderzoek",
-    desc: "Je klanten begrijpen als mensen, niet als analytics. Dit houdt alle andere skills met de voeten in de klei.",
+    desc: "Echt onderzoek naar wat mensen beweegt, verder dan wat een dashboard laat zien. Dit houdt alle andere skills met de voeten in de klei.",
   },
   {
     icon: Heart,
@@ -154,7 +154,7 @@ export default function BedanktPage() {
                 <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Het framework</span>
                 <h2 className="text-display md:text-display-lg text-foreground mt-3">De vier skills die techniek niet overneemt</h2>
                 <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
-                  Automatiseren is makkelijk. De waarde zit in wat je met de vrijgekomen ruimte doet. Dat vraagt om vier vaardigheden, en Brand Humanizing is waar ze samenkomen.
+                  Automatiseren kan iedereen. Het verschil zit in de vier vaardigheden die je inzet zodra de machine het routinewerk overneemt. Brand Humanizing is waar ze samenkomen.
                 </p>
               </div>
             </ScrollRevealSection>
@@ -244,6 +244,32 @@ export default function BedanktPage() {
                 className="w-52 md:w-64 rounded-lg shadow-[0_24px_60px_-15px_rgba(18,21,46,0.45)] rotate-2"
               />
             </div>
+          </div>
+        </section>
+
+        {/* Proof — client logos + FOMO, primes the team CTA */}
+        <section className="section-padding bg-cream">
+          <div className="container max-w-5xl text-center">
+            <ScrollRevealSection>
+              <h2 className="text-display md:text-display-lg text-foreground leading-tight">
+                Deze teams gaven hun mensen de voorsprong.
+              </h2>
+              <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
+                De organisaties hieronder hoorden dit verhaal al, en deden er wat mee. De kans is groot dat je concurrent ertussen staat.
+              </p>
+              <div className="grid grid-cols-3 md:grid-cols-6 gap-x-8 gap-y-10 items-center mt-12">
+                {MARQUEE_LOGOS.map((logo) => (
+                  <div key={logo.alt} className="flex items-center justify-center">
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      loading="lazy"
+                      className="h-8 md:h-9 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </ScrollRevealSection>
           </div>
         </section>
 
