@@ -33,7 +33,7 @@ const takeaways = [
   },
   {
     title: "Dezelfde technologie maakt je nog niet anders.",
-    body: "Iedereen kan dezelfde tools kopen. Zonder de juiste mensen, skills en intenties doe je alleen wat je al deed, maar duurder. Of je lijkt op de honderd anderen die het net zo doen.",
+    body: "Iedereen kan dezelfde tools kopen. Zonder de juiste mensen, skills en intenties doe je alleen wat je al deed, maar duurder. En ondertussen raak je kwijt wat je ooit onderscheidde.",
   },
   {
     title: "Maak je mensen je oneerlijke voordeel.",
