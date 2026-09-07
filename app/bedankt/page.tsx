@@ -158,9 +158,9 @@ export default function BedanktPage() {
             <ScrollRevealSection>
               <div className="text-center mb-12">
                 <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Het framework</span>
-                <h2 className="text-display md:text-display-lg text-foreground mt-3">De vier skills die technologie niet overneemt</h2>
+                <h2 className="text-display md:text-display-lg text-foreground mt-3">De skills van een Brand Humanizer</h2>
                 <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
-                  Automatiseren kan iedereen. Het verschil zit in de vier vaardigheden die je inzet zodra de machine het routinewerk overneemt. Brand Humanizing is waar ze samenkomen.
+                  Dit zijn de skills die jou de voorsprong geven. Je ontwikkelt ze naast je huidige expertise. Of je nu HR-manager bent, Category Manager of C-level, deze skills voeg je toe aan je skillset.
                 </p>
               </div>
             </ScrollRevealSection>
