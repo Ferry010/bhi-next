@@ -6,6 +6,7 @@ import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Users, Cpu, Lightbulb, Heart } from "lucide-react";
 import { BOOK, TALK_TO_EXPERT } from "@/lib/pricing";
+import ShareAndContact from "@/components/bedankt/ShareAndContact";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/bedankt" },
@@ -280,6 +281,7 @@ export default function BedanktPage() {
             </div>
           </div>
         </section>
+        <ShareAndContact />
       </main>
       <Footer />
     </>
