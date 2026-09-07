@@ -160,7 +160,7 @@ export default function BedanktPage() {
                 <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Het framework</span>
                 <h2 className="text-display md:text-display-lg text-foreground mt-3">De skills van een Brand Humanizer</h2>
                 <p className="text-body-lg text-muted-foreground mt-4 max-w-2xl mx-auto">
-                  Dit zijn de skills die jou de voorsprong geven. Je ontwikkelt ze naast je huidige expertise. Of je nu HR-manager bent, Category Manager of C-level, deze skills voeg je toe aan je skillset.
+                  Dit zijn de skills die jou de voorsprong geven. Je bouwt ze bovenop je huidige expertise, wat je rol ook is. Van de werkvloer tot de boardroom, iedereen wordt er sterker van.
                 </p>
               </div>
             </ScrollRevealSection>
