@@ -165,16 +165,22 @@ export const STATS = [
   { value: "2017", label: "founded" },
 ];
 
-export const MARQUEE_LOGOS = [
-  { src: "/assets/logos/unilever.png", alt: "Unilever" },
+// `sizeTier` optically balances the logos. At an equal height, compact or
+// heavily-padded marks read smaller than wide wordmarks, so those render a size
+// up. Tiers 0-4, base is 1 (see LOGO_SIZE in the renderer). GSK sits on a padded
+// 16:9 canvas and UWV / Unilever are near-square, so they get boosted the most.
+// Only the strip on /bedankt honours this today; the other strips use a fixed
+// height. Nudge a value here if a logo still looks off.
+export const MARQUEE_LOGOS: { src: string; alt: string; sizeTier?: number }[] = [
+  { src: "/assets/logos/unilever.png", alt: "Unilever", sizeTier: 2 },
   { src: "/assets/logos/vodafone.png", alt: "Vodafone" },
   { src: "/assets/logos/ziggo.png", alt: "Ziggo" },
-  { src: "/assets/logos/gsk.png", alt: "GlaxoSmithKline" },
+  { src: "/assets/logos/gsk.png", alt: "GlaxoSmithKline", sizeTier: 3 },
   { src: "/assets/logos/toshiba.png", alt: "Toshiba" },
   { src: "/assets/logos/atos.png", alt: "Atos" },
-  { src: "/assets/logos/asr.png", alt: "a.s.r." },
-  { src: "/assets/logos/chubb.png", alt: "Chubb" },
-  { src: "/assets/logos/uwv.png", alt: "UWV" },
+  { src: "/assets/logos/asr.png", alt: "a.s.r.", sizeTier: 2 },
+  { src: "/assets/logos/chubb.png", alt: "Chubb", sizeTier: 2 },
+  { src: "/assets/logos/uwv.png", alt: "UWV", sizeTier: 3 },
   { src: "/assets/logos/minfin.png", alt: "Ministerie van Financiën" },
   { src: "/assets/logos/eindhoven.png", alt: "Gemeente Eindhoven" },
   { src: "/assets/logos/ama.webp", alt: "American Marketing Association" },

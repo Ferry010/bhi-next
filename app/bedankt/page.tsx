@@ -63,6 +63,11 @@ const skills = [
   },
 ];
 
+// Optical size tiers for the client logos, indexed by MARQUEE_LOGOS[i].sizeTier
+// (default 1). Compact/padded marks use a higher tier so every logo reads as
+// roughly equal. Kept here (a scanned file) so Tailwind emits the classes.
+const LOGO_SIZE = ["h-7 md:h-8", "h-8 md:h-9", "h-9 md:h-10", "h-10 md:h-12", "h-12 md:h-14"];
+
 function VennDiagram() {
   return (
     <svg
@@ -264,7 +269,7 @@ export default function BedanktPage() {
                       src={logo.src}
                       alt={logo.alt}
                       loading="lazy"
-                      className="h-8 md:h-9 w-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition object-contain"
+                      className={`${LOGO_SIZE[logo.sizeTier ?? 1]} w-auto max-w-full grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition object-contain`}
                     />
                   </div>
                 ))}
