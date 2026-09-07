@@ -294,7 +294,7 @@ export default function BedanktPage() {
             <div className="order-1 md:order-2">
               <span className="text-sunny text-caption uppercase tracking-widest font-heading font-semibold">Naar je team</span>
               <h2 className="text-display md:text-display-lg text-white mt-3 leading-tight">
-                Elk kwartaal dat je wacht, lijkt je team meer op de rest.
+                Elke maand dat je wacht, geef je voorsprong weg aan wie wél beweegt.
               </h2>
               <p className="text-white/70 text-body-lg mt-5 max-w-xl">
                 De talk is de vonk. De echte verandering komt als je hele team het doorleeft en er maandag naar handelt. Wij brengen Brand Humanizing naar binnen, op maat, met een founder in de zaal. Geen junior trainer.
