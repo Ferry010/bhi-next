@@ -14,7 +14,8 @@ export const metadata: Metadata = {
   title: "Towards a Human-Technology Fit | Brand Humanizing Research",
   description:
     "A peer-quality study with Erasmus University Rotterdam that gives the Human-Technology Fit its academic foundation: how to socialise AI in a way that accounts for employees and customers. Free to read and cite.",
-  openGraph: { images: [{ url: "/og/research.jpg" }] },
+  openGraph: { type: "article" },
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const challenges = [
@@ -59,7 +60,7 @@ export default function TowardsHumanTechnologyFitPage() {
               The answer it builds is the <span className="text-foreground font-semibold">Human-Technology Fit</span>: the missing foundation beneath everything else an organisation is trying to grow.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href={PDF} target="_blank" rel="noopener noreferrer">
+              <a href={PDF} target="_blank" rel="noopener noreferrer" download="Towards a Human-Technology Fit.pdf">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                   <Download className="w-4 h-4" /> Read the full report (PDF)
                 </Button>
@@ -181,7 +182,7 @@ export default function TowardsHumanTechnologyFitPage() {
                   <p className="text-sm text-muted-foreground leading-relaxed mb-5">
                     Free to read and cite. Please credit the authors and the Brand Humanizing Institute with a link back.
                   </p>
-                  <a href={PDF} target="_blank" rel="noopener noreferrer">
+                  <a href={PDF} target="_blank" rel="noopener noreferrer" download="Towards a Human-Technology Fit.pdf">
                     <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-6 h-11 text-sm gap-2">
                       <Download className="w-4 h-4" /> Download the report
                     </Button>
