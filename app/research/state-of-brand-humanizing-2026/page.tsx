@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     "Eight years ago, two people in a Rotterdam McDonald's asked if brands could use technology to become more human. Here is what happened next. The State of Brand Humanizing 2026.",
   openGraph: {
     type: "article",
-    images: [{ url: "/og/state-of-brand-humanizing-2026.jpg" }],
   },
+  // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const articleSchema = {
@@ -56,7 +56,7 @@ function Cite({ n }: { n: number }) {
 function PullQuote({ children }: { children: React.ReactNode }) {
   return (
     <blockquote className="border-l-4 border-accent pl-6 md:pl-10 my-12 md:my-16">
-      <p className="text-xl md:text-2xl lg:text-3xl italic font-heading font-semibold text-primary-foreground/90 leading-snug">
+      <p className="text-xl md:text-2xl lg:text-3xl italic font-heading font-semibold text-foreground leading-snug">
         {children}
       </p>
     </blockquote>
@@ -66,7 +66,7 @@ function PullQuote({ children }: { children: React.ReactNode }) {
 function H2({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <h2
-      className={`font-heading font-bold text-display md:text-display-lg text-primary-foreground mt-16 md:mt-24 mb-6 border-l-4 border-accent pl-5 ${className}`}
+      className={`font-heading font-bold text-display md:text-display-lg text-foreground mt-16 md:mt-24 mb-6 border-l-4 border-accent pl-5 ${className}`}
     >
       {children}
     </h2>
@@ -80,7 +80,7 @@ function H3({ children }: { children: React.ReactNode }) {
 }
 
 function P({ children }: { children: React.ReactNode }) {
-  return <p className="text-body-lg text-primary-foreground/80 mb-5 leading-relaxed">{children}</p>;
+  return <p className="text-body-lg text-muted-foreground mb-5 leading-relaxed">{children}</p>;
 }
 
 function TimelineDivider() {
@@ -95,11 +95,11 @@ export default function StateOfBrandHumanizing2026Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       <ScrollProgress />
-      <div className="bg-near-black">
-        <Navbar />
+      <div className="bg-white">
+        <Navbar variant="light" />
 
         {/* Hero */}
-        <header className="bg-near-black pt-28 md:pt-36 pb-16 md:pb-24 px-4">
+        <header className="bg-secondary pt-28 md:pt-36 pb-16 md:pb-24 px-4">
           <div className="container max-w-4xl">
             <div className="flex justify-end mb-8 print:hidden">
               <PrintButton />
@@ -107,13 +107,13 @@ export default function StateOfBrandHumanizing2026Page() {
             <p className="text-caption uppercase tracking-[0.25em] font-heading font-semibold text-accent mb-6">
               The Brand Humanizing Institute&ensp;|&ensp;April 2026
             </p>
-            <h1 className="text-hero md:text-hero-lg text-primary-foreground max-w-3xl">
+            <h1 className="text-hero md:text-hero-lg text-foreground max-w-3xl">
               The State of Brand Humanizing&nbsp;2026.
             </h1>
-            <p className="text-body-lg md:text-xl text-primary-foreground/70 mt-6 max-w-2xl font-heading">
+            <p className="text-body-lg md:text-xl text-muted-foreground mt-6 max-w-2xl font-heading">
               Eight years ago, we called it. Here is what happened next.
             </p>
-            <p className="text-caption text-primary-foreground/50 mt-6">
+            <p className="text-caption text-muted-foreground/70 mt-6">
               By Ferry Hoes and Jonathan Flores&ensp;·&ensp;Brand Humanizing Institute&ensp;·&ensp;8 min read
             </p>
             <hr className="border-accent mt-8 w-24" />
@@ -121,7 +121,7 @@ export default function StateOfBrandHumanizing2026Page() {
         </header>
 
         {/* Pull stats */}
-        <section className="bg-near-black border-t border-primary-foreground/10 py-16 md:py-24 px-4">
+        <section className="bg-cream py-16 md:py-24 px-4">
           <div className="container max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 text-center md:text-left">
             {[
               { stat: "63%", desc: "of workers say AI will make the workplace feel less human in 2026.", cite: 3 },
@@ -136,7 +136,7 @@ export default function StateOfBrandHumanizing2026Page() {
                 <span className="block font-heading font-extrabold text-5xl md:text-6xl text-accent leading-none mb-3">
                   {s.stat}
                 </span>
-                <p className="text-body-lg text-primary-foreground/70">
+                <p className="text-body-lg text-muted-foreground">
                   {s.desc}
                   <Cite n={s.cite} />
                 </p>
@@ -146,7 +146,7 @@ export default function StateOfBrandHumanizing2026Page() {
         </section>
 
         {/* Article body */}
-        <main className="bg-near-black px-4 pt-4 md:pt-8 pb-16 md:pb-28">
+        <main className="bg-white px-4 pt-4 md:pt-8 pb-16 md:pb-28">
           <div className="container max-w-3xl">
             <H2 className="!mt-0">Eight years ago, we called it.</H2>
             <P>
@@ -247,18 +247,18 @@ export default function StateOfBrandHumanizing2026Page() {
                   key={c.label}
                   className={`rounded-2xl p-6 md:p-7 ${
                     c.highlight
-                      ? "bg-accent/15 border-2 border-accent"
-                      : "bg-primary-foreground/5 border border-primary-foreground/10"
+                      ? "bg-accent/5 border-2 border-accent"
+                      : "bg-cream border border-border"
                   }`}
                 >
                   <span
                     className={`text-caption font-heading font-bold uppercase tracking-wider ${
-                      c.highlight ? "text-accent" : "text-primary-foreground/50"
+                      c.highlight ? "text-accent" : "text-muted-foreground/70"
                     }`}
                   >
                     {c.label}
                   </span>
-                  <p className="text-sm text-primary-foreground/75 mt-3 leading-relaxed">{c.text}</p>
+                  <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{c.text}</p>
                 </div>
               ))}
             </div>
@@ -277,12 +277,12 @@ export default function StateOfBrandHumanizing2026Page() {
 
             <H2>The question for your organization in 2026</H2>
             <div className="my-10 md:my-16 space-y-6">
-              <p className="text-xl md:text-2xl text-primary-foreground/60 font-heading">
+              <p className="text-xl md:text-2xl text-muted-foreground font-heading">
                 Not: <span className="italic">&ldquo;How do we use AI?&rdquo;</span>
               </p>
               <P>That question has been answered. You use AI. That is not a decision anymore.</P>
-              <p className="text-body-lg text-primary-foreground/80">The question is:</p>
-              <p className="text-2xl md:text-3xl lg:text-4xl font-heading font-extrabold text-primary-foreground leading-tight">
+              <p className="text-body-lg text-muted-foreground">The question is:</p>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-heading font-extrabold text-foreground leading-tight">
                 As AI does more, what does your organization get measurably better at doing as&nbsp;humans?
               </p>
               <P>
@@ -293,7 +293,7 @@ export default function StateOfBrandHumanizing2026Page() {
 
             {/* Wide pull quote */}
             <div className="my-12 md:my-20 py-12 md:py-16 border-y border-accent/30 text-center">
-              <p className="text-2xl md:text-3xl lg:text-4xl italic font-heading font-semibold text-primary-foreground/90 leading-snug max-w-3xl mx-auto">
+              <p className="text-2xl md:text-3xl lg:text-4xl italic font-heading font-semibold text-foreground leading-snug max-w-3xl mx-auto">
                 &ldquo;The organizations that chose humanity alongside technology are not just feeling good about their choices. They are outperforming.&rdquo;
               </p>
             </div>
@@ -312,22 +312,22 @@ export default function StateOfBrandHumanizing2026Page() {
             <P>They were right. What they underestimated was how much work it takes to make that place real.</P>
             <P>That work has a name.</P>
 
-            {/* Closing */}
-            <div className="text-center py-16 md:py-28 border-t border-primary-foreground/10 mt-16">
-              <p className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-primary-foreground">
+            {/* Closing — the navy moment */}
+            <div className="text-center rounded-3xl bg-navy px-6 py-14 md:py-20 mt-16 print:bg-white print:border print:border-border">
+              <p className="text-3xl md:text-4xl lg:text-5xl font-heading font-extrabold text-white print:text-foreground">
                 Brand Humanizing.
               </p>
-              <p className="text-body-lg text-primary-foreground/50 mt-2 font-heading">Since 2017.</p>
+              <p className="text-body-lg text-white/60 mt-2 font-heading print:text-muted-foreground">Since 2017.</p>
               <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10 print:hidden">
                 <Link href="/contact">
-                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto">
+                  <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto">
                     Talk to Ferry about what this means for your organization
                   </Button>
                 </Link>
                 <Link href="/research">
                   <Button
-                    variant="ghost"
-                    className="rounded-full text-primary-foreground/70 hover:text-primary-foreground font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto"
+                    variant="outline"
+                    className="rounded-full border-white/40 text-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto"
                   >
                     Read our research archive →
                   </Button>
@@ -336,11 +336,11 @@ export default function StateOfBrandHumanizing2026Page() {
             </div>
 
             {/* Sources */}
-            <div className="border-t border-primary-foreground/10 mt-8 pt-12 md:pt-16">
-              <h2 className="font-heading font-bold text-xl md:text-2xl text-primary-foreground/70 mb-3">
+            <div className="border-t border-border mt-8 pt-12 md:pt-16">
+              <h2 className="font-heading font-bold text-xl md:text-2xl text-muted-foreground mb-3">
                 Sources and methodology
               </h2>
-              <p className="text-sm text-primary-foreground/40 mb-10">
+              <p className="text-sm text-muted-foreground/60 mb-10">
                 Every claim in this report is sourced. Here is the full citation trail.
               </p>
               <ol className="space-y-8 list-none">
@@ -385,9 +385,9 @@ export default function StateOfBrandHumanizing2026Page() {
                   },
                 ].map((s) => (
                   <li key={s.id} id={`source-${s.id}`} className="scroll-mt-20">
-                    <span className="text-sm font-heading font-bold text-primary-foreground/60">[{s.id}]&ensp;</span>
-                    <span className="text-sm font-semibold text-primary-foreground/80">{s.label}</span>
-                    <p className="text-sm text-primary-foreground/40 mt-1.5 leading-relaxed">{s.body}</p>
+                    <span className="text-sm font-heading font-bold text-muted-foreground">[{s.id}]&ensp;</span>
+                    <span className="text-sm font-semibold text-muted-foreground">{s.label}</span>
+                    <p className="text-sm text-muted-foreground/60 mt-1.5 leading-relaxed">{s.body}</p>
                     {s.href && (
                       <a
                         href={s.href}
@@ -401,11 +401,11 @@ export default function StateOfBrandHumanizing2026Page() {
                   </li>
                 ))}
               </ol>
-              <div className="mt-12 pt-8 border-t border-primary-foreground/5">
-                <h3 className="font-heading font-semibold text-sm text-primary-foreground/50 uppercase tracking-wider mb-3">
+              <div className="mt-12 pt-8 border-t border-border/50">
+                <h3 className="font-heading font-semibold text-sm text-muted-foreground/70 uppercase tracking-wider mb-3">
                   Note on methodology
                 </h3>
-                <p className="text-sm text-primary-foreground/40 leading-relaxed">
+                <p className="text-sm text-muted-foreground/60 leading-relaxed">
                   The Brand Humanizing Institute&apos;s own 2020 research (sources 1 and 2) is self-published, independent research with a described methodology (n=104, invite-only via LinkedIn). Third-party sources include IDC enterprise research and a Resume Now survey of U.S. workers. Where data originates from commercial publishers, we note the scope and methodology. Regulatory citations reference official EU Commission documents.
                 </p>
               </div>
