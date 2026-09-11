@@ -201,11 +201,13 @@ export default function StartClient() {
 
           {/* A lighter step, if there is one */}
           {fallback && (
-            <div className="mt-8 max-w-md mx-auto text-center">
-              <p className="text-muted-foreground">
-                Feels like too big a step?{" "}
-                <TextLink action={fallback.action}>Start with {fallback.name.replace(/^The /, "the ")}</TextLink>
-              </p>
+            <div className="mt-8 max-w-md mx-auto">
+              <div className="rounded-2xl bg-sunny/15 border border-sunny/40 p-4 md:p-5 text-center">
+                <p className="text-sm md:text-base text-foreground">
+                  Feels like too big a step?{" "}
+                  <TextLink action={fallback.action}>Start with {fallback.name.replace(/^The /, "the ")}</TextLink>
+                </p>
+              </div>
             </div>
           )}
         </>
