@@ -21,7 +21,7 @@ export default function StartPage() {
             <div className="max-w-2xl mx-auto text-center mb-10 md:mb-12">
               <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Find your fit</span>
               <p className="text-body-lg text-muted-foreground mt-3">
-                Three quick questions. We point you to the right way in, then a real human replies to your specific question. No generic form.
+                Three quick questions and we point you to the right way in. Want a hand with your specific situation? A real human replies, no bot, no generic form.
               </p>
             </div>
             <StartClient />
