@@ -219,6 +219,15 @@ export default function StartClient() {
                 </Button>
               </a>
             </div>
+            {recKey === "book" && (
+              <p className="text-sm text-muted-foreground mt-6 max-w-lg mx-auto">
+                The book is in Dutch for now. Not a Dutch reader?{" "}
+                <Link href="/book/english-edition" className="font-heading font-semibold text-primary hover:text-accent underline underline-offset-2">
+                  Get on the English-edition list
+                </Link>{" "}
+                and we&apos;ll tell you the moment it lands.
+              </p>
+            )}
           </div>
 
           {/* Optional: a personal answer to their specific question */}
