@@ -29,19 +29,6 @@ export default function Hero() {
                 </Button>
               </Link>
             </div>
-            <div className="flex flex-wrap items-center gap-2 pt-3 hero-rise" style={{ animationDelay: "120ms" }}>
-              <span className="text-xs text-muted-foreground font-heading">I want to:</span>
-              <Link href="/learning" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
-                Train my team
-              </Link>
-              <Link href="/learning" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
-                Become a Brand Humanizer
-              </Link>
-              <Link href="/research" className="rounded-full border border-foreground/20 hover:border-foreground/40 px-3 h-7 text-xs font-heading font-semibold text-foreground/70 hover:text-foreground inline-flex items-center transition-colors">
-                Read the research
-              </Link>
-            </div>
-
           </div>
 
           <div className="relative flex justify-center lg:justify-end">
