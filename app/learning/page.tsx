@@ -318,12 +318,12 @@ export default function LearningPage() {
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-white mb-6">Not sure where to start?</h2>
               <p className="text-body-lg text-white/70 mb-8">
-                Most teams start with the Spark Session. It&apos;s the fastest way to get everyone on the same page.
+                Answer three quick questions and we&apos;ll point you to the right format, then a real human replies to your specific situation. Most teams start with the Spark Session.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/learning/inspiration-session">
+                <Link href="/start">
                   <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                    Start with the Spark Session <ArrowRight className="w-4 h-4" />
+                    Find your fit <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
