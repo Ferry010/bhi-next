@@ -3,10 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { BOOK, TALK_TO_EXPERT } from "@/lib/pricing";
-import { ArrowRight, ArrowLeft, Check } from "lucide-react";
+import { BOOK } from "@/lib/pricing";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 
 type Answers = { who?: string; where?: string; timeline?: string };
 
@@ -42,9 +40,10 @@ const STEPS = [
   },
 ];
 
-// Each fit links straight to where they can act: get the book, see/book a
-// training, or start the Taskforce. A call is always offered alongside.
-const RECS = {
+type Action = { label: string; href: string; external: boolean };
+
+// Each fit links straight to where they can act.
+const RECS: Record<string, { name: string; why: string; action: Action }> = {
   book: {
     name: "The Book",
     why: "You're still forming a view, so start light. The whole method for the price of lunch. Read it, then we talk.",
@@ -83,25 +82,34 @@ function recommend(a: Answers): RecKey {
   return "spark"; // team + curious/wake
 }
 
-// Human-readable labels for the lead that lands in the Inbox.
-function labelFor(key: keyof Answers, value?: string) {
-  const step = STEPS.find((s) => s.key === key);
-  return step?.options.find((o) => o.value === value)?.label ?? value ?? "";
+// One step lighter, for the "feels like too big a commitment?" fall-back.
+const FALLBACK: Partial<Record<RecKey, RecKey>> = {
+  taskforce: "fullday",
+  fullday: "spark",
+  spark: "book",
+};
+
+function TextLink({ action, children }: { action: Action; children: React.ReactNode }) {
+  const cls =
+    "font-heading font-semibold text-primary hover:text-accent underline-offset-2 hover:underline inline-flex items-center gap-1";
+  return action.external ? (
+    <a href={action.href} target="_blank" rel="noopener noreferrer" className={cls}>
+      {children} <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+  ) : (
+    <Link href={action.href} className={cls}>
+      {children} <ArrowRight className="w-3.5 h-3.5" />
+    </Link>
+  );
 }
 
 export default function StartClient() {
   const [step, setStep] = useState(0); // 0-2 = questions, 3 = result
   const [answers, setAnswers] = useState<Answers>({});
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [organization, setOrganization] = useState("");
-  const [question, setQuestion] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [sent, setSent] = useState(false); // the optional capture form was sent
 
   const recKey = recommend(answers);
   const rec = RECS[recKey];
-  const firstName = name.trim().split(" ")[0];
+  const fallback = FALLBACK[recKey] ? RECS[FALLBACK[recKey] as RecKey] : null;
   const atResult = step === STEPS.length;
   const progress = ((step + 1) / (STEPS.length + 1)) * 100;
 
@@ -110,40 +118,6 @@ export default function StartClient() {
     setAnswers((a) => ({ ...a, [key]: value }));
     setStep((s) => s + 1);
   };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !email.trim()) return;
-    setLoading(true);
-    try {
-      const submissionId = crypto.randomUUID();
-      const formData = {
-        name: name.trim(),
-        email: email.trim(),
-        organization: organization.trim() || undefined,
-        question: question.trim() || undefined,
-        who: labelFor("who", answers.who),
-        where: labelFor("where", answers.where),
-        timeline: labelFor("timeline", answers.timeline),
-        recommendation: rec.name,
-      };
-      await createSupabaseBrowserClient()
-        .from("form_submissions" as any)
-        .insert({ id: submissionId, form_type: "qualifier", data: formData } as any);
-      createSupabaseBrowserClient().functions.invoke("notify-slack", {
-        body: { form_type: "qualifier", data: formData },
-      });
-      setSent(true);
-    } catch {
-      // The action buttons stay available regardless; if capture fails we still
-      // confirm so the person is never dropped on an error screen.
-      setSent(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const inputCls = "rounded-xl h-12 px-4 border border-input bg-white focus-visible:ring-accent";
 
   return (
     <div className="max-w-2xl mx-auto">
@@ -186,7 +160,7 @@ export default function StartClient() {
           </div>
         </>
       ) : (
-        // ── Result: act now, human help optional ─────────────────
+        // ── Result: the advice, plus a one-tier-lighter option ───────
         <>
           <button
             onClick={() => setStep(STEPS.length - 1)}
@@ -199,25 +173,20 @@ export default function StartClient() {
             <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Your best fit</span>
             <h1 className="text-display md:text-display-lg text-foreground mt-2 leading-tight">{rec.name}</h1>
             <p className="text-body-lg text-muted-foreground mt-4 max-w-xl mx-auto">{rec.why}</p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-7">
+            <div className="mt-7">
               {rec.action.external ? (
                 <a href={rec.action.href} target="_blank" rel="noopener noreferrer">
-                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
+                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                     {rec.action.label} <ArrowRight className="w-4 h-4" />
                   </Button>
                 </a>
               ) : (
                 <Link href={rec.action.href}>
-                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
+                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                     {rec.action.label} <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
               )}
-              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/40 font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto">
-                  Book a call
-                </Button>
-              </a>
             </div>
             {recKey === "book" && (
               <p className="text-sm text-muted-foreground mt-6 max-w-lg mx-auto">
@@ -230,50 +199,15 @@ export default function StartClient() {
             )}
           </div>
 
-          {/* Optional: a personal answer to their specific question */}
-          <div className="mt-8">
-            {sent ? (
-              <div className="rounded-2xl bg-cream border border-border/50 p-6 md:p-7 text-center">
-                <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
-                  <Check className="w-5 h-5 text-primary" />
-                </div>
-                <p className="font-heading font-semibold text-foreground">Thanks{firstName ? `, ${firstName}` : ""}. We&apos;ve got it.</p>
-                <p className="text-sm text-muted-foreground mt-1">Ferry or Jonathan replies to {email || "you"} within two working days, on your question.</p>
-              </div>
-            ) : (
-              <div className="rounded-2xl bg-cream border border-border/50 p-6 md:p-7">
-                <h2 className="font-heading font-bold text-xl text-foreground">Prefer a personal answer first?</h2>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Tell us the one thing you want to solve. A human, Ferry or Jonathan, replies within two working days, on your question, not a generic pitch.
-                </p>
-                <form onSubmit={handleSubmit} className="mt-5 space-y-3">
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <Input type="text" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required className={inputCls} />
-                    <Input type="email" placeholder="Work email" value={email} onChange={(e) => setEmail(e.target.value)} required className={inputCls} />
-                  </div>
-                  <Input type="text" placeholder="Organisation (optional)" value={organization} onChange={(e) => setOrganization(e.target.value)} className={inputCls} />
-                  <textarea
-                    placeholder="What's the one thing you want to solve? (optional, but it helps)"
-                    value={question}
-                    onChange={(e) => setQuestion(e.target.value)}
-                    rows={3}
-                    className="w-full rounded-xl px-4 py-3 border border-input bg-white text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent resize-none"
-                  />
-                  <Button
-                    type="submit"
-                    disabled={loading || !name.trim() || !email.trim()}
-                    className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 btn-scale font-heading font-semibold h-12 text-base gap-2"
-                  >
-                    {loading ? "Sending…" : "Send my question"} <ArrowRight className="w-4 h-4" />
-                  </Button>
-                  <p className="text-xs text-muted-foreground text-center">
-                    By sending you agree to our{" "}
-                    <Link href="/privacy" className="underline hover:text-foreground">Privacy Policy</Link>.
-                  </p>
-                </form>
-              </div>
-            )}
-          </div>
+          {/* A lighter step, if there is one */}
+          {fallback && (
+            <div className="mt-8 max-w-md mx-auto text-center">
+              <p className="text-muted-foreground">
+                Feels like too big a step?{" "}
+                <TextLink action={fallback.action}>Start with {fallback.name.replace(/^The /, "the ")}</TextLink>
+              </p>
+            </div>
+          )}
         </>
       )}
     </div>
