@@ -65,12 +65,19 @@ const RECS = {
     why: "Sixteen weeks, your own people, one real challenge taken to a working pilot. When we leave, the capability stays.",
     action: { label: "See the Taskforce", href: "/taskforce", external: false },
   },
+  assessment: {
+    name: "The Self-Assessment",
+    why: "Since it's just you, start by seeing exactly where you stand. The free assessment scores you across the four Brand Humanizing skills and points you to what to build next.",
+    action: { label: "Take the assessment", href: "/assessment", external: false },
+  },
 };
 
 type RecKey = keyof typeof RECS;
 
 function recommend(a: Answers): RecKey {
-  if (a.who === "me") return "book";
+  // Individuals can't book team training, so they get the book or the free
+  // self-assessment, split by how ready they are (not always the book).
+  if (a.who === "me") return a.where === "curious" ? "book" : "assessment";
   if (a.who === "org" || a.where === "stick") return "taskforce";
   if (a.where === "capable") return "fullday";
   return "spark"; // team + curious/wake
