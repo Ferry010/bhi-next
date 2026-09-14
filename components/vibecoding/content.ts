@@ -102,7 +102,7 @@ export const en: VibeContent = {
   hero: {
     title: "Skip the escape room. ",
     titleAccent: "Build something real.",
-    sub: "A couple of hours, your team, a few laptops. By the end everyone has built something with AI that didn't exist that morning. No experience needed. No ropes course, no sticky notes.",
+    sub: "A couple of hours, your team, a few laptops. By the end everyone has built something with AI that didn't exist that morning. No experience needed.",
     cta: "Bring your team",
     note: "Groups of 4 to 20 · at your place or ours in Rotterdam",
   },
@@ -142,7 +142,7 @@ export const en: VibeContent = {
     body: [
       "Ferry is on a stage about 40 times a year, in front of teams at GlaxoSmithKline, Unilever, VodafoneZiggo and the Dutch government. Always the same point: get people working with AI instead of against it.",
       "He makes the tech feel small and the room feel loose. Sharp, funny, zero jargon. At his best when a team that calls itself “not technical” suddenly builds something it is proud of. Which happens every time.",
-      "Short version: exactly who you want there when your team builds its first real thing with AI.",
+      "He is exactly who you want there when your team builds its first real thing with AI.",
     ],
     caption: "Ferry, doing his favourite thing",
   },
@@ -230,8 +230,8 @@ export const en: VibeContent = {
       contactHelp: "We come back with a date and the price, usually within one working day.",
     },
     success: {
-      title: "Nice. This is going to be fun.",
-      body: "We've got your request. Ferry or Jonathan will come back personally with a date and the price, usually within one working day.",
+      title: "Got it.",
+      body: "Ferry or Jonathan will come back to you personally with a date and the price, usually within one working day.",
     },
   },
 };
@@ -247,7 +247,7 @@ export const nl: VibeContent = {
   hero: {
     title: "Sla de escape room over. ",
     titleAccent: "Bouw samen iets echts.",
-    sub: "Een paar uur, je team, een paar laptops. Aan het eind heeft iedereen iets met AI gebouwd dat er 's ochtends nog niet was. Geen ervaring nodig. Geen touwtjes, geen post-its.",
+    sub: "Een paar uur, je team, een paar laptops. Aan het eind heeft iedereen iets met AI gebouwd dat er 's ochtends nog niet was. Geen ervaring nodig.",
     cta: "Neem je team mee",
     note: "Groepen van 4 tot 20 · bij jullie of bij ons in Rotterdam",
   },
@@ -287,7 +287,7 @@ export const nl: VibeContent = {
     body: [
       "Ferry staat zo'n 40 keer per jaar op een podium, van teams bij GlaxoSmithKline, Unilever en VodafoneZiggo tot de Rijksoverheid. Altijd hetzelfde punt: mensen laten wérken mét AI in plaats van ertegen.",
       "Hij maakt de techniek klein en de zaal los. Scherp, grappig, nul jargon. Op zijn best als een team dat zichzelf “niet technisch” noemt ineens iets bouwt waar het trots op is. Wat elke keer gebeurt.",
-      "Kort gezegd: precies wie je erbij wil als je team voor het eerst iets echts bouwt met AI.",
+      "Precies wie je erbij wil als je team voor het eerst iets echts bouwt met AI.",
     ],
     caption: "Ferry, in zijn element",
   },
@@ -375,8 +375,8 @@ export const nl: VibeContent = {
       contactHelp: "We komen terug met een datum en de prijs, meestal binnen een werkdag.",
     },
     success: {
-      title: "Top. Dit wordt leuk.",
-      body: "We hebben je aanvraag. Ferry of Jonathan komt persoonlijk terug met een datum en de prijs, meestal binnen een werkdag.",
+      title: "Genoteerd.",
+      body: "Ferry of Jonathan komt persoonlijk bij je terug met een datum en de prijs, meestal binnen een werkdag.",
     },
   },
 };
