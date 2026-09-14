@@ -1,27 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Cpu, Lightbulb, Users, Heart } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const skills = [
   {
-    icon: Cpu,
     title: "Programming, Automation and AI",
     desc: "Knowing which parts of your organization technology can do better, faster, and cheaper. And having the clarity and courage to actually implement it. This does not mean everyone needs to learn to code. It means your organization needs enough technical literacy to make smart decisions about automation.",
   },
   {
-    icon: Lightbulb,
     title: "Creativity and Organizational Awareness",
     desc: "The empty space that automation creates is only valuable if you fill it with something better. Creativity is an organizational skill. It means understanding your business deeply enough to imagine what it could become.",
   },
   {
-    icon: Users,
     title: "Human Sciences and Research",
     desc: "Your customers are not data points. They are people with lives, fears, relationships, and needs that change. Understanding them requires more than analytics. Human Sciences keeps every other skill grounded in reality.",
   },
   {
-    icon: Heart,
     title: "Emotional Intelligence and Ethics",
     desc: "The skill that prevents Brand Humanizing from becoming just another efficiency play. Ethics is not a constraint on good business. It is the foundation of it. Without this skill, everything else falls apart.",
   },
@@ -80,15 +75,6 @@ export default function FourSkillsSpotlight() {
                       : "bg-white/50 shadow-sm opacity-30 grayscale"
                   }`}
                 >
-                  <div
-                    className={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-all duration-500 ${isActive ? "scale-110" : "scale-100"}`}
-                    style={{ backgroundColor: isActive ? "rgba(255,107,43,0.1)" : "hsl(220, 20%, 93%)" }}
-                  >
-                    <skill.icon
-                      className="w-7 h-7 transition-all duration-500"
-                      style={{ color: isActive ? "hsl(21,100%,58%)" : "hsl(220, 20%, 60%)" }}
-                    />
-                  </div>
                   <h3 className="font-heading font-bold text-lg md:text-xl text-foreground mb-3">{skill.title}</h3>
                   <p className={`text-sm leading-relaxed transition-all duration-500 ${isActive ? "text-muted-foreground max-h-96" : "text-muted-foreground/50 max-h-20 overflow-hidden"}`}>
                     {skill.desc}
@@ -105,7 +91,6 @@ export default function FourSkillsSpotlight() {
           >
             <div className="bg-navy/90 backdrop-blur-sm border-2 border-sunny rounded-2xl px-6 py-4 shadow-[0_0_40px_hsl(44_100%_50%/0.3)]">
               <div className="flex items-center gap-2">
-                <Heart className="w-5 h-5 text-sunny" />
                 <span className="font-heading font-bold text-lg text-sunny">Brand Humanizer</span>
               </div>
               <p className="text-xs text-white/60 mt-1">The intersection of all four skills</p>

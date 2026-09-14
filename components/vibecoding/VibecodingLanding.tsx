@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Languages, MapPin, Building2, Croissant, X } from "lucide-react";
+import { ArrowRight, Languages } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
 import { VIBECODING_PRICE, priceIsSet, type VibeContent } from "./content";
 
@@ -49,9 +49,6 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
               {c.not.items.map((it) => (
                 <ScrollRevealSection key={it.label}>
                   <div className="h-full rounded-2xl bg-cream border border-border/50 p-6 md:p-7">
-                    <div className="w-9 h-9 rounded-full bg-foreground/5 flex items-center justify-center mb-3">
-                      <X className="w-4 h-4 text-muted-foreground" />
-                    </div>
                     <h3 className="font-heading font-bold text-lg text-foreground">{it.label}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mt-2">{it.text}</p>
                   </div>
@@ -81,14 +78,9 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
               <div className="space-y-4">
                 {c.what.points.map((p) => (
                   <ScrollRevealSection key={p.title}>
-                    <div className="rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-5 md:p-6 flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center shrink-0">
-                        <p.icon className="w-5 h-5 text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="font-heading font-bold text-lg text-foreground">{p.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed mt-1">{p.text}</p>
-                      </div>
+                    <div className="rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-5 md:p-6">
+                      <h3 className="font-heading font-bold text-lg text-foreground">{p.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed mt-1">{p.text}</p>
                     </div>
                   </ScrollRevealSection>
                 ))}
@@ -120,6 +112,33 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
           </div>
         </section>
 
+        {/* About the host */}
+        <section className="section-padding bg-secondary">
+          <div className="container max-w-5xl grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+            <ScrollRevealSection>
+              <div className="order-2 md:order-1">
+                <div className="rounded-2xl overflow-hidden shadow-[0_20px_60px_-15px_rgba(18,21,46,0.35)] max-w-md">
+                  <img
+                    src="/assets/origin/ferry-in-company.jpg"
+                    alt="Ferry Hoes hosting a session with a team."
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                <p className="font-handwritten text-foreground/70 text-xl md:text-2xl mt-3">{c.about.caption}</p>
+              </div>
+            </ScrollRevealSection>
+            <ScrollRevealSection>
+              <div className="order-1 md:order-2">
+                <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">{c.about.eyebrow}</span>
+                <h2 className="text-display md:text-display-lg text-foreground mt-3 leading-tight">{c.about.heading}</h2>
+                <div className="mt-6 space-y-4 text-body-lg text-muted-foreground leading-relaxed">
+                  {c.about.body.map((p, i) => <p key={i}>{p}</p>)}
+                </div>
+              </div>
+            </ScrollRevealSection>
+          </div>
+        </section>
+
         {/* Where */}
         <section className="section-padding bg-cream">
           <div className="container max-w-5xl">
@@ -132,26 +151,17 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
             <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
               <ScrollRevealSection>
                 <div className="h-full rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-7 md:p-8">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center mb-4">
-                    <MapPin className="w-5 h-5 text-accent" />
-                  </div>
                   <h3 className="font-heading font-bold text-xl text-foreground">{c.where.yours.title}</h3>
                   <p className="text-muted-foreground leading-relaxed mt-2">{c.where.yours.text}</p>
                 </div>
               </ScrollRevealSection>
               <ScrollRevealSection>
                 <div className="h-full rounded-2xl bg-white border-2 border-accent/30 shadow-[0_4px_24px_rgba(18,21,46,0.08)] p-7 md:p-8">
-                  <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center mb-4">
-                    <Building2 className="w-5 h-5 text-accent" />
-                  </div>
                   <h3 className="font-heading font-bold text-xl text-foreground">{c.where.ours.title}</h3>
                   <p className="text-muted-foreground leading-relaxed mt-2">{c.where.ours.text}</p>
-                  <div className="mt-5 rounded-xl bg-sunny/15 border border-sunny/40 p-4 flex items-start gap-3">
-                    <Croissant className="w-5 h-5 text-foreground/70 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="text-xs font-heading font-bold uppercase tracking-wider text-accent">{c.where.ours.bonusLabel}</span>
-                      <p className="text-sm text-foreground/80 leading-relaxed mt-1">{c.where.ours.bonus}</p>
-                    </div>
+                  <div className="mt-5 rounded-xl bg-sunny/15 border border-sunny/40 p-4">
+                    <span className="text-xs font-heading font-bold uppercase tracking-wider text-accent">{c.where.ours.bonusLabel}</span>
+                    <p className="text-sm text-foreground/80 leading-relaxed mt-1">{c.where.ours.bonus}</p>
                   </div>
                 </div>
               </ScrollRevealSection>

@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sparkles, GraduationCap, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { PRODUCTS, TALK_TO_EXPERT } from "@/lib/pricing";
 
 const formats = [
-  { icon: Sparkles, name: PRODUCTS.inspiration.name, duration: PRODUCTS.inspiration.duration, to: PRODUCTS.inspiration.href },
-  { icon: GraduationCap, name: PRODUCTS.fullDay.name, duration: PRODUCTS.fullDay.duration, to: PRODUCTS.fullDay.href },
+  { name: PRODUCTS.inspiration.name, duration: PRODUCTS.inspiration.duration, to: PRODUCTS.inspiration.href },
+  { name: PRODUCTS.fullDay.name, duration: PRODUCTS.fullDay.duration, to: PRODUCTS.fullDay.href },
 ];
 
 export default function InCompany() {
@@ -46,7 +46,6 @@ export default function InCompany() {
                 transform: isVisible ? "translateY(0)" : "translateY(16px)",
               }}
             >
-              <f.icon className="w-6 h-6 text-sunny mb-3" />
               <h3 className="font-heading font-bold text-white text-base leading-snug group-hover:text-sunny transition-colors">
                 {f.name.replace(/^The /, "")}
               </h3>

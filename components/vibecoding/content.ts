@@ -1,6 +1,3 @@
-import type { LucideIcon } from "lucide-react";
-import { Sparkles, Rocket, Laugh } from "lucide-react";
-
 // ─────────────────────────────────────────────────────────────────────────────
 // Pricing. Set the real number here and it shows across both languages. Until
 // then (while it still contains "["), the page shows a "custom quote" line
@@ -25,7 +22,8 @@ export type VibeContent = {
     note: string;
   };
   not: { heading: string; sub: string; items: { label: string; text: string }[]; punch: string };
-  what: { heading: string; body: string[]; points: { icon: LucideIcon; title: string; text: string }[] };
+  what: { heading: string; body: string[]; points: { title: string; text: string }[] };
+  about: { eyebrow: string; heading: string; body: string[]; caption: string };
   how: { heading: string; sub: string; steps: { title: string; text: string }[] };
   where: {
     heading: string;
@@ -86,10 +84,20 @@ export const en: VibeContent = {
       "No experience needed. That is the whole point. AI does the heavy lifting, your people bring the ideas. Everyone ships something, and everyone is surprised by what they made.",
     ],
     points: [
-      { icon: Sparkles, title: "AI does the coding", text: "You describe it, the AI builds it. Your team focuses on ideas, not syntax." },
-      { icon: Laugh, title: "Genuinely fun", text: "Fast, hands-on and a little chaotic. The good kind of chaos." },
-      { icon: Rocket, title: "Everyone ships", text: "By the end, every group has something real to show off. A proper show-and-tell." },
+      { title: "AI does the coding", text: "You describe it, the AI builds it. Your team focuses on ideas, not syntax." },
+      { title: "Genuinely fun", text: "Fast, hands-on and a little chaotic. The good kind of chaos." },
+      { title: "Everyone ships", text: "By the end, every group has something real to show off. A proper show-and-tell." },
     ],
+  },
+  about: {
+    eyebrow: "Your host",
+    heading: "Meet Ferry, in the room all day",
+    body: [
+      "Ferry spends his year on stages across the globe getting rooms excited about working with AI instead of against it. Around 40 keynotes a year, in front of teams at GlaxoSmithKline, Unilever, VodafoneZiggo and the Dutch government, and he still talks to people like people.",
+      "He is the one who makes the tech feel easy and the room feel loose. Sharp, funny, zero jargon, and genuinely thrilled when a team that swore they are not techy ships something they are proud of. Which is every single time.",
+      "Short version: he is exactly who you want in the room when your team builds their first thing with AI.",
+    ],
+    caption: "Ferry, doing his favourite thing",
   },
   how: {
     heading: "How the day works",
@@ -178,10 +186,20 @@ export const nl: VibeContent = {
       "Geen ervaring nodig. Dat is precies de bedoeling. AI doet het zware werk, jouw mensen brengen de ideeën. Iedereen levert iets op, en iedereen is verrast door wat ze maakten.",
     ],
     points: [
-      { icon: Sparkles, title: "AI doet het coderen", text: "Jij beschrijft het, de AI bouwt het. Je team focust op ideeën, niet op code." },
-      { icon: Laugh, title: "Echt leuk", text: "Snel, hands-on en een beetje chaotisch. De goede soort chaos." },
-      { icon: Rocket, title: "Iedereen levert iets op", text: "Aan het eind heeft elk groepje iets echts om te laten zien. Een echte show-and-tell." },
+      { title: "AI doet het coderen", text: "Jij beschrijft het, de AI bouwt het. Je team focust op ideeën, niet op code." },
+      { title: "Echt leuk", text: "Snel, hands-on en een beetje chaotisch. De goede soort chaos." },
+      { title: "Iedereen levert iets op", text: "Aan het eind heeft elk groepje iets echts om te laten zien. Een echte show-and-tell." },
     ],
+  },
+  about: {
+    eyebrow: "Je host",
+    heading: "Dit is Ferry, de hele dag in de zaal",
+    body: [
+      "Ferry staat het hele jaar op podia over de hele wereld om zalen enthousiast te maken over wérken met AI in plaats van ertegen. Zo'n 40 keynotes per jaar, voor teams bij GlaxoSmithKline, Unilever, VodafoneZiggo en de Rijksoverheid, en hij praat nog steeds met mensen als mensen.",
+      "Hij is degene die de techniek makkelijk laat voelen en de zaal los maakt. Scherp, grappig, nul jargon, en oprecht blij als een team dat zwoer 'niet technisch' te zijn iets maakt waar ze trots op zijn. Wat elke keer gebeurt.",
+      "Kort gezegd: precies wie je in de zaal wil als je team voor het eerst iets bouwt met AI.",
+    ],
+    caption: "Ferry, in zijn element",
   },
   how: {
     heading: "Hoe de dag werkt",

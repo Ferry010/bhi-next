@@ -57,9 +57,6 @@ export default function ShareAndContact() {
         <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
           {/* Share this recap */}
           <div className="rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-7 md:p-8">
-            <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center mb-4">
-              <Share2 className="w-5 h-5 text-accent" />
-            </div>
             <h2 className="font-heading font-bold text-xl md:text-2xl text-foreground">Stuur &apos;m door</h2>
             <p className="text-sm text-muted-foreground leading-relaxed mt-2">
               Ken je iemand die hierbij had moeten zijn? Mail de recap naar een collega, of naar jezelf om er maandag op terug te komen.
@@ -94,9 +91,6 @@ export default function ShareAndContact() {
 
           {/* Contact Ferry */}
           <div className="rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-7 md:p-8">
-            <div className="w-11 h-11 rounded-xl bg-[rgba(17,84,172,0.1)] flex items-center justify-center mb-4">
-              <Mail className="w-5 h-5 text-primary" />
-            </div>
             <h2 className="font-heading font-bold text-xl md:text-2xl text-foreground">Even direct contact?</h2>
             <p className="text-sm text-muted-foreground leading-relaxed mt-2">
               Een vraag, een idee, of gewoon kennismaken? Je komt rechtstreeks bij mij uit. Ik lees mijn eigen mail.

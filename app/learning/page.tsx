@@ -7,7 +7,7 @@ import FAQSection from "@/components/FAQSection";
 import MessageUs from "@/components/MessageUs";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { Sparkles, GraduationCap, ArrowRight, ExternalLink, BookOpen, Users, Check, type LucideIcon } from "lucide-react";
+import { ArrowRight, ExternalLink, Check } from "lucide-react";
 import { PRODUCTS, BOOK, TALK_TO_EXPERT, SPEAKERS_ACADEMY, FACILITATOR, STATS, MARQUEE_LOGOS, EXAMPLES } from "@/lib/pricing";
 import CountUp from "@/components/ui/CountUp";
 
@@ -25,7 +25,6 @@ export const metadata: Metadata = {
 type Rung = {
   key: string;
   step: string;
-  icon: LucideIcon;
   name: string;
   spec: string;
   pickIf: string[];
@@ -40,7 +39,6 @@ const ladder: Rung[] = [
   {
     key: "book",
     step: "The lightest way in",
-    icon: BookOpen,
     name: BOOK.name,
     spec: `${BOOK.price} · ${BOOK.edition}`,
     pickIf: [
@@ -58,7 +56,6 @@ const ladder: Rung[] = [
   {
     key: "spark",
     step: "Bring the story to your team",
-    icon: Sparkles,
     name: PRODUCTS.inspiration.name,
     spec: `${PRODUCTS.inspiration.duration} · ${PRODUCTS.inspiration.audience}`,
     pickIf: [
@@ -75,7 +72,6 @@ const ladder: Rung[] = [
   {
     key: "fullday",
     step: "Build the capability",
-    icon: GraduationCap,
     name: PRODUCTS.fullDay.name,
     spec: `${PRODUCTS.fullDay.duration} · ${PRODUCTS.fullDay.audience}`,
     pickIf: [
@@ -92,7 +88,6 @@ const ladder: Rung[] = [
   {
     key: "taskforce",
     step: "Make it stick",
-    icon: Users,
     name: "The Taskforce",
     spec: "16 weeks · your own people",
     pickIf: [
@@ -186,9 +181,6 @@ export default function LearningPage() {
                       <div>
                         <span className="text-xs font-heading font-semibold uppercase tracking-widest text-accent">{rung.step}</span>
                         <div className="flex items-center gap-3 mt-3">
-                          <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center shrink-0">
-                            <rung.icon className="w-5 h-5 text-accent" />
-                          </div>
                           <h3 className="font-heading font-bold text-xl text-foreground leading-tight">{rung.name.replace(/^The /, "")}</h3>
                         </div>
                         <span className="inline-block mt-3 text-xs font-heading font-semibold text-primary bg-cream rounded-full px-3 py-1">{rung.spec}</span>
@@ -208,7 +200,7 @@ export default function LearningPage() {
                         <p className="text-foreground font-heading font-semibold mt-3">{rung.outcome}</p>
                         {rung.includesBook && (
                           <p className="text-xs text-muted-foreground mt-3 inline-flex items-center gap-1.5">
-                            <BookOpen className="w-3.5 h-3.5 text-accent" /> Includes the book for every participant
+                            Includes the book for every participant
                           </p>
                         )}
                         <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-6">

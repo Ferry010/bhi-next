@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { GraduationCap, BookOpen, FlaskConical, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { TALK_TO_EXPERT } from "@/lib/pricing";
 
 const cards = [
   {
-    icon: GraduationCap,
     title: "Become a Brand Humanizer",
     body: "The practitioner path. Training takes you from understanding the idea to running it yourself, from an hour that changes the conversation to a full day that changes how your team works.",
     cta: "See the training →",
@@ -16,7 +15,6 @@ const cards = [
     primary: true,
   },
   {
-    icon: BookOpen,
     title: "An easy way to start",
     body: "The whole method lives in the book, so you can read it before you ever speak to us. It is also the cheapest way to find out whether this way of thinking is for you.",
     cta: "Start with the book →",
@@ -24,7 +22,6 @@ const cards = [
     primary: true,
   },
   {
-    icon: FlaskConical,
     title: "See the evidence",
     body: "Independent research on technology, organisational behaviour, and what actually makes people choose one brand over another. Free, because proof that sits behind a paywall is not doing anyone any good.",
     cta: "Read the research",
@@ -52,9 +49,6 @@ export default function HowWeHelp() {
               }`}
               style={{ transitionDelay: `${i * 150}ms` }}
             >
-              <div className="w-12 h-12 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center mb-4 md:mb-6">
-                <c.icon className="w-6 h-6 text-accent" />
-              </div>
               <h3 className="font-heading font-bold text-lg md:text-section mb-2 md:mb-3 text-foreground">{c.title}</h3>
               <p className="text-sm md:text-body-lg text-muted-foreground mb-6 md:mb-8 flex-1">
                 {c.body}

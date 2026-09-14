@@ -8,9 +8,7 @@ import MessageUs from "@/components/MessageUs";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { TALK_TO_EXPERT } from "@/lib/pricing";
-import {
-  ArrowRight, Check, Clock, Users, CalendarDays, Target, UserCheck, Timer,
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/taskforce" },
@@ -21,25 +19,22 @@ export const metadata: Metadata = {
 };
 
 const facts = [
-  { icon: Clock, label: "16 weeks", sub: "One half day a week" },
-  { icon: Users, label: "6 to 8 people", sub: "Your team, not ours" },
-  { icon: Timer, label: "~11 days", sub: "Of your time, across four months" },
-  { icon: UserCheck, label: "1 owner", sub: "Formally holds the role at the end" },
+  { label: "16 weeks", sub: "One half day a week" },
+  { label: "6 to 8 people", sub: "Your team, not ours" },
+  { label: "~11 days", sub: "Of your time, across four months" },
+  { label: "1 owner", sub: "Formally holds the role at the end" },
 ];
 
 const forYouIf = [
   {
-    icon: Target,
     title: "You can name the challenge in one sentence",
     body: "Not a theme, not an ambition. A specific business problem that one sentence covers. If it takes a paragraph, it isn't scoped yet, and we'll help you cut it down before we start.",
   },
   {
-    icon: UserCheck,
     title: "You have an executive sponsor",
     body: "Someone senior enough to make a decision in the room at four points across the engagement. Without that, good work stalls waiting for approval that never comes.",
   },
   {
-    icon: CalendarDays,
     title: "You have appetite for four months",
     body: "This is not a workshop with follow-up. It's a weekly rhythm across sixteen weeks. That's what it takes for a capability to actually stick.",
   },
@@ -136,7 +131,6 @@ export default function TaskforcePage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10">
               {facts.map((f) => (
                 <div key={f.label} className="rounded-2xl border border-border bg-white p-4">
-                  <f.icon className="w-5 h-5 text-accent mb-2" />
                   <p className="font-heading font-bold text-foreground">{f.label}</p>
                   <p className="text-sm text-muted-foreground mt-0.5">{f.sub}</p>
                 </div>
@@ -186,9 +180,6 @@ export default function TaskforcePage() {
               {forYouIf.map((f) => (
                 <ScrollRevealSection key={f.title}>
                   <div className="bg-cream rounded-2xl p-6 md:p-7 h-full">
-                    <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                      <f.icon className="w-5 h-5 text-accent" />
-                    </div>
                     <h3 className="font-heading font-bold text-lg text-foreground mb-2">{f.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{f.body}</p>
                   </div>

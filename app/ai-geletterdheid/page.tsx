@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { ArrowRight, ExternalLink, ShieldCheck, Users, Brain, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/ai-geletterdheid" },
@@ -126,10 +126,10 @@ const schema = {
 };
 
 const outcomes = [
-  { icon: ShieldCheck, text: "Certificaat dat geldt als documentatie voor EU AI Act Artikel 4 naleving" },
-  { icon: Brain, text: "Echt begrip van hoe AI-systemen werken en wat hun beperkingen zijn" },
-  { icon: CheckCircle2, text: "Het vermogen om te beoordelen waar AI betrouwbaar is en waar niet" },
-  { icon: Users, text: "Een gedeelde taal binnen jouw organisatie over mens en technologie" },
+  { text: "Certificaat dat geldt als documentatie voor EU AI Act Artikel 4 naleving" },
+  { text: "Echt begrip van hoe AI-systemen werken en wat hun beperkingen zijn" },
+  { text: "Het vermogen om te beoordelen waar AI betrouwbaar is en waar niet" },
+  { text: "Een gedeelde taal binnen jouw organisatie over mens en technologie" },
 ];
 
 const faqs = [
@@ -325,7 +325,6 @@ export default function AIGeletterdheid() {
               {outcomes.map((item) => (
                 <ScrollRevealSection key={item.text}>
                   <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex gap-4 items-start">
-                    <item.icon className="w-5 h-5 text-accent mt-0.5 shrink-0" />
                     <p className="text-white/90 text-sm leading-relaxed">{item.text}</p>
                   </div>
                 </ScrollRevealSection>

@@ -6,7 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { ArrowRight, Apple, Stethoscope, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import PyramidScrollReveal from "@/components/sections/PyramidScrollReveal";
 import { YearsActiveWord } from "@/lib/facts";
 import FourSkillsSpotlight from "@/components/sections/FourSkillsSpotlight";
@@ -21,17 +21,14 @@ export const metadata: Metadata = {
 
 const realWorldExamples = [
   {
-    icon: Apple,
     title: "The Apple Store",
     description: "Apple does not staff its stores with salespeople. It staffs them with enthusiasts who genuinely want to help. The technology runs the backend. The humans run the relationship. It is the number-one retailer in the world by sales per square foot, while the rest of physical retail struggles. That is Brand Humanizing, operating at scale.",
   },
   {
-    icon: Stethoscope,
     title: "The hospital that gave time back",
     description: "A hospital introduced tablets and apps to answer the simple, non-medical questions patients ask constantly: visiting hours, parking, meal times, where to go next. That freed nurses and doctors from repetitive admin so they could spend their time where it matters: on care, consultation, and the complex work only they can do. Automate the routine. Give human expertise back to the people who need it.",
   },
   {
-    icon: Zap,
     title: "The utility that made its people sharper",
     description: "A major UK utility company deployed AI to support its human customer service team — giving agents faster access to the right answers in real time. Handling times dropped. Service levels rose. And the humans stayed in the conversation throughout. The technology did not replace the relationship. It made the people on the other end of it better.",
   },
@@ -106,9 +103,6 @@ export default function TheMethodPage() {
               {realWorldExamples.map((ex) => (
                 <ScrollRevealSection key={ex.title}>
                   <div className="bg-white rounded-2xl shadow-[0_4px_24px_rgba(18,21,46,0.08)] p-6 md:p-8 h-full flex flex-col">
-                    <div className="w-12 h-12 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center mb-4">
-                      <ex.icon className="w-6 h-6 text-accent" />
-                    </div>
                     <h3 className="font-heading font-bold text-lg text-foreground mb-3">{ex.title}</h3>
                     <p className="text-sm md:text-base text-muted-foreground leading-relaxed flex-1">{ex.description}</p>
                   </div>

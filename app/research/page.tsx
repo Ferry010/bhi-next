@@ -7,7 +7,7 @@ import FAQSection from "@/components/FAQSection";
 import Newsletter from "@/components/sections/Newsletter";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { ArrowRight, TrendingUp, Globe, GraduationCap, Search, FileText, Beaker } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { YearsActiveWord } from "@/lib/facts";
 
 export const metadata: Metadata = {
@@ -22,21 +22,18 @@ const reports = [
   {
     featured: true,
     year: "2026",
-    icon: TrendingUp,
     title: "The State of Brand Humanizing 2026",
     desc: `${YearsActiveWord()} years after the original idea. Here is where we are, what changed, and what it means for your organization in 2026.`,
     to: "/research/state-of-brand-humanizing-2026",
   },
   {
     year: "2020",
-    icon: Globe,
     title: "The State of Human 2020",
     desc: "104 decision-makers across five continents. The central question: is there still a place for humans in an increasingly automated world?",
     to: "/research/state-of-human-2020",
   },
   {
     year: "2022",
-    icon: GraduationCap,
     title: "Brand Humanizing: Towards a Human-Technology Fit",
     desc: "The academic foundation of the Human-Technology Fit concept, built with Erasmus University Rotterdam. Peer-reviewed and freely available.",
     badge: "Peer-reviewed",
@@ -45,9 +42,9 @@ const reports = [
 ];
 
 const principles = [
-  { icon: Search, title: "Primary research", desc: "Original studies with real organizations. Not opinion pieces. Not trend summaries." },
-  { icon: FileText, title: "Peer-quality methodology", desc: "Rigorous enough to stand alongside academic work. Our 2022 study follows peer-reviewed standards and is freely citable." },
-  { icon: Beaker, title: "Freely available", desc: "No paywall, no registration, no email required. Knowledge that helps organizations make better decisions should be accessible." },
+  { title: "Primary research", desc: "Original studies with real organizations. Not opinion pieces. Not trend summaries." },
+  { title: "Peer-quality methodology", desc: "Rigorous enough to stand alongside academic work. Our 2022 study follows peer-reviewed standards and is freely citable." },
+  { title: "Freely available", desc: "No paywall, no registration, no email required. Knowledge that helps organizations make better decisions should be accessible." },
 ];
 
 const faqs = [
@@ -80,9 +77,6 @@ export default function ResearchPage() {
               {principles.map((p) => (
                 <ScrollRevealSection key={p.title}>
                   <div className="bg-cream rounded-2xl p-6 h-full">
-                    <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                      <p.icon className="w-5 h-5 text-accent" />
-                    </div>
                     <h3 className="font-heading font-bold text-foreground mb-2">{p.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
                   </div>

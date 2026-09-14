@@ -3,7 +3,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Lock, Users, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { MIN_TEAM_RESPONSES } from "@/lib/trustGap/questions";
 
 export const metadata: Metadata = {
@@ -15,17 +15,17 @@ export const metadata: Metadata = {
 
 const steps = [
   {
-    icon: Users,
+    
     title: "You answer six questions",
     body: "Two minutes. What you believe is happening with AI on your team. No email needed to start.",
   },
   {
-    icon: ShieldCheck,
+    
     title: "Your team answers the same six",
     body: `You get an anonymous link to send them. Their answers are never shown individually, and the report stays locked until at least ${MIN_TEAM_RESPONSES} people have replied.`,
   },
   {
-    icon: Lock,
+    
     title: "You see the gap",
     body: "Where your picture and their experience line up, where they do not, and three things you can do about it within a month.",
   },
@@ -71,9 +71,6 @@ export default function TrustGapLandingPage() {
             <div className="mt-10 grid gap-5 md:grid-cols-3">
               {steps.map((s) => (
                 <div key={s.title} className="rounded-2xl bg-cream p-6">
-                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
-                    <s.icon className="h-5 w-5 text-accent" aria-hidden="true" />
-                  </div>
                   <h3 className="font-heading text-lg font-bold text-foreground">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
                 </div>

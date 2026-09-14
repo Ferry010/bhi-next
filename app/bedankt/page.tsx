@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, Users, Cpu, Lightbulb, Heart } from "lucide-react";
+import { ArrowRight, BookOpen, Users } from "lucide-react";
 import { BOOK, TALK_TO_EXPERT, MARQUEE_LOGOS } from "@/lib/pricing";
 import ShareAndContact from "@/components/bedankt/ShareAndContact";
 import Polaroid from "@/components/origin/Polaroid";
@@ -43,22 +43,18 @@ const takeaways = [
 
 const skills = [
   {
-    icon: Cpu,
     title: "Programmeren, automatisering en AI",
     desc: "Weten wat technologie beter, sneller en goedkoper doet, en de helderheid hebben om het ook echt in te zetten.",
   },
   {
-    icon: Lightbulb,
     title: "Creativiteit en organisatiebesef",
     desc: "De ruimte die automatisering vrijmaakt, vullen met iets beters. Creativiteit is een organisatievaardigheid.",
   },
   {
-    icon: Users,
     title: "Human sciences en onderzoek",
     desc: "Echt onderzoek naar wat mensen beweegt, verder dan wat een dashboard laat zien. Dit houdt alle andere skills met de voeten in de klei.",
   },
   {
-    icon: Heart,
     title: "Emotionele intelligentie en ethiek",
     desc: "De skill die Brand Humanizing behoedt voor een kille efficiency-truc. Ethiek is geen rem, het is het fundament.",
   },
@@ -168,9 +164,6 @@ export default function BedanktPage() {
               {skills.map((s, i) => (
                 <ScrollRevealSection key={i}>
                   <div className="h-full rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-6 md:p-7 flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-[rgba(255,107,43,0.1)] flex items-center justify-center shrink-0">
-                      <s.icon className="w-5 h-5 text-accent" />
-                    </div>
                     <div>
                       <h3 className="font-heading font-bold text-lg text-foreground leading-snug">{s.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed mt-1.5">{s.desc}</p>

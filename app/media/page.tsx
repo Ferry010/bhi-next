@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { ArrowRight, BookOpen, Mic2, FileText } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/media" },
@@ -16,21 +16,18 @@ export const metadata: Metadata = {
 
 const channels = [
   {
-    icon: BookOpen,
     title: "Blog",
     desc: "Essays and perspectives on technology, humanity, and the organizations brave enough to take both seriously.",
     cta: "Read the blog",
     to: "/blog",
   },
   {
-    icon: Mic2,
     title: "The Human Era Podcast",
     desc: "Honest, unscripted conversations with fascinating people about technology, leadership, and what it means to be human.",
     cta: "Listen to episodes",
     to: "/podcast",
   },
   {
-    icon: FileText,
     title: "Research",
     desc: "Independent research on technology, organizational behavior, and human-technology strategy. Freely available.",
     cta: "View all research",
@@ -62,9 +59,6 @@ export default function MediaPage() {
               {channels.map((c) => (
                 <ScrollRevealSection key={c.title}>
                   <div className="bg-cream rounded-2xl p-8 h-full flex flex-col">
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                      <c.icon className="w-6 h-6 text-accent" />
-                    </div>
                     <h2 className="font-heading font-bold text-xl text-foreground mb-3">{c.title}</h2>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">{c.desc}</p>
                     <Link href={c.to}>

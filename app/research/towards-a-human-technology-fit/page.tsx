@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
-import { Download, ArrowRight, HelpCircle, GraduationCap, Scale, Handshake, RefreshCw } from "lucide-react";
+import { Download, ArrowRight } from "lucide-react";
 
 const PDF = "/research/towards-a-human-technology-fit.pdf";
 
@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 };
 
 const challenges = [
-  { icon: HelpCircle, title: "Overcoming uncertainty", body: "Before people meet a new technology, they anticipate it. Unspoken uncertainty in that phase quietly shapes whether the rollout ever works." },
-  { icon: Scale, title: "Considering technological readiness", body: "Does the organisation actually have the data, the quality and the realistic expectations for the technology to deliver? Hype hides the answer." },
-  { icon: Handshake, title: "Building trust", body: "Trust is earned when people see the benefit for their own work, and when they stay in the loop with real control over the outcome." },
-  { icon: RefreshCw, title: "Sufficient evaluation", body: "Without a continuous, human feedback loop, no one knows whether the technology is producing the outcomes anyone actually wanted." },
+  { title: "Overcoming uncertainty", body: "Before people meet a new technology, they anticipate it. Unspoken uncertainty in that phase quietly shapes whether the rollout ever works." },
+  { title: "Considering technological readiness", body: "Does the organisation actually have the data, the quality and the realistic expectations for the technology to deliver? Hype hides the answer." },
+  { title: "Building trust", body: "Trust is earned when people see the benefit for their own work, and when they stay in the loop with real control over the outcome." },
+  { title: "Sufficient evaluation", body: "Without a continuous, human feedback loop, no one knows whether the technology is producing the outcomes anyone actually wanted." },
 ];
 
 const recommendations = [
@@ -128,9 +128,6 @@ export default function TowardsHumanTechnologyFitPage() {
               {challenges.map((c) => (
                 <ScrollRevealSection key={c.title}>
                   <div className="bg-cream rounded-2xl p-6 md:p-7 h-full">
-                    <div className="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                      <c.icon className="w-5 h-5 text-accent" />
-                    </div>
                     <h3 className="font-heading font-bold text-lg text-foreground mb-2">{c.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{c.body}</p>
                   </div>
