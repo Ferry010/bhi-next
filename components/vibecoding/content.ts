@@ -115,7 +115,7 @@ export const en: VibeContent = {
       { label: "bowling", text: "Fun for an hour. After this, your team knows it can build with AI. That sticks around longer." },
       { label: "a survival weekend", text: "Cold, muddy, and nobody really wanted it. We stay inside. With coffee." },
     ],
-    punch: "You laugh a lot, and you walk out with something that works. Try that at the bowling alley.",
+    punch: "You laugh a lot, and you go home with something that works. Something you built yourself.",
   },
   what: {
     heading: "So, what is vibecoding?",
@@ -134,7 +134,7 @@ export const en: VibeContent = {
     points: [
       { title: "AI does the typing", text: "You say what you want, the AI builds it. Your team thinks, not about semicolons." },
       { title: "Actually fun", text: "Fast, messy, hands-on. The way making things is supposed to feel." },
-      { title: "Everyone ships", text: "By the end every group has something that works to show off. Bragging included." },
+      { title: "Everyone ships", text: "By the end, every group has something that works to show, and to be proud of." },
     ],
   },
   about: {
@@ -147,12 +147,12 @@ export const en: VibeContent = {
     caption: "Ferry, doing his favourite thing",
   },
   how: {
-    heading: "How the day works",
-    sub: "Come as one team or split into groups. We shape it around you.",
+    heading: "This is how it works",
+    sub: "You come in with your whole team and we split into small groups.",
     steps: [
-      { title: "Split into groups", text: "Small teams of a few people. Put the ones who never work together in the same group." },
-      { title: "We build something real", text: "A couple of hours building with AI, us right next to you keeping the pace. No theory, straight to making." },
-      { title: "Show and tell", text: "Every group shows what it made. Expect surprises, applause, and a few happy accidents." },
+      { title: "We make small groups", text: "Small teams of a few people. Put the ones who never usually work together side by side, that is where the new conversations start." },
+      { title: "We build something real", text: "We use AI tools to build something that works and that you can hold. Whatever you make during the day, you take home or to work with you." },
+      { title: "Learning from each other", text: "After building, each group shows the app, website or tool they made. Those are the moments where jokes and compliments take turns." },
     ],
   },
   where: {
@@ -260,7 +260,7 @@ export const nl: VibeContent = {
       { label: "bowlen", text: "Leuk voor een uurtje. Hierna weet je team dat het zelf iets kan bouwen met AI. Dat blijft langer hangen." },
       { label: "survivalweekend", text: "Koud, modderig, en niemand die het echt wilde. Wij blijven binnen. Met koffie." },
     ],
-    punch: "Je lacht je rot, en je loopt naar buiten met iets dat werkt. Probeer dat maar eens bij het bowlen.",
+    punch: "Je lacht wat af, en je gaat naar huis met iets dat werkt. Iets dat je zelf hebt gemaakt.",
   },
   what: {
     heading: "Wat is vibecoding?",
@@ -279,7 +279,7 @@ export const nl: VibeContent = {
     points: [
       { title: "AI doet het typewerk", text: "Jij zegt wat je wil, de AI bouwt het. Jouw team denkt na, niet over puntkomma's." },
       { title: "Gewoon leuk", text: "Snel, rommelig, hands-on. Precies zoals maken hoort te voelen." },
-      { title: "Iedereen levert iets op", text: "Aan het eind heeft elk groepje iets werkends om te laten zien. Opscheppen inbegrepen." },
+      { title: "Iedereen levert iets op", text: "Aan het eind heeft elk groepje iets werkends om te laten zien, en om trots op te zijn." },
     ],
   },
   about: {
@@ -292,12 +292,12 @@ export const nl: VibeContent = {
     caption: "Ferry, in zijn element",
   },
   how: {
-    heading: "Hoe de dag werkt",
-    sub: "Kom met het hele team of splits in groepjes. We vormen het rond jullie.",
+    heading: "Dit is hoe het werkt",
+    sub: "Je komt met je hele team en we delen op in kleine groepen.",
     steps: [
-      { title: "Splits in groepjes", text: "Kleine teams van een paar mensen. Zet de mensen bij elkaar die anders nooit samenwerken." },
-      { title: "We bouwen iets echts", text: "Een paar uur bouwen met AI, wij ernaast om het vaart te houden. Geen theorie, meteen maken." },
-      { title: "Show-and-tell", text: "Elk groepje laat zien wat het maakte. Verwacht verrassingen, applaus, en een paar gelukkige ongelukjes." },
+      { title: "We maken kleine groepjes", text: "Kleine teams van een paar mensen. Zet bij voorkeur de mensen bij elkaar die anders nooit samenwerken, dat zorgt voor nieuwe gesprekken." },
+      { title: "We bouwen iets echts", text: "We werken met AI-tools om iets werkends en tastbaars te bouwen. Wat je tijdens de teamdag maakt, neem je letterlijk mee naar huis of werk." },
+      { title: "Van elkaar leren", text: "Na het bouwen deelt elke groep de app, website of tool die ze bouwden. Dat zijn de momenten waar grapjes en complimenten elkaar afwisselen." },
     ],
   },
   where: {
