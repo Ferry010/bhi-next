@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Languages } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
 import Polaroid from "@/components/origin/Polaroid";
-import { VIBECODING_PRICE, priceIsSet, type VibeContent } from "./content";
+import { VIBECODING_TIERS, pricingIsSet, type VibeContent } from "./content";
 
 // A plain-language prompt turning into a working app. On-brand SVG (no stock
 // photo, no watermark) that illustrates what "vibecoding" actually looks like.
@@ -231,20 +231,6 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                   <div className="p-7 md:p-8">
                     <h3 className="font-heading font-bold text-xl text-foreground">{c.where.ours.title}</h3>
                     <p className="text-muted-foreground leading-relaxed mt-2">{c.where.ours.text}</p>
-                    <div className="mt-5 rounded-xl bg-sunny/15 border border-sunny/40 overflow-hidden">
-                      <div className="aspect-[16/9] overflow-hidden">
-                        <img
-                          src="/assets/vibecoding/creme-brulee-PLACEHOLDER.png"
-                          alt={c.where.ours.imageAlt}
-                          loading="lazy"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <span className="text-xs font-heading font-bold uppercase tracking-wider text-accent">{c.where.ours.bonusLabel}</span>
-                        <p className="text-sm text-foreground/80 leading-relaxed mt-1">{c.where.ours.bonus}</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </ScrollRevealSection>
@@ -254,28 +240,92 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
 
         {/* Pricing */}
         <section className="section-padding bg-white">
-          <div className="container max-w-3xl text-center">
+          <div className="container max-w-5xl">
             <ScrollRevealSection>
-              <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">{c.pricing.eyebrow}</span>
-              <h2 className="text-display md:text-display-lg text-foreground mt-3">{c.pricing.heading}</h2>
-              <div className="mt-8 inline-flex flex-col items-center rounded-2xl bg-cream border border-border/50 px-10 py-8">
-                {priceIsSet ? (
-                  <>
-                    <div className="flex items-baseline gap-2">
-                      <span className="font-heading font-extrabold text-5xl md:text-6xl text-foreground">{VIBECODING_PRICE.from}</span>
-                      <span className="text-muted-foreground text-lg">{c.pricing.unit}</span>
-                    </div>
-                    <span className="text-sm text-muted-foreground mt-2">{c.pricing.minLabel}</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="font-heading font-extrabold text-3xl md:text-4xl text-foreground">{c.pricing.quote}</span>
-                    <span className="text-sm text-muted-foreground mt-2">{c.pricing.minLabel}</span>
-                  </>
-                )}
+              <div className="text-center max-w-2xl mx-auto">
+                <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">{c.pricing.eyebrow}</span>
+                <h2 className="text-display md:text-display-lg text-foreground mt-3">{c.pricing.heading}</h2>
+                <p className="text-body-lg text-muted-foreground mt-4">{c.pricing.sub}</p>
               </div>
-              <p className="text-muted-foreground mt-6 max-w-xl mx-auto">{c.pricing.note}</p>
             </ScrollRevealSection>
+
+            {pricingIsSet ? (
+              <>
+                <div className="grid md:grid-cols-3 gap-5 lg:gap-6 mt-14 items-stretch">
+                  {VIBECODING_TIERS.map((t, i) => {
+                    const label = c.pricing.tiers[i];
+                    const perHead = Math.round(t.price / t.maxPeople);
+                    const popular = "popular" in t && t.popular;
+                    const money = (n: number) => n.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US");
+                    return (
+                      <ScrollRevealSection key={label.name}>
+                        <div
+                          className={`relative h-full rounded-2xl p-7 md:p-8 flex flex-col ${
+                            popular
+                              ? "bg-navy text-white border-2 border-accent shadow-[0_20px_60px_-15px_rgba(18,21,46,0.4)] md:-mt-4 md:pt-11"
+                              : "bg-cream border border-border/50"
+                          }`}
+                        >
+                          {popular && (
+                            <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent text-white text-caption uppercase tracking-wider font-heading font-bold px-4 py-1">
+                              {c.pricing.popularLabel}
+                            </span>
+                          )}
+                          <h3 className={`font-heading font-bold text-lg ${popular ? "text-white" : "text-foreground"}`}>{label.name}</h3>
+                          <p className={`text-sm mt-1 ${popular ? "text-white/70" : "text-muted-foreground"}`}>
+                            {t.minPeople}–{t.maxPeople} {c.pricing.peopleWord}
+                          </p>
+                          <div className="mt-5 flex items-end gap-1.5">
+                            <span className={`font-heading font-extrabold text-4xl md:text-5xl leading-none ${popular ? "text-white" : "text-foreground"}`}>
+                              €{money(t.price)}
+                            </span>
+                          </div>
+                          <p className={`text-sm mt-2 ${popular ? "text-white/70" : "text-muted-foreground"}`}>
+                            {c.pricing.approx} €{money(perHead)} {c.pricing.perPerson} {c.pricing.atWord} {t.maxPeople}
+                          </p>
+                          <p className={`text-sm leading-relaxed mt-4 ${popular ? "text-white/80" : "text-muted-foreground"}`}>{label.tagline}</p>
+                          <div className="mt-auto pt-7">
+                            <a href="#book" className="block">
+                              <Button
+                                className={`w-full rounded-full btn-scale font-heading font-semibold h-12 text-base gap-2 ${
+                                  popular
+                                    ? "bg-accent text-accent-foreground hover:bg-soft-coral"
+                                    : "bg-foreground text-white hover:bg-foreground/90"
+                                }`}
+                              >
+                                {c.pricing.cta} <ArrowRight className="w-4 h-4" />
+                              </Button>
+                            </a>
+                          </div>
+                        </div>
+                      </ScrollRevealSection>
+                    );
+                  })}
+                </div>
+
+                <ScrollRevealSection>
+                  <div className="mt-10 rounded-2xl bg-cream border border-border/50 p-6 md:p-8">
+                    <ul className="grid sm:grid-cols-3 gap-x-8 gap-y-3">
+                      {c.pricing.includes.map((inc) => (
+                        <li key={inc} className="flex items-start gap-2.5 text-foreground/80 leading-relaxed">
+                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                          <span>{inc}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-6 border-t border-border/50 pt-6">{c.pricing.overflow}</p>
+                  </div>
+                </ScrollRevealSection>
+              </>
+            ) : (
+              <ScrollRevealSection>
+                <div className="mt-12 mx-auto max-w-md text-center rounded-2xl bg-cream border border-border/50 px-10 py-8">
+                  <span className="font-heading font-extrabold text-3xl md:text-4xl text-foreground">{c.pricing.quote}</span>
+                </div>
+              </ScrollRevealSection>
+            )}
+
+            <p className="text-center text-muted-foreground mt-8 max-w-xl mx-auto">{c.pricing.note}</p>
           </div>
         </section>
 

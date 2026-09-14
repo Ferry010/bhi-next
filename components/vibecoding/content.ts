@@ -1,15 +1,21 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Pricing. One price for the whole group (not per person). Set the real number
-// here and it shows across both languages. Until then (while it still contains
-// "["), the page shows a "custom quote" line instead of a broken price, so it is
-// safe to ship before pricing is decided.
+// Pricing. One flat price per GROUP (not per person), in three size tiers.
+// Why tiers and not a per-person rate or a slider: a flat price reads more
+// premium and skips the "request a quote" friction, three anchored options let
+// the middle tier do the selling (most groups pick it), and a small "per person"
+// line still gives buyers the "the more we bring, the better the value" feeling
+// without making them do the maths. Numbers live here, once, for both languages.
+//
+// To change a price or a band, edit VIBECODING_TIERS. To hide prices again while
+// they are being reconsidered, set pricingIsSet = false and the page falls back
+// to a clean "custom quote" line instead of showing a broken price.
 // ─────────────────────────────────────────────────────────────────────────────
-export const VIBECODING_PRICE = {
-  from: "€[bedrag]", // one price per group, e.g. "€1.450". Placeholder until set.
-  minGroup: 4,
-  maxGroup: 20,
-};
-export const priceIsSet = !VIBECODING_PRICE.from.includes("[");
+export const VIBECODING_TIERS = [
+  { minPeople: 4, maxPeople: 8, price: 1750 },
+  { minPeople: 9, maxPeople: 15, price: 2450, popular: true },
+  { minPeople: 16, maxPeople: 20, price: 2950 },
+] as const;
+export const pricingIsSet = true;
 
 export type VibeContent = {
   lang: "en" | "nl";
@@ -37,9 +43,24 @@ export type VibeContent = {
     heading: string;
     sub: string;
     yours: { title: string; text: string; imageAlt: string };
-    ours: { title: string; text: string; buildingAlt: string; bonusLabel: string; bonus: string; imageAlt: string };
+    ours: { title: string; text: string; buildingAlt: string };
   };
-  pricing: { eyebrow: string; heading: string; unit: string; minLabel: string; quote: string; note: string };
+  pricing: {
+    eyebrow: string;
+    heading: string;
+    sub: string;
+    popularLabel: string;
+    peopleWord: string;
+    approx: string;
+    perPerson: string;
+    atWord: string;
+    tiers: { name: string; tagline: string }[];
+    includes: string[];
+    overflow: string;
+    quote: string;
+    cta: string;
+    note: string;
+  };
   form: {
     heading: string;
     sub: string;
@@ -135,21 +156,33 @@ export const en: VibeContent = {
     },
     ours: {
       title: "At our Rotterdam office",
-      text: "In the iconic Groothandelsgebouw, right in the city centre. A change of scenery, and a small legendary bonus.",
+      text: "In the iconic Groothandelsgebouw, right in the city centre. A change of scenery with zero hassle, we sort the room.",
       buildingAlt: "The Groothandelsgebouw in Rotterdam, home to our office.",
-      bonusLabel: "The bonus",
-      bonus:
-        "Daruma, home of the viral crème brûlée, is right underneath our office. Yes, we can serve them. Yes, they are as good as the internet says.",
-      imageAlt: "The viral crème brûlée from Daruma.",
     },
   },
   pricing: {
     eyebrow: "Pricing",
-    heading: "One price for your whole team.",
-    unit: "per group",
-    minLabel: `For groups of ${VIBECODING_PRICE.minGroup} to ${VIBECODING_PRICE.maxGroup}. Bigger group? We will sort it out together.`,
+    heading: "One clear price. Pick your group.",
+    sub: "A half-day session of about three hours, host and facilitation included. You see the price before you decide, no sales call needed.",
+    popularLabel: "Most chosen",
+    peopleWord: "people",
+    approx: "≈",
+    perPerson: "per person",
+    atWord: "at",
+    tiers: [
+      { name: "Small team", tagline: "A tight, hands-on crew." },
+      { name: "Full team", tagline: "The sweet spot for most teams." },
+      { name: "Big group", tagline: "The whole department, best value per head." },
+    ],
+    includes: [
+      "Ferry hosting the whole session",
+      "All the AI tools, set up and ready to go",
+      "At your place or our Rotterdam office",
+    ],
+    overflow: "More than 20? We'll sort it out together, and it usually gets even better per head.",
     quote: "Custom quote per group",
-    note: "Tell us your group size and where, and we come back with an exact price and a date. No sales call needed.",
+    cta: "Bring your team",
+    note: "One flat price for the group. The bigger your team, the less it works out to per person.",
   },
   form: {
     heading: "Bring your team",
@@ -158,7 +191,7 @@ export const en: VibeContent = {
     email: "Work email",
     company: "Company",
     groupSize: "How big is your group?",
-    groupOptions: ["4 to 8", "8 to 12", "12 to 20", "More than 20"],
+    groupOptions: ["4 to 8", "9 to 15", "16 to 20", "More than 20"],
     location: "Where would you like it?",
     locationOptions: ["At our Rotterdam office", "At our place", "Not sure yet"],
     timing: "Any date or timeframe in mind? (optional)",
@@ -249,21 +282,33 @@ export const nl: VibeContent = {
     },
     ours: {
       title: "Op ons kantoor in Rotterdam",
-      text: "In het iconische Groothandelsgebouw, middenin het centrum. Even een andere omgeving, en een kleine legendarische bonus.",
+      text: "In het iconische Groothandelsgebouw, middenin het centrum. Even een andere omgeving, zonder gedoe: wij regelen de ruimte.",
       buildingAlt: "Het Groothandelsgebouw in Rotterdam, waar ons kantoor zit.",
-      bonusLabel: "De bonus",
-      bonus:
-        "Daruma, bekend van de virale crème brûlée, zit precies onder ons kantoor. Ja, we kunnen ze serveren. Ja, ze zijn zo goed als het internet zegt.",
-      imageAlt: "De virale crème brûlée van Daruma.",
     },
   },
   pricing: {
     eyebrow: "Prijs",
-    heading: "Eén prijs voor je hele team.",
-    unit: "per groep",
-    minLabel: `Voor groepen van ${VIBECODING_PRICE.minGroup} tot ${VIBECODING_PRICE.maxGroup}. Grotere groep? Dat regelen we samen.`,
+    heading: "Eén heldere prijs. Kies je groep.",
+    sub: "Een dagdeel van zo'n drie uur, host en begeleiding inbegrepen. Je ziet de prijs vóór je beslist, geen salesgesprek nodig.",
+    popularLabel: "Meest gekozen",
+    peopleWord: "personen",
+    approx: "≈",
+    perPerson: "p.p.",
+    atWord: "bij",
+    tiers: [
+      { name: "Klein team", tagline: "Een hecht, hands-on clubje." },
+      { name: "Heel team", tagline: "De sweet spot voor de meeste teams." },
+      { name: "Grote groep", tagline: "De hele afdeling, voordeligst per persoon." },
+    ],
+    includes: [
+      "Ferry als host, de hele sessie",
+      "Alle AI-tools, klaar voor gebruik",
+      "Bij jullie of op ons kantoor in Rotterdam",
+    ],
+    overflow: "Meer dan 20? Dat regelen we samen, en per persoon wordt het meestal nóg voordeliger.",
     quote: "Prijs op maat per groep",
-    note: "Vertel ons je groepsgrootte en waar, dan komen we terug met een exacte prijs en een datum. Geen salesgesprek nodig.",
+    cta: "Neem je team mee",
+    note: "Eén vaste prijs voor de groep. Hoe groter je team, hoe lager het per persoon uitkomt.",
   },
   form: {
     heading: "Neem je team mee",
@@ -272,7 +317,7 @@ export const nl: VibeContent = {
     email: "Werk-e-mail",
     company: "Bedrijf",
     groupSize: "Hoe groot is je groep?",
-    groupOptions: ["4 tot 8", "8 tot 12", "12 tot 20", "Meer dan 20"],
+    groupOptions: ["4 tot 8", "9 tot 15", "16 tot 20", "Meer dan 20"],
     location: "Waar wil je het?",
     locationOptions: ["Op ons kantoor in Rotterdam", "Bij ons op kantoor", "Weet ik nog niet"],
     timing: "Datum of periode in gedachten? (optioneel)",
