@@ -5,6 +5,7 @@ import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Languages } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
+import TierButton from "./TierButton";
 import Polaroid from "@/components/origin/Polaroid";
 import { VIBECODING_TIERS, pricingIsSet, type VibeContent } from "./content";
 
@@ -285,17 +286,9 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                           </p>
                           <p className={`text-sm leading-relaxed mt-4 ${popular ? "text-white/80" : "text-muted-foreground"}`}>{label.tagline}</p>
                           <div className="mt-auto pt-7">
-                            <a href="#book" className="block">
-                              <Button
-                                className={`w-full rounded-full btn-scale font-heading font-semibold h-12 text-base gap-2 ${
-                                  popular
-                                    ? "bg-accent text-accent-foreground hover:bg-soft-coral"
-                                    : "bg-foreground text-white hover:bg-foreground/90"
-                                }`}
-                              >
-                                {c.pricing.cta} <ArrowRight className="w-4 h-4" />
-                              </Button>
-                            </a>
+                            <TierButton groupSize={c.form.groupOptions[i]} popular={popular}>
+                              {c.pricing.cta}
+                            </TierButton>
                           </div>
                         </div>
                       </ScrollRevealSection>
@@ -313,7 +306,10 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                         </li>
                       ))}
                     </ul>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-6 border-t border-border/50 pt-6">{c.pricing.overflow}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-6 border-t border-border/50 pt-6">
+                      {c.pricing.overflow}{" "}
+                      <TierButton groupSize={c.form.groupOptions[3]} variant="link">{c.pricing.cta}</TierButton>
+                    </p>
                   </div>
                 </ScrollRevealSection>
               </>

@@ -72,10 +72,22 @@ export type VibeContent = {
     location: string;
     locationOptions: string[];
     timing: string;
+    timingOptions: string[];
     message: string;
     submit: string;
     sending: string;
     privacy: string;
+    steps: {
+      back: string;
+      next: string;
+      groupSizeQ: string;
+      nameQ: string;
+      locationQ: string;
+      timingQ: string;
+      timingHelp: string;
+      contactQ: string;
+      contactHelp: string;
+    };
     success: { title: string; body: string };
   };
 };
@@ -194,11 +206,23 @@ export const en: VibeContent = {
     groupOptions: ["4 to 8", "9 to 15", "16 to 20", "More than 20"],
     location: "Where would you like it?",
     locationOptions: ["At our Rotterdam office", "At our place", "Not sure yet"],
-    timing: "Any date or timeframe in mind? (optional)",
+    timing: "e.g. late May, or “still flexible”",
+    timingOptions: ["This quarter", "Next quarter", "Still flexible"],
     message: "Anything else we should know? (optional)",
-    submit: "Get my quote",
+    submit: "Send it",
     sending: "Sending…",
     privacy: "A real human reads this and replies. By sending you agree to our",
+    steps: {
+      back: "Back",
+      next: "Next",
+      groupSizeQ: "How big is your team?",
+      nameQ: "First things first, what should we call you?",
+      locationQ: "Where would you like to host it?",
+      timingQ: "Roughly when?",
+      timingHelp: "A ballpark is fine, we lock the exact date together.",
+      contactQ: "Where can we reach you?",
+      contactHelp: "We come back with a date and confirm the price, usually within one working day.",
+    },
     success: {
       title: "Got it. This is going to be fun.",
       body: "We have your request and a human, Ferry or Jonathan, will come back with a date and an exact quote, usually within one working day.",
@@ -320,11 +344,23 @@ export const nl: VibeContent = {
     groupOptions: ["4 tot 8", "9 tot 15", "16 tot 20", "Meer dan 20"],
     location: "Waar wil je het?",
     locationOptions: ["Op ons kantoor in Rotterdam", "Bij ons op kantoor", "Weet ik nog niet"],
-    timing: "Datum of periode in gedachten? (optioneel)",
+    timing: "Bijv. eind mei, of “nog flexibel”",
+    timingOptions: ["Dit kwartaal", "Volgend kwartaal", "Nog flexibel"],
     message: "Nog iets dat we moeten weten? (optioneel)",
-    submit: "Vraag mijn prijs op",
+    submit: "Versturen",
     sending: "Versturen…",
     privacy: "Een echt mens leest dit en reageert. Door te versturen ga je akkoord met ons",
+    steps: {
+      back: "Terug",
+      next: "Volgende",
+      groupSizeQ: "Hoe groot is je team?",
+      nameQ: "Om te beginnen: wat mogen we je noemen?",
+      locationQ: "Waar wil je het houden?",
+      timingQ: "Wanneer ongeveer?",
+      timingHelp: "Een grove indicatie is prima, de exacte datum prikken we samen.",
+      contactQ: "Waar kunnen we je bereiken?",
+      contactHelp: "We komen terug met een datum en bevestigen de prijs, meestal binnen één werkdag.",
+    },
     success: {
       title: "Gelukt. Dit wordt leuk.",
       body: "We hebben je aanvraag en een mens, Ferry of Jonathan, komt terug met een datum en een exacte prijs, meestal binnen één werkdag.",
