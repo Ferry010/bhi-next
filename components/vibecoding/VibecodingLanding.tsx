@@ -239,6 +239,28 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
           </div>
         </section>
 
+        {/* Why it's worth it */}
+        <section className="section-padding bg-secondary">
+          <div className="container max-w-5xl">
+            <ScrollRevealSection>
+              <div className="text-center max-w-2xl mx-auto">
+                <h2 className="text-display md:text-display-lg text-foreground">{c.why.heading}</h2>
+                <p className="text-body-lg text-muted-foreground mt-4">{c.why.sub}</p>
+              </div>
+            </ScrollRevealSection>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mt-12">
+              {c.why.items.map((it) => (
+                <ScrollRevealSection key={it.title}>
+                  <div className="h-full rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-6 md:p-7">
+                    <h3 className="font-heading font-bold text-lg text-foreground leading-snug">{it.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-2">{it.text}</p>
+                  </div>
+                </ScrollRevealSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Pricing */}
         <section className="section-padding bg-white">
           <div className="container max-w-5xl">

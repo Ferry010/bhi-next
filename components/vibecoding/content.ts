@@ -45,6 +45,7 @@ export type VibeContent = {
     yours: { title: string; text: string; imageAlt: string };
     ours: { title: string; text: string; buildingAlt: string };
   };
+  why: { heading: string; sub: string; items: { title: string; text: string }[] };
   pricing: {
     eyebrow: string;
     heading: string;
@@ -172,6 +173,16 @@ export const en: VibeContent = {
       buildingAlt: "The Groothandelsgebouw in Rotterdam, home to our office.",
     },
   },
+  why: {
+    heading: "More than a fun outing",
+    sub: "You go home with the laughs and something that actually sticks.",
+    items: [
+      { title: "Fun and real skills", text: "A day of laughing, and your team picks up future-proof AI skills along the way. Fun and useful at the same time." },
+      { title: "Everything is included", text: "We sort the tokens and licenses for the AI tools, Claude, Cursor, Replit and the rest. No surprise costs afterwards." },
+      { title: "Useful by Monday", text: "What your team builds and figures out, they put to use in real work the very next week." },
+      { title: "One great host, all day", text: "Ferry is on stages about AI 40+ times a year. He keeps it light, sharp and completely jargon-free." },
+    ],
+  },
   pricing: {
     eyebrow: "Pricing",
     heading: "One clear price. Pick your group.",
@@ -188,7 +199,7 @@ export const en: VibeContent = {
     ],
     includes: [
       "Ferry hosting the whole session",
-      "All the AI tools, set up and ready to go",
+      "All AI tools, licenses and tokens included",
       "At your place or our Rotterdam office",
     ],
     overflow: "More than 20? We'll sort it out together, and it usually gets even better per head.",
@@ -216,7 +227,7 @@ export const en: VibeContent = {
       back: "Back",
       next: "Next",
       groupSizeQ: "How big is your team?",
-      nameQ: "First things first, what should we call you?",
+      nameQ: "What's your name?",
       locationQ: "Where would you like to host it?",
       timingQ: "Roughly when?",
       timingHelp: "A ballpark is fine, we lock the exact date together.",
@@ -310,6 +321,16 @@ export const nl: VibeContent = {
       buildingAlt: "Het Groothandelsgebouw in Rotterdam, waar ons kantoor zit.",
     },
   },
+  why: {
+    heading: "Meer dan een leuk uitje",
+    sub: "Je gaat naar huis met de lol én iets dat echt blijft hangen.",
+    items: [
+      { title: "Plezier én skills", text: "Een dag lachen, en je team leert er meteen toekomstbestendige AI-vaardigheden bij. Leuk en nuttig tegelijk." },
+      { title: "Alles zit in de prijs", text: "De tokens en licenties voor de AI-tools, Claude, Cursor, Replit en de rest, regelen wij. Geen verrassingen achteraf." },
+      { title: "Maandag al bruikbaar", text: "Wat je team bouwt en ontdekt, gebruik je de week erna al in het echte werk." },
+      { title: "Eén top-host, de hele dag", text: "Ferry staat 40+ keer per jaar op podia over AI. Hij houdt het licht, scherp en zonder jargon." },
+    ],
+  },
   pricing: {
     eyebrow: "Prijs",
     heading: "Eén heldere prijs. Kies je groep.",
@@ -326,7 +347,7 @@ export const nl: VibeContent = {
     ],
     includes: [
       "Ferry als host, de hele sessie",
-      "Alle AI-tools, klaar voor gebruik",
+      "Alle AI-tools, licenties én tokens inbegrepen",
       "Bij jullie of op ons kantoor in Rotterdam",
     ],
     overflow: "Meer dan 20? Dat regelen we samen, en per persoon wordt het meestal nóg voordeliger.",
@@ -354,7 +375,7 @@ export const nl: VibeContent = {
       back: "Terug",
       next: "Volgende",
       groupSizeQ: "Hoe groot is je team?",
-      nameQ: "Om te beginnen: wat mogen we je noemen?",
+      nameQ: "Wat is je naam?",
       locationQ: "Waar wil je het houden?",
       timingQ: "Wanneer ongeveer?",
       timingHelp: "Een grove indicatie is prima, de exacte datum prikken we samen.",
