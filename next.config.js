@@ -1,9 +1,28 @@
+// Baseline security headers applied to every route. Intentionally NO
+// Content-Security-Policy here: a strict CSP has to be built and tested against
+// this app's inline scripts, fonts, images and Supabase calls, and a wrong one
+// silently breaks the site. Add it separately once it can be verified.
+const securityHeaders = [
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+  // HSTS without includeSubDomains/preload on purpose: those are hard to undo
+  // and would over-commit any subdomain. Widen later if every subdomain is HTTPS.
+  { key: "Strict-Transport-Security", value: "max-age=31536000" },
+];
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Don't advertise the framework.
+  poweredByHeader: false,
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "**" },
     ],
+  },
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
   // Prevent server-side bundling of browser-only packages
   webpack: (config, { isServer }) => {

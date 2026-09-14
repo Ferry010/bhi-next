@@ -10,6 +10,7 @@ import BlogCard from "@/components/blog/BlogCard";
 import { Button } from "@/components/ui/button";
 import { createServerClient } from "@/lib/supabase/server";
 import { sanitizeBlogHtml } from "@/lib/sanitizeHtml";
+import { jsonLd } from "@/lib/jsonLd";
 import { estimateReadingTime } from "@/lib/readingTime";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import FAQSection from "@/components/FAQSection";
@@ -129,7 +130,7 @@ export default async function BlogPostPage({
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(articleSchema) }} />
       <Navbar />
       <main className="pt-20 md:pt-24">
         <section className="bg-secondary section-padding">
