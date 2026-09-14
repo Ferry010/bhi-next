@@ -22,14 +22,14 @@ export type VibeContent = {
     note: string;
   };
   not: { heading: string; sub: string; items: { label: string; text: string }[]; punch: string };
-  what: { heading: string; body: string[]; points: { title: string; text: string }[] };
+  what: { heading: string; body: string[]; points: { title: string; text: string }[]; examplesLabel: string; examples: string[] };
   about: { eyebrow: string; heading: string; body: string[]; caption: string };
   how: { heading: string; sub: string; steps: { title: string; text: string }[] };
   where: {
     heading: string;
     sub: string;
     yours: { title: string; text: string };
-    ours: { title: string; text: string; bonusLabel: string; bonus: string };
+    ours: { title: string; text: string; bonusLabel: string; bonus: string; imageAlt: string };
   };
   pricing: { eyebrow: string; heading: string; unit: string; minLabel: string; quote: string; note: string };
   form: {
@@ -81,7 +81,15 @@ export const en: VibeContent = {
     heading: "So, what is vibecoding?",
     body: [
       "You and your team spend a couple of hours building actual working things with AI. Apps, tools, little games, useful, useless, and gloriously both.",
+      "Here is how it actually works: you type what you want in plain language, “build me a quiz that picks our next team lunch,” and the AI writes the code and puts a working thing on the screen. Don't like it? You just tell it what to change. That is the whole loop. Prompt, look, tweak, repeat.",
       "No experience needed. That is the whole point. AI does the heavy lifting, your people bring the ideas. Everyone ships something, and everyone is surprised by what they made.",
+    ],
+    examplesLabel: "What teams actually build",
+    examples: [
+      "A quiz that finally settles the team-lunch debate",
+      "A name generator for the new project",
+      "A tiny game with your colleagues as the characters",
+      "A tool that fixes one annoying part of your own workflow",
     ],
     points: [
       { title: "AI does the coding", text: "You describe it, the AI builds it. Your team focuses on ideas, not syntax." },
@@ -121,6 +129,7 @@ export const en: VibeContent = {
       bonusLabel: "The bonus",
       bonus:
         "The viral crème brûlée sandwich shop is right underneath our office. Yes, we can serve them. Yes, they are as good as the internet says.",
+      imageAlt: "The viral crème brûlée sandwich",
     },
   },
   pricing: {
@@ -183,7 +192,15 @@ export const nl: VibeContent = {
     heading: "Wat is vibecoding?",
     body: [
       "Jij en je team bouwen een paar uur lang echte, werkende dingen met AI. Apps, tools, kleine spelletjes, nuttig, nutteloos, en heerlijk allebei.",
+      "Zo werkt het echt: je typt in gewone taal wat je wil, “bouw een quiz die onze volgende teamlunch kiest,” en de AI schrijft de code en zet er een werkend ding neer. Niet tevreden? Je zegt gewoon wat er anders moet. Dat is de hele loop. Prompten, kijken, bijschaven, herhalen.",
       "Geen ervaring nodig. Dat is precies de bedoeling. AI doet het zware werk, jouw mensen brengen de ideeën. Iedereen levert iets op, en iedereen is verrast door wat ze maakten.",
+    ],
+    examplesLabel: "Wat teams echt bouwen",
+    examples: [
+      "Een quiz die de teamlunch-discussie eindelijk beslecht",
+      "Een naamgenerator voor het nieuwe project",
+      "Een spelletje met je collega's als de personages",
+      "Een tool die dat ene irritante klusje in je eigen werk oplost",
     ],
     points: [
       { title: "AI doet het coderen", text: "Jij beschrijft het, de AI bouwt het. Je team focust op ideeën, niet op code." },
@@ -223,6 +240,7 @@ export const nl: VibeContent = {
       bonusLabel: "De bonus",
       bonus:
         "De virale crème brûlée tosti-zaak zit precies onder ons kantoor. Ja, we kunnen ze serveren. Ja, ze zijn zo goed als het internet zegt.",
+      imageAlt: "De virale crème brûlée tosti",
     },
   },
   pricing: {
