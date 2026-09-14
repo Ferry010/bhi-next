@@ -77,8 +77,13 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
               {c.not.items.map((it) => (
                 <ScrollRevealSection key={it.label}>
                   <div className="h-full rounded-2xl bg-cream border border-border/50 p-6 md:p-7">
-                    <h3 className="font-heading font-bold text-lg text-foreground">{it.label}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-2">{it.text}</p>
+                    <h3 className="font-heading font-bold text-xl md:text-2xl leading-tight">
+                      <span className="text-accent">{c.not.notLabel}</span>{" "}
+                      <span className="text-foreground/40 line-through decoration-accent decoration-2 decoration-wavy">
+                        {it.label}
+                      </span>
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-3">{it.text}</p>
                   </div>
                 </ScrollRevealSection>
               ))}
@@ -198,27 +203,47 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
             </ScrollRevealSection>
             <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
               <ScrollRevealSection>
-                <div className="h-full rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-7 md:p-8">
-                  <h3 className="font-heading font-bold text-xl text-foreground">{c.where.yours.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mt-2">{c.where.yours.text}</p>
+                <div className="h-full rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] overflow-hidden">
+                  <div className="aspect-[16/9] overflow-hidden">
+                    <img
+                      src="/assets/vibecoding/your-office.jpg"
+                      alt={c.where.yours.imageAlt}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-7 md:p-8">
+                    <h3 className="font-heading font-bold text-xl text-foreground">{c.where.yours.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed mt-2">{c.where.yours.text}</p>
+                  </div>
                 </div>
               </ScrollRevealSection>
               <ScrollRevealSection>
-                <div className="h-full rounded-2xl bg-white border-2 border-accent/30 shadow-[0_4px_24px_rgba(18,21,46,0.08)] p-7 md:p-8">
-                  <h3 className="font-heading font-bold text-xl text-foreground">{c.where.ours.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mt-2">{c.where.ours.text}</p>
-                  <div className="mt-5 rounded-xl bg-sunny/15 border border-sunny/40 overflow-hidden">
-                    <div className="aspect-[16/9] overflow-hidden">
-                      <img
-                        src="/assets/vibecoding/creme-brulee-PLACEHOLDER.png"
-                        alt={c.where.ours.imageAlt}
-                        loading="lazy"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <span className="text-xs font-heading font-bold uppercase tracking-wider text-accent">{c.where.ours.bonusLabel}</span>
-                      <p className="text-sm text-foreground/80 leading-relaxed mt-1">{c.where.ours.bonus}</p>
+                <div className="h-full rounded-2xl bg-white border-2 border-accent/30 shadow-[0_4px_24px_rgba(18,21,46,0.08)] overflow-hidden">
+                  <div className="aspect-[16/9] overflow-hidden">
+                    <img
+                      src="/assets/vibecoding/rotterdam-office.jpg"
+                      alt={c.where.ours.buildingAlt}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-7 md:p-8">
+                    <h3 className="font-heading font-bold text-xl text-foreground">{c.where.ours.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed mt-2">{c.where.ours.text}</p>
+                    <div className="mt-5 rounded-xl bg-sunny/15 border border-sunny/40 overflow-hidden">
+                      <div className="aspect-[16/9] overflow-hidden">
+                        <img
+                          src="/assets/vibecoding/creme-brulee-PLACEHOLDER.png"
+                          alt={c.where.ours.imageAlt}
+                          loading="lazy"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <span className="text-xs font-heading font-bold uppercase tracking-wider text-accent">{c.where.ours.bonusLabel}</span>
+                        <p className="text-sm text-foreground/80 leading-relaxed mt-1">{c.where.ours.bonus}</p>
+                      </div>
                     </div>
                   </div>
                 </div>

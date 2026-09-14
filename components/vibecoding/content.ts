@@ -1,11 +1,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Pricing. Set the real number here and it shows across both languages. Until
-// then (while it still contains "["), the page shows a "custom quote" line
-// instead of a broken price, so it is safe to ship before pricing is decided.
+// Pricing. One price for the whole group (not per person). Set the real number
+// here and it shows across both languages. Until then (while it still contains
+// "["), the page shows a "custom quote" line instead of a broken price, so it is
+// safe to ship before pricing is decided.
 // ─────────────────────────────────────────────────────────────────────────────
 export const VIBECODING_PRICE = {
-  from: "€[bedrag]", // e.g. "€79" per person. Placeholder until set.
-  minGroup: 6,
+  from: "€[bedrag]", // one price per group, e.g. "€1.450". Placeholder until set.
+  minGroup: 4,
+  maxGroup: 20,
 };
 export const priceIsSet = !VIBECODING_PRICE.from.includes("[");
 
@@ -21,15 +23,21 @@ export type VibeContent = {
     cta: string;
     note: string;
   };
-  not: { heading: string; sub: string; items: { label: string; text: string }[]; punch: string };
+  not: {
+    heading: string;
+    sub: string;
+    notLabel: string;
+    items: { label: string; text: string }[];
+    punch: string;
+  };
   what: { heading: string; body: string[]; points: { title: string; text: string }[]; examplesLabel: string; examples: string[] };
   about: { eyebrow: string; heading: string; body: string[]; caption: string };
   how: { heading: string; sub: string; steps: { title: string; text: string }[] };
   where: {
     heading: string;
     sub: string;
-    yours: { title: string; text: string };
-    ours: { title: string; text: string; bonusLabel: string; bonus: string; imageAlt: string };
+    yours: { title: string; text: string; imageAlt: string };
+    ours: { title: string; text: string; buildingAlt: string; bonusLabel: string; bonus: string; imageAlt: string };
   };
   pricing: { eyebrow: string; heading: string; unit: string; minLabel: string; quote: string; note: string };
   form: {
@@ -65,15 +73,16 @@ export const en: VibeContent = {
     titleAccent: "Build something instead.",
     sub: "A couple of hours of pure fun, building real, working things with AI, in groups. No coding experience needed. No trust falls. Just your team, some laptops, and what you can make together.",
     cta: "Bring your team",
-    note: "Any group size · at your place or our Rotterdam office",
+    note: "Groups of 4 to 20 · at your place or our Rotterdam office",
   },
   not: {
     heading: "Not another escape room.",
-    sub: "You have done the usual team outings. This one your team actually talks about afterwards.",
+    sub: "You have done the usual team outings. This is the one your team actually talks about afterwards.",
+    notLabel: "Not",
     items: [
-      { label: "Not an escape room", text: "You solve it once, then forget it. Here you leave with something you made." },
-      { label: "Not bowling", text: "Fun for an hour. This is fun and your team learns they can build with AI." },
-      { label: "Not a survival weekend", text: "Nobody wants to be cold and muddy with their colleagues. Stay warm, stay curious." },
+      { label: "an escape room", text: "You solve it once, then forget it. Here you walk out with something you built yourself." },
+      { label: "bowling", text: "Fun for an hour, then done. This is fun and your team discovers it can build with AI." },
+      { label: "a survival weekend", text: "Nobody wants to be cold and muddy with their colleagues. Stay inside, stay curious." },
     ],
     punch: "Vibecoding is the one where you laugh a lot and walk out having built something real.",
   },
@@ -101,9 +110,9 @@ export const en: VibeContent = {
     eyebrow: "Your host",
     heading: "Meet Ferry, in the room all day",
     body: [
-      "Ferry spends his year on stages across the globe getting rooms excited about working with AI instead of against it. Around 40 keynotes a year, in front of teams at GlaxoSmithKline, Unilever, VodafoneZiggo and the Dutch government, and he still talks to people like people.",
-      "He is the one who makes the tech feel easy and the room feel loose. Sharp, funny, zero jargon, and genuinely thrilled when a team that swore they are not techy ships something they are proud of. Which is every single time.",
-      "Short version: he is exactly who you want in the room when your team builds their first thing with AI.",
+      "Ferry is on stages around the world about 40 times a year, in front of teams at GlaxoSmithKline, Unilever, VodafoneZiggo and the Dutch government. His mission: get people working with AI instead of against it.",
+      "His strength is making technology feel simple and carrying a room without any effort. Sharp, funny, zero jargon, and genuinely thrilled when a team that calls itself “not technical” suddenly builds something it is proud of. Which happens every single time.",
+      "In short: exactly who you want in the room when your team builds its first real thing with AI.",
     ],
     caption: "Ferry, doing his favourite thing",
   },
@@ -112,7 +121,7 @@ export const en: VibeContent = {
     sub: "Come with the whole team, or split into small groups. We shape it around you.",
     steps: [
       { title: "Split into groups", text: "Small teams of a few people each. Mix departments, mix the people who never work together." },
-      { title: "Build, for real", text: "A couple of hours of guided building with AI. We are in the room the whole time to keep it moving." },
+      { title: "We build something real", text: "A couple of hours of guided building with AI. We are in the room the whole time to keep it moving." },
       { title: "Show and tell", text: "Every group demos what they made. Expect surprises, applause, and a few happy accidents." },
     ],
   },
@@ -122,21 +131,23 @@ export const en: VibeContent = {
     yours: {
       title: "At your place",
       text: "We bring the session to your office, anywhere. All your team needs is a room, some laptops and a bit of wifi.",
+      imageAlt: "Your office, wherever that is.",
     },
     ours: {
       title: "At our Rotterdam office",
-      text: "Right in the city centre. A change of scenery, and a small legendary bonus.",
+      text: "In the iconic Groothandelsgebouw, right in the city centre. A change of scenery, and a small legendary bonus.",
+      buildingAlt: "The Groothandelsgebouw in Rotterdam, home to our office.",
       bonusLabel: "The bonus",
       bonus:
-        "The viral crème brûlée sandwich shop is right underneath our office. Yes, we can serve them. Yes, they are as good as the internet says.",
-      imageAlt: "The viral crème brûlée sandwich",
+        "Daruma, home of the viral crème brûlée, is right underneath our office. Yes, we can serve them. Yes, they are as good as the internet says.",
+      imageAlt: "The viral crème brûlée from Daruma.",
     },
   },
   pricing: {
     eyebrow: "Pricing",
-    heading: "Simple and per person.",
-    unit: "per person",
-    minLabel: `Minimum group of ${VIBECODING_PRICE.minGroup}`,
+    heading: "One price for your whole team.",
+    unit: "per group",
+    minLabel: `For groups of ${VIBECODING_PRICE.minGroup} to ${VIBECODING_PRICE.maxGroup}. Bigger group? We will sort it out together.`,
     quote: "Custom quote per group",
     note: "Tell us your group size and where, and we come back with an exact price and a date. No sales call needed.",
   },
@@ -147,7 +158,7 @@ export const en: VibeContent = {
     email: "Work email",
     company: "Company",
     groupSize: "How big is your group?",
-    groupOptions: ["Up to 10", "10 to 20", "20 to 40", "40 or more"],
+    groupOptions: ["4 to 8", "8 to 12", "12 to 20", "More than 20"],
     location: "Where would you like it?",
     locationOptions: ["At our Rotterdam office", "At our place", "Not sure yet"],
     timing: "Any date or timeframe in mind? (optional)",
@@ -176,15 +187,16 @@ export const nl: VibeContent = {
     titleAccent: "Bouw samen iets echts.",
     sub: "Een paar uur puur plezier, samen echte, werkende dingen bouwen met AI, in groepjes. Geen programmeerervaring nodig. Geen trust falls. Gewoon je team, wat laptops, en wat jullie samen kunnen maken.",
     cta: "Neem je team mee",
-    note: "Elke groepsgrootte · bij jullie of op ons kantoor in Rotterdam",
+    note: "Groepen van 4 tot 20 · bij jullie of op ons kantoor in Rotterdam",
   },
   not: {
-    heading: "Geen zoveelste escape room.",
-    sub: "De standaard uitjes heb je gehad. Over dit uitje praat je team daarna nog na.",
+    heading: "Niet wéér een escape room.",
+    sub: "De standaard uitjes heb je gehad. Dit is het uitje waar je team daarna nog over napraat.",
+    notLabel: "Geen",
     items: [
-      { label: "Geen escape room", text: "Eén keer opgelost en weer vergeten. Hier ga je weg met iets dat je zelf maakte." },
-      { label: "Geen bowlen", text: "Een uurtje lol. Dit is lol én je team ontdekt dat ze kunnen bouwen met AI." },
-      { label: "Geen survivalweekend", text: "Niemand wil koud en modderig zijn met collega's. Lekker warm, lekker nieuwsgierig." },
+      { label: "escape room", text: "Eén keer opgelost en meteen weer vergeten. Hier loop je naar buiten met iets dat je zelf gebouwd hebt." },
+      { label: "bowlen", text: "Een uurtje lol en klaar. Dit is lol én je team ontdekt dat het kan bouwen met AI." },
+      { label: "survivalweekend", text: "Niemand wil koud en modderig zijn met z'n collega's. Lekker binnen, lekker nieuwsgierig." },
     ],
     punch: "Vibecoding is dat uitje waar je veel lacht en naar buiten loopt met iets dat je écht gebouwd hebt.",
   },
@@ -212,9 +224,9 @@ export const nl: VibeContent = {
     eyebrow: "Je host",
     heading: "Dit is Ferry, de hele dag in de zaal",
     body: [
-      "Ferry staat het hele jaar op podia over de hele wereld om zalen enthousiast te maken over wérken met AI in plaats van ertegen. Zo'n 40 keynotes per jaar, voor teams bij GlaxoSmithKline, Unilever, VodafoneZiggo en de Rijksoverheid, en hij praat nog steeds met mensen als mensen.",
-      "Hij is degene die de techniek makkelijk laat voelen en de zaal los maakt. Scherp, grappig, nul jargon, en oprecht blij als een team dat zwoer 'niet technisch' te zijn iets maakt waar ze trots op zijn. Wat elke keer gebeurt.",
-      "Kort gezegd: precies wie je in de zaal wil als je team voor het eerst iets bouwt met AI.",
+      "Ferry staat zo'n 40 keer per jaar op podia over de hele wereld, voor teams bij GlaxoSmithKline, Unilever, VodafoneZiggo en de Rijksoverheid. Zijn missie: mensen laten wérken mét AI in plaats van ertegen.",
+      "Zijn kracht is dat hij techniek simpel maakt en een zaal moeiteloos meekrijgt. Scherp, grappig, nul jargon, en oprecht blij als een team dat zichzelf “niet technisch” noemt ineens iets bouwt waar het trots op is. Wat elke keer weer gebeurt.",
+      "Kortom: precies wie je in de zaal wil als je team voor het eerst iets echts bouwt met AI.",
     ],
     caption: "Ferry, in zijn element",
   },
@@ -223,7 +235,7 @@ export const nl: VibeContent = {
     sub: "Kom met het hele team, of splits in kleine groepjes. We vormen het rond jullie.",
     steps: [
       { title: "Splits in groepjes", text: "Kleine teams van een paar mensen. Mix afdelingen, mix de mensen die nooit samenwerken." },
-      { title: "Bouwen, echt waar", text: "Een paar uur begeleid bouwen met AI. We zijn de hele tijd in de zaal om het vaart te geven." },
+      { title: "We bouwen iets echts", text: "Een paar uur begeleid bouwen met AI. We zijn de hele tijd in de zaal om het vaart te geven." },
       { title: "Show-and-tell", text: "Elk groepje demonstreert wat ze maakten. Verwacht verrassingen, applaus en een paar gelukkige ongelukjes." },
     ],
   },
@@ -233,21 +245,23 @@ export const nl: VibeContent = {
     yours: {
       title: "Bij jullie op kantoor",
       text: "We brengen de sessie naar jullie toe, waar dan ook. Je team heeft alleen een ruimte, wat laptops en een beetje wifi nodig.",
+      imageAlt: "Jullie kantoor, waar dan ook.",
     },
     ours: {
       title: "Op ons kantoor in Rotterdam",
-      text: "Middenin het centrum. Even een andere omgeving, en een kleine legendarische bonus.",
+      text: "In het iconische Groothandelsgebouw, middenin het centrum. Even een andere omgeving, en een kleine legendarische bonus.",
+      buildingAlt: "Het Groothandelsgebouw in Rotterdam, waar ons kantoor zit.",
       bonusLabel: "De bonus",
       bonus:
-        "De virale crème brûlée tosti-zaak zit precies onder ons kantoor. Ja, we kunnen ze serveren. Ja, ze zijn zo goed als het internet zegt.",
-      imageAlt: "De virale crème brûlée tosti",
+        "Daruma, bekend van de virale crème brûlée, zit precies onder ons kantoor. Ja, we kunnen ze serveren. Ja, ze zijn zo goed als het internet zegt.",
+      imageAlt: "De virale crème brûlée van Daruma.",
     },
   },
   pricing: {
     eyebrow: "Prijs",
-    heading: "Simpel en per persoon.",
-    unit: "per persoon",
-    minLabel: `Minimale groep van ${VIBECODING_PRICE.minGroup}`,
+    heading: "Eén prijs voor je hele team.",
+    unit: "per groep",
+    minLabel: `Voor groepen van ${VIBECODING_PRICE.minGroup} tot ${VIBECODING_PRICE.maxGroup}. Grotere groep? Dat regelen we samen.`,
     quote: "Prijs op maat per groep",
     note: "Vertel ons je groepsgrootte en waar, dan komen we terug met een exacte prijs en een datum. Geen salesgesprek nodig.",
   },
@@ -258,7 +272,7 @@ export const nl: VibeContent = {
     email: "Werk-e-mail",
     company: "Bedrijf",
     groupSize: "Hoe groot is je groep?",
-    groupOptions: ["Tot 10", "10 tot 20", "20 tot 40", "40 of meer"],
+    groupOptions: ["4 tot 8", "8 tot 12", "12 tot 20", "Meer dan 20"],
     location: "Waar wil je het?",
     locationOptions: ["Op ons kantoor in Rotterdam", "Bij ons op kantoor", "Weet ik nog niet"],
     timing: "Datum of periode in gedachten? (optioneel)",
