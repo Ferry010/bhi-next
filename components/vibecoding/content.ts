@@ -102,7 +102,7 @@ export const en: VibeContent = {
   hero: {
     title: "No escape room. ",
     titleAccent: "Build something cool together with AI.",
-    sub: "Getting to know each other while you build a fun or genuinely useful app, site or tool? You can. That's our team day, Vibecoding. Which tool does your team take home?",
+    sub: "Getting to know each other while you build a fun or genuinely useful app, site or tool? You can. No experience needed. That's our team day, Vibecoding. Which tool does your team take home?",
     cta: "Bring your team",
     note: "Groups of 4 to 20 · at your place or ours in Rotterdam",
   },
@@ -132,7 +132,7 @@ export const en: VibeContent = {
       "Quizzes and pick-something algorithms, for the next outing maybe",
     ],
     points: [
-      { title: "AI suggests, AI codes", text: "You describe in plain English what you want to build and how it should look. The AI tool builds the whole thing and writes the code." },
+      { title: "You suggest, AI codes", text: "You describe in plain English what you want to build and how it should look. The AI tool builds the whole thing and writes the code." },
       { title: "Fun (and addictive)", text: "It is fast, creative and often seriously addictive. Before you know it you are building one app after another. In this session we start with one." },
       { title: "Everyone ships", text: "By the end of the day, every group has something that works to show, and to be proud of. What you make goes online and comes home or to work with you." },
     ],
@@ -171,12 +171,12 @@ export const en: VibeContent = {
   },
   why: {
     heading: "More than a fun outing",
-    sub: "You go home with the laughs and something that sticks.",
+    sub: "You go home with a good day, and with something that sticks.",
     items: [
-      { title: "Fun and real skills", text: "A day of laughing, and your team picks up AI skills it can already use on Monday." },
-      { title: "Everything is included", text: "We sort the tokens and licenses for Claude, Cursor, Replit and the rest. No surprises on the invoice." },
-      { title: "Useful by Monday", text: "What your team builds and figures out, it uses in real work the very next week." },
-      { title: "One great host, all day", text: "Ferry, 40+ AI stages a year. He keeps it light, sharp and jargon-free." },
+      { title: "Fun and real skills", text: "You have a fun day with your team, and along the way everyone learns to work with AI. Skills that stay useful for a long time, whether you are technical or not." },
+      { title: "Everything is included", text: "We sort the tokens and licenses for tools like Claude, Cursor and Replit. You install nothing and pay nothing extra afterwards." },
+      { title: "You use it on Monday", text: "What your team discovers doesn't vanish after the drinks. The next week you just use it in real work, or you keep building yourself." },
+      { title: "You're not on your own", text: "Ferry is with you the whole session. When you get stuck he helps you through, and he makes sure every group leaves with something good." },
     ],
   },
   pricing: {
@@ -247,7 +247,7 @@ export const nl: VibeContent = {
   hero: {
     title: "Geen escape room, maar ",
     titleAccent: "samen iets tofs bouwen met AI.",
-    sub: "Elkaar leren kennen tijdens het bouwen van een leuke of handige app, site of applicatie? Dat kan. Tijdens onze teamdag Vibecoding. Welke tool(s) neemt jouw team mee naar huis?",
+    sub: "Elkaar leren kennen tijdens het bouwen van een leuke of handige app, site of applicatie? Dat kan. Geen ervaring nodig. Tijdens onze teamdag Vibecoding. Welke tool(s) neemt jouw team mee naar huis?",
     cta: "Neem je team mee",
     note: "Groepen van 4 tot 20 · bij jullie of bij ons in Rotterdam",
   },
@@ -277,7 +277,7 @@ export const nl: VibeContent = {
       "Quizzen en keuze-algoritmes, bijvoorbeeld voor het volgende uitje",
     ],
     points: [
-      { title: "AI suggereert, AI codeert", text: "Jij geeft in normaal Nederlands aan wat je wilt bouwen en hoe het eruit moet zien. De AI-tool bouwt het volledig en schrijft de code." },
+      { title: "Jij suggereert, AI codeert", text: "Jij geeft in normaal Nederlands aan wat je wilt bouwen en hoe het eruit moet zien. De AI-tool bouwt het volledig en schrijft de code." },
       { title: "Leuk (en verslavend)", text: "Het is snel, creatief en vaak enorm verslavend. Voor je het weet bouw je de ene app na de andere. In deze sessie starten we met eentje." },
       { title: "Iedereen levert iets op", text: "Aan het eind van dit uitje heeft elk groepje iets werkends om te laten zien, en om trots op te zijn. Wat je maakt staat online en kun je mee naar huis of werk nemen." },
     ],
@@ -316,12 +316,12 @@ export const nl: VibeContent = {
   },
   why: {
     heading: "Meer dan een leuk uitje",
-    sub: "Je gaat naar huis met de lol én iets dat blijft hangen.",
+    sub: "Je gaat naar huis met een leuke dag, én met iets dat blijft hangen.",
     items: [
-      { title: "Plezier én skills", text: "Een dag lachen, en je team pikt en passant AI-vaardigheden op waar het maandag al iets aan heeft." },
-      { title: "Alles zit in de prijs", text: "De tokens en licenties voor Claude, Cursor, Replit en de rest regelen wij. Geen verrassingen op de factuur." },
-      { title: "Maandag al bruikbaar", text: "Wat je team bouwt en ontdekt, gebruikt het de week erna gewoon in het echte werk." },
-      { title: "Eén top-host, de hele dag", text: "Ferry, 40+ podia per jaar over AI. Hij houdt het licht, scherp en zonder jargon." },
+      { title: "Lol én vaardigheden", text: "Je hebt een dag plezier met je team, en ondertussen leert iedereen werken met AI. Vaardigheden waar je nog lang wat aan hebt, of je nu technisch bent of niet." },
+      { title: "Alles zit in de prijs", text: "De tokens en licenties voor tools als Claude, Cursor en Replit regelen wij. Jij hoeft niets te installeren en betaalt achteraf niets bij." },
+      { title: "Maandag pas je het toe", text: "Wat je team ontdekt, verdwijnt niet na de borrel. De week erna gebruik je het gewoon in je echte werk, of je bouwt zelf verder." },
+      { title: "Je staat er niet alleen voor", text: "Ferry loopt de hele sessie mee. Loop je vast, dan helpt hij je verder, en hij zorgt dat elk groepje met iets moois de deur uit gaat." },
     ],
   },
   pricing: {
