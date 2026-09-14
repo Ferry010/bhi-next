@@ -50,8 +50,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                 <Languages className="w-4 h-4" /> {c.langSwitch.label}
               </Link>
             </div>
-            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">{c.hero.eyebrow}</span>
-            <h1 className="text-hero md:text-hero-lg text-foreground mt-4 leading-[1.05]">
+            <h1 className="text-hero md:text-hero-lg text-foreground leading-[1.05]">
               {c.hero.title}
               <span className="text-accent">{c.hero.titleAccent}</span>
             </h1>
@@ -183,8 +182,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
             </ScrollRevealSection>
             <ScrollRevealSection>
               <div className="order-1 md:order-2">
-                <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">{c.about.eyebrow}</span>
-                <h2 className="text-display md:text-display-lg text-foreground mt-3 leading-tight">{c.about.heading}</h2>
+                <h2 className="text-display md:text-display-lg text-foreground leading-tight">{c.about.heading}</h2>
                 <div className="mt-6 space-y-4 text-body-lg text-muted-foreground leading-relaxed">
                   {c.about.body.map((p, i) => <p key={i}>{p}</p>)}
                 </div>
@@ -266,8 +264,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
           <div className="container max-w-5xl">
             <ScrollRevealSection>
               <div className="text-center max-w-2xl mx-auto">
-                <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">{c.pricing.eyebrow}</span>
-                <h2 className="text-display md:text-display-lg text-foreground mt-3">{c.pricing.heading}</h2>
+                <h2 className="text-display md:text-display-lg text-foreground">{c.pricing.heading}</h2>
                 <p className="text-body-lg text-muted-foreground mt-4">{c.pricing.sub}</p>
               </div>
             </ScrollRevealSection>

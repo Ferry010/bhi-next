@@ -22,7 +22,6 @@ export type VibeContent = {
   langSwitch: { href: string; label: string };
   meta: { title: string; description: string };
   hero: {
-    eyebrow: string;
     title: string;
     titleAccent: string;
     sub: string;
@@ -37,7 +36,7 @@ export type VibeContent = {
     punch: string;
   };
   what: { heading: string; body: string[]; points: { title: string; text: string }[]; examplesLabel: string; examples: string[] };
-  about: { eyebrow: string; heading: string; body: string[]; caption: string };
+  about: { heading: string; body: string[]; caption: string };
   how: { heading: string; sub: string; steps: { title: string; text: string }[] };
   where: {
     heading: string;
@@ -47,7 +46,6 @@ export type VibeContent = {
   };
   why: { heading: string; sub: string; items: { title: string; text: string }[] };
   pricing: {
-    eyebrow: string;
     heading: string;
     sub: string;
     popularLabel: string;
@@ -99,117 +97,114 @@ export const en: VibeContent = {
   meta: {
     title: "Vibecoding | The Team Day Where You Actually Build Something",
     description:
-      "Skip the escape room. A couple of hours of pure fun building real things with AI, in groups. At your place or our Rotterdam office. Bring your team.",
+      "No escape room. In a couple of hours your team builds real things with AI. At your place or ours in Rotterdam. Bring your team.",
   },
   hero: {
-    eyebrow: "Team day, done differently",
     title: "Skip the escape room. ",
-    titleAccent: "Build something instead.",
-    sub: "A couple of hours of pure fun, building real, working things with AI, in groups. No coding experience needed. No trust falls. Just your team, some laptops, and what you can make together.",
+    titleAccent: "Build something real.",
+    sub: "A couple of hours, your team, a few laptops. By the end everyone has built something with AI that didn't exist that morning. No experience needed. No ropes course, no sticky notes.",
     cta: "Bring your team",
-    note: "Groups of 4 to 20 · at your place or our Rotterdam office",
+    note: "Groups of 4 to 20 · at your place or ours in Rotterdam",
   },
   not: {
     heading: "Not another escape room.",
-    sub: "You have done the usual team outings. This is the one your team actually talks about afterwards.",
+    sub: "You know the usual outings. This is the one your team still brings up on Monday.",
     notLabel: "Not",
     items: [
-      { label: "an escape room", text: "You solve it once, then forget it. Here you walk out with something you built yourself." },
-      { label: "bowling", text: "Fun for an hour, then done. This is fun and your team discovers it can build with AI." },
-      { label: "a survival weekend", text: "Nobody wants to be cold and muddy with their colleagues. Stay inside, stay curious." },
+      { label: "an escape room", text: "Solved once, forgotten by lunch. Here you take home something you built yourself." },
+      { label: "bowling", text: "Fun for an hour. After this, your team knows it can build with AI. That sticks around longer." },
+      { label: "a survival weekend", text: "Cold, muddy, and nobody really wanted it. We stay inside. With coffee." },
     ],
-    punch: "Vibecoding is the one where you laugh a lot and walk out having built something real.",
+    punch: "You laugh a lot, and you walk out with something that works. Try that at the bowling alley.",
   },
   what: {
     heading: "So, what is vibecoding?",
     body: [
-      "You and your team spend a couple of hours building actual working things with AI. Apps, tools, little games, useful, useless, and gloriously both.",
-      "Here is how it actually works: you type what you want in plain language, “build me a quiz that picks our next team lunch,” and the AI writes the code and puts a working thing on the screen. Don't like it? You just tell it what to change. That is the whole loop. Prompt, look, tweak, repeat.",
-      "No experience needed. That is the whole point. AI does the heavy lifting, your people bring the ideas. Everyone ships something, and everyone is surprised by what they made.",
+      "Your team spends a couple of hours building real things with AI. Apps, tools, little games. Useful, useless, usually both at once.",
+      "How it works: you type what you want in plain language. “Build a quiz that picks our next team lunch.” The AI writes the code and puts a working thing on screen. Not right? You tell it what to change. Prompt, look, tweak. That is the whole thing.",
+      "Nobody needs to know how to code. The AI does the heavy lifting, your people decide what it should become. And everyone is surprised by what comes out of their own hands.",
     ],
     examplesLabel: "What teams actually build",
     examples: [
-      "A quiz that finally settles the team-lunch debate",
-      "A name generator for the new project",
-      "A tiny game with your colleagues as the characters",
-      "A tool that fixes one annoying part of your own workflow",
+      "A quiz that settles the team-lunch debate for good",
+      "A name generator for the project that still has no name",
+      "A little game with your colleagues as the characters",
+      "A tool that removes that one annoying task from your week",
     ],
     points: [
-      { title: "AI does the coding", text: "You describe it, the AI builds it. Your team focuses on ideas, not syntax." },
-      { title: "Genuinely fun", text: "Fast, hands-on and a little chaotic. The good kind of chaos." },
-      { title: "Everyone ships", text: "By the end, every group has something real to show off. A proper show-and-tell." },
+      { title: "AI does the typing", text: "You say what you want, the AI builds it. Your team thinks, not about semicolons." },
+      { title: "Actually fun", text: "Fast, messy, hands-on. The way making things is supposed to feel." },
+      { title: "Everyone ships", text: "By the end every group has something that works to show off. Bragging included." },
     ],
   },
   about: {
-    eyebrow: "Your host",
     heading: "Meet Ferry, in the room all day",
     body: [
-      "Ferry is on stages around the world about 40 times a year, in front of teams at GlaxoSmithKline, Unilever, VodafoneZiggo and the Dutch government. His mission: get people working with AI instead of against it.",
-      "His strength is making technology feel simple and carrying a room without any effort. Sharp, funny, zero jargon, and genuinely thrilled when a team that calls itself “not technical” suddenly builds something it is proud of. Which happens every single time.",
-      "In short: exactly who you want in the room when your team builds its first real thing with AI.",
+      "Ferry is on a stage about 40 times a year, in front of teams at GlaxoSmithKline, Unilever, VodafoneZiggo and the Dutch government. Always the same point: get people working with AI instead of against it.",
+      "He makes the tech feel small and the room feel loose. Sharp, funny, zero jargon. At his best when a team that calls itself “not technical” suddenly builds something it is proud of. Which happens every time.",
+      "Short version: exactly who you want there when your team builds its first real thing with AI.",
     ],
     caption: "Ferry, doing his favourite thing",
   },
   how: {
     heading: "How the day works",
-    sub: "Come with the whole team, or split into small groups. We shape it around you.",
+    sub: "Come as one team or split into groups. We shape it around you.",
     steps: [
-      { title: "Split into groups", text: "Small teams of a few people each. Mix departments, mix the people who never work together." },
-      { title: "We build something real", text: "A couple of hours of guided building with AI. We are in the room the whole time to keep it moving." },
-      { title: "Show and tell", text: "Every group demos what they made. Expect surprises, applause, and a few happy accidents." },
+      { title: "Split into groups", text: "Small teams of a few people. Put the ones who never work together in the same group." },
+      { title: "We build something real", text: "A couple of hours building with AI, us right next to you keeping the pace. No theory, straight to making." },
+      { title: "Show and tell", text: "Every group shows what it made. Expect surprises, applause, and a few happy accidents." },
     ],
   },
   where: {
     heading: "Where it happens",
-    sub: "Your turf or ours. Both work great.",
+    sub: "Your place or ours. Both are great.",
     yours: {
       title: "At your place",
-      text: "We bring the session to your office, anywhere. All your team needs is a room, some laptops and a bit of wifi.",
+      text: "We come to you, wherever you are. You need a room, some laptops and a bit of wifi. That is it.",
       imageAlt: "Your office, wherever that is.",
     },
     ours: {
       title: "At our Rotterdam office",
-      text: "In the iconic Groothandelsgebouw, right in the city centre. A change of scenery with zero hassle, we sort the room.",
+      text: "In the Groothandelsgebouw, right in the city centre. Different walls, different energy. We sort the room.",
       buildingAlt: "The Groothandelsgebouw in Rotterdam, home to our office.",
     },
   },
   why: {
     heading: "More than a fun outing",
-    sub: "You go home with the laughs and something that actually sticks.",
+    sub: "You go home with the laughs and something that sticks.",
     items: [
-      { title: "Fun and real skills", text: "A day of laughing, and your team picks up future-proof AI skills along the way. Fun and useful at the same time." },
-      { title: "Everything is included", text: "We sort the tokens and licenses for the AI tools, Claude, Cursor, Replit and the rest. No surprise costs afterwards." },
-      { title: "Useful by Monday", text: "What your team builds and figures out, they put to use in real work the very next week." },
-      { title: "One great host, all day", text: "Ferry is on stages about AI 40+ times a year. He keeps it light, sharp and completely jargon-free." },
+      { title: "Fun and real skills", text: "A day of laughing, and your team picks up AI skills it can already use on Monday." },
+      { title: "Everything is included", text: "We sort the tokens and licenses for Claude, Cursor, Replit and the rest. No surprises on the invoice." },
+      { title: "Useful by Monday", text: "What your team builds and figures out, it uses in real work the very next week." },
+      { title: "One great host, all day", text: "Ferry, 40+ AI stages a year. He keeps it light, sharp and jargon-free." },
     ],
   },
   pricing: {
-    eyebrow: "Pricing",
     heading: "One clear price. Pick your group.",
-    sub: "A half-day session of about three hours, host and facilitation included. You see the price before you decide, no sales call needed.",
+    sub: "A half-day of about three hours, host and facilitation included. You see the price right away. No sales call.",
     popularLabel: "Most chosen",
     peopleWord: "people",
     approx: "≈",
     perPerson: "per person",
     atWord: "at",
     tiers: [
-      { name: "Small team", tagline: "A tight, hands-on crew." },
+      { name: "Small team", tagline: "A tight crew, all hands on deck." },
       { name: "Full team", tagline: "The sweet spot for most teams." },
-      { name: "Big group", tagline: "The whole department, best value per head." },
+      { name: "Big group", tagline: "The whole department. Best value per head." },
     ],
     includes: [
       "Ferry hosting the whole session",
       "All AI tools, licenses and tokens included",
-      "At your place or our Rotterdam office",
+      "At your place or ours in Rotterdam",
     ],
-    overflow: "More than 20? We'll sort it out together, and it usually gets even better per head.",
+    overflow: "More than 20? We'll sort it out together, and per person it usually only gets better.",
     quote: "Custom quote per group",
     cta: "Bring your team",
-    note: "One flat price for the group. The bigger your team, the less it works out to per person.",
+    note: "One flat price for the group. The bigger your team, the less it is per person.",
   },
   form: {
     heading: "Bring your team",
-    sub: "Tell us a little about your group and we come back with a date and an exact quote, usually within one working day.",
+    sub: "Tell us a bit about your group. We come back with a date and the price, usually within one working day.",
     name: "Your name",
     email: "Work email",
     company: "Company",
@@ -230,13 +225,13 @@ export const en: VibeContent = {
       nameQ: "What's your name?",
       locationQ: "Where would you like to host it?",
       timingQ: "Roughly when?",
-      timingHelp: "A ballpark is fine, we lock the exact date together.",
+      timingHelp: "A ballpark is fine. We lock the exact date together.",
       contactQ: "Where can we reach you?",
-      contactHelp: "We come back with a date and confirm the price, usually within one working day.",
+      contactHelp: "We come back with a date and the price, usually within one working day.",
     },
     success: {
-      title: "Got it. This is going to be fun.",
-      body: "We have your request and a human, Ferry or Jonathan, will come back with a date and an exact quote, usually within one working day.",
+      title: "Nice. This is going to be fun.",
+      body: "We've got your request. Ferry or Jonathan will come back personally with a date and the price, usually within one working day.",
     },
   },
 };
@@ -247,117 +242,114 @@ export const nl: VibeContent = {
   meta: {
     title: "Vibecoding | Het teamuitje waar je écht iets bouwt",
     description:
-      "Geen escape room. Een paar uur puur plezier: samen echte dingen bouwen met AI, in groepjes. Bij jullie of op ons kantoor in Rotterdam. Neem je team mee.",
+      "Geen escape room. In een paar uur bouwt je team echte dingen met AI. Bij jullie of bij ons in Rotterdam. Neem je team mee.",
   },
   hero: {
-    eyebrow: "Een teamuitje, maar dan anders",
     title: "Sla de escape room over. ",
     titleAccent: "Bouw samen iets echts.",
-    sub: "Een paar uur puur plezier, samen echte, werkende dingen bouwen met AI, in groepjes. Geen programmeerervaring nodig. Geen trust falls. Gewoon je team, wat laptops, en wat jullie samen kunnen maken.",
+    sub: "Een paar uur, je team, een paar laptops. Aan het eind heeft iedereen iets met AI gebouwd dat er 's ochtends nog niet was. Geen ervaring nodig. Geen touwtjes, geen post-its.",
     cta: "Neem je team mee",
-    note: "Groepen van 4 tot 20 · bij jullie of op ons kantoor in Rotterdam",
+    note: "Groepen van 4 tot 20 · bij jullie of bij ons in Rotterdam",
   },
   not: {
     heading: "Niet wéér een escape room.",
-    sub: "De standaard uitjes heb je gehad. Dit is het uitje waar je team daarna nog over napraat.",
+    sub: "De standaard uitjes ken je. Dit is er een waar je team maandag nog over doorgaat.",
     notLabel: "Geen",
     items: [
-      { label: "escape room", text: "Eén keer opgelost en meteen weer vergeten. Hier loop je naar buiten met iets dat je zelf gebouwd hebt." },
-      { label: "bowlen", text: "Een uurtje lol en klaar. Dit is lol én je team ontdekt dat het kan bouwen met AI." },
-      { label: "survivalweekend", text: "Niemand wil koud en modderig zijn met z'n collega's. Lekker binnen, lekker nieuwsgierig." },
+      { label: "escape room", text: "Eén keer opgelost, meteen weer vergeten. Hier neem je iets mee naar huis dat je zelf hebt gebouwd." },
+      { label: "bowlen", text: "Leuk voor een uurtje. Hierna weet je team dat het zelf iets kan bouwen met AI. Dat blijft langer hangen." },
+      { label: "survivalweekend", text: "Koud, modderig, en niemand die het echt wilde. Wij blijven binnen. Met koffie." },
     ],
-    punch: "Vibecoding is dat uitje waar je veel lacht en naar buiten loopt met iets dat je écht gebouwd hebt.",
+    punch: "Je lacht je rot, en je loopt naar buiten met iets dat werkt. Probeer dat maar eens bij het bowlen.",
   },
   what: {
     heading: "Wat is vibecoding?",
     body: [
-      "Jij en je team bouwen een paar uur lang echte, werkende dingen met AI. Apps, tools, kleine spelletjes, nuttig, nutteloos, en heerlijk allebei.",
-      "Zo werkt het echt: je typt in gewone taal wat je wil, “bouw een quiz die onze volgende teamlunch kiest,” en de AI schrijft de code en zet er een werkend ding neer. Niet tevreden? Je zegt gewoon wat er anders moet. Dat is de hele loop. Prompten, kijken, bijschaven, herhalen.",
-      "Geen ervaring nodig. Dat is precies de bedoeling. AI doet het zware werk, jouw mensen brengen de ideeën. Iedereen levert iets op, en iedereen is verrast door wat ze maakten.",
+      "Je team bouwt een paar uur lang echte dingen met AI. Apps, tools, spelletjes. Nuttig, nutteloos, meestal allebei tegelijk.",
+      "Hoe het werkt: je typt in gewone taal wat je wil. “Bouw een quiz die onze volgende teamlunch kiest.” De AI schrijft de code en zet er een werkend ding neer. Niet goed? Je zegt gewoon wat er anders moet. Prompten, kijken, bijschaven. Dat is het.",
+      "Niemand hoeft te kunnen programmeren. De AI doet het zware werk, jouw mensen bedenken wat het moet worden. En iedereen is verbaasd over wat er uit hun eigen handen komt.",
     ],
-    examplesLabel: "Wat teams echt bouwen",
+    examplesLabel: "Wat teams zoal bouwen",
     examples: [
-      "Een quiz die de teamlunch-discussie eindelijk beslecht",
-      "Een naamgenerator voor het nieuwe project",
-      "Een spelletje met je collega's als de personages",
-      "Een tool die dat ene irritante klusje in je eigen werk oplost",
+      "Een quiz die de teamlunch-discussie voorgoed beslecht",
+      "Een naamgenerator voor het project dat nog geen naam heeft",
+      "Een spelletje met je collega's in de hoofdrol",
+      "Een tool die dat ene irritante klusje uit je week haalt",
     ],
     points: [
-      { title: "AI doet het coderen", text: "Jij beschrijft het, de AI bouwt het. Je team focust op ideeën, niet op code." },
-      { title: "Echt leuk", text: "Snel, hands-on en een beetje chaotisch. De goede soort chaos." },
-      { title: "Iedereen levert iets op", text: "Aan het eind heeft elk groepje iets echts om te laten zien. Een echte show-and-tell." },
+      { title: "AI doet het typewerk", text: "Jij zegt wat je wil, de AI bouwt het. Jouw team denkt na, niet over puntkomma's." },
+      { title: "Gewoon leuk", text: "Snel, rommelig, hands-on. Precies zoals maken hoort te voelen." },
+      { title: "Iedereen levert iets op", text: "Aan het eind heeft elk groepje iets werkends om te laten zien. Opscheppen inbegrepen." },
     ],
   },
   about: {
-    eyebrow: "Je host",
     heading: "Dit is Ferry, de hele dag in de zaal",
     body: [
-      "Ferry staat zo'n 40 keer per jaar op podia over de hele wereld, voor teams bij GlaxoSmithKline, Unilever, VodafoneZiggo en de Rijksoverheid. Zijn missie: mensen laten wérken mét AI in plaats van ertegen.",
-      "Zijn kracht is dat hij techniek simpel maakt en een zaal moeiteloos meekrijgt. Scherp, grappig, nul jargon, en oprecht blij als een team dat zichzelf “niet technisch” noemt ineens iets bouwt waar het trots op is. Wat elke keer weer gebeurt.",
-      "Kortom: precies wie je in de zaal wil als je team voor het eerst iets echts bouwt met AI.",
+      "Ferry staat zo'n 40 keer per jaar op een podium, van teams bij GlaxoSmithKline, Unilever en VodafoneZiggo tot de Rijksoverheid. Altijd hetzelfde punt: mensen laten wérken mét AI in plaats van ertegen.",
+      "Hij maakt de techniek klein en de zaal los. Scherp, grappig, nul jargon. Op zijn best als een team dat zichzelf “niet technisch” noemt ineens iets bouwt waar het trots op is. Wat elke keer gebeurt.",
+      "Kort gezegd: precies wie je erbij wil als je team voor het eerst iets echts bouwt met AI.",
     ],
     caption: "Ferry, in zijn element",
   },
   how: {
     heading: "Hoe de dag werkt",
-    sub: "Kom met het hele team, of splits in kleine groepjes. We vormen het rond jullie.",
+    sub: "Kom met het hele team of splits in groepjes. We vormen het rond jullie.",
     steps: [
-      { title: "Splits in groepjes", text: "Kleine teams van een paar mensen. Mix afdelingen, mix de mensen die nooit samenwerken." },
-      { title: "We bouwen iets echts", text: "Een paar uur begeleid bouwen met AI. We zijn de hele tijd in de zaal om het vaart te geven." },
-      { title: "Show-and-tell", text: "Elk groepje demonstreert wat ze maakten. Verwacht verrassingen, applaus en een paar gelukkige ongelukjes." },
+      { title: "Splits in groepjes", text: "Kleine teams van een paar mensen. Zet de mensen bij elkaar die anders nooit samenwerken." },
+      { title: "We bouwen iets echts", text: "Een paar uur bouwen met AI, wij ernaast om het vaart te houden. Geen theorie, meteen maken." },
+      { title: "Show-and-tell", text: "Elk groepje laat zien wat het maakte. Verwacht verrassingen, applaus, en een paar gelukkige ongelukjes." },
     ],
   },
   where: {
     heading: "Waar het gebeurt",
-    sub: "Bij jullie of bij ons. Allebei top.",
+    sub: "Bij jullie of bij ons. Allebei prima.",
     yours: {
       title: "Bij jullie op kantoor",
-      text: "We brengen de sessie naar jullie toe, waar dan ook. Je team heeft alleen een ruimte, wat laptops en een beetje wifi nodig.",
+      text: "Wij komen naar jullie toe, waar dan ook. Je hebt een ruimte, wat laptops en een beetje wifi nodig. Meer niet.",
       imageAlt: "Jullie kantoor, waar dan ook.",
     },
     ours: {
       title: "Op ons kantoor in Rotterdam",
-      text: "In het iconische Groothandelsgebouw, middenin het centrum. Even een andere omgeving, zonder gedoe: wij regelen de ruimte.",
+      text: "In het Groothandelsgebouw, middenin het centrum. Andere muren, andere energie. De ruimte regelen wij.",
       buildingAlt: "Het Groothandelsgebouw in Rotterdam, waar ons kantoor zit.",
     },
   },
   why: {
     heading: "Meer dan een leuk uitje",
-    sub: "Je gaat naar huis met de lol én iets dat echt blijft hangen.",
+    sub: "Je gaat naar huis met de lol én iets dat blijft hangen.",
     items: [
-      { title: "Plezier én skills", text: "Een dag lachen, en je team leert er meteen toekomstbestendige AI-vaardigheden bij. Leuk en nuttig tegelijk." },
-      { title: "Alles zit in de prijs", text: "De tokens en licenties voor de AI-tools, Claude, Cursor, Replit en de rest, regelen wij. Geen verrassingen achteraf." },
-      { title: "Maandag al bruikbaar", text: "Wat je team bouwt en ontdekt, gebruik je de week erna al in het echte werk." },
-      { title: "Eén top-host, de hele dag", text: "Ferry staat 40+ keer per jaar op podia over AI. Hij houdt het licht, scherp en zonder jargon." },
+      { title: "Plezier én skills", text: "Een dag lachen, en je team pikt en passant AI-vaardigheden op waar het maandag al iets aan heeft." },
+      { title: "Alles zit in de prijs", text: "De tokens en licenties voor Claude, Cursor, Replit en de rest regelen wij. Geen verrassingen op de factuur." },
+      { title: "Maandag al bruikbaar", text: "Wat je team bouwt en ontdekt, gebruikt het de week erna gewoon in het echte werk." },
+      { title: "Eén top-host, de hele dag", text: "Ferry, 40+ podia per jaar over AI. Hij houdt het licht, scherp en zonder jargon." },
     ],
   },
   pricing: {
-    eyebrow: "Prijs",
     heading: "Eén heldere prijs. Kies je groep.",
-    sub: "Een dagdeel van zo'n drie uur, host en begeleiding inbegrepen. Je ziet de prijs vóór je beslist, geen salesgesprek nodig.",
+    sub: "Een dagdeel van zo'n drie uur, host en begeleiding erbij. Je ziet de prijs meteen. Geen salesgesprek.",
     popularLabel: "Meest gekozen",
     peopleWord: "personen",
     approx: "≈",
     perPerson: "p.p.",
     atWord: "bij",
     tiers: [
-      { name: "Klein team", tagline: "Een hecht, hands-on clubje." },
+      { name: "Klein team", tagline: "Hecht clubje, alle handen aan de knoppen." },
       { name: "Heel team", tagline: "De sweet spot voor de meeste teams." },
-      { name: "Grote groep", tagline: "De hele afdeling, voordeligst per persoon." },
+      { name: "Grote groep", tagline: "De hele afdeling. Per persoon het voordeligst." },
     ],
     includes: [
       "Ferry als host, de hele sessie",
       "Alle AI-tools, licenties én tokens inbegrepen",
-      "Bij jullie of op ons kantoor in Rotterdam",
+      "Bij jullie of bij ons in Rotterdam",
     ],
-    overflow: "Meer dan 20? Dat regelen we samen, en per persoon wordt het meestal nóg voordeliger.",
+    overflow: "Meer dan 20? Dat regelen we samen, en per persoon wordt het meestal alleen maar gunstiger.",
     quote: "Prijs op maat per groep",
     cta: "Neem je team mee",
-    note: "Eén vaste prijs voor de groep. Hoe groter je team, hoe lager het per persoon uitkomt.",
+    note: "Eén vaste prijs voor de groep. Hoe groter je team, hoe minder het per persoon is.",
   },
   form: {
     heading: "Neem je team mee",
-    sub: "Vertel ons kort iets over je groep, dan komen we terug met een datum en een exacte prijs, meestal binnen één werkdag.",
+    sub: "Vertel kort iets over je groep. We komen terug met een datum en de prijs, meestal binnen een werkdag.",
     name: "Je naam",
     email: "Werk-e-mail",
     company: "Bedrijf",
@@ -378,13 +370,13 @@ export const nl: VibeContent = {
       nameQ: "Wat is je naam?",
       locationQ: "Waar wil je het houden?",
       timingQ: "Wanneer ongeveer?",
-      timingHelp: "Een grove indicatie is prima, de exacte datum prikken we samen.",
+      timingHelp: "Grove indicatie is prima. De exacte datum prikken we samen.",
       contactQ: "Waar kunnen we je bereiken?",
-      contactHelp: "We komen terug met een datum en bevestigen de prijs, meestal binnen één werkdag.",
+      contactHelp: "We komen terug met een datum en de prijs, meestal binnen een werkdag.",
     },
     success: {
-      title: "Gelukt. Dit wordt leuk.",
-      body: "We hebben je aanvraag en een mens, Ferry of Jonathan, komt terug met een datum en een exacte prijs, meestal binnen één werkdag.",
+      title: "Top. Dit wordt leuk.",
+      body: "We hebben je aanvraag. Ferry of Jonathan komt persoonlijk terug met een datum en de prijs, meestal binnen een werkdag.",
     },
   },
 };
