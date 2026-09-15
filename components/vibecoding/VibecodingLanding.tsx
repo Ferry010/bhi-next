@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Languages } from "lucide-react";
+import { ArrowRight, Languages, PlayCircle } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
 import TierButton from "./TierButton";
 import Polaroid from "@/components/origin/Polaroid";
@@ -94,7 +94,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                 </h1>
                 <p className="mt-5 text-lg md:text-xl font-heading font-semibold text-foreground">{c.hero.promise}</p>
                 <p className="mt-4 text-sm md:text-body-lg text-muted-foreground">{c.hero.sub}</p>
-                <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <div className="mt-7 flex flex-wrap items-center gap-3">
                   <a href="#book">
                     <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                       {c.hero.cta} <ArrowRight className="w-4 h-4" />
@@ -102,9 +102,9 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                   </a>
                   <Link
                     href={c.lang === "nl" ? "/teamuitje/demo" : "/vibecoding/demo"}
-                    className="text-sm font-heading font-semibold text-accent underline underline-offset-4 hover:text-soft-coral transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-foreground/30 px-6 h-12 text-base font-heading font-semibold text-foreground hover:border-accent hover:text-accent transition-colors"
                   >
-                    {c.hero.demoCta} →
+                    <PlayCircle className="w-5 h-5" /> {c.hero.demoCta}
                   </Link>
                 </div>
                 <p className="mt-4 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
@@ -257,11 +257,11 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
             <ScrollRevealSection>
               <div className="order-2 md:order-1 flex justify-center md:justify-start">
                 <Polaroid
-                  src="/assets/origin/ferry-in-company.jpg"
-                  alt="Ferry Hoes hosting a session with a team."
+                  src="/assets/origin/speaking-1.jpg"
+                  alt="Ferry Hoes on stage at the Dag van Digitalisering."
                   caption={c.about.caption}
                   rotate={-2}
-                  widthClass="w-full max-w-sm"
+                  widthClass="w-full max-w-md"
                 />
               </div>
             </ScrollRevealSection>
