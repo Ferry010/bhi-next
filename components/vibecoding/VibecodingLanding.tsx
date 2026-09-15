@@ -116,15 +116,10 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                 <p className="text-body-lg text-muted-foreground mt-3">{c.proof.sub}</p>
               </div>
             </ScrollRevealSection>
-            <div className="grid md:grid-cols-2 gap-5 lg:gap-6 mt-10">
-              {c.proof.photos.map((p) => (
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-10 mt-10 justify-items-center">
+              {c.proof.photos.map((p, i) => (
                 <ScrollRevealSection key={p.src}>
-                  <figure className="h-full rounded-2xl overflow-hidden bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)]">
-                    <div className="aspect-[3/2] overflow-hidden">
-                      <img src={p.src} alt={p.alt} loading="lazy" className="w-full h-full object-cover" />
-                    </div>
-                    <figcaption className="text-sm text-muted-foreground p-4 font-heading font-medium">{p.caption}</figcaption>
-                  </figure>
+                  <Polaroid src={p.src} alt={p.alt} caption={p.caption} rotate={i % 2 === 0 ? -2 : 2} widthClass="w-full max-w-sm" />
                 </ScrollRevealSection>
               ))}
             </div>

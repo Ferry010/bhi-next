@@ -133,7 +133,7 @@ export const en: VibeContent = {
   },
   proof: {
     heading: "Not a sit-back afternoon",
-    sub: "Everyone joins in: brainstorming, prompting and building together. This is a real team in action during a session at Dyade × VISMA.",
+    sub: "Everyone joins in: brainstorming, prompting and building together. This is a real team in action during one of our sessions.",
     photos: [
       { src: "/assets/vibecoding/session-hosting.jpg", alt: "Ferry hosting an AI session for a team.", caption: "A short intro, then it's over to you." },
       { src: "/assets/vibecoding/session-building.jpg", alt: "A team working on the assignment during the session.", caption: "Working towards the best prompt. The winner takes the prompt award." },
@@ -308,7 +308,7 @@ export const nl: VibeContent = {
   },
   proof: {
     heading: "Geen passieve middag",
-    sub: "Iedereen doet mee: samen brainstormen, prompten en bouwen. Dit is een echt team in actie tijdens een sessie bij Dyade × VISMA.",
+    sub: "Iedereen doet mee: samen brainstormen, prompten en bouwen. Dit is een echt team in actie tijdens een van onze sessies.",
     photos: [
       { src: "/assets/vibecoding/session-hosting.jpg", alt: "Ferry aan het woord tijdens een AI-sessie met een team.", caption: "Kort intro, daarna zijn jullie aan zet." },
       { src: "/assets/vibecoding/session-building.jpg", alt: "Een team aan de slag met de opdracht tijdens de sessie.", caption: "Samen naar de beste prompt. De winnaar pakt de prompt award." },
