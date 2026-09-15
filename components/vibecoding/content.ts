@@ -39,6 +39,7 @@ export type VibeContent = {
     items: { label: string; text: string }[];
     punch: string;
   };
+  proof: { heading: string; sub: string; photos: { src: string; alt: string; caption: string }[] };
   what: { heading: string; body: string[]; points: { title: string; text: string }[]; examplesLabel: string; examples: string[] };
   about: { heading: string; body: string[]; caption: string };
   how: { heading: string; sub: string; steps: { title: string; text: string }[] };
@@ -131,6 +132,14 @@ export const en: VibeContent = {
       { label: "a survival afternoon", text: "The work week is already a survival trip. This afternoon you don't roll through mud or haul logs. At the office, in a chair, with coffee." },
     ],
     punch: "You laugh a lot, and you go home with something that works. Something you built yourself.",
+  },
+  proof: {
+    heading: "Not a sit-back afternoon",
+    sub: "Everyone joins in: brainstorming, prompting and building together. This is a real team in action during a session at Dyade × VISMA.",
+    photos: [
+      { src: "/assets/vibecoding/session-hosting.jpg", alt: "Ferry hosting an AI session for a team.", caption: "A short intro, then it's over to you." },
+      { src: "/assets/vibecoding/session-building.jpg", alt: "A team working on the assignment during the session.", caption: "Working towards the best prompt. The winner takes the prompt award." },
+    ],
   },
   what: {
     heading: "So, what is vibecoding?",
@@ -287,6 +296,14 @@ export const nl: VibeContent = {
       { label: "survivalmiddag", text: "De werkweek op zichzelf is al een overlevingsslag. Deze middag hoef je niet door de modder te rollen of met hout te sjouwen. Op kantoor, in een stoel mét koffie." },
     ],
     punch: "Je lacht wat af, en je gaat naar huis met iets dat werkt. Iets dat je zelf hebt gemaakt.",
+  },
+  proof: {
+    heading: "Geen passieve middag",
+    sub: "Iedereen doet mee: samen brainstormen, prompten en bouwen. Dit is een echt team in actie tijdens een sessie bij Dyade × VISMA.",
+    photos: [
+      { src: "/assets/vibecoding/session-hosting.jpg", alt: "Ferry aan het woord tijdens een AI-sessie met een team.", caption: "Kort intro, daarna zijn jullie aan zet." },
+      { src: "/assets/vibecoding/session-building.jpg", alt: "Een team aan de slag met de opdracht tijdens de sessie.", caption: "Samen naar de beste prompt. De winnaar pakt de prompt award." },
+    ],
   },
   what: {
     heading: "Wat is vibecoding?",

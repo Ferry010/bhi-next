@@ -127,6 +127,30 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
           </div>
         </section>
 
+        {/* Proof: a real session */}
+        <section className="section-padding bg-cream">
+          <div className="container max-w-5xl">
+            <ScrollRevealSection>
+              <div className="max-w-2xl">
+                <h2 className="text-display md:text-display-lg text-foreground">{c.proof.heading}</h2>
+                <p className="text-body-lg text-muted-foreground mt-3">{c.proof.sub}</p>
+              </div>
+            </ScrollRevealSection>
+            <div className="grid md:grid-cols-2 gap-5 lg:gap-6 mt-10">
+              {c.proof.photos.map((p) => (
+                <ScrollRevealSection key={p.src}>
+                  <figure className="h-full rounded-2xl overflow-hidden bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)]">
+                    <div className="aspect-[3/2] overflow-hidden">
+                      <img src={p.src} alt={p.alt} loading="lazy" className="w-full h-full object-cover" />
+                    </div>
+                    <figcaption className="text-sm text-muted-foreground p-4 font-heading font-medium">{p.caption}</figcaption>
+                  </figure>
+                </ScrollRevealSection>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Not another escape room */}
         <section className="section-padding bg-white">
           <div className="container max-w-5xl">
