@@ -24,9 +24,12 @@ export type VibeContent = {
   hero: {
     title: string;
     titleAccent: string;
+    promise: string;
     sub: string;
+    forEveryone: string;
     cta: string;
-    note: string;
+    facts: string[];
+    phone: { badge: string; appTitle: string; question: string; options: string[]; answerIndex: number; footer: string };
   };
   not: {
     heading: string;
@@ -102,9 +105,19 @@ export const en: VibeContent = {
   hero: {
     title: "No escape room. ",
     titleAccent: "Build something cool together with AI.",
-    sub: "For one afternoon you make things together you would never normally make. A quiz about your own office, a game where you take each other on, a tool that grades your meetings. No experience needed. What will you build together?",
+    promise: "Build a working AI tool together in one afternoon. No coding.",
+    sub: "For one afternoon you make things together you would never normally make. A quiz about your own office, a game where you take each other on, a tool that grades your meetings. What will you build together?",
+    forEveryone: "Fun for everyone, from sales and HR to operations. No AI experience needed.",
     cta: "Bring your team",
-    note: "Groups of 4 to 20 · at your place or ours in Rotterdam",
+    facts: ["One afternoon, ~3 hours", "Groups of 4 to 20", "At your place or in Rotterdam"],
+    phone: {
+      badge: "Built during the outing",
+      appTitle: "Office Quiz",
+      question: "Who always leaves the dishwasher open?",
+      options: ["Sanne", "Mark", "Nobody admits it"],
+      answerIndex: 1,
+      footer: "Next question",
+    },
   },
   not: {
     heading: "Not another escape room.",
@@ -247,9 +260,19 @@ export const nl: VibeContent = {
   hero: {
     title: "Geen escape room, maar ",
     titleAccent: "samen iets tofs bouwen met AI.",
-    sub: "Een middag lang maken jullie samen dingen die je normaal nooit zou maken. Een quiz over je eigen kantoor, een spel waarin je het tegen elkaar opneemt, een tool die je meetings een cijfer geeft. Geen ervaring nodig. Wat bouwen jullie samen?",
+    promise: "Bouw in één middag samen een werkende AI-tool. Zonder te programmeren.",
+    sub: "Een middag lang maken jullie samen dingen die je normaal nooit zou maken. Een quiz over je eigen kantoor, een spel waarin je het tegen elkaar opneemt, een tool die je meetings een cijfer geeft. Wat bouwen jullie samen?",
+    forEveryone: "Leuk voor iedereen, van sales en HR tot operations. Geen ervaring met AI nodig.",
     cta: "Neem je team mee",
-    note: "Groepen van 4 tot 20 · bij jullie of bij ons in Rotterdam",
+    facts: ["Eén middag, ± 3 uur", "Groepen van 4 tot 20", "Bij jullie of in Rotterdam"],
+    phone: {
+      badge: "Gebouwd tijdens het uitje",
+      appTitle: "Kantoorquiz",
+      question: "Wie laat de vaatwasser altijd openstaan?",
+      options: ["Sanne", "Mark", "Niemand geeft het toe"],
+      answerIndex: 1,
+      footer: "Volgende vraag",
+    },
   },
   not: {
     heading: "Niet wéér een escape room.",

@@ -36,6 +36,42 @@ function PromptVisual() {
   );
 }
 
+// A placeholder phone showing a playful thing a team "built" during the day, so
+// a manager can picture the afternoon above the fold. Swap for a real screenshot
+// of an actual session when we have one.
+function PhoneMockup({ phone }: { phone: VibeContent["hero"]["phone"] }) {
+  return (
+    <div className="relative w-[240px] sm:w-[264px] rotate-2">
+      <div className="rounded-[2.6rem] bg-foreground p-2.5 shadow-[0_30px_70px_-20px_rgba(18,21,46,0.5)]">
+        <div className="relative rounded-[2.1rem] bg-white overflow-hidden" style={{ aspectRatio: "9 / 19" }}>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-foreground rounded-b-2xl z-10" />
+          <div className="pt-11 px-4 pb-5 h-full flex flex-col">
+            <span className="text-[10px] font-heading font-bold uppercase tracking-wider text-accent">{phone.badge}</span>
+            <h4 className="font-heading font-extrabold text-xl text-foreground mt-1 leading-tight">{phone.appTitle}</h4>
+            <p className="text-sm text-foreground/80 mt-3 leading-snug">{phone.question}</p>
+            <div className="mt-3 space-y-2">
+              {phone.options.map((o, i) => (
+                <div
+                  key={o}
+                  className={`rounded-xl px-3 py-2 text-sm font-heading font-semibold border ${
+                    i === phone.answerIndex ? "bg-accent/10 border-accent text-accent" : "bg-cream border-border/50 text-foreground/70"
+                  }`}
+                >
+                  {o}
+                </div>
+              ))}
+            </div>
+            <div className="mt-auto pt-3 flex items-center justify-between text-xs text-muted-foreground">
+              <span>{phone.footer}</span>
+              <span className="text-accent">→</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function VibecodingLanding({ content }: { content: VibeContent }) {
   const c = content;
   return (
@@ -44,25 +80,44 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
       <main>
         {/* Hero */}
         <section className="bg-secondary pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
-          <div className="container max-w-4xl">
+          <div className="container max-w-6xl">
             <div className="flex justify-end mb-6">
               <Link href={c.langSwitch.href} className="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors">
                 <Languages className="w-4 h-4" /> {c.langSwitch.label}
               </Link>
             </div>
-            <h1 className="text-hero md:text-hero-lg text-foreground leading-[1.05]">
-              {c.hero.title}
-              <span className="text-accent">{c.hero.titleAccent}</span>
-            </h1>
-            <p className="text-sm md:text-body-lg text-muted-foreground mt-6 max-w-2xl">{c.hero.sub}</p>
-            <div className="mt-8">
-              <a href="#book">
-                <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                  {c.hero.cta} <ArrowRight className="w-4 h-4" />
-                </Button>
-              </a>
+            <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+              <div>
+                <h1 className="text-hero md:text-hero-lg text-foreground leading-[1.05]">
+                  {c.hero.title}
+                  <span className="text-accent">{c.hero.titleAccent}</span>
+                </h1>
+                <p className="mt-5 text-lg md:text-xl font-heading font-semibold text-foreground">{c.hero.promise}</p>
+                <p className="mt-4 text-sm md:text-body-lg text-muted-foreground">{c.hero.sub}</p>
+                <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <a href="#book">
+                    <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                      {c.hero.cta} <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </a>
+                  <span className="text-sm text-muted-foreground max-w-xs">{c.hero.forEveryone}</span>
+                </div>
+                <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+                  {[
+                    ...c.hero.facts,
+                    `${c.lang === "nl" ? "Vanaf" : "From"} €${VIBECODING_TIERS[0].price.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}`,
+                  ].map((f) => (
+                    <li key={f} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex justify-center md:justify-end">
+                <PhoneMockup phone={c.hero.phone} />
+              </div>
             </div>
-            <p className="text-sm text-muted-foreground/70 mt-4">{c.hero.note}</p>
           </div>
         </section>
 
