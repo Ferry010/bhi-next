@@ -113,7 +113,7 @@ export const en: VibeContent = {
     items: [
       { label: "an escape room", text: "We do challenge your brain, but you can go to the toilet or head home whenever you want, without cracking a code first." },
       { label: "bowling", text: "As nice as bowling is, you spend most of it waiting. With us you are busy the whole session (and you get to keep your own shoes on)." },
-      { label: "a survival weekend", text: "The work week is already a survival trip. In this session you don't roll through mud or haul logs. At the office, in a chair, with coffee." },
+      { label: "a survival afternoon", text: "The work week is already a survival trip. This afternoon you don't roll through mud or haul logs. At the office, in a chair, with coffee." },
     ],
     punch: "You laugh a lot, and you go home with something that works. Something you built yourself.",
   },
@@ -258,7 +258,7 @@ export const nl: VibeContent = {
     items: [
       { label: "escape room", text: "We dagen je wél mentaal uit, maar je kunt gewoon gaan plassen of naar huis wanneer je wilt, zonder eerst de code te moeten kraken." },
       { label: "bowlen", text: "Hoe gezellig bowlen ook is, het grootste deel breng je wachtend door. Bij ons ben je de volledige sessie bezig (en je mag je eigen schoenen aanhouden)." },
-      { label: "survivalweekend", text: "De werkweek op zichzelf is al een overlevingsslag. Deze sessie hoef je niet door de modder te rollen of met hout te sjouwen. Op kantoor, in een stoel mét koffie." },
+      { label: "survivalmiddag", text: "De werkweek op zichzelf is al een overlevingsslag. Deze middag hoef je niet door de modder te rollen of met hout te sjouwen. Op kantoor, in een stoel mét koffie." },
     ],
     punch: "Je lacht wat af, en je gaat naar huis met iets dat werkt. Iets dat je zelf hebt gemaakt.",
   },
