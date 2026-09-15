@@ -102,7 +102,7 @@ export const en: VibeContent = {
   hero: {
     title: "No escape room. ",
     titleAccent: "Build something cool together with AI.",
-    sub: "Getting to know each other while you build a fun or genuinely useful app, site or tool? You can. No experience needed. That's our team day, Vibecoding. Which tool does your team take home?",
+    sub: "For one afternoon you make things together you would never normally make. A quiz about your own office, a game where you take each other on, a tool that grades your meetings. No experience needed. What will you build together?",
     cta: "Bring your team",
     note: "Groups of 4 to 20 · at your place or ours in Rotterdam",
   },
@@ -126,10 +126,10 @@ export const en: VibeContent = {
     ],
     examplesLabel: "What teams actually build",
     examples: [
-      "A game where the team takes each other on",
-      "An app that handles a boring task at work",
-      "Websites for inside jokes or your biggest hobby",
-      "Quizzes and pick-something algorithms, for the next outing maybe",
+      "An app that takes over that one boring task at work",
+      "A website for the team's biggest inside joke",
+      "An AI that roasts your colleagues, with love",
+      "A machine that settles where Friday drinks happen",
     ],
     points: [
       { title: "You suggest, AI codes", text: "You describe in plain English what you want to build and how it should look. The AI tool builds the whole thing and writes the code." },
@@ -247,7 +247,7 @@ export const nl: VibeContent = {
   hero: {
     title: "Geen escape room, maar ",
     titleAccent: "samen iets tofs bouwen met AI.",
-    sub: "Elkaar leren kennen tijdens het bouwen van een leuke of handige app, site of applicatie? Dat kan. Geen ervaring nodig. Tijdens onze teamdag Vibecoding. Welke tool(s) neemt jouw team mee naar huis?",
+    sub: "Een middag lang maken jullie samen dingen die je normaal nooit zou maken. Een quiz over je eigen kantoor, een spel waarin je het tegen elkaar opneemt, een tool die je meetings een cijfer geeft. Geen ervaring nodig. Wat bouwen jullie samen?",
     cta: "Neem je team mee",
     note: "Groepen van 4 tot 20 · bij jullie of bij ons in Rotterdam",
   },
@@ -271,10 +271,10 @@ export const nl: VibeContent = {
     ],
     examplesLabel: "Wat teams zoal bouwen",
     examples: [
-      "Een spelletje waarin ze het tegen elkaar opnemen",
-      "Een app die handig is voor een (saaie) taak op het werk",
-      "Websites voor inside-jokes of je grootste hobby's",
-      "Quizzen en keuze-algoritmes, bijvoorbeeld voor het volgende uitje",
+      "Een app die die ene saaie taak op je werk overneemt",
+      "Een website voor de grootste inside-joke van het team",
+      "Een AI die je collega's roast, met liefde",
+      "Een keuzemachine voor de vrijdagmiddagborrel",
     ],
     points: [
       { title: "Jij suggereert, AI codeert", text: "Jij geeft in normaal Nederlands aan wat je wilt bouwen en hoe het eruit moet zien. De AI-tool bouwt het volledig en schrijft de code." },
