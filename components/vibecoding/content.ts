@@ -28,6 +28,7 @@ export type VibeContent = {
     sub: string;
     forEveryone: string;
     cta: string;
+    demoCta: string;
     facts: string[];
     phone: { badge: string; appTitle: string; question: string; options: string[]; answerIndex: number; footer: string };
   };
@@ -109,6 +110,7 @@ export const en: VibeContent = {
     sub: "For one afternoon you make things together you would never normally make. A quiz about your own office, a game where you take each other on, a tool that grades your meetings. What will you build together?",
     forEveryone: "Fun for everyone, from sales and HR to operations. No AI experience needed.",
     cta: "Bring your team",
+    demoCta: "See it in action",
     facts: ["One afternoon, ~3 hours", "Groups of 4 to 20", "At your place or in Rotterdam"],
     phone: {
       badge: "Built during the outing",
@@ -264,6 +266,7 @@ export const nl: VibeContent = {
     sub: "Een middag lang maken jullie samen dingen die je normaal nooit zou maken. Een quiz over je eigen kantoor, een spel waarin je het tegen elkaar opneemt, een tool die je meetings een cijfer geeft. Wat bouwen jullie samen?",
     forEveryone: "Leuk voor iedereen, van sales en HR tot operations. Geen ervaring met AI nodig.",
     cta: "Neem je team mee",
+    demoCta: "Zie het in actie",
     facts: ["Eén middag, ± 3 uur", "Groepen van 4 tot 20", "Bij jullie of in Rotterdam"],
     phone: {
       badge: "Gebouwd tijdens het uitje",

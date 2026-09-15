@@ -100,8 +100,14 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                       {c.hero.cta} <ArrowRight className="w-4 h-4" />
                     </Button>
                   </a>
-                  <span className="text-sm text-muted-foreground max-w-xs">{c.hero.forEveryone}</span>
+                  <Link
+                    href={c.lang === "nl" ? "/teamuitje/demo" : "/vibecoding/demo"}
+                    className="text-sm font-heading font-semibold text-accent underline underline-offset-4 hover:text-soft-coral transition-colors"
+                  >
+                    {c.hero.demoCta} →
+                  </Link>
                 </div>
+                <p className="mt-4 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
                 <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
                   {[
                     ...c.hero.facts,
