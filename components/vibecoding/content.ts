@@ -29,7 +29,7 @@ export type VibeContent = {
     forEveryone: string;
     cta: string;
     demoCta: string;
-    phone: { badge: string; appTitle: string; question: string; options: string[]; answerIndex: number; footer: string };
+    phone: { appName: string; userMessage: string; attachment: string; aiReply: string; status: string };
   };
   not: {
     heading: string;
@@ -42,6 +42,7 @@ export type VibeContent = {
   what: { heading: string; body: string[]; points: { title: string; text: string }[]; examplesLabel: string; examples: string[] };
   about: { heading: string; body: string[]; caption: string };
   how: { heading: string; sub: string; steps: { title: string; text: string }[] };
+  agenda: { heading: string; sub: string; items: { time: string; label: string }[] };
   where: {
     heading: string;
     sub: string;
@@ -112,12 +113,11 @@ export const en: VibeContent = {
     cta: "Bring your team",
     demoCta: "Vibecoding? What's that?",
     phone: {
-      badge: "Built during the outing",
-      appTitle: "Office Quiz",
-      question: "Who always leaves the dishwasher open?",
-      options: ["Sanne", "Mark", "Nobody admits it"],
-      answerIndex: 1,
-      footer: "Next question",
+      appName: "AI Builder",
+      userMessage: "Build a quiz with 12 questions to test how well we know our office and each other. In our own house style (see attachment).",
+      attachment: "brand-style.pdf",
+      aiReply: "On it. A 12-question quiz in your house style.",
+      status: "Building…",
     },
   },
   not: {
@@ -175,6 +175,19 @@ export const en: VibeContent = {
       { title: "We make small groups", text: "Small teams of a few people. Put the ones who never usually work together side by side, that is where the new conversations start." },
       { title: "We build something real", text: "We use AI tools to build something that works and that you can hold. Whatever you make during the day, you take home or to work with you." },
       { title: "Learning from each other", text: "After building, each group shows the app, website or tool they made. Those are the moments where jokes and compliments take turns." },
+    ],
+  },
+  agenda: {
+    heading: "What the day looks like",
+    sub: "An example of a morning. We shape it around your team and pace.",
+    items: [
+      { time: "09:15", label: "Walk-in with coffee, tea and sandwiches" },
+      { time: "09:30", label: "Intro and a bit of theory on vibecoding" },
+      { time: "10:00", label: "Brainstorm per group: what will you build?" },
+      { time: "10:30", label: "Coffee break" },
+      { time: "10:45", label: "Build your tool" },
+      { time: "12:15", label: "Final demos and wrap-up" },
+      { time: "12:30", label: "Lunch" },
     ],
   },
   where: {
@@ -275,12 +288,11 @@ export const nl: VibeContent = {
     cta: "Neem je team mee",
     demoCta: "Vibecoding? Wat is dat?",
     phone: {
-      badge: "Gebouwd tijdens het uitje",
-      appTitle: "Kantoorquiz",
-      question: "Wie laat de vaatwasser altijd openstaan?",
-      options: ["Sanne", "Mark", "Niemand geeft het toe"],
-      answerIndex: 1,
-      footer: "Volgende vraag",
+      appName: "AI Bouwer",
+      userMessage: "Bouw een quiz met 12 vragen waarmee we als team onze kennis over kantoor en collega's testen. In onze eigen huisstijl (zie bijlage).",
+      attachment: "huisstijl.pdf",
+      aiReply: "Top. Een quiz van 12 vragen in jullie huisstijl.",
+      status: "Bezig met bouwen…",
     },
   },
   not: {
@@ -338,6 +350,19 @@ export const nl: VibeContent = {
       { title: "We maken kleine groepjes", text: "Kleine teams van een paar mensen. Zet bij voorkeur de mensen bij elkaar die anders nooit samenwerken, dat zorgt voor nieuwe gesprekken." },
       { title: "We bouwen iets echts", text: "We werken met AI-tools om iets werkends en tastbaars te bouwen. Wat je tijdens de teamdag maakt, neem je letterlijk mee naar huis of werk." },
       { title: "Van elkaar leren", text: "Na het bouwen deelt elke groep de app, website of tool die ze bouwden. Dat zijn de momenten waar grapjes en complimenten elkaar afwisselen." },
+    ],
+  },
+  agenda: {
+    heading: "Zo ziet de dag eruit",
+    sub: "Een voorbeeld van een ochtend. We passen het aan op jullie team en tempo.",
+    items: [
+      { time: "09:15", label: "Inloop met koffie, thee en broodjes" },
+      { time: "09:30", label: "Introductie en een beetje theorie over vibecoden" },
+      { time: "10:00", label: "Brainstormen per groep: wat gaan jullie bouwen?" },
+      { time: "10:30", label: "Koffiepauze" },
+      { time: "10:45", label: "Bouwen van je tool" },
+      { time: "12:15", label: "Eindpresentaties en afronding" },
+      { time: "12:30", label: "Lunch" },
     ],
   },
   where: {

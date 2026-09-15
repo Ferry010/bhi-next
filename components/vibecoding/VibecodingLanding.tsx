@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Languages, PlayCircle } from "lucide-react";
+import { ArrowRight, Languages, PlayCircle, Paperclip } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
 import TierButton from "./TierButton";
 import Polaroid from "@/components/origin/Polaroid";
@@ -36,34 +36,51 @@ function PromptVisual() {
   );
 }
 
-// A placeholder phone showing a playful thing a team "built" during the day, so
-// a manager can picture the afternoon above the fold. Swap for a real screenshot
-// of an actual session when we have one.
-function PhoneMockup({ phone }: { phone: VibeContent["hero"]["phone"] }) {
+// A phone showing the actual "vibecoding" move: you chat a plain-language prompt
+// (with an attachment) and the AI starts building. Placeholder for the hero.
+function PhoneMockup({ phone, lang }: { phone: VibeContent["hero"]["phone"]; lang: "en" | "nl" }) {
   return (
     <div className="relative w-[240px] sm:w-[264px] rotate-2">
       <div className="rounded-[2.6rem] bg-foreground p-2.5 shadow-[0_30px_70px_-20px_rgba(18,21,46,0.5)]">
-        <div className="relative rounded-[2.1rem] bg-white overflow-hidden" style={{ aspectRatio: "9 / 19" }}>
+        <div className="relative rounded-[2.1rem] bg-cream overflow-hidden flex flex-col" style={{ aspectRatio: "9 / 19" }}>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-foreground rounded-b-2xl z-10" />
-          <div className="pt-11 px-4 pb-5 h-full flex flex-col">
-            <span className="text-[10px] font-heading font-bold uppercase tracking-wider text-accent">{phone.badge}</span>
-            <h4 className="font-heading font-extrabold text-xl text-foreground mt-1 leading-tight">{phone.appTitle}</h4>
-            <p className="text-sm text-foreground/80 mt-3 leading-snug">{phone.question}</p>
-            <div className="mt-3 space-y-2">
-              {phone.options.map((o, i) => (
-                <div
-                  key={o}
-                  className={`rounded-xl px-3 py-2 text-sm font-heading font-semibold border ${
-                    i === phone.answerIndex ? "bg-accent/10 border-accent text-accent" : "bg-cream border-border/50 text-foreground/70"
-                  }`}
-                >
-                  {o}
-                </div>
-              ))}
+          {/* top bar */}
+          <div className="pt-9 px-4 pb-2.5 bg-white border-b border-border/50">
+            <div className="flex items-center gap-2">
+              <span className="w-6 h-6 rounded-full bg-accent/15 flex items-center justify-center text-accent text-[10px] font-heading font-bold">AI</span>
+              <span className="font-heading font-bold text-sm text-foreground">{phone.appName}</span>
             </div>
-            <div className="mt-auto pt-3 flex items-center justify-between text-xs text-muted-foreground">
-              <span>{phone.footer}</span>
-              <span className="text-accent">→</span>
+          </div>
+          {/* conversation */}
+          <div className="flex-1 overflow-hidden px-3 py-3 space-y-2.5">
+            <div className="flex justify-end">
+              <div className="max-w-[86%] rounded-2xl rounded-br-sm bg-primary text-white px-3 py-2">
+                <p className="text-[11px] leading-snug">{phone.userMessage}</p>
+                <span className="mt-1.5 inline-flex items-center gap-1 rounded-md bg-white/15 px-1.5 py-0.5 text-[10px]">
+                  <Paperclip className="w-2.5 h-2.5" /> {phone.attachment}
+                </span>
+              </div>
+            </div>
+            <div className="flex justify-start">
+              <div className="max-w-[86%] rounded-2xl rounded-bl-sm bg-white border border-border/50 px-3 py-2">
+                <p className="text-[11px] leading-snug text-foreground/80">{phone.aiReply}</p>
+              </div>
+            </div>
+            <div className="flex justify-start">
+              <div className="rounded-2xl rounded-bl-sm bg-white border border-border/50 px-3 py-2 inline-flex items-center gap-1.5">
+                <span className="text-[11px] text-muted-foreground">{phone.status}</span>
+                <span className="flex gap-0.5">
+                  <span className="w-1 h-1 rounded-full bg-accent animate-pulse" style={{ animationDelay: "0ms" }} />
+                  <span className="w-1 h-1 rounded-full bg-accent animate-pulse" style={{ animationDelay: "150ms" }} />
+                  <span className="w-1 h-1 rounded-full bg-accent animate-pulse" style={{ animationDelay: "300ms" }} />
+                </span>
+              </div>
+            </div>
+          </div>
+          {/* input bar */}
+          <div className="p-2.5 bg-white border-t border-border/50">
+            <div className="rounded-full bg-cream border border-border/50 px-3 py-1.5 text-[10px] text-muted-foreground">
+              {lang === "nl" ? "Typ een opdracht…" : "Type a prompt…"}
             </div>
           </div>
         </div>
@@ -110,7 +127,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                 <p className="mt-4 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
               </div>
               <div className="flex justify-center md:justify-end">
-                <PhoneMockup phone={c.hero.phone} />
+                <PhoneMockup phone={c.hero.phone} lang={c.lang} />
               </div>
             </div>
           </div>
@@ -237,6 +254,33 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                 </ScrollRevealSection>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Sample agenda */}
+        <section className="section-padding bg-cream">
+          <div className="container max-w-3xl">
+            <ScrollRevealSection>
+              <div className="text-center mb-10">
+                <h2 className="text-display md:text-display-lg text-foreground">{c.agenda.heading}</h2>
+                <p className="text-body-lg text-muted-foreground mt-4">{c.agenda.sub}</p>
+              </div>
+            </ScrollRevealSection>
+            <ScrollRevealSection>
+              <div className="rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-7 md:p-10">
+                <ol className="relative border-l-2 border-border/60 space-y-6">
+                  {c.agenda.items.map((it) => (
+                    <li key={it.time} className="relative pl-6 md:pl-8">
+                      <span className="absolute -left-[7px] top-2 w-3 h-3 rounded-full bg-accent ring-4 ring-white" />
+                      <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
+                        <span className="font-heading font-bold text-foreground tabular-nums w-16 shrink-0">{it.time}</span>
+                        <span className="text-muted-foreground leading-relaxed">{it.label}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </ScrollRevealSection>
           </div>
         </section>
 
