@@ -105,8 +105,8 @@ export const en: VibeContent = {
       "No escape room. In a couple of hours your team builds real things with AI. At your place or ours in Rotterdam. Bring your team.",
   },
   hero: {
-    title: "No escape room. ",
-    titleAccent: "Build something cool together with AI.",
+    title: "The team day where you ",
+    titleAccent: "build an app.",
     promise: "Build a working AI tool together in one afternoon. No coding.",
     sub: "For one afternoon you make things together you would never normally make. A quiz about your own office, a game where you take each other on, a tool that grades your meetings. What will you build together?",
     forEveryone: "Fun for everyone, from sales and HR to operations. No AI experience needed.",
@@ -269,8 +269,8 @@ export const nl: VibeContent = {
       "Geen escape room. In een paar uur bouwt je team echte dingen met AI. Bij jullie of bij ons in Rotterdam. Neem je team mee.",
   },
   hero: {
-    title: "Geen escape room, maar ",
-    titleAccent: "samen iets tofs bouwen met AI.",
+    title: "Het teamuitje waarop je ",
+    titleAccent: "een app bouwt.",
     promise: "Bouw in één middag samen een werkende AI-tool. Zonder te programmeren.",
     sub: "Een middag lang maken jullie samen dingen die je normaal nooit zou maken. Een quiz over je eigen kantoor, een spel waarin je het tegen elkaar opneemt, een tool die je meetings een cijfer geeft. Wat bouwen jullie samen?",
     forEveryone: "Leuk voor iedereen, van sales en HR tot operations. Geen ervaring met AI nodig.",
