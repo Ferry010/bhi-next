@@ -5,36 +5,10 @@ import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Languages, PlayCircle, Paperclip } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
+import VibecodingBuilder from "./VibecodingBuilder";
 import TierButton from "./TierButton";
 import Polaroid from "@/components/origin/Polaroid";
 import { VIBECODING_TIERS, pricingIsSet, type VibeContent } from "./content";
-
-// A plain-language prompt turning into a working app. On-brand SVG (no stock
-// photo, no watermark) that illustrates what "vibecoding" actually looks like.
-function PromptVisual() {
-  return (
-    <svg viewBox="0 0 460 380" role="img" aria-label="A plain-language prompt turning into a working app." className="w-full h-auto max-w-md mx-auto">
-      <rect x="18" y="22" width="424" height="340" rx="18" fill="#ffffff" stroke="#e8e2d8" strokeWidth="2" />
-      <circle cx="44" cy="50" r="5" fill="#df302a" />
-      <circle cx="64" cy="50" r="5" fill="#ffbb00" />
-      <circle cx="84" cy="50" r="5" fill="#1154ac" />
-      <line x1="18" y1="72" x2="442" y2="72" stroke="#efe9df" strokeWidth="2" />
-      <rect x="42" y="92" width="376" height="46" rx="12" fill="#f7f2ea" stroke="#e8e2d8" strokeWidth="1.5" />
-      <text x="60" y="120" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="15" fill="#6b6656">build a quiz for our team lunch</text>
-      <rect x="378" y="100" width="30" height="30" rx="8" fill="#df302a" />
-      <path d="M393 122 L399 116 L393 110" stroke="#fff" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" transform="translate(-8,-1)" />
-      <text x="42" y="164" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="12" fontWeight="700" letterSpacing="1" fill="#df302a">AI BUILT THIS</text>
-      <rect x="42" y="176" width="376" height="164" rx="12" fill="#ffffff" stroke="#e8e2d8" strokeWidth="1.5" />
-      <text x="62" y="210" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="17" fontWeight="800" fill="#1c1c1c">Team Lunch Picker</text>
-      <rect x="62" y="226" width="336" height="30" rx="8" fill="#f7f2ea" />
-      <text x="76" y="246" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="14" fill="#6b6656">Sushi</text>
-      <rect x="62" y="264" width="336" height="30" rx="8" fill="#1154ac" fillOpacity="0.12" stroke="#1154ac" strokeOpacity="0.4" />
-      <text x="76" y="284" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="14" fontWeight="700" fill="#1154ac">Pizza — the winner</text>
-      <rect x="62" y="302" width="336" height="30" rx="8" fill="#f7f2ea" />
-      <text x="76" y="322" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="14" fill="#6b6656">Poké bowl</text>
-    </svg>
-  );
-}
 
 // A phone showing the actual "vibecoding" move: you chat a plain-language prompt
 // (with an attachment) and the AI starts building. Placeholder for the hero.
@@ -117,12 +91,12 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                       {c.hero.cta} <ArrowRight className="w-4 h-4" />
                     </Button>
                   </a>
-                  <Link
-                    href={c.lang === "nl" ? "/teamuitje/demo" : "/vibecoding/demo"}
+                  <a
+                    href="#wat-is-vibecoding"
                     className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-foreground/30 px-6 h-12 text-base font-heading font-semibold text-foreground hover:border-accent hover:text-accent transition-colors"
                   >
                     <PlayCircle className="w-5 h-5" /> {c.hero.demoCta}
-                  </Link>
+                  </a>
                 </div>
                 <p className="mt-4 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
               </div>
@@ -188,26 +162,16 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
         </section>
 
         {/* What is vibecoding */}
-        <section className="section-padding bg-cream">
+        <section id="wat-is-vibecoding" className="section-padding bg-cream scroll-mt-16">
           <div className="container max-w-5xl">
-            <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-              <ScrollRevealSection>
-                <div>
-                  <h2 className="text-display md:text-display-lg text-foreground leading-tight">{c.what.heading}</h2>
-                  <div className="mt-6 space-y-4 text-body-lg text-muted-foreground leading-relaxed">
-                    {c.what.body.map((p, i) => <p key={i}>{p}</p>)}
-                  </div>
+            <ScrollRevealSection>
+              <div className="max-w-2xl">
+                <h2 className="text-display md:text-display-lg text-foreground leading-tight">{c.what.heading}</h2>
+                <div className="mt-6 space-y-4 text-body-lg text-muted-foreground leading-relaxed">
+                  {c.what.body.map((p, i) => <p key={i}>{p}</p>)}
                 </div>
-              </ScrollRevealSection>
-              <ScrollRevealSection>
-                <div className="rounded-2xl bg-white border border-border/50 shadow-[0_8px_40px_rgba(18,21,46,0.08)] p-5 md:p-7">
-                  <PromptVisual />
-                  <p className="text-center text-sm text-muted-foreground mt-3">
-                    {c.lang === "nl" ? "Typen wat je wil. De AI bouwt het. Zo simpel." : "Type what you want. The AI builds it. That simple."}
-                  </p>
-                </div>
-              </ScrollRevealSection>
-            </div>
+              </div>
+            </ScrollRevealSection>
             <div className="grid md:grid-cols-3 gap-5 lg:gap-6 mt-12">
               {c.what.points.map((p) => (
                 <ScrollRevealSection key={p.title}>
@@ -229,6 +193,13 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                     </li>
                   ))}
                 </ul>
+              </div>
+            </ScrollRevealSection>
+
+            {/* Try it yourself, inline */}
+            <ScrollRevealSection>
+              <div className="mt-14">
+                <VibecodingBuilder lang={c.lang} />
               </div>
             </ScrollRevealSection>
           </div>
