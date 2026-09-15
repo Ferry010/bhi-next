@@ -108,17 +108,6 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                   </Link>
                 </div>
                 <p className="mt-4 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
-                <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
-                  {[
-                    ...c.hero.facts,
-                    `${c.lang === "nl" ? "Vanaf" : "From"} €${VIBECODING_TIERS[0].price.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}`,
-                  ].map((f) => (
-                    <li key={f} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
               </div>
               <div className="flex justify-center md:justify-end">
                 <PhoneMockup phone={c.hero.phone} />

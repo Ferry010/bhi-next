@@ -29,7 +29,6 @@ export type VibeContent = {
     forEveryone: string;
     cta: string;
     demoCta: string;
-    facts: string[];
     phone: { badge: string; appTitle: string; question: string; options: string[]; answerIndex: number; footer: string };
   };
   not: {
@@ -105,14 +104,13 @@ export const en: VibeContent = {
       "No escape room. In a couple of hours your team builds real things with AI. At your place or ours in Rotterdam. Bring your team.",
   },
   hero: {
-    title: "The team day where you ",
-    titleAccent: "build an app.",
-    promise: "Build a working AI tool together in one afternoon. No coding.",
-    sub: "For one afternoon you make things together you would never normally make. A quiz about your own office, a game where you take each other on, a tool that grades your meetings. What will you build together?",
+    title: "The team day you'll still be talking about weeks later. ",
+    titleAccent: "Vibecoding.",
+    promise: "What's that? Vibecoding: building something cool together with AI.",
+    sub: "An app, a page, a silly little tool. As long as it's fun to make.",
     forEveryone: "Fun for everyone, from sales and HR to operations. No AI experience needed.",
     cta: "Bring your team",
     demoCta: "Vibecoding? What's that?",
-    facts: ["One afternoon, ~3 hours", "Groups of 4 to 20", "At your place or in Rotterdam"],
     phone: {
       badge: "Built during the outing",
       appTitle: "Office Quiz",
@@ -269,14 +267,13 @@ export const nl: VibeContent = {
       "Geen escape room. In een paar uur bouwt je team echte dingen met AI. Bij jullie of bij ons in Rotterdam. Neem je team mee.",
   },
   hero: {
-    title: "Het teamuitje waarop je ",
-    titleAccent: "een app bouwt.",
-    promise: "Bouw in één middag samen een werkende AI-tool. Zonder te programmeren.",
-    sub: "Een middag lang maken jullie samen dingen die je normaal nooit zou maken. Een quiz over je eigen kantoor, een spel waarin je het tegen elkaar opneemt, een tool die je meetings een cijfer geeft. Wat bouwen jullie samen?",
+    title: "De teamdag waar je weken later nog over napraat. ",
+    titleAccent: "Vibecoden.",
+    promise: "Wat zeg je? Vibecoden: samen iets tofs bouwen met AI.",
+    sub: "Een app, een pagina, een grappige tool. Als het maar leuk is om te maken.",
     forEveryone: "Leuk voor iedereen, van sales en HR tot operations. Geen ervaring met AI nodig.",
     cta: "Neem je team mee",
     demoCta: "Vibecoding? Wat is dat?",
-    facts: ["Eén middag, ± 3 uur", "Groepen van 4 tot 20", "Bij jullie of in Rotterdam"],
     phone: {
       badge: "Gebouwd tijdens het uitje",
       appTitle: "Kantoorquiz",
