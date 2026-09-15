@@ -7,10 +7,9 @@ type QuizApp = {
   prompt: string;
   kind: "quiz";
   title: string;
-  question: string;
-  options: string[];
-  answer: number;
-  answerNote: string;
+  questions: { question: string; options: string[]; answer: number; answerNote: string }[];
+  restartLabel: string;
+  doneNote: string;
 };
 type PongApp = {
   id: string;
@@ -21,16 +20,7 @@ type PongApp = {
   youLabel: string;
   aiLabel: string;
 };
-type BabyNameApp = {
-  id: string;
-  prompt: string;
-  kind: "babyname";
-  title: string;
-  generateLabel: string;
-  firstNames: string[];
-  vibes: string[];
-};
-export type DemoApp = QuizApp | PongApp | BabyNameApp;
+export type DemoApp = QuizApp | PongApp;
 
 export type BuilderContent = {
   heading: string;
@@ -62,34 +52,32 @@ export const builderEn: BuilderContent = {
       aiLabel: "AI",
     },
     {
-      id: "babyname",
-      prompt: "Make a baby name generator",
-      kind: "babyname",
-      title: "Baby Name Generator",
-      generateLabel: "Generate a name",
-      firstNames: ["Fenna", "Bram", "Sofie", "Mees", "Julia", "Daan", "Nova", "Luca", "Evi", "Sam", "Milo", "Liv", "Boaz", "Roos", "Guus"],
-      vibes: [
-        "future CEO of Friday drinks",
-        "runs on chaos and coffee",
-        "will definitely become a project lead",
-        "was prompting in the womb",
-        "already calls themselves a digital native",
-        "leaves the dishwasher open, guaranteed",
-        "wins every pub quiz",
-        "schedules meetings that could've been emails",
-        "always brings cake",
-        "knows where the good stroopwafels are",
-      ],
-    },
-    {
       id: "quiz",
       prompt: "Make a quiz about our office",
       kind: "quiz",
       title: "Office Quiz",
-      question: "Who always leaves the dishwasher open?",
-      options: ["Sanne", "Mark", "Nobody admits it"],
-      answer: 1,
-      answerNote: "Mark. It's always Mark.",
+      restartLabel: "Play again",
+      doneNote: "This is the kind of thing your team builds itself on the day.",
+      questions: [
+        {
+          question: "Who always leaves the dishwasher open?",
+          options: ["Sanne", "Mark", "Nobody admits it"],
+          answer: 1,
+          answerNote: "Mark. It's always Mark.",
+        },
+        {
+          question: "What's the status of the office printer?",
+          options: ["Working fine", "Paper jam", "Nobody knows"],
+          answer: 1,
+          answerNote: "Paper jam. Always a paper jam.",
+        },
+        {
+          question: "When does a 10:00 meeting actually start?",
+          options: ["10:00", "10:05", "10:15, after coffee"],
+          answer: 2,
+          answerNote: "10:15. Coffee first, obviously.",
+        },
+      ],
     },
   ],
 };
@@ -113,34 +101,32 @@ export const builderNl: BuilderContent = {
       aiLabel: "AI",
     },
     {
-      id: "babyname",
-      prompt: "Maak een babynaam-generator",
-      kind: "babyname",
-      title: "Babynaam-generator",
-      generateLabel: "Genereer een naam",
-      firstNames: ["Fenna", "Bram", "Sofie", "Mees", "Julia", "Daan", "Noor", "Luca", "Evi", "Sam", "Nova", "Guus", "Liv", "Boaz", "Roos"],
-      vibes: [
-        "toekomstig CEO van de vrijmibo",
-        "draait op chaos en koffie",
-        "wordt vast projectleider",
-        "promptte al in de buik",
-        "noemt zich nu al digitaal native",
-        "laat de vaatwasser open, gegarandeerd",
-        "wint elke pubquiz",
-        "plant meetings die een mail hadden kunnen zijn",
-        "brengt altijd taart mee",
-        "weet precies waar de goede stroopwafels staan",
-      ],
-    },
-    {
       id: "quiz",
       prompt: "Maak een quiz over ons kantoor",
       kind: "quiz",
       title: "Kantoorquiz",
-      question: "Wie laat de vaatwasser altijd openstaan?",
-      options: ["Sanne", "Mark", "Niemand geeft het toe"],
-      answer: 1,
-      answerNote: "Mark. Het is altijd Mark.",
+      restartLabel: "Speel opnieuw",
+      doneNote: "Precies zo'n ding dat je team op de dag zelf bouwt.",
+      questions: [
+        {
+          question: "Wie laat de vaatwasser altijd openstaan?",
+          options: ["Sanne", "Mark", "Niemand geeft het toe"],
+          answer: 1,
+          answerNote: "Mark. Het is altijd Mark.",
+        },
+        {
+          question: "Wat is de status van de printer?",
+          options: ["Werkt prima", "Papierstoring", "Niemand weet het"],
+          answer: 1,
+          answerNote: "Papierstoring. Altijd papierstoring.",
+        },
+        {
+          question: "Hoe laat begint een meeting van 10:00 echt?",
+          options: ["10:00", "10:05", "10:15, na de koffie"],
+          answer: 2,
+          answerNote: "10:15. Eerst koffie, natuurlijk.",
+        },
+      ],
     },
   ],
 };

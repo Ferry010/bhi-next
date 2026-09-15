@@ -127,34 +127,90 @@ function PongGame({ youLabel, aiLabel, hint }: { youLabel: string; aiLabel: stri
   );
 }
 
-// ── A working name generator ─────────────────────────────────────────────────
-function BabyName({ firstNames, vibes, label }: { firstNames: string[]; vibes: string[]; label: string }) {
-  const pick = () => ({
-    name: firstNames[Math.floor(Math.random() * firstNames.length)],
-    vibe: vibes[Math.floor(Math.random() * vibes.length)],
-  });
-  const [cur, setCur] = useState(pick);
-  return (
-    <div className="max-w-md mx-auto text-center">
-      <div className="rounded-2xl bg-cream border border-border/50 px-6 py-12">
-        <span className="font-heading font-extrabold text-5xl md:text-6xl text-foreground">{cur.name}</span>
-        <p className="text-muted-foreground mt-4 text-lg">{cur.vibe}</p>
+// ── A playable, animated multi-question quiz ────────────────────────────────
+function QuizGame({ app, lang }: { app: Extract<DemoApp, { kind: "quiz" }>; lang: "en" | "nl" }) {
+  const total = app.questions.length;
+  const [step, setStep] = useState(0);
+  const [pick, setPick] = useState<number | null>(null);
+  const [done, setDone] = useState(false);
+  const q = app.questions[step];
+
+  const next = () => {
+    if (step + 1 < total) {
+      setStep(step + 1);
+      setPick(null);
+    } else {
+      setDone(true);
+    }
+  };
+  const restart = () => {
+    setStep(0);
+    setPick(null);
+    setDone(false);
+  };
+
+  if (done) {
+    return (
+      <div className="mt-5 max-w-md animate-in fade-in slide-in-from-bottom-2 duration-300">
+        <p className="text-foreground/80 text-lg">{app.doneNote}</p>
+        <button
+          type="button"
+          onClick={restart}
+          className="mt-4 rounded-full border-[1.5px] border-foreground/30 px-5 py-2.5 text-sm font-heading font-semibold hover:border-accent transition-colors"
+        >
+          {app.restartLabel}
+        </button>
       </div>
-      <Button
-        type="button"
-        onClick={() => setCur(pick())}
-        className="mt-5 rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold h-12 px-7 text-base"
-      >
-        {label}
-      </Button>
+    );
+  }
+
+  return (
+    <div className="mt-5 max-w-md">
+      <span className="text-sm text-muted-foreground tabular-nums">{step + 1}/{total}</span>
+      <div key={step} className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+        <p className="text-foreground/80 text-lg mt-2">{q.question}</p>
+        <div className="mt-4 space-y-2">
+          {q.options.map((o, i) => {
+            const picked = pick !== null;
+            const isAnswer = i === q.answer;
+            const cls = !picked
+              ? "bg-cream border-border/50 text-foreground/80 hover:border-accent"
+              : isAnswer
+              ? "bg-primary/10 border-primary text-primary"
+              : i === pick
+              ? "bg-accent/10 border-accent text-accent"
+              : "bg-cream border-border/50 text-foreground/40";
+            return (
+              <button
+                key={o}
+                type="button"
+                onClick={() => pick === null && setPick(i)}
+                className={`w-full text-left rounded-xl px-4 py-3 font-heading font-semibold border transition-colors ${cls}`}
+              >
+                {o}
+              </button>
+            );
+          })}
+        </div>
+        {pick !== null && (
+          <div className="mt-4 flex items-center justify-between gap-4 animate-in fade-in duration-300">
+            <p className="text-sm text-muted-foreground">{q.answerNote}</p>
+            <Button
+              type="button"
+              onClick={next}
+              className="rounded-full bg-foreground text-white hover:bg-foreground/90 btn-scale font-heading font-semibold h-11 px-6 gap-2 shrink-0"
+            >
+              {lang === "nl" ? "Volgende" : "Next"} <ArrowRight className="w-4 h-4" />
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
 
 // ── The rendered mini-app inside the "browser" frame ────────────────────────
-function AppResult({ app, doneLabel }: { app: DemoApp; doneLabel: string }) {
-  const [quizPick, setQuizPick] = useState<number | null>(null);
-
+function AppResult({ app, doneLabel, lang }: { app: DemoApp; doneLabel: string; lang: "en" | "nl" }) {
   return (
     <div>
       <div className="flex items-center gap-3">
@@ -168,39 +224,7 @@ function AppResult({ app, doneLabel }: { app: DemoApp; doneLabel: string }) {
         </div>
       )}
 
-      {app.kind === "babyname" && (
-        <div className="mt-6">
-          <BabyName firstNames={app.firstNames} vibes={app.vibes} label={app.generateLabel} />
-        </div>
-      )}
-
-      {app.kind === "quiz" && (
-        <div className="mt-5 max-w-md">
-          <p className="text-foreground/80 text-lg">{app.question}</p>
-          <div className="mt-4 space-y-2">
-            {app.options.map((o, i) => {
-              const picked = quizPick !== null;
-              const isAnswer = i === app.answer;
-              const cls = !picked
-                ? "bg-cream border-border/50 text-foreground/80 hover:border-accent"
-                : isAnswer
-                ? "bg-primary/10 border-primary text-primary"
-                : "bg-cream border-border/50 text-foreground/40";
-              return (
-                <button
-                  key={o}
-                  type="button"
-                  onClick={() => setQuizPick(i)}
-                  className={`w-full text-left rounded-xl px-4 py-3 font-heading font-semibold border transition-colors ${cls}`}
-                >
-                  {o}
-                </button>
-              );
-            })}
-          </div>
-          {quizPick !== null && <p className="text-sm text-muted-foreground mt-3">{app.answerNote}</p>}
-        </div>
-      )}
+      {app.kind === "quiz" && <QuizGame app={app} lang={lang} />}
     </div>
   );
 }
@@ -286,7 +310,7 @@ export default function VibecodingBuilder({ lang }: { lang: "en" | "nl" }) {
                 ))}
               </div>
             )}
-            {phase === "done" && <AppResult key={app.id} app={app} doneLabel={c.doneLabel} />}
+            {phase === "done" && <AppResult key={app.id} app={app} doneLabel={c.doneLabel} lang={lang} />}
           </div>
         </div>
       </div>

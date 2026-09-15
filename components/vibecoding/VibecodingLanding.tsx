@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Languages, PlayCircle, Paperclip } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
 import VibecodingBuilder from "./VibecodingBuilder";
+import VibecodingChat from "./VibecodingChat";
 import TierButton from "./TierButton";
 import Polaroid from "@/components/origin/Polaroid";
 import { VIBECODING_TIERS, pricingIsSet, type VibeContent } from "./content";
@@ -85,6 +86,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                 </h1>
                 <p className="mt-5 text-lg md:text-xl font-heading font-semibold text-foreground">{c.hero.promise}</p>
                 <p className="mt-4 text-sm md:text-body-lg text-muted-foreground">{c.hero.sub}</p>
+                <p className="mt-3 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
                 <div className="mt-7 flex flex-wrap items-center gap-3">
                   <a href="#book">
                     <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
@@ -98,8 +100,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                     <PlayCircle className="w-5 h-5" /> {c.hero.demoCta}
                   </a>
                 </div>
-                <p className="mt-4 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
-                <p className="mt-2 text-sm font-heading font-semibold text-foreground/75">
+                <p className="mt-4 text-sm font-heading font-semibold text-foreground/75">
                   {c.hero.priceLine.replace("{price}", `€${VIBECODING_TIERS[0].price.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}`)}
                 </p>
               </div>
@@ -152,8 +153,13 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
               ))}
             </div>
             <ScrollRevealSection>
-              <p className="text-center text-xl md:text-2xl font-heading font-bold text-foreground max-w-3xl mx-auto mt-12 leading-snug">
-                {c.not.punch}
+              <p className="text-center text-3xl md:text-5xl font-heading font-extrabold text-foreground max-w-4xl mx-auto mt-14 leading-tight">
+                <span
+                  className="box-decoration-clone px-1"
+                  style={{ background: "linear-gradient(transparent 62%, rgba(255,187,0,0.45) 62%)" }}
+                >
+                  {c.not.punch}
+                </span>
               </p>
             </ScrollRevealSection>
           </div>
@@ -262,26 +268,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                 <p className="text-body-lg text-muted-foreground mt-3">{c.chat.sub}</p>
               </div>
             </ScrollRevealSection>
-            <ScrollRevealSection>
-              <div className="rounded-2xl bg-cream border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-5 md:p-7 space-y-3">
-                {c.chat.messages.map((m, i) => (
-                  <div key={i} className={`flex ${m.side === "right" ? "justify-end" : "justify-start"}`}>
-                    <div className={`flex flex-col max-w-[82%] ${m.side === "right" ? "items-end" : "items-start"}`}>
-                      <span className="text-[11px] font-heading font-semibold text-muted-foreground mb-1 px-1">{m.name}</span>
-                      <div
-                        className={`rounded-2xl px-4 py-2.5 text-sm leading-snug ${
-                          m.side === "right"
-                            ? "bg-primary text-white rounded-br-sm"
-                            : "bg-white border border-border/50 text-foreground/90 rounded-bl-sm"
-                        }`}
-                      >
-                        {m.text}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </ScrollRevealSection>
+            <VibecodingChat content={c.chat} />
           </div>
         </section>
 
@@ -435,20 +422,10 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                 </div>
 
                 <ScrollRevealSection>
-                  <div className="mt-10 rounded-2xl bg-cream border border-border/50 p-6 md:p-8">
-                    <ul className="grid sm:grid-cols-3 gap-x-8 gap-y-3">
-                      {c.pricing.includes.map((inc) => (
-                        <li key={inc} className="flex items-start gap-2.5 text-foreground/80 leading-relaxed">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                          <span>{inc}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-6 border-t border-border/50 pt-6">
-                      {c.pricing.overflow}{" "}
-                      <TierButton groupSize={c.form.groupOptions[3]} variant="link">{c.pricing.cta}</TierButton>
-                    </p>
-                  </div>
+                  <p className="text-center text-sm text-muted-foreground leading-relaxed mt-8 max-w-xl mx-auto">
+                    {c.pricing.overflow}{" "}
+                    <TierButton groupSize={c.form.groupOptions[3]} variant="link">{c.pricing.cta}</TierButton>
+                  </p>
                 </ScrollRevealSection>
               </>
             ) : (
