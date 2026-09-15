@@ -27,6 +27,7 @@ export type VibeContent = {
     promise: string;
     sub: string;
     forEveryone: string;
+    priceLine: string;
     cta: string;
     demoCta: string;
     phone: { appName: string; userMessage: string; attachment: string; aiReply: string; status: string };
@@ -50,6 +51,7 @@ export type VibeContent = {
     ours: { title: string; text: string; buildingAlt: string };
   };
   why: { heading: string; sub: string; items: { title: string; text: string }[] };
+  chat: { heading: string; sub: string; messages: { name: string; text: string; side: "left" | "right" }[] };
   pricing: {
     heading: string;
     sub: string;
@@ -64,6 +66,7 @@ export type VibeContent = {
     quote: string;
     cta: string;
     note: string;
+    scarcity: string;
   };
   form: {
     heading: string;
@@ -110,6 +113,7 @@ export const en: VibeContent = {
     promise: "What's that? Vibecoding: building something cool together with AI.",
     sub: "An app, a page, a silly little tool. As long as it's fun to make.",
     forEveryone: "Fun for everyone, from sales and HR to operations. No AI experience needed.",
+    priceLine: "Half a day, from {price} for the whole group.",
     cta: "Bring your team",
     demoCta: "Vibecoding? What's that?",
     phone: {
@@ -214,6 +218,17 @@ export const en: VibeContent = {
       { title: "You're not on your own", text: "Ferry is with you the whole session. When you get stuck he helps you through, and he makes sure every group leaves with something good." },
     ],
   },
+  chat: {
+    heading: "Still chatting about it",
+    sub: "Two colleagues, the day after their team day.",
+    messages: [
+      { name: "Debby", side: "left", text: "What did you all build?" },
+      { name: "Ismael", side: "right", text: "An app to plan our lunches together" },
+      { name: "Debby", side: "left", text: "Nice, does it work for the walking group too?" },
+      { name: "Ismael", side: "right", text: "Yep! You can invite colleagues and set the walking pace. You?" },
+      { name: "Debby", side: "left", text: "A Pong game with a leaderboard. Loser buys lunch for the whole team 😂" },
+    ],
+  },
   pricing: {
     heading: "One clear price. Pick your group.",
     sub: "A half-day of about three hours, host and facilitation included. You see the price right away. No sales call.",
@@ -236,6 +251,7 @@ export const en: VibeContent = {
     quote: "Custom quote per group",
     cta: "Bring your team",
     note: "One flat price for the group. The bigger your team, the less it is per person.",
+    scarcity: "Ferry hosts these days himself, and his calendar fills up. Only a few spots a month, so book ahead.",
   },
   form: {
     heading: "Bring your team",
@@ -285,6 +301,7 @@ export const nl: VibeContent = {
     promise: "Wat zeg je? Vibecoden: samen iets tofs bouwen met AI.",
     sub: "Een app, een pagina, een grappige tool. Als het maar leuk is om te maken.",
     forEveryone: "Leuk voor iedereen, van sales en HR tot operations. Geen ervaring met AI nodig.",
+    priceLine: "Een dagdeel, vanaf {price} voor de hele groep.",
     cta: "Neem je team mee",
     demoCta: "Vibecoding? Wat is dat?",
     phone: {
@@ -389,6 +406,17 @@ export const nl: VibeContent = {
       { title: "Je staat er niet alleen voor", text: "Ferry loopt de hele sessie mee. Loop je vast, dan helpt hij je verder, en hij zorgt dat elk groepje met iets moois de deur uit gaat." },
     ],
   },
+  chat: {
+    heading: "Nog even napraten",
+    sub: "Twee collega's, de dag na hun teamdag.",
+    messages: [
+      { name: "Debby", side: "left", text: "Wat hebben jullie gebouwd?" },
+      { name: "Ismael", side: "right", text: "Een app waarin we samen lunches kunnen plannen" },
+      { name: "Debby", side: "left", text: "Gezellig, ook voor het wandelgroepje?" },
+      { name: "Ismael", side: "right", text: "Yes! Je kunt collega's makkelijk uitnodigen en afspreken welk tempo je loopt. Jullie?" },
+      { name: "Debby", side: "left", text: "Een pong-spelletje met een klassement. Verliezer trakteert de hele afdeling 😂" },
+    ],
+  },
   pricing: {
     heading: "Eén heldere prijs. Kies je groep.",
     sub: "Een dagdeel van zo'n drie uur, host en begeleiding erbij. Je ziet de prijs meteen. Geen salesgesprek.",
@@ -411,6 +439,7 @@ export const nl: VibeContent = {
     quote: "Prijs op maat per groep",
     cta: "Neem je team mee",
     note: "Eén vaste prijs voor de groep. Hoe groter je team, hoe minder het per persoon is.",
+    scarcity: "Ferry host deze dagen zelf en zijn agenda zit vol. Een paar plekken per maand, dus plan op tijd.",
   },
   form: {
     heading: "Neem je team mee",

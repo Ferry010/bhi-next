@@ -99,6 +99,9 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                   </a>
                 </div>
                 <p className="mt-4 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
+                <p className="mt-2 text-sm font-heading font-semibold text-foreground/75">
+                  {c.hero.priceLine.replace("{price}", `€${VIBECODING_TIERS[0].price.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}`)}
+                </p>
               </div>
               <div className="flex justify-center md:justify-end">
                 <PhoneMockup phone={c.hero.phone} lang={c.lang} />
@@ -245,6 +248,38 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                     </li>
                   ))}
                 </ol>
+              </div>
+            </ScrollRevealSection>
+          </div>
+        </section>
+
+        {/* Colleagues chatting the day after */}
+        <section className="section-padding bg-white">
+          <div className="container max-w-2xl">
+            <ScrollRevealSection>
+              <div className="text-center mb-8">
+                <h2 className="text-display md:text-display-lg text-foreground">{c.chat.heading}</h2>
+                <p className="text-body-lg text-muted-foreground mt-3">{c.chat.sub}</p>
+              </div>
+            </ScrollRevealSection>
+            <ScrollRevealSection>
+              <div className="rounded-2xl bg-cream border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-5 md:p-7 space-y-3">
+                {c.chat.messages.map((m, i) => (
+                  <div key={i} className={`flex ${m.side === "right" ? "justify-end" : "justify-start"}`}>
+                    <div className={`flex flex-col max-w-[82%] ${m.side === "right" ? "items-end" : "items-start"}`}>
+                      <span className="text-[11px] font-heading font-semibold text-muted-foreground mb-1 px-1">{m.name}</span>
+                      <div
+                        className={`rounded-2xl px-4 py-2.5 text-sm leading-snug ${
+                          m.side === "right"
+                            ? "bg-primary text-white rounded-br-sm"
+                            : "bg-white border border-border/50 text-foreground/90 rounded-bl-sm"
+                        }`}
+                      >
+                        {m.text}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </ScrollRevealSection>
           </div>
@@ -425,6 +460,10 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
             )}
 
             <p className="text-center text-muted-foreground mt-8 max-w-xl mx-auto">{c.pricing.note}</p>
+            <p className="text-center text-sm mt-4 max-w-xl mx-auto">
+              <span className="font-heading font-bold text-accent">{c.lang === "nl" ? "Beperkt beschikbaar." : "Limited availability."}</span>{" "}
+              <span className="text-muted-foreground">{c.pricing.scarcity}</span>
+            </p>
           </div>
         </section>
 
