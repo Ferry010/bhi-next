@@ -36,6 +36,10 @@ const takeaways = [
     body: "Iedereen kan dezelfde tools kopen. Zonder de juiste mensen, skills en intenties doe je alleen wat je al deed, maar duurder. En ondertussen raak je kwijt wat je ooit onderscheidde.",
   },
   {
+    title: "Automatiseer hetzelfde, en je wordt hetzelfde.",
+    body: "Denk aan de supermarkten: dezelfde inrichting, dezelfde prijzen, dezelfde producten. Alleen het logo verschilt nog. Doe je met technologie precies wat de rest doet, dan verdwijnt je onderscheid. De menselijke laag in de klantreis is wat je dan nog anders maakt.",
+  },
+  {
     title: "Maak je mensen je oneerlijke voordeel.",
     body: "Zet de Brand Humanizing skills in om het beste in je mensen naar boven te halen, en geef ze de tools om daar het maximale uit te halen. Dat is precies waar technologie alleen niet bij komt.",
   },
@@ -123,27 +127,57 @@ export default function BedanktPage() {
 
         {/* The recap + the venn */}
         <section className="section-padding bg-white">
-          <div className="container max-w-5xl grid md:grid-cols-2 gap-10 md:gap-14 items-center">
-            <div>
-              <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">De recap</span>
-              <h2 className="text-display md:text-display-lg text-foreground mt-3 leading-tight">Waar het over ging</h2>
-              <div className="mt-6 space-y-5 text-body-lg text-muted-foreground leading-relaxed">
-                <p>
-                  AI en andere vormen van technologie zorgen ervoor dat teams, organisaties en producten steeds meer op elkaar gaan lijken. Iedereen automatiseert, iedereen gebruikt dezelfde tools, en zo zakt iedereen langzaam weg in hetzelfde grijze midden.
-                </p>
-                <p>
-                  Brand Humanizing draait het om. Niet de technologie tegenhouden, maar hem inzetten om juist menselijker te worden. Precies daar, waar menselijke kracht en technologie elkaar versterken, ontstaat het voordeel dat niemand kan kopiëren.
-                </p>
-                <p className="text-foreground font-heading font-semibold">
-                  De technologie neemt het saaie werk over. De mens wordt de reden dat klanten voor je kiezen, en blijven kiezen.
+          <div className="container max-w-5xl">
+            <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+              <div>
+                <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">De recap</span>
+                <h2 className="text-display md:text-display-lg text-foreground mt-3 leading-tight">Waar het over ging</h2>
+                <div className="mt-6 space-y-5 text-body-lg text-muted-foreground leading-relaxed">
+                  <p>
+                    AI en andere vormen van technologie zorgen ervoor dat teams, organisaties en producten steeds meer op elkaar gaan lijken. Iedereen automatiseert, iedereen gebruikt dezelfde tools, en zo zakt iedereen langzaam weg in hetzelfde grijze midden.
+                  </p>
+                  <p>
+                    Brand Humanizing draait het om. Niet de technologie tegenhouden, maar hem inzetten om juist menselijker te worden. Precies daar, waar menselijke kracht en technologie elkaar versterken, ontstaat het voordeel dat niemand kan kopiëren.
+                  </p>
+                  <p className="text-foreground font-heading font-semibold">
+                    De technologie neemt het saaie werk over. De mens wordt de reden dat klanten voor je kiezen, en blijven kiezen.
+                  </p>
+                </div>
+              </div>
+              <div>
+                <VennDiagram />
+                <p className="text-center text-sm text-muted-foreground mt-4">
+                  Menselijke kracht keer technologie. Dat is Brand Humanizing.
                 </p>
               </div>
             </div>
-            <div>
-              <VennDiagram />
-              <p className="text-center text-sm text-muted-foreground mt-4">
-                Menselijke kracht keer technologie. Dat is Brand Humanizing.
-              </p>
+
+            {/* The supermarket example */}
+            <div className="mt-14 md:mt-20 rounded-2xl bg-cream border border-border/50 p-6 md:p-10">
+              <div className="grid md:grid-cols-[0.95fr_1.05fr] gap-8 md:gap-10 items-center">
+                <div>
+                  <h3 className="font-heading font-bold text-xl md:text-2xl text-foreground leading-snug">
+                    Automatiseer een supermarkt, en je krijgt élke supermarkt.
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mt-3">
+                    In de talk automatiseerden we samen een supermarkt. Sneller, slimmer, goedkoper. Maar doet iedereen precies datzelfde, dan worden de prijzen gelijk, de producten gelijk en de winkel gelijk. Alleen het logo verschilt nog.
+                  </p>
+                  <p className="text-foreground font-heading font-semibold mt-3">
+                    Brand Humanizing voegt de menselijke laag toe aan de klantreis. En dát is wat je weer anders maakt dan de rest.
+                  </p>
+                </div>
+                <figure>
+                  <img
+                    src="/assets/bedankt/supermarkten.jpg"
+                    alt="Vijf supermarkten (Lidl, Jumbo, Albert Heijn, Dirk, Aldi): precies dezelfde winkel, alleen een ander logo."
+                    loading="lazy"
+                    className="w-full h-auto rounded-xl"
+                  />
+                  <figcaption className="text-center text-sm text-muted-foreground mt-3">
+                    Zelfde winkel, zelfde schappen, zelfde prijzen. Alleen het logo verschilt.
+                  </figcaption>
+                </figure>
+              </div>
             </div>
           </div>
         </section>
