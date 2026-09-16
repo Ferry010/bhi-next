@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import Polaroid from "@/components/origin/Polaroid";
 
 export default function MeetTheHumans() {
   const { ref, isVisible } = useScrollReveal();
@@ -12,10 +13,14 @@ export default function MeetTheHumans() {
     <section ref={ref} className="bg-white section-padding">
       <div className="container">
         <div className={`grid lg:grid-cols-[45%_55%] gap-8 lg:gap-12 items-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="relative">
-            <div className="w-full aspect-[4/3] md:aspect-[4/5] rounded-3xl overflow-hidden">
-              <img src="/assets/founders.jpeg" alt="Ferry Hoes and Jonathan Flores, founders of Brand Humanizing Institute" loading="lazy" className="w-full h-full object-cover" />
-            </div>
+          <div className="flex justify-center lg:justify-start">
+            <Polaroid
+              src="/assets/founders.jpeg"
+              alt="Ferry Hoes and Jonathan Flores, founders of Brand Humanizing Institute"
+              caption="Ferry & Jonathan during their booklaunch"
+              rotate={-2}
+              widthClass="w-full max-w-md"
+            />
           </div>
 
           <div className="space-y-5 md:space-y-6">
