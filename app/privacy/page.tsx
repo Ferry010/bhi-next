@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           <h1 className="font-heading text-3xl md:text-5xl font-bold text-foreground mt-6 mb-4">
             Privacy Policy
           </h1>
-          <p className="text-muted-foreground text-sm mb-12">Last updated: April 2026</p>
+          <p className="text-muted-foreground text-sm mb-12">Last updated: September 2026</p>
 
           <div className="prose prose-neutral max-w-none space-y-10 text-foreground">
 
@@ -27,9 +27,9 @@ export default function PrivacyPage() {
               <h2 className="font-heading font-bold text-xl mb-3">Who we are</h2>
               <p className="text-muted-foreground leading-relaxed">
                 Brand Humanizing Institute is a Dutch company based in Rotterdam, the Netherlands.
-                We provide keynotes, training programmes, strategy projects, and research on
-                human-centred leadership in the age of AI. Ferry Hoes and Jonathan Flores are the
-                founders.
+                We provide keynotes, training programmes, team days, strategy projects, and research
+                on human-centred leadership in the age of AI. Ferry Hoes and Jonathan Flores are the
+                founders. Chamber of Commerce (KvK): 67341950. VAT (BTW): NL001559743B32.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-3">
                 Contact:{" "}
@@ -47,6 +47,13 @@ export default function PrivacyPage() {
                   contact form we collect your name, email address, and any details you choose to
                   share (organization, message). We use this solely to respond to your enquiry.
                   Legal basis: legitimate interest (responding to a business enquiry).
+                </div>
+                <div>
+                  <strong className="text-foreground">Team-day / event booking</strong> — when you
+                  request a quote or booking (for example for a vibecoding team day) we collect your
+                  name, email, and the details you share (company, group size, preferred location and
+                  timing, message). We use this to respond and to arrange and deliver the booking.
+                  Legal basis: taking steps to enter into and perform a contract.
                 </div>
                 <div>
                   <strong className="text-foreground">Newsletter / research brief</strong> — if you
@@ -82,8 +89,10 @@ export default function PrivacyPage() {
             <section>
               <h2 className="font-heading font-bold text-xl mb-3">How we store your data</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Form submissions are stored in Supabase (EU data region). We do not sell, rent, or
-                share your personal data with third parties for marketing purposes.
+                Form submissions are stored in Supabase (EU data region). We may also receive a
+                notification of your submission in our internal Slack workspace so a human can reply.
+                We do not sell, rent, or share your personal data with third parties for marketing
+                purposes.
               </p>
             </section>
 

@@ -81,6 +81,8 @@ export default function Footer() {
           <div className="flex items-center gap-3 flex-wrap justify-center md:justify-end">
             <Link href="/privacy" className="hover:text-primary-foreground transition-colors">Privacy Policy</Link>
             <span>·</span>
+            <Link href="/terms" className="hover:text-primary-foreground transition-colors">Terms</Link>
+            <span>·</span>
             <Link href="/imprint" className="hover:text-primary-foreground transition-colors">Imprint</Link>
             <span>·</span>
             <Link href="/no-cookies" className="hover:text-primary-foreground transition-colors">No-Cookies Policy</Link>

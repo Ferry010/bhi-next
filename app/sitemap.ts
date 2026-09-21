@@ -23,6 +23,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/taskforce`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/vibecoding`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/teamuitje`, lastModified: new Date(), changeFrequency: "monthly" },
+    { url: `${base}/algemene-voorwaarden`, lastModified: new Date(), changeFrequency: "yearly" },
+    { url: `${base}/terms`, lastModified: new Date(), changeFrequency: "yearly" },
     { url: `${base}/research`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/research/towards-a-human-technology-fit`, lastModified: new Date(), changeFrequency: "yearly" },
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: "monthly" },
