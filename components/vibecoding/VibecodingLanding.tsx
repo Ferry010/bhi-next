@@ -8,6 +8,7 @@ import VibecodingForm from "./VibecodingForm";
 import VibecodingBuilder from "./VibecodingBuilder";
 import VibecodingChat from "./VibecodingChat";
 import HeroBuildDemo from "./HeroBuildDemo";
+import VibecodedTag from "./VibecodedTag";
 import TierButton from "./TierButton";
 import Polaroid from "@/components/origin/Polaroid";
 import { VIBECODING_PRICE, pricingIsSet, type VibeContent } from "./content";
@@ -17,6 +18,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
   return (
     <>
       <Navbar variant="light" />
+      <VibecodedTag lang={c.lang} />
       <main>
         {/* Hero */}
         <section className="bg-secondary pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">

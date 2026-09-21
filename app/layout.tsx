@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import CookieBanner from "@/components/CookieBanner";
-import VibecodedTag from "@/components/VibecodedTag";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://brandhumanizing.com"),
@@ -33,7 +32,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>
           {children}
-          <VibecodedTag />
           <CookieBanner />
         </Providers>
       </body>

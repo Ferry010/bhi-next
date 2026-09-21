@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 
-// A little tag dangling from the top-right that flexes the meta-proof: the whole
-// site is vibecoded, so come try it. Hidden on the vibecoding pages themselves
-// (where the CTA already lives), and dismissible so repeat visitors aren't nagged.
-export default function VibecodedTag() {
-  const pathname = usePathname();
+// A little tag dangling from the top-right of the vibecoding pages: the meta
+// proof that the offer works, right where people decide. This whole site (this
+// page included) was vibecoded, so come try it. "Try it" scrolls to the inline
+// builder. Dismissible; desktop only.
+const COPY = {
+  nl: { label: "Vibecoded", line: "Ja, deze hele site ook.", cta: "Kom het zelf proberen →" },
+  en: { label: "Vibecoded", line: "Yep, this whole site too.", cta: "Try it yourself →" },
+};
+
+export default function VibecodedTag({ lang }: { lang: "en" | "nl" }) {
   const [hidden, setHidden] = useState(true); // start hidden to avoid a flash before we know
 
   useEffect(() => {
@@ -20,8 +23,8 @@ export default function VibecodedTag() {
     }
   }, []);
 
-  const onVibecodingPage = pathname?.startsWith("/vibecoding") || pathname?.startsWith("/teamuitje");
-  if (hidden || onVibecodingPage) return null;
+  if (hidden) return null;
+  const t = COPY[lang];
 
   const dismiss = () => {
     try {
@@ -44,18 +47,18 @@ export default function VibecodedTag() {
           <button
             type="button"
             onClick={dismiss}
-            aria-label="Sluiten"
+            aria-label={lang === "nl" ? "Sluiten" : "Close"}
             className="absolute top-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-foreground/40 hover:text-foreground hover:bg-foreground/10 transition-colors"
           >
             <X className="w-3 h-3" />
           </button>
-          <Link href="/vibecoding" className="block px-4 pt-4 pb-3 text-center group">
-            <p className="font-heading font-extrabold text-[11px] uppercase tracking-[0.15em]">Vibecoded</p>
+          <a href="#wat-is-vibecoding" className="block px-4 pt-4 pb-3 text-center group">
+            <p className="font-heading font-extrabold text-[11px] uppercase tracking-[0.15em]">{t.label}</p>
             <p className="text-[12px] leading-snug mt-1 font-heading font-semibold">
-              Ja, deze hele site ook.
-              <span className="block text-accent group-hover:underline">Kom het zelf proberen &rarr;</span>
+              {t.line}
+              <span className="block text-accent group-hover:underline">{t.cta}</span>
             </p>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
