@@ -14,7 +14,9 @@ const COPY = {
 
 export default function VibecodedTag({ lang }: { lang: "en" | "nl" }) {
   const [dismissed, setDismissed] = useState(true); // start hidden to avoid a flash before we know
-  const [revealed, setRevealed] = useState(false); // dangles in once you scroll past the hero
+  const [show, setShow] = useState(false); // scroll position says it should be visible
+  const [render, setRender] = useState(false); // kept mounted during the fall-off animation
+  const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
     try {
@@ -26,16 +28,31 @@ export default function VibecodedTag({ lang }: { lang: "en" | "nl" }) {
 
   useEffect(() => {
     const onScroll = () => {
-      // Reveal once we're roughly past the hero, so it doesn't fight the cookie
-      // bar and the hero on load. Once shown, it stays.
-      if (window.scrollY > window.innerHeight * 0.7) setRevealed(true);
+      const y = window.scrollY;
+      const h = window.innerHeight;
+      // Hysteresis: dangle in once past the hero, fall off only near the very top.
+      setShow((prev) => (y > h * 0.7 ? true : y < h * 0.25 ? false : prev));
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (dismissed || !revealed) return null;
+  useEffect(() => {
+    if (show) {
+      setRender(true);
+      setExiting(false);
+    } else if (render) {
+      setExiting(true);
+      const t = setTimeout(() => {
+        setRender(false);
+        setExiting(false);
+      }, 480);
+      return () => clearTimeout(t);
+    }
+  }, [show, render]);
+
+  if (dismissed || !render) return null;
   const t = COPY[lang];
 
   const dismiss = () => {
@@ -48,9 +65,9 @@ export default function VibecodedTag({ lang }: { lang: "en" | "nl" }) {
   };
 
   return (
-    <div className="fixed top-0 right-3 sm:right-6 z-40 hidden sm:block print:hidden vibe-tag-enter">
-      {/* string */}
-      <div className="w-px h-14 bg-foreground/25 ml-auto mr-8" />
+    <div className={`fixed top-14 right-3 sm:right-6 z-40 hidden sm:block print:hidden ${exiting ? "vibe-tag-exit" : "vibe-tag-enter"}`}>
+      {/* string, hangs from the menu bar */}
+      <div className="w-px h-8 bg-foreground/25 ml-auto mr-8" />
       {/* tag */}
       <div className="vibe-tag-sway -mt-1.5">
         <div className="relative w-44 rounded-xl bg-sunny text-foreground shadow-[0_14px_30px_-10px_rgba(18,21,46,0.45)] ring-1 ring-foreground/10">
