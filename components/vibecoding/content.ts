@@ -51,6 +51,7 @@ export type VibeContent = {
     ours: { title: string; text: string; buildingAlt: string };
   };
   why: { heading: string; sub: string; items: { title: string; text: string }[] };
+  midCta: string;
   chat: { heading: string; sub: string; messages: { name: string; text: string; side: "left" | "right" }[] };
   pricing: {
     heading: string;
@@ -218,6 +219,7 @@ export const en: VibeContent = {
       { title: "You're not on your own", text: "Ferry is with you the whole session. When you get stuck he helps you through, and he makes sure every group leaves with something good." },
     ],
   },
+  midCta: "Pretty fun, right? That's the whole afternoon.",
   chat: {
     heading: "Still chatting about it",
     sub: "Two colleagues, the day after their team day.",
@@ -406,6 +408,7 @@ export const nl: VibeContent = {
       { title: "Je staat er niet alleen voor", text: "Ferry loopt de hele sessie mee. Loop je vast, dan helpt hij je verder, en hij zorgt dat elk groepje met iets moois de deur uit gaat." },
     ],
   },
+  midCta: "Best leuk, toch? Zo voelt de hele middag.",
   chat: {
     heading: "Nog even napraten",
     sub: "Twee collega's, de dag na hun teamdag.",

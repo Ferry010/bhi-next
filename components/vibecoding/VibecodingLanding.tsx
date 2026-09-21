@@ -154,6 +154,18 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                 <VibecodingBuilder lang={c.lang} />
               </div>
             </ScrollRevealSection>
+
+            {/* Mid-page CTA at the peak "this is fun" moment */}
+            <ScrollRevealSection>
+              <div className="text-center mt-14">
+                <p className="text-xl md:text-2xl font-heading font-bold text-foreground">{c.midCta}</p>
+                <a href="#book" className="inline-block mt-5">
+                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                    {c.hero.cta} <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+              </div>
+            </ScrollRevealSection>
           </div>
         </section>
 
