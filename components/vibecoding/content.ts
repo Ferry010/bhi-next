@@ -118,9 +118,9 @@ export const en: VibeContent = {
     demoCta: "Vibecoding? What's that?",
     phone: {
       appName: "AI Builder",
-      userMessage: "Build a quiz with 12 questions to test how well we know our office and each other. In our own house style (see attachment).",
-      attachment: "brand-style.pdf",
-      aiReply: "On it. A 12-question quiz in your house style.",
+      userMessage: "Build a 2D version of Connect Four",
+      attachment: "",
+      aiReply: "On it, building now.",
       status: "Building…",
     },
   },
@@ -306,10 +306,10 @@ export const nl: VibeContent = {
     demoCta: "Vibecoding? Wat is dat?",
     phone: {
       appName: "AI Bouwer",
-      userMessage: "Bouw een quiz met 12 vragen waarmee we als team onze kennis over kantoor en collega's testen. In onze eigen huisstijl (zie bijlage).",
-      attachment: "huisstijl.pdf",
-      aiReply: "Top. Een quiz van 12 vragen in jullie huisstijl.",
-      status: "Bezig met bouwen…",
+      userMessage: "Bouw een 2D-versie van 4 op een rij",
+      attachment: "",
+      aiReply: "Top, ik bouw 'm nu.",
+      status: "Aan het bouwen…",
     },
   },
   not: {

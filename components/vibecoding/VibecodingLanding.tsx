@@ -3,66 +3,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Languages, PlayCircle, Paperclip } from "lucide-react";
+import { ArrowRight, Languages, PlayCircle } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
 import VibecodingBuilder from "./VibecodingBuilder";
 import VibecodingChat from "./VibecodingChat";
+import HeroBuildDemo from "./HeroBuildDemo";
 import TierButton from "./TierButton";
 import Polaroid from "@/components/origin/Polaroid";
 import { VIBECODING_TIERS, pricingIsSet, type VibeContent } from "./content";
-
-// A phone showing the actual "vibecoding" move: you chat a plain-language prompt
-// (with an attachment) and the AI starts building. Placeholder for the hero.
-function PhoneMockup({ phone, lang }: { phone: VibeContent["hero"]["phone"]; lang: "en" | "nl" }) {
-  return (
-    <div className="relative w-[240px] sm:w-[264px] rotate-2">
-      <div className="rounded-[2.6rem] bg-foreground p-2.5 shadow-[0_30px_70px_-20px_rgba(18,21,46,0.5)]">
-        <div className="relative rounded-[2.1rem] bg-cream overflow-hidden flex flex-col" style={{ aspectRatio: "9 / 19" }}>
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-5 bg-foreground rounded-b-2xl z-10" />
-          {/* top bar */}
-          <div className="pt-9 px-4 pb-2.5 bg-white border-b border-border/50">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-accent/15 flex items-center justify-center text-accent text-[10px] font-heading font-bold">AI</span>
-              <span className="font-heading font-bold text-sm text-foreground">{phone.appName}</span>
-            </div>
-          </div>
-          {/* conversation */}
-          <div className="flex-1 overflow-hidden px-3 py-3 space-y-2.5">
-            <div className="flex justify-end">
-              <div className="max-w-[86%] rounded-2xl rounded-br-sm bg-primary text-white px-3 py-2">
-                <p className="text-[11px] leading-snug">{phone.userMessage}</p>
-                <span className="mt-1.5 inline-flex items-center gap-1 rounded-md bg-white/15 px-1.5 py-0.5 text-[10px]">
-                  <Paperclip className="w-2.5 h-2.5" /> {phone.attachment}
-                </span>
-              </div>
-            </div>
-            <div className="flex justify-start">
-              <div className="max-w-[86%] rounded-2xl rounded-bl-sm bg-white border border-border/50 px-3 py-2">
-                <p className="text-[11px] leading-snug text-foreground/80">{phone.aiReply}</p>
-              </div>
-            </div>
-            <div className="flex justify-start">
-              <div className="rounded-2xl rounded-bl-sm bg-white border border-border/50 px-3 py-2 inline-flex items-center gap-1.5">
-                <span className="text-[11px] text-muted-foreground">{phone.status}</span>
-                <span className="flex gap-0.5">
-                  <span className="w-1 h-1 rounded-full bg-accent animate-pulse" style={{ animationDelay: "0ms" }} />
-                  <span className="w-1 h-1 rounded-full bg-accent animate-pulse" style={{ animationDelay: "150ms" }} />
-                  <span className="w-1 h-1 rounded-full bg-accent animate-pulse" style={{ animationDelay: "300ms" }} />
-                </span>
-              </div>
-            </div>
-          </div>
-          {/* input bar */}
-          <div className="p-2.5 bg-white border-t border-border/50">
-            <div className="rounded-full bg-cream border border-border/50 px-3 py-1.5 text-[10px] text-muted-foreground">
-              {lang === "nl" ? "Typ een opdracht…" : "Type a prompt…"}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function VibecodingLanding({ content }: { content: VibeContent }) {
   const c = content;
@@ -104,8 +52,8 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                   {c.hero.priceLine.replace("{price}", `€${VIBECODING_TIERS[0].price.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}`)}
                 </p>
               </div>
-              <div className="flex justify-center md:justify-end">
-                <PhoneMockup phone={c.hero.phone} lang={c.lang} />
+              <div className="w-full">
+                <HeroBuildDemo phone={c.hero.phone} lang={c.lang} />
               </div>
             </div>
           </div>
