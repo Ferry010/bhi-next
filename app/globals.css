@@ -265,6 +265,20 @@ button:not(.btn-scale):active,
   button:hover .cta-arrow, button:hover .lucide-arrow-right { transform: none; }
 }
 
+/* Dangling "this whole site is vibecoded" tag */
+@keyframes sway {
+  0%, 100% { transform: rotate(-4deg); }
+  50%      { transform: rotate(3deg); }
+}
+.vibe-tag-sway {
+  transform-origin: top center;
+  animation: sway 6s ease-in-out infinite;
+}
+.vibe-tag-sway:hover { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .vibe-tag-sway { animation: none; transform: rotate(-3deg); }
+}
+
 /* Print styles */
 @media print {
   body { background: white !important; color: black !important; }
