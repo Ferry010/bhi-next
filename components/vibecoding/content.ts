@@ -1,20 +1,10 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Pricing. One flat price per GROUP (not per person), in three size tiers.
-// Why tiers and not a per-person rate or a slider: a flat price reads more
-// premium and skips the "request a quote" friction, three anchored options let
-// the middle tier do the selling (most groups pick it), and a small "per person"
-// line still gives buyers the "the more we bring, the better the value" feeling
-// without making them do the maths. Numbers live here, once, for both languages.
-//
-// To change a price or a band, edit VIBECODING_TIERS. To hide prices again while
-// they are being reconsidered, set pricingIsSet = false and the page falls back
-// to a clean "custom quote" line instead of showing a broken price.
+// Pricing. One flat price for the whole team up to 20 people, and a custom price
+// for 21+. Two options, not three: a yes/no, not a "which one do I pick?".
+// Change the number in one place here. Set pricingIsSet = false to fall back to
+// a clean "custom quote" line while a price is being reconsidered.
 // ─────────────────────────────────────────────────────────────────────────────
-export const VIBECODING_TIERS = [
-  { minPeople: 4, maxPeople: 8, price: 1750 },
-  { minPeople: 9, maxPeople: 15, price: 2450, popular: true },
-  { minPeople: 16, maxPeople: 20, price: 2950 },
-] as const;
+export const VIBECODING_PRICE = { amount: 3450, maxPeople: 20 };
 export const pricingIsSet = true;
 
 export type VibeContent = {
@@ -56,16 +46,11 @@ export type VibeContent = {
   pricing: {
     heading: string;
     sub: string;
-    popularLabel: string;
-    peopleWord: string;
-    approx: string;
-    perPerson: string;
-    atWord: string;
-    tiers: { name: string; tagline: string }[];
-    includes: string[];
-    overflow: string;
+    unitLabel: string;
     quote: string;
     cta: string;
+    custom: string;
+    customCta: string;
     note: string;
     scarcity: string;
   };
@@ -114,7 +99,7 @@ export const en: VibeContent = {
     promise: "What's that? Vibecoding: building something cool together with AI.",
     sub: "An app, a page, a silly little tool. As long as it's fun to make.",
     forEveryone: "Fun for everyone, from sales and HR to operations. No AI experience needed.",
-    priceLine: "Half a day, from {price} for the whole group.",
+    priceLine: "Half a day, {price} for your whole team (up to 20 people).",
     cta: "Bring your team",
     demoCta: "Vibecoding? What's that?",
     phone: {
@@ -232,27 +217,14 @@ export const en: VibeContent = {
     ],
   },
   pricing: {
-    heading: "One clear price. Pick your group.",
-    sub: "A half-day of about three hours, host and facilitation included. You see the price right away. No sales call.",
-    popularLabel: "Most chosen",
-    peopleWord: "people",
-    approx: "≈",
-    perPerson: "per person",
-    atWord: "at",
-    tiers: [
-      { name: "Small team", tagline: "A tight crew, all hands on deck." },
-      { name: "Full team", tagline: "The sweet spot for most teams." },
-      { name: "Big group", tagline: "The whole department. Best value per head." },
-    ],
-    includes: [
-      "Ferry hosting the whole session",
-      "All AI tools, licenses and tokens included",
-      "At your place or ours in Rotterdam",
-    ],
-    overflow: "More than 20? We'll sort it out together, and per person it usually only gets better.",
-    quote: "Custom quote per group",
+    heading: "One price. For your whole team.",
+    sub: "Half a day, with Ferry hosting, everything included. You see the price right away, no sales call.",
+    unitLabel: "for your whole team, up to 20 people",
+    quote: "Custom price",
     cta: "Bring your team",
-    note: "One flat price for the group. The bigger your team, the less it is per person.",
+    custom: "More than 20 people?",
+    customCta: "Get a custom price",
+    note: "No small print. This is the price.",
     scarcity: "Ferry hosts these days himself, and his calendar fills up. Only a few spots a month, so book ahead.",
   },
   form: {
@@ -262,7 +234,7 @@ export const en: VibeContent = {
     email: "Work email",
     company: "Company",
     groupSize: "How big is your group?",
-    groupOptions: ["4 to 8", "9 to 15", "16 to 20", "More than 20"],
+    groupOptions: ["Up to 20 people", "More than 20 people"],
     location: "Where would you like it?",
     locationOptions: ["At Brand Humanizing in Rotterdam", "At our own office", "Not sure yet"],
     timing: "e.g. late May, or “still flexible”",
@@ -303,7 +275,7 @@ export const nl: VibeContent = {
     promise: "Wat zeg je? Vibecoden: samen iets tofs bouwen met AI.",
     sub: "Een app, een pagina, een grappige tool. Als het maar leuk is om te maken.",
     forEveryone: "Leuk voor iedereen, van sales en HR tot operations. Geen ervaring met AI nodig.",
-    priceLine: "Een dagdeel, vanaf {price} voor de hele groep.",
+    priceLine: "Een dagdeel, {price} voor je hele team (tot 20 personen).",
     cta: "Neem je team mee",
     demoCta: "Vibecoding? Wat is dat?",
     phone: {
@@ -421,27 +393,14 @@ export const nl: VibeContent = {
     ],
   },
   pricing: {
-    heading: "Eén heldere prijs. Kies je groep.",
-    sub: "Een dagdeel van zo'n drie uur, host en begeleiding erbij. Je ziet de prijs meteen. Geen salesgesprek.",
-    popularLabel: "Meest gekozen",
-    peopleWord: "personen",
-    approx: "≈",
-    perPerson: "p.p.",
-    atWord: "bij",
-    tiers: [
-      { name: "Klein team", tagline: "Hecht clubje, alle handen aan de knoppen." },
-      { name: "Heel team", tagline: "De sweet spot voor de meeste teams." },
-      { name: "Grote groep", tagline: "De hele afdeling. Per persoon het voordeligst." },
-    ],
-    includes: [
-      "Ferry als host, de hele sessie",
-      "Alle AI-tools, licenties én tokens inbegrepen",
-      "Bij jullie of bij ons in Rotterdam",
-    ],
-    overflow: "Meer dan 20? Dat regelen we samen, en per persoon wordt het meestal alleen maar gunstiger.",
-    quote: "Prijs op maat per groep",
+    heading: "Eén prijs. Voor je hele team.",
+    sub: "Een dagdeel, met Ferry als host, alles inbegrepen. Je ziet de prijs meteen, geen salesgesprek.",
+    unitLabel: "voor je hele team, tot 20 personen",
+    quote: "Prijs op maat",
     cta: "Neem je team mee",
-    note: "Eén vaste prijs voor de groep. Hoe groter je team, hoe minder het per persoon is.",
+    custom: "Meer dan 20 personen?",
+    customCta: "Vraag een prijs op maat",
+    note: "Geen addertjes. Dit is de prijs.",
     scarcity: "Ferry host deze dagen zelf en zijn agenda zit vol. Een paar plekken per maand, dus plan op tijd.",
   },
   form: {
@@ -451,7 +410,7 @@ export const nl: VibeContent = {
     email: "Werk-e-mail",
     company: "Bedrijf",
     groupSize: "Hoe groot is je groep?",
-    groupOptions: ["4 tot 8", "9 tot 15", "16 tot 20", "Meer dan 20"],
+    groupOptions: ["Tot 20 personen", "Meer dan 20 personen"],
     location: "Waar wil je het?",
     locationOptions: ["Bij Brand Humanizing in Rotterdam", "Op onze eigen locatie", "Weet ik nog niet"],
     timing: "Bijv. eind mei, of “nog flexibel”",

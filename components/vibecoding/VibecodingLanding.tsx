@@ -10,7 +10,7 @@ import VibecodingChat from "./VibecodingChat";
 import HeroBuildDemo from "./HeroBuildDemo";
 import TierButton from "./TierButton";
 import Polaroid from "@/components/origin/Polaroid";
-import { VIBECODING_TIERS, pricingIsSet, type VibeContent } from "./content";
+import { VIBECODING_PRICE, pricingIsSet, type VibeContent } from "./content";
 
 export default function VibecodingLanding({ content }: { content: VibeContent }) {
   const c = content;
@@ -49,7 +49,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                   </a>
                 </div>
                 <p className="mt-4 text-sm font-heading font-semibold text-foreground/75">
-                  {c.hero.priceLine.replace("{price}", `€${VIBECODING_TIERS[0].price.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}`)}
+                  {c.hero.priceLine.replace("{price}", `€${VIBECODING_PRICE.amount.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}`)}
                 </p>
               </div>
               <div className="w-full">
@@ -336,58 +336,23 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
             </ScrollRevealSection>
 
             {pricingIsSet ? (
-              <>
-                <div className="grid md:grid-cols-3 gap-5 lg:gap-6 mt-14 items-stretch">
-                  {VIBECODING_TIERS.map((t, i) => {
-                    const label = c.pricing.tiers[i];
-                    const perHead = Math.round(t.price / t.maxPeople);
-                    const popular = "popular" in t && t.popular;
-                    const money = (n: number) => n.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US");
-                    return (
-                      <ScrollRevealSection key={label.name}>
-                        <div
-                          className={`relative h-full rounded-2xl p-7 md:p-8 flex flex-col ${
-                            popular
-                              ? "bg-navy text-white border-2 border-accent shadow-[0_20px_60px_-15px_rgba(18,21,46,0.4)] md:-mt-4 md:pt-11"
-                              : "bg-cream border border-border/50"
-                          }`}
-                        >
-                          {popular && (
-                            <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent text-white text-caption uppercase tracking-wider font-heading font-bold px-4 py-1">
-                              {c.pricing.popularLabel}
-                            </span>
-                          )}
-                          <h3 className={`font-heading font-bold text-lg ${popular ? "text-white" : "text-foreground"}`}>{label.name}</h3>
-                          <p className={`text-sm mt-1 ${popular ? "text-white/70" : "text-muted-foreground"}`}>
-                            {t.minPeople}–{t.maxPeople} {c.pricing.peopleWord}
-                          </p>
-                          <div className="mt-5 flex items-end gap-1.5">
-                            <span className={`font-heading font-extrabold text-4xl md:text-5xl leading-none ${popular ? "text-white" : "text-foreground"}`}>
-                              €{money(t.price)}
-                            </span>
-                          </div>
-                          <p className={`text-sm mt-2 ${popular ? "text-white/70" : "text-muted-foreground"}`}>
-                            {c.pricing.approx} €{money(perHead)} {c.pricing.perPerson} {c.pricing.atWord} {t.maxPeople}
-                          </p>
-                          <p className={`text-sm leading-relaxed mt-4 ${popular ? "text-white/80" : "text-muted-foreground"}`}>{label.tagline}</p>
-                          <div className="mt-auto pt-7">
-                            <TierButton groupSize={c.form.groupOptions[i]} popular={popular}>
-                              {c.pricing.cta}
-                            </TierButton>
-                          </div>
-                        </div>
-                      </ScrollRevealSection>
-                    );
-                  })}
+              <ScrollRevealSection>
+                <div className="mt-12 mx-auto max-w-md rounded-3xl bg-cream border-2 border-accent/25 p-8 md:p-12 text-center">
+                  <span className="font-heading font-extrabold text-6xl md:text-7xl text-foreground leading-none">
+                    €{VIBECODING_PRICE.amount.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}
+                  </span>
+                  <p className="text-muted-foreground mt-3">{c.pricing.unitLabel}</p>
+                  <div className="mt-7">
+                    <TierButton groupSize={c.form.groupOptions[0]} popular>
+                      {c.pricing.cta}
+                    </TierButton>
+                  </div>
                 </div>
-
-                <ScrollRevealSection>
-                  <p className="text-center text-sm text-muted-foreground leading-relaxed mt-8 max-w-xl mx-auto">
-                    {c.pricing.overflow}{" "}
-                    <TierButton groupSize={c.form.groupOptions[3]} variant="link">{c.pricing.cta}</TierButton>
-                  </p>
-                </ScrollRevealSection>
-              </>
+                <p className="text-center text-muted-foreground mt-6">
+                  {c.pricing.custom}{" "}
+                  <TierButton groupSize={c.form.groupOptions[1]} variant="link">{c.pricing.customCta}</TierButton>
+                </p>
+              </ScrollRevealSection>
             ) : (
               <ScrollRevealSection>
                 <div className="mt-12 mx-auto max-w-md text-center rounded-2xl bg-cream border border-border/50 px-10 py-8">
