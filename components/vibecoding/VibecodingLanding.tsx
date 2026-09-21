@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Languages, PlayCircle } from "lucide-react";
+import { ArrowRight, Languages, PlayCircle, Check } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
 import VibecodingBuilder from "./VibecodingBuilder";
 import VibecodingChat from "./VibecodingChat";
@@ -336,23 +336,47 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
             </ScrollRevealSection>
 
             {pricingIsSet ? (
-              <ScrollRevealSection>
-                <div className="mt-12 mx-auto max-w-md rounded-3xl bg-cream border-2 border-accent/25 p-8 md:p-12 text-center">
-                  <span className="font-heading font-extrabold text-6xl md:text-7xl text-foreground leading-none">
-                    €{VIBECODING_PRICE.amount.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}
-                  </span>
-                  <p className="text-muted-foreground mt-3">{c.pricing.unitLabel}</p>
-                  <div className="mt-7">
-                    <TierButton groupSize={c.form.groupOptions[0]} popular>
-                      {c.pricing.cta}
-                    </TierButton>
+              <div className="grid md:grid-cols-2 gap-5 lg:gap-6 mt-12 items-stretch max-w-3xl mx-auto">
+                {/* The default: up to 20 */}
+                <ScrollRevealSection>
+                  <div className="h-full rounded-2xl bg-cream border-2 border-accent/30 p-7 md:p-8 flex flex-col">
+                    <h3 className="font-heading font-bold text-lg text-foreground">{c.pricing.upTitle}</h3>
+                    <div className="mt-3 flex items-baseline gap-1.5">
+                      <span className="font-heading font-extrabold text-4xl md:text-5xl text-foreground leading-none">
+                        €{VIBECODING_PRICE.amount.toLocaleString(c.lang === "nl" ? "nl-NL" : "en-US")}
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-1.5">{c.pricing.unitLabel}</p>
+                    <ul className="mt-5 space-y-2.5">
+                      {c.pricing.includes.map((inc) => (
+                        <li key={inc} className="flex items-start gap-2.5 text-sm text-foreground/80 leading-snug">
+                          <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                          <span>{inc}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-auto pt-7">
+                      <TierButton groupSize={c.form.groupOptions[0]} popular>
+                        {c.pricing.cta}
+                      </TierButton>
+                    </div>
                   </div>
-                </div>
-                <p className="text-center text-muted-foreground mt-6">
-                  {c.pricing.custom}{" "}
-                  <TierButton groupSize={c.form.groupOptions[1]} variant="link">{c.pricing.customCta}</TierButton>
-                </p>
-              </ScrollRevealSection>
+                </ScrollRevealSection>
+
+                {/* The quieter self-select for bigger groups */}
+                <ScrollRevealSection>
+                  <div className="h-full rounded-2xl bg-white border border-border/50 p-7 md:p-8 flex flex-col">
+                    <h3 className="font-heading font-bold text-lg text-foreground">{c.pricing.customTitle}</h3>
+                    <div className="mt-3">
+                      <span className="font-heading font-extrabold text-3xl md:text-4xl text-foreground leading-none">{c.pricing.quote}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{c.pricing.customSub}</p>
+                    <div className="mt-auto pt-7">
+                      <TierButton groupSize={c.form.groupOptions[1]}>{c.pricing.customCta}</TierButton>
+                    </div>
+                  </div>
+                </ScrollRevealSection>
+              </div>
             ) : (
               <ScrollRevealSection>
                 <div className="mt-12 mx-auto max-w-md text-center rounded-2xl bg-cream border border-border/50 px-10 py-8">

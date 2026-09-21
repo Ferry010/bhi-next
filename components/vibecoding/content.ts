@@ -46,10 +46,13 @@ export type VibeContent = {
   pricing: {
     heading: string;
     sub: string;
+    upTitle: string;
     unitLabel: string;
-    quote: string;
+    includes: string[];
     cta: string;
-    custom: string;
+    customTitle: string;
+    quote: string;
+    customSub: string;
     customCta: string;
     note: string;
     scarcity: string;
@@ -219,11 +222,20 @@ export const en: VibeContent = {
   pricing: {
     heading: "One price. For your whole team.",
     sub: "Half a day, with Ferry hosting, everything included. You see the price right away, no sales call.",
-    unitLabel: "for your whole team, up to 20 people",
-    quote: "Custom price",
+    upTitle: "Up to 20 people",
+    unitLabel: "for your whole team",
+    includes: [
+      "Ferry hosting all day",
+      "All the AI tools, licenses and tokens",
+      "Coffee, tea and snacks (lunch depending on timing)",
+      "A published app you take home",
+      "At your place or ours in Rotterdam",
+    ],
     cta: "Bring your team",
-    custom: "More than 20 people?",
-    customCta: "Get a custom price",
+    customTitle: "More than 20 people",
+    quote: "Custom price",
+    customSub: "Bigger group? We tune the price to your numbers. Same day, everything included.",
+    customCta: "Get your price",
     note: "No small print. This is the price.",
     scarcity: "Ferry hosts these days himself, and his calendar fills up. Only a few spots a month, so book ahead.",
   },
@@ -395,11 +407,20 @@ export const nl: VibeContent = {
   pricing: {
     heading: "Eén prijs. Voor je hele team.",
     sub: "Een dagdeel, met Ferry als host, alles inbegrepen. Je ziet de prijs meteen, geen salesgesprek.",
-    unitLabel: "voor je hele team, tot 20 personen",
-    quote: "Prijs op maat",
+    upTitle: "Tot 20 personen",
+    unitLabel: "voor je hele team",
+    includes: [
+      "Ferry als host, de hele dag",
+      "Alle AI-tools, licenties en tokens",
+      "Koffie, thee en hapjes (lunch afhankelijk van tijdstip)",
+      "Een gepubliceerde app die je meeneemt",
+      "Bij jullie of bij ons in Rotterdam",
+    ],
     cta: "Neem je team mee",
-    custom: "Meer dan 20 personen?",
-    customCta: "Vraag een prijs op maat",
+    customTitle: "Meer dan 20 personen",
+    quote: "Prijs op maat",
+    customSub: "Grotere groep? We stemmen de prijs af op jullie aantal. Zelfde dag, alles erbij.",
+    customCta: "Vraag je prijs op",
     note: "Geen addertjes. Dit is de prijs.",
     scarcity: "Ferry host deze dagen zelf en zijn agenda zit vol. Een paar plekken per maand, dus plan op tijd.",
   },
