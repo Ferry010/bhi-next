@@ -275,8 +275,16 @@ button:not(.btn-scale):active,
   animation: sway 6s ease-in-out infinite;
 }
 .vibe-tag-sway:hover { animation-play-state: paused; }
+/* Drops/dangles in from above the moment it is revealed on scroll */
+@keyframes dangleIn {
+  0%   { transform: translateY(-130%); }
+  62%  { transform: translateY(6%); }
+  100% { transform: translateY(0); }
+}
+.vibe-tag-enter { animation: dangleIn 700ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
 @media (prefers-reduced-motion: reduce) {
   .vibe-tag-sway { animation: none; transform: rotate(-3deg); }
+  .vibe-tag-enter { animation: none; }
 }
 
 /* Print styles */

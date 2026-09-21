@@ -13,17 +13,29 @@ const COPY = {
 };
 
 export default function VibecodedTag({ lang }: { lang: "en" | "nl" }) {
-  const [hidden, setHidden] = useState(true); // start hidden to avoid a flash before we know
+  const [dismissed, setDismissed] = useState(true); // start hidden to avoid a flash before we know
+  const [revealed, setRevealed] = useState(false); // dangles in once you scroll past the hero
 
   useEffect(() => {
     try {
-      setHidden(localStorage.getItem("vibecoded-tag-dismissed") === "1");
+      setDismissed(localStorage.getItem("vibecoded-tag-dismissed") === "1");
     } catch {
-      setHidden(false);
+      setDismissed(false);
     }
   }, []);
 
-  if (hidden) return null;
+  useEffect(() => {
+    const onScroll = () => {
+      // Reveal once we're roughly past the hero, so it doesn't fight the cookie
+      // bar and the hero on load. Once shown, it stays.
+      if (window.scrollY > window.innerHeight * 0.7) setRevealed(true);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (dismissed || !revealed) return null;
   const t = COPY[lang];
 
   const dismiss = () => {
@@ -32,11 +44,11 @@ export default function VibecodedTag({ lang }: { lang: "en" | "nl" }) {
     } catch {
       /* storage blocked; just hide for this view */
     }
-    setHidden(true);
+    setDismissed(true);
   };
 
   return (
-    <div className="fixed top-0 right-3 sm:right-6 z-40 hidden sm:block print:hidden">
+    <div className="fixed top-0 right-3 sm:right-6 z-40 hidden sm:block print:hidden vibe-tag-enter">
       {/* string */}
       <div className="w-px h-14 bg-foreground/25 ml-auto mr-8" />
       {/* tag */}
