@@ -62,6 +62,7 @@ export type VibeContent = {
     sub: string;
     name: string;
     email: string;
+    phone: string;
     company: string;
     groupSize: string;
     groupOptions: string[];
@@ -244,6 +245,7 @@ export const en: VibeContent = {
     sub: "Tell us a bit about your group. We come back with a date and the price, usually within one working day.",
     name: "Your name",
     email: "Work email",
+    phone: "Phone number",
     company: "Company",
     groupSize: "How big is your group?",
     groupOptions: ["Up to 20 people", "More than 20 people"],
@@ -429,6 +431,7 @@ export const nl: VibeContent = {
     sub: "Vertel kort iets over je groep. We komen terug met een datum en de prijs, meestal binnen een werkdag.",
     name: "Je naam",
     email: "Werk-e-mail",
+    phone: "Telefoonnummer",
     company: "Bedrijf",
     groupSize: "Hoe groot is je groep?",
     groupOptions: ["Tot 20 personen", "Meer dan 20 personen"],

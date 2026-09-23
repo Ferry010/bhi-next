@@ -14,10 +14,11 @@ type Answers = {
   location: string;
   timing: string;
   email: string;
+  phone: string;
   company: string;
 };
 
-const EMPTY: Answers = { groupSize: "", name: "", location: "", timing: "", email: "", company: "" };
+const EMPTY: Answers = { groupSize: "", name: "", location: "", timing: "", email: "", phone: "", company: "" };
 
 // A conversational, one-question-at-a-time form. Multi-step flows convert far
 // better than a single wall of fields, and clicking a pricing tier is the first
@@ -68,7 +69,7 @@ export default function VibecodingForm({ labels, lang }: { labels: VibeContent["
 
   const canAdvance =
     current === "name" ? answers.name.trim().length > 0
-      : current === "contact" ? answers.email.trim().length > 0
+      : current === "contact" ? answers.email.trim().length > 0 && answers.phone.trim().length > 0
       : true; // group-size and location auto-advance on click; timing is optional
 
   const submitLead = async () => {
@@ -77,6 +78,7 @@ export default function VibecodingForm({ labels, lang }: { labels: VibeContent["
       const formData = {
         name: answers.name.trim(),
         email: answers.email.trim(),
+        phone: answers.phone.trim() || undefined,
         company: answers.company.trim() || undefined,
         group_size: answers.groupSize || undefined,
         location: answers.location || undefined,
@@ -170,7 +172,7 @@ export default function VibecodingForm({ labels, lang }: { labels: VibeContent["
         {current === "name" && (
           <>
             <h3 className="font-heading font-bold text-xl md:text-2xl text-foreground">{s.nameQ}</h3>
-            <Input ref={textRef} type="text" placeholder={labels.name} value={answers.name} onChange={(e) => set("name", e.target.value)} className={`${inputCls} mt-6`} />
+            <Input ref={textRef} type="text" autoComplete="name" placeholder={labels.name} value={answers.name} onChange={(e) => set("name", e.target.value)} className={`${inputCls} mt-6`} />
           </>
         )}
 
@@ -207,8 +209,9 @@ export default function VibecodingForm({ labels, lang }: { labels: VibeContent["
             <h3 className="font-heading font-bold text-xl md:text-2xl text-foreground">{s.contactQ}</h3>
             <p className="text-sm text-muted-foreground mt-2">{s.contactHelp}</p>
             <div className="space-y-3 mt-5">
-              <Input ref={textRef} type="email" placeholder={labels.email} value={answers.email} onChange={(e) => set("email", e.target.value)} required className={inputCls} />
-              <Input type="text" placeholder={labels.company} value={answers.company} onChange={(e) => set("company", e.target.value)} className={inputCls} />
+              <Input ref={textRef} type="email" autoComplete="email" placeholder={labels.email} value={answers.email} onChange={(e) => set("email", e.target.value)} required className={inputCls} />
+              <Input type="tel" inputMode="tel" autoComplete="tel" placeholder={labels.phone} value={answers.phone} onChange={(e) => set("phone", e.target.value)} required className={inputCls} />
+              <Input type="text" autoComplete="organization" placeholder={labels.company} value={answers.company} onChange={(e) => set("company", e.target.value)} className={inputCls} />
             </div>
           </>
         )}
