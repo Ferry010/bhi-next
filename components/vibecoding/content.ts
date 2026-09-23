@@ -42,6 +42,7 @@ export type VibeContent = {
   };
   why: { heading: string; sub: string; items: { title: string; text: string }[] };
   midCta: string;
+  thanks: { heading: string; body: string; gameIntro: string; back: string };
   chat: { heading: string; sub: string; messages: { name: string; text: string; side: "left" | "right" }[] };
   pricing: {
     heading: string;
@@ -209,6 +210,12 @@ export const en: VibeContent = {
     ],
   },
   midCta: "Pretty fun, right? That's the whole afternoon.",
+  thanks: {
+    heading: "Got it. Your request is in.",
+    body: "Ferry or Jonathan comes back to you personally with a date and a price, usually within one working day. No sales script, just a short chat about your team.",
+    gameIntro: "While you wait: build something yourself. This is exactly what your team does on the day.",
+    back: "Back to the team day",
+  },
   chat: {
     heading: "Still chatting about it",
     sub: "Two colleagues, the day after their team day.",
@@ -395,6 +402,12 @@ export const nl: VibeContent = {
     ],
   },
   midCta: "Best leuk, toch? Zo voelt de hele middag.",
+  thanks: {
+    heading: "Gelukt. We hebben je aanvraag.",
+    body: "Ferry of Jonathan komt persoonlijk bij je terug met een datum en een prijs, meestal binnen een werkdag. Geen salespraatje, gewoon even kort over jullie team.",
+    gameIntro: "Terwijl je wacht: bouw zelf even iets. Precies wat je team op de dag ook doet.",
+    back: "Terug naar de teamdag",
+  },
   chat: {
     heading: "Nog even napraten",
     sub: "Twee collega's, de dag na hun teamdag.",

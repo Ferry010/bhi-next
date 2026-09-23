@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
@@ -26,12 +27,14 @@ const EMPTY: Answers = { groupSize: "", name: "", location: "", timing: "", emai
 // and drops the person straight at the name question.
 export default function VibecodingForm({ labels, lang }: { labels: VibeContent["form"]; lang: "en" | "nl" }) {
   const s = labels.steps;
+  const router = useRouter();
   const [answers, setAnswers] = useState<Answers>(EMPTY);
   const [presetSize, setPresetSize] = useState(false);
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const textRef = useRef<HTMLInputElement>(null);
+  const thanksHref = lang === "nl" ? "/teamuitje/bedankt" : "/vibecoding/thanks";
 
   // Steps in order. The group-size question is dropped when a tier click already
   // told us the size.
@@ -56,6 +59,31 @@ export default function VibecodingForm({ labels, lang }: { labels: VibeContent["
     window.addEventListener("vibe:start", onStart);
     return () => window.removeEventListener("vibe:start", onStart);
   }, []);
+
+  // Google Ads click id, if this visit came from an ad. We stash it in the
+  // session so it survives the anchor jumps between the CTAs and the form, then
+  // attach it to the lead. This lets us report conversions through offline
+  // import (no visitor cookie or pixel, so the site stays cookieless).
+  useEffect(() => {
+    try {
+      const g = new URLSearchParams(window.location.search).get("gclid");
+      if (g) sessionStorage.setItem("vibe:gclid", g);
+    } catch {
+      // sessionStorage can throw in private mode; the lead just won't carry a gclid.
+    }
+  }, []);
+
+  const getGclid = () => {
+    try {
+      return (
+        sessionStorage.getItem("vibe:gclid") ||
+        new URLSearchParams(window.location.search).get("gclid") ||
+        ""
+      );
+    } catch {
+      return "";
+    }
+  };
 
   // Focus the text field whenever we land on a typing step.
   useEffect(() => {
@@ -83,6 +111,7 @@ export default function VibecodingForm({ labels, lang }: { labels: VibeContent["
         group_size: answers.groupSize || undefined,
         location: answers.location || undefined,
         timing: answers.timing.trim() || undefined,
+        gclid: getGclid() || undefined,
         language: lang,
       };
       await createSupabaseBrowserClient()
@@ -91,12 +120,15 @@ export default function VibecodingForm({ labels, lang }: { labels: VibeContent["
       createSupabaseBrowserClient().functions.invoke("notify-slack", {
         body: { form_type: "vibecoding", data: formData },
       });
-      setSent(true);
     } catch {
       // Best-effort: never drop the person on an error screen.
-      setSent(true);
     } finally {
       setLoading(false);
+      // Land on the thank-you page. It's the Google Ads conversion URL and a
+      // nicer close than an inline card. setSent is a fallback in case the
+      // navigation is blocked for any reason.
+      setSent(true);
+      router.push(thanksHref);
     }
   };
 
