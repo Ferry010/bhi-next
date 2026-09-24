@@ -63,7 +63,7 @@ export default function ResearchPage() {
           <div className="container max-w-4xl">
             <Breadcrumb items={[{ label: "Research" }]} variant="light" />
             <h1 className="text-hero md:text-hero-lg text-foreground mt-4">
-              The evidence behind the thinking.
+              The <span className="text-primary">evidence</span> behind the thinking.
             </h1>
             <p className="text-body-lg text-muted-foreground mt-6 max-w-2xl">
               Independent research on technology, organizational behavior, and what it means to be genuinely human at work. Freely available, because knowledge that sits behind a paywall isn&apos;t doing anyone any good.
