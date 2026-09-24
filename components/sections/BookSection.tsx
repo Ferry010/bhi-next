@@ -8,7 +8,9 @@ import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { notifyByEmail } from "@/lib/notifyByEmail";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
-export default function BookSection() {
+// showCover defaults to true (homepage). The book page already shows the cover
+// in its hero, so it passes showCover={false} to avoid a second one.
+export default function BookSection({ showCover = true }: { showCover?: boolean }) {
   const { ref, isVisible } = useScrollReveal();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -36,21 +38,23 @@ export default function BookSection() {
   return (
     <section ref={ref} className="bg-secondary section-padding">
       <div className="container">
-        <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="flex justify-center">
-            <div
-              className={`relative transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0 rotate-0" : "opacity-0 translate-y-12 -rotate-3"}`}
-              style={{ transitionDelay: "300ms" }}
-            >
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-6 bg-foreground/10 rounded-full blur-xl" />
-              <img
-                src="/assets/book-cover.jpg"
-                alt="Brand Humanizing book by Ferry Hoes and Jonathan Flores"
-                loading="lazy"
-                className="relative w-56 md:w-72 rounded-lg shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-10px_hsl(var(--primary)/0.3)]"
-              />
+        <div className={`${showCover ? "grid lg:grid-cols-2 gap-8 lg:gap-12 items-center" : "max-w-2xl mx-auto"} transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          {showCover && (
+            <div className="flex justify-center">
+              <div
+                className={`relative transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0 rotate-0" : "opacity-0 translate-y-12 -rotate-3"}`}
+                style={{ transitionDelay: "300ms" }}
+              >
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-6 bg-foreground/10 rounded-full blur-xl" />
+                <img
+                  src="/assets/book-cover.jpg"
+                  alt="Brand Humanizing book by Ferry Hoes and Jonathan Flores"
+                  loading="lazy"
+                  className="relative w-56 md:w-72 rounded-lg shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_-10px_hsl(var(--primary)/0.3)]"
+                />
+              </div>
             </div>
-          </div>
+          )}
 
           <div className={`space-y-5 md:space-y-6 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`} style={{ transitionDelay: "200ms" }}>
             <h2 className="text-display md:text-display-lg text-foreground">

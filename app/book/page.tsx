@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { ArrowRight } from "lucide-react";
 import BookSection from "@/components/sections/BookSection";
+import WhyWeWroteIt from "@/components/sections/WhyWeWroteIt";
 import { BOOK } from "@/lib/pricing";
 
 // The book's purchase mechanism is not decided yet (external retailer vs. direct
@@ -83,7 +84,9 @@ export default function BookPage() {
           </div>
         </section>
 
-        <BookSection />
+        <WhyWeWroteIt />
+
+        <BookSection showCover={false} />
 
         <section className="section-padding bg-navy">
           <div className="container max-w-3xl text-center">
