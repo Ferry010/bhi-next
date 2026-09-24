@@ -5,7 +5,7 @@ import StartClient from "./StartClient";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/start" },
-  title: "Find Your Fit | Brand Humanizing Institute",
+  title: "Find Your Fit",
   description:
     "Not sure where to start with Brand Humanizing? Answer three quick questions and we'll point you to the right way in, then a real human replies to your specific question.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).

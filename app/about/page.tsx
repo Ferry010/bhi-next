@@ -12,7 +12,7 @@ import OriginStory from "@/components/sections/OriginStory";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
-  title: "About | Brand Humanizing Institute",
+  title: "About",
   description:
     "Meet Ferry Hoes and Jonathan Flores, the founders of Brand Humanizing Institute. Rotterdam, 2017.",
   openGraph: { images: [{ url: "/og/about.jpg" }] },

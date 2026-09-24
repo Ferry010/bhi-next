@@ -12,7 +12,7 @@ import CountUp from "@/components/ui/CountUp";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
-  title: "Train Your Team | Brand Humanizing Institute",
+  title: "Train Your Team",
   description:
     "Three ways to give your team the human edge in the AI era: the book, an in-house keynote, or a full-day course. Every session includes the book. Trusted by teams at Unilever, VodafoneZiggo, GSK and more.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).

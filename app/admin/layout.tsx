@@ -4,7 +4,7 @@ import AdminLayoutClient from "./AdminLayoutClient";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Admin | Brand Humanizing Institute",
+  title: "Admin",
   robots: { index: false, follow: false },
 };
 

@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/media" },
-  title: "Media | Brand Humanizing Institute",
+  title: "Media",
   description:
     "Blog, podcast, research, and press. All content from the Brand Humanizing Institute.",
 };

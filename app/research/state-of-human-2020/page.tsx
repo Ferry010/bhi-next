@@ -12,7 +12,7 @@ const PDF = "/assets/state-of-human-2020.pdf";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/research/state-of-human-2020" },
-  title: "The State of Human 2020 | Brand Humanizing Institute",
+  title: "The State of Human 2020",
   description:
     "Our first report. 104 decision-makers, one question: is there still a place for humans in an automating world? 87.5% said yes. Read the findings and download the full 36-page report.",
   openGraph: { type: "article" },

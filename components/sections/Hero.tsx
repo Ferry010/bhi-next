@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="bg-secondary pt-28 pb-16 md:pt-44 md:pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
       <div className="container">
-        <div className="grid lg:grid-cols-[55%_45%] gap-8 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-[55fr_45fr] gap-8 lg:gap-8 items-center">
           <div className="space-y-5 md:space-y-8 min-w-0">
             <h1 className="hero-headline hero-rise text-hero md:text-hero-lg text-foreground break-words" style={{ animationDelay: "0ms" }}>
               Everyone can copy your technology. No one can copy your <span className="text-primary">people.</span>
@@ -31,7 +31,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative flex justify-center lg:justify-end">
+          <div className="relative flex justify-center lg:justify-end lg:pr-8">
             <div className="absolute -top-8 right-0 w-48 h-48 md:w-[420px] md:h-[420px] rounded-full bg-accent/10 animate-blob-float" />
             <div className="relative z-10 flex items-center justify-center w-64 h-64 md:w-[400px] md:h-[400px]">
               <div className="absolute left-2 md:left-0 top-6 md:top-4 -rotate-3 bg-white p-2 pb-6 md:p-3 md:pb-8 rounded-lg shadow-xl z-10 transition-transform hover:-rotate-6 hover:scale-105">
@@ -47,7 +47,7 @@ export default function Hero() {
                 <p className="font-handwritten text-xs md:text-sm text-foreground/70 text-center mt-1 md:mt-2">Jonathan</p>
               </div>
             </div>
-            <div className="absolute bottom-4 right-2 md:-right-4 bg-card shadow-lg rounded-2xl px-3 py-1.5 md:px-4 md:py-2 z-30 rotate-2">
+            <div className="absolute bottom-4 right-2 md:right-6 bg-card shadow-lg rounded-2xl px-3 py-1.5 md:px-4 md:py-2 z-30 rotate-2">
               <p className="font-handwritten text-xs md:text-lg text-foreground">
                 Ferry & Jonathan <span className="text-accent">(actual humans)</span>
               </p>

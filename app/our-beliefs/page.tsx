@@ -10,7 +10,7 @@ import { BOOK } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/our-beliefs" },
-  title: "Our Beliefs | Brand Humanizing Institute",
+  title: "Our Beliefs",
   description:
     "What we believe to be true about technology, brands and people. The convictions behind Brand Humanizing, said plainly.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).

@@ -12,7 +12,7 @@ import CountUp from "@/components/ui/CountUp";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/certification" },
-  title: "Certification | Brand Humanizing Institute",
+  title: "Certification",
   description:
     "Two ways to prove it. Certify your team's AI literacy today via AIGA, or join the waitlist to become a certified Brand Humanizer, the person organisations call to stay human through the AI shift.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).

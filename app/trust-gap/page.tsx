@@ -8,7 +8,7 @@ import { MIN_TEAM_RESPONSES } from "@/lib/trustGap/questions";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/trust-gap" },
-  title: "The AI Trust Gap | Brand Humanizing Institute",
+  title: "The AI Trust Gap",
   description:
     "A free diagnostic. Answer six questions about AI on your team, send an anonymous link to your team, and see the gap between what you believe and what they report.",
 };

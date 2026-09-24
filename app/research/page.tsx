@@ -12,7 +12,7 @@ import { YearsActiveWord } from "@/lib/facts";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/research" },
-  title: "Research | Brand Humanizing Institute",
+  title: "Research",
   description:
     "Independent, primary research on technology, organizational behavior, and human-technology strategy. Freely available, no registration required.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).

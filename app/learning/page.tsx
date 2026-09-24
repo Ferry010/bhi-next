@@ -13,7 +13,7 @@ import CountUp from "@/components/ui/CountUp";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/learning" },
-  title: "Live Training | Brand Humanizing Institute",
+  title: "Live Training",
   description:
     "Start with the book, bring the story to your team in-house, or train the whole team for a day. Pick how deep you want to go.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).

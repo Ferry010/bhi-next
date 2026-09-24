@@ -11,7 +11,7 @@ const SAYLIENCE_URL = "https://www.saylience.app";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/research/saylience" },
-  title: "Saylience: the method, applied to our own work | Brand Humanizing Institute",
+  title: "Saylience: the method, applied to our own work",
   description:
     "Brand Humanizing is a claim: let technology take the predictable work, and people are freed into the work only people can do. Saylience is that claim tested on our own interview practice, now a product used in two countries.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).

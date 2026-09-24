@@ -4,7 +4,7 @@ import OriginTour from "@/components/origin/OriginTour";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/our-story" },
-  title: "Our Story | Brand Humanizing Institute",
+  title: "Our Story",
   description:
     "From a line in a notebook in a Rotterdam McDonald's in 2017 to a framework, 40 keynotes a year and a book. The origin story of Brand Humanizing, told screen by screen.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).

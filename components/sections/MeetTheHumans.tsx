@@ -12,7 +12,7 @@ export default function MeetTheHumans() {
   return (
     <section ref={ref} className="bg-white section-padding">
       <div className="container">
-        <div className={`grid lg:grid-cols-[45%_55%] gap-8 lg:gap-12 items-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className={`grid lg:grid-cols-[45fr_55fr] gap-8 lg:gap-12 items-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex justify-center lg:justify-start">
             <Polaroid
               src="/assets/founders.jpeg"

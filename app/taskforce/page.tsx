@@ -12,7 +12,7 @@ import { ArrowRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/taskforce" },
-  title: "The Taskforce | Working Together | Brand Humanizing Institute",
+  title: "The Taskforce | Working Together",
   description:
     "Sixteen weeks. A taskforce of your own people takes one real business challenge to a working pilot, guided by the method. When we leave, the capability stays.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).
