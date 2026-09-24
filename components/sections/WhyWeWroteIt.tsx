@@ -57,7 +57,8 @@ export default function WhyWeWroteIt() {
                     <div className="pb-6">
                       <h3 className="font-heading font-bold text-lg text-foreground">Three days, door shut</h3>
                       <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">
-                        Full focus, no meetings. The head start that made it worth reading.
+                        A tiny house on a recreation park, 150 km from home. Three full days, no distractions, to
+                        give it a real head start.
                       </p>
                     </div>
                   </li>
