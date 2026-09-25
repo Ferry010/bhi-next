@@ -4,7 +4,7 @@
 // Change the number in one place here. Set pricingIsSet = false to fall back to
 // a clean "custom quote" line while a price is being reconsidered.
 // ─────────────────────────────────────────────────────────────────────────────
-export const VIBECODING_PRICE = { amount: 3450, maxPeople: 20 };
+export const VIBECODING_PRICE = { amount: 2450, maxPeople: 20 };
 export const pricingIsSet = true;
 
 export type VibeContent = {
