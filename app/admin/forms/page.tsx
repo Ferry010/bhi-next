@@ -57,6 +57,7 @@ const TYPE_LABELS: Record<string, string> = {
   lead_magnet: "Lead Magnet",
   assessment: "Assessment",
   vibecoding: "Vibecoding",
+  vibecoding_save: "Vibecoding · Save",
 };
 
 const TYPE_COLORS: Record<string, string> = {
@@ -67,6 +68,7 @@ const TYPE_COLORS: Record<string, string> = {
   lead_magnet: "bg-pink-500/15 text-pink-400",
   assessment: "bg-indigo-500/15 text-indigo-400",
   vibecoding: "bg-amber-500/15 text-amber-400",
+  vibecoding_save: "bg-amber-500/10 text-amber-300",
 };
 
 // Google Ads offline conversion import. The vibecoding form stores the gclid of

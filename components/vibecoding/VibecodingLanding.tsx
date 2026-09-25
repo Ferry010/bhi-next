@@ -1,9 +1,9 @@
-import Link from "next/link";
-import Navbar from "@/components/Navbar";
+import VibecodingNav from "./VibecodingNav";
+import VibecodingSave from "./VibecodingSave";
 import Footer from "@/components/Footer";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Languages, PlayCircle, Check } from "lucide-react";
+import { ArrowRight, PlayCircle, Check } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
 import VibecodingBuilder from "./VibecodingBuilder";
 import VibecodingAgenda from "./VibecodingAgenda";
@@ -18,17 +18,12 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
   const c = content;
   return (
     <>
-      <Navbar variant="light" />
+      <VibecodingNav content={c} />
       <VibecodedTag lang={c.lang} />
       <main>
         {/* Hero */}
-        <section className="bg-secondary pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+        <section className="bg-secondary pt-10 md:pt-16 pb-16 md:pb-24 overflow-hidden">
           <div className="container max-w-6xl">
-            <div className="flex justify-end mb-6">
-              <Link href={c.langSwitch.href} className="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors">
-                <Languages className="w-4 h-4" /> {c.langSwitch.label}
-              </Link>
-            </div>
             <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
               <div>
                 <h1 className="text-hero md:text-hero-lg text-foreground leading-[1.05]">
@@ -309,7 +304,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
         </section>
 
         {/* Pricing */}
-        <section className="section-padding bg-white">
+        <section id="prijs" className="section-padding bg-white scroll-mt-16">
           <div className="container max-w-5xl">
             <ScrollRevealSection>
               <div className="text-center max-w-2xl mx-auto">
@@ -375,6 +370,9 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
             </p>
           </div>
         </section>
+
+        {/* Not ready yet? Save it or share it. */}
+        <VibecodingSave lang={c.lang} />
 
         {/* Book / form */}
         <section id="book" className="section-padding bg-navy scroll-mt-16">
