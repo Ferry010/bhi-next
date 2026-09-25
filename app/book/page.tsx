@@ -49,7 +49,7 @@ export default function BookPage() {
               <div>
                 <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">The book</span>
                 <h1 className="text-hero md:text-hero-lg text-foreground mt-4">
-                  We wrote the book on <span className="text-primary">Brand</span> <span className="text-accent">Humanizing.</span>
+                  We wrote the book on it. <span className="text-accent">Literally.</span>
                 </h1>
                 <p className="text-body-lg text-muted-foreground mt-6 max-w-xl">
                   <em>Brand Humanizing: The superpower that makes your brand more human and your business grow faster.</em> By Ferry Hoes and Jonathan Flores.
@@ -86,7 +86,7 @@ export default function BookPage() {
 
         <WhyWeWroteIt />
 
-        <BookSection showCover={false} />
+        <BookSection variant="englishCta" />
 
         <section className="section-padding bg-navy">
           <div className="container max-w-3xl text-center">
