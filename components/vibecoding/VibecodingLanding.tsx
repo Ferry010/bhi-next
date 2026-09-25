@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Languages, PlayCircle, Check } from "lucide-react";
 import VibecodingForm from "./VibecodingForm";
 import VibecodingBuilder from "./VibecodingBuilder";
+import VibecodingAgenda from "./VibecodingAgenda";
 import VibecodingChat from "./VibecodingChat";
 import HeroBuildDemo from "./HeroBuildDemo";
 import VibecodedTag from "./VibecodedTag";
@@ -194,30 +195,10 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
           </div>
         </section>
 
-        {/* Sample agenda */}
+        {/* Sample agenda — interactive: pick a morning or afternoon slot */}
         <section className="section-padding bg-cream">
           <div className="container max-w-3xl">
-            <ScrollRevealSection>
-              <div className="text-center mb-10">
-                <h2 className="text-display md:text-display-lg text-foreground">{c.agenda.heading}</h2>
-                <p className="text-body-lg text-muted-foreground mt-4">{c.agenda.sub}</p>
-              </div>
-            </ScrollRevealSection>
-            <ScrollRevealSection>
-              <div className="rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-7 md:p-10">
-                <ol className="relative border-l-2 border-border/60 space-y-6">
-                  {c.agenda.items.map((it) => (
-                    <li key={it.time} className="relative pl-6 md:pl-8">
-                      <span className="absolute -left-[7px] top-2 w-3 h-3 rounded-full bg-accent ring-4 ring-white" />
-                      <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
-                        <span className="font-heading font-bold text-foreground tabular-nums w-16 shrink-0">{it.time}</span>
-                        <span className="text-muted-foreground leading-relaxed">{it.label}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </ScrollRevealSection>
+            <VibecodingAgenda content={c.agenda} lang={c.lang} />
           </div>
         </section>
 

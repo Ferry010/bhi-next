@@ -174,7 +174,7 @@ export const en: VibeContent = {
   },
   agenda: {
     heading: "What a session looks like",
-    sub: "Pick a morning (9:00–12:00) or an afternoon (13:00–16:00). This is an example; we shape it around your team and pace.",
+    sub: "This is an example. We shape it around your team and pace.",
     items: [
       { time: "09:00", label: "Walk-in with coffee and tea" },
       { time: "09:15", label: "Intro and a bit of theory on vibecoding" },
@@ -366,7 +366,7 @@ export const nl: VibeContent = {
   },
   agenda: {
     heading: "Zo ziet een sessie eruit",
-    sub: "Kies een ochtend (9:00–12:00) of een middag (13:00–16:00). Dit is een voorbeeld; we passen het aan op jullie team en tempo.",
+    sub: "Dit is een voorbeeld. We passen het aan op jullie team en tempo.",
     items: [
       { time: "09:00", label: "Inloop met koffie en thee" },
       { time: "09:15", label: "Introductie en een beetje theorie over vibecoden" },
