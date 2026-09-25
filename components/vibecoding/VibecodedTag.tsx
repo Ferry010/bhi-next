@@ -15,8 +15,8 @@ const COPY = {
 export default function VibecodedTag({ lang }: { lang: "en" | "nl" }) {
   const [dismissed, setDismissed] = useState(true); // start hidden to avoid a flash before we know
   const [show, setShow] = useState(false); // scroll position says it should be visible
-  const [render, setRender] = useState(false); // kept mounted during the fall-off animation
-  const [exiting, setExiting] = useState(false);
+  const [render, setRender] = useState(false); // kept mounted during the drop animation
+  const [dropping, setDropping] = useState(false);
 
   useEffect(() => {
     try {
@@ -41,13 +41,14 @@ export default function VibecodedTag({ lang }: { lang: "en" | "nl" }) {
   useEffect(() => {
     if (show) {
       setRender(true);
-      setExiting(false);
+      setDropping(false);
     } else if (render) {
-      setExiting(true);
+      // Snap the string and let it fall to the floor, then unmount.
+      setDropping(true);
       const t = setTimeout(() => {
         setRender(false);
-        setExiting(false);
-      }, 480);
+        setDropping(false);
+      }, 1100);
       return () => clearTimeout(t);
     }
   }, [show, render]);
@@ -65,11 +66,20 @@ export default function VibecodedTag({ lang }: { lang: "en" | "nl" }) {
   };
 
   return (
-    <div className={`fixed top-14 right-3 sm:right-6 z-40 hidden sm:block print:hidden ${exiting ? "vibe-tag-exit" : "vibe-tag-enter"}`}>
-      {/* string, hangs from the menu bar */}
-      <div className="w-px h-8 bg-foreground/25 ml-auto mr-8" />
-      {/* tag */}
-      <div className="vibe-tag-sway -mt-1.5">
+    <div
+      className={`fixed top-14 md:top-20 right-6 z-40 hidden sm:block print:hidden ${dropping ? "vibe-tag-drop pointer-events-none" : "vibe-tag-enter"}`}
+      aria-hidden={dropping}
+    >
+      {/* grommet threaded through the menu bar, and the string down to the tag.
+          Snaps away (unrendered) the instant it drops. */}
+      {!dropping && (
+        <div className="mx-auto w-3 flex flex-col items-center">
+          <span className="-mt-2 w-3 h-3 rounded-full bg-white ring-[2px] ring-foreground/30 shadow-sm" />
+          <span className="w-[2px] h-7 bg-foreground/30" />
+        </div>
+      )}
+      {/* tag — the pendulum sway is paused while it falls */}
+      <div className={`${dropping ? "" : "vibe-tag-sway"} -mt-1`}>
         <div className="relative w-44 rounded-xl bg-sunny text-foreground shadow-[0_14px_30px_-10px_rgba(18,21,46,0.45)] ring-1 ring-foreground/10">
           {/* eyelet */}
           <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-white ring-1 ring-foreground/25" />

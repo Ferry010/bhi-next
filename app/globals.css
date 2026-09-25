@@ -282,15 +282,21 @@ button:not(.btn-scale):active,
   100% { transform: translateY(0); }
 }
 .vibe-tag-enter { animation: dangleIn 700ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
-/* Falls off the menu bar when you scroll back to the top */
-@keyframes dangleOut {
-  0%   { transform: translateY(0) rotate(0); opacity: 1; }
-  100% { transform: translateY(180%) rotate(14deg); opacity: 0; }
+/* Snaps off the bar and drops to the floor when you scroll back to the top */
+@keyframes tagDrop {
+  0%   { transform: translateY(0) rotate(-3deg); }
+  8%   { transform: translateY(-6px) rotate(10deg); }   /* the string breaks, small up-flick */
+  68%  { transform: translateY(84vh) rotate(96deg); }   /* hits the floor */
+  82%  { transform: translateY(79vh) rotate(88deg); }   /* little bounce */
+  100% { transform: translateY(83vh) rotate(93deg); }   /* settles, lying down */
 }
-.vibe-tag-exit { animation: dangleOut 480ms cubic-bezier(0.4, 0, 1, 1) both; }
+.vibe-tag-drop {
+  animation: tagDrop 1100ms cubic-bezier(0.5, 0, 0.75, 0.45) forwards;
+  transform-origin: center center;
+}
 @media (prefers-reduced-motion: reduce) {
   .vibe-tag-sway { animation: none; transform: rotate(-3deg); }
-  .vibe-tag-enter, .vibe-tag-exit { animation: none; }
+  .vibe-tag-enter, .vibe-tag-drop { animation: none; }
 }
 
 /* Print styles */

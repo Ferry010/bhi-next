@@ -23,12 +23,12 @@ export default function VibecodingNav({ content }: { content: VibeContent }) {
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-border/50">
-      <div className="container max-w-6xl flex items-center justify-between gap-4 h-16">
-        <Link href="/" aria-label="Brand Humanizing Institute" className="shrink-0">
+      <div className="container max-w-6xl flex items-center justify-between gap-4 h-14 md:h-20">
+        <Link href="/" aria-label="Brand Humanizing Institute" className="relative shrink-0 translate-y-4 md:translate-y-5">
           <img
             src="/assets/logo.png"
             alt="Brand Humanizing Institute"
-            className="w-11 h-11 rounded-lg -rotate-2 drop-shadow-[0_3px_8px_rgba(0,0,0,0.2)]"
+            className="w-14 h-14 md:w-20 md:h-20 rounded-xl -rotate-2 drop-shadow-[0_4px_12px_rgba(0,0,0,0.25)] hover:rotate-0 transition-transform duration-300"
           />
         </Link>
 
