@@ -101,7 +101,7 @@ export const en: VibeContent = {
   hero: {
     title: "The team day you'll still be talking about weeks later. ",
     titleAccent: "Vibecoding.",
-    promise: "What's that? Vibecoding: building something cool together with AI.",
+    promise: "In one afternoon, your team builds a working app with AI. Without writing a line of code.",
     sub: "An app, a page, a silly little tool. As long as it's fun to make.",
     forEveryone: "Fun for everyone, from sales and HR to operations. No AI experience needed.",
     priceLine: "Half a day, {price} for your whole team (up to 20 people).",
@@ -293,7 +293,7 @@ export const nl: VibeContent = {
   hero: {
     title: "De teamdag waar je weken later nog over napraat. ",
     titleAccent: "Vibecoden.",
-    promise: "Wat zeg je? Vibecoden: samen iets tofs bouwen met AI.",
+    promise: "In één middag bouwt je team een werkende app met AI. Zonder één regel code.",
     sub: "Een app, een pagina, een grappige tool. Als het maar leuk is om te maken.",
     forEveryone: "Leuk voor iedereen, van sales en HR tot operations. Geen ervaring met AI nodig.",
     priceLine: "Een dagdeel, {price} voor je hele team (tot 20 personen).",

@@ -23,6 +23,7 @@ import {
   CalendarDays,
   MessageSquare,
   Tag,
+  Download,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -55,6 +56,7 @@ const TYPE_LABELS: Record<string, string> = {
   boss_referral: "Boss Referral",
   lead_magnet: "Lead Magnet",
   assessment: "Assessment",
+  vibecoding: "Vibecoding",
 };
 
 const TYPE_COLORS: Record<string, string> = {
@@ -64,7 +66,18 @@ const TYPE_COLORS: Record<string, string> = {
   boss_referral: "bg-accent/15 text-accent",
   lead_magnet: "bg-pink-500/15 text-pink-400",
   assessment: "bg-indigo-500/15 text-indigo-400",
+  vibecoding: "bg-amber-500/15 text-amber-400",
 };
+
+// Google Ads offline conversion import. The vibecoding form stores the gclid of
+// the ad click that led to it; we export those leads in Google's upload format
+// so conversions can be reported without any tracking pixel or cookie on the site.
+const GADS_CONVERSION_NAME = "Teamuitje aanvraag";
+
+function toConversionTime(createdAt: string) {
+  // Google accepts ISO 8601 with an explicit offset; created_at is stored UTC.
+  return new Date(createdAt).toISOString().replace(/\.\d{3}Z$/, "+00:00");
+}
 
 function extractKeyFields(data: Record<string, unknown>) {
   return {
@@ -116,6 +129,31 @@ export default function AdminFormSubmissions() {
     });
   }, [submissions, statusFilter, typeFilter]);
 
+  // Vibecoding leads that arrived from a Google ad (have a gclid) — the rows we
+  // can report back to Google Ads as conversions.
+  const gadsLeads = useMemo(
+    () => submissions.filter((s) => s.form_type === "vibecoding" && typeof s.data?.gclid === "string" && s.data.gclid),
+    [submissions]
+  );
+
+  const downloadGadsConversions = () => {
+    const header = "Google Click ID,Conversion Name,Conversion Time,Conversion Value,Conversion Currency";
+    const rows = gadsLeads.map(
+      (s) => `${String(s.data.gclid)},${GADS_CONVERSION_NAME},${toConversionTime(s.created_at)},,`
+    );
+    const csv = [header, ...rows].join("\r\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `google-ads-conversions-${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    toast.success(`Exported ${gadsLeads.length} conversion${gadsLeads.length === 1 ? "" : "s"}`);
+  };
+
   const statusCounts = useMemo(() => {
     const counts = { all: submissions.length, new: 0, in_progress: 0, closed: 0 };
     submissions.forEach((s) => {
@@ -162,17 +200,29 @@ export default function AdminFormSubmissions() {
         <h1 className="text-2xl font-heading font-bold text-foreground flex items-center gap-2">
           <Inbox className="w-6 h-6 text-primary" /> Inbox
         </h1>
-        <Select value={typeFilter} onValueChange={setTypeFilter}>
-          <SelectTrigger className="w-[150px] h-8 text-xs bg-card border-border text-foreground">
-            <SelectValue placeholder="All types" />
-          </SelectTrigger>
-          <SelectContent className="bg-popover border-border">
-            <SelectItem value="all">All types</SelectItem>
-            {Object.entries(TYPE_LABELS).map(([key, label]) => (
-              <SelectItem key={key} value={key}>{label}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <div className="flex items-center gap-2">
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={downloadGadsConversions}
+            disabled={gadsLeads.length === 0}
+            title="Download vibecoding leads with a Google click id, in Google Ads offline-conversion-import format"
+            className="h-8 text-xs border-border text-foreground hover:bg-secondary"
+          >
+            <Download className="w-3.5 h-3.5 mr-1" /> Google Ads CSV ({gadsLeads.length})
+          </Button>
+          <Select value={typeFilter} onValueChange={setTypeFilter}>
+            <SelectTrigger className="w-[150px] h-8 text-xs bg-card border-border text-foreground">
+              <SelectValue placeholder="All types" />
+            </SelectTrigger>
+            <SelectContent className="bg-popover border-border">
+              <SelectItem value="all">All types</SelectItem>
+              {Object.entries(TYPE_LABELS).map(([key, label]) => (
+                <SelectItem key={key} value={key}>{label}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       <div className="flex gap-1 mb-4">
