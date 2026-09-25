@@ -17,9 +17,11 @@ const nextConfig = {
   // Don't advertise the framework.
   poweredByHeader: false,
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "**" },
-    ],
+    // The app uses plain <img>, not next/image, so the image optimizer needs no
+    // remote hosts. An empty list closes the /_next/image endpoint to arbitrary
+    // remote URLs (an open-proxy / SSRF surface) while local images still work.
+    // If you ever adopt next/image with remote sources, add those exact hosts here.
+    remotePatterns: [],
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
