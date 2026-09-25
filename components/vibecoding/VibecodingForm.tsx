@@ -120,6 +120,12 @@ export default function VibecodingForm({ labels, lang }: { labels: VibeContent["
       createSupabaseBrowserClient().functions.invoke("notify-slack", {
         body: { form_type: "vibecoding", data: formData },
       });
+      // Also push it to the dedicated #vibecoding-workshop channel.
+      fetch("/api/vibecoding/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ form_type: "vibecoding", data: formData }),
+      }).catch(() => {});
     } catch {
       // Best-effort: never drop the person on an error screen.
     } finally {

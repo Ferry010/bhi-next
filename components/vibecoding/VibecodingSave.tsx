@@ -63,6 +63,12 @@ export default function VibecodingSave({ lang }: { lang: "en" | "nl" }) {
       createSupabaseBrowserClient().functions.invoke("notify-slack", {
         body: { form_type: "vibecoding_save", data },
       });
+      // Also push it to the dedicated #vibecoding-workshop channel.
+      fetch("/api/vibecoding/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ form_type: "vibecoding_save", data }),
+      }).catch(() => {});
     } catch {
       // Best-effort: never block the person on an error.
     } finally {
