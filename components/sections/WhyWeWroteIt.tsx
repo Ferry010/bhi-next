@@ -53,10 +53,7 @@ export default function WhyWeWroteIt() {
           <ScrollRevealSection>
             <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-16 items-center">
               <div>
-                <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">
-                  What&apos;s inside
-                </span>
-                <h2 className="text-display md:text-display-lg text-foreground mt-4">
+                <h2 className="text-display md:text-display-lg text-foreground">
                   The whole method, in <span className="text-primary">one book</span>.
                 </h2>
                 <p className="text-body-lg text-muted-foreground mt-6 max-w-xl">
@@ -114,10 +111,7 @@ export default function WhyWeWroteIt() {
         <div className="container max-w-2xl">
           <ScrollRevealSection>
             <div className="mb-10">
-              <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">
-                How the book was made
-              </span>
-              <h2 className="text-display text-foreground mt-4">Two years in the making.</h2>
+              <h2 className="text-display text-foreground">Two years in the making.</h2>
               <p className="text-body-lg text-muted-foreground mt-3">
                 One tiny house in the woods, a publisher who got it, and a lot of interviews.
               </p>
@@ -167,8 +161,8 @@ export default function WhyWeWroteIt() {
               lang="nl"
             >
               Dit boek is niet zomaar een leidraad. Het is een reis door het hart van wat het betekent om een merk
-              te bouwen dat technologisch geavanceerd is{" "}
-              <span className="text-soft-coral">— en, misschien nog wel meer, diep menselijk.</span>
+              te bouwen dat technologisch geavanceerd is.{" "}
+              <span className="text-soft-coral">En misschien nog wel meer: diep menselijk.</span>
             </p>
             <div className="mt-7 flex items-center gap-3">
               <span className="w-8 h-0.5 bg-sunny" />

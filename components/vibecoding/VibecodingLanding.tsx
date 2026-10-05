@@ -31,8 +31,7 @@ export default function VibecodingLanding({ content }: { content: VibeContent })
                   <span className="text-accent">{c.hero.titleAccent}</span>
                 </h1>
                 <p className="mt-5 text-lg md:text-xl font-heading font-semibold text-foreground">{c.hero.promise}</p>
-                <p className="mt-4 text-sm md:text-body-lg text-muted-foreground">{c.hero.sub}</p>
-                <p className="mt-3 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
+                <p className="mt-4 text-sm text-muted-foreground max-w-md">{c.hero.forEveryone}</p>
                 <div className="mt-7 flex flex-wrap items-center gap-3">
                   <a href="#book">
                     <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">

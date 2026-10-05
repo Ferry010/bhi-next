@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Polaroid from "./Polaroid";
 import { BOOK, TALK_TO_EXPERT } from "@/lib/pricing";
-import { ChevronDown, ArrowRight, BookOpen, GraduationCap } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap } from "lucide-react";
 
 const SECTION_COUNT = 7;
 const labels = ["Start", "2017", "2018", "First client", "The stages", "The book", "What's next"];
@@ -85,13 +85,6 @@ export default function OriginTour() {
           <p className="text-muted-foreground text-base md:text-body-lg mt-6 max-w-xl mx-auto">
             How two growth hackers turned their own discomfort into Brand Humanizing, and where it goes next.
           </p>
-          <button
-            onClick={() => go(1)}
-            className="mt-12 inline-flex flex-col items-center gap-2 text-foreground/50 hover:text-foreground transition-colors"
-          >
-            <span className="text-xs font-heading font-semibold uppercase tracking-widest">Scroll</span>
-            <ChevronDown className="w-5 h-5 animate-bounce" />
-          </button>
         </div>
       </section>
 

@@ -24,8 +24,8 @@ export default function VibecodingAgenda({
   const offset = slot === "afternoon" ? 4 : 0;
 
   const options: { key: Slot; label: string; range: string }[] = [
-    { key: "morning", label: lang === "nl" ? "Ochtend" : "Morning", range: "9:00 – 12:00" },
-    { key: "afternoon", label: lang === "nl" ? "Middag" : "Afternoon", range: "13:00 – 16:00" },
+    { key: "morning", label: lang === "nl" ? "Ochtend" : "Morning", range: "9:00-12:00" },
+    { key: "afternoon", label: lang === "nl" ? "Middag" : "Afternoon", range: "13:00-16:00" },
   ];
 
   return (

@@ -17,7 +17,7 @@ const BRAND = {
 const layers = [
   {
     label: "Human-Technology Fit",
-    overline: "LAYER 1 · THE FOUNDATION",
+    overline: "THE FOUNDATION",
     title: "Human-Technology Fit",
     desc: "Before any strategy is possible, your organization needs a clear, honest map. Which parts of your work does technology genuinely do better than humans? Which parts should only ever be human? This is the foundation everything else is built on.",
     why: "Without this clarity, every decision above it is guesswork.",
@@ -25,7 +25,7 @@ const layers = [
   },
   {
     label: "Company / Employee Fit",
-    overline: "LAYER 2 · CULTURE",
+    overline: "CULTURE",
     title: "Company / Employee Fit",
     desc: "Your employees are your first brand. Before any customer encounters your organization, a human being inside it decided how to show up. Disengaged employees produce disengaged customer experiences.",
     why: "Culture is not a department. It is the compound effect of every human decision inside your organization.",
@@ -33,7 +33,7 @@ const layers = [
   },
   {
     label: "Product / Market Fit",
-    overline: "LAYER 3 · VALUE",
+    overline: "VALUE",
     title: "Product / Market Fit",
     desc: "You need something real. Something people genuinely want, in a form that actually works for them. This is not a startup concept. It applies at every stage of organizational growth.",
     why: "No amount of branding saves a product nobody needs.",
@@ -41,7 +41,7 @@ const layers = [
   },
   {
     label: "Branding & Positioning",
-    overline: "LAYER 4 · IDENTITY",
+    overline: "IDENTITY",
     title: "Branding and Positioning",
     desc: "The honest story of why your organization exists and who it genuinely serves. Human brands are built on truth, not on what the marketing department wishes were true.",
     why: "A brand that does not match reality is not a brand. It is a liability.",
@@ -49,7 +49,7 @@ const layers = [
   },
   {
     label: "Company / Client Fit",
-    overline: "LAYER 5 · RELATIONSHIPS",
+    overline: "RELATIONSHIPS",
     title: "Company / Client Fit",
     desc: "Not all growth is good growth. The right clients for the right organization. Brand Humanizing organizations are honest about who they serve best. And who they do not.",
     why: "Saying no to the wrong client is as important as saying yes to the right one.",
@@ -57,7 +57,7 @@ const layers = [
   },
   {
     label: "Growth",
-    overline: "LAYER 6 · THE APEX",
+    overline: "THE APEX",
     title: "Growth",
     desc: "Not just financial growth. Growth in trust, reputation, and the quality of relationships. The compound effect of getting every layer below this right.",
     why: "Sustainable growth is not a goal. It is a symptom of a healthy organization.",
