@@ -62,6 +62,14 @@ function ContactForm() {
 
   useEffect(() => {
     const product = searchParams.get("product");
+    // ?intent=session|project|course|question jumps straight to that form step
+    // (used by the end-of-page "Request a quote" links).
+    const intentParam = searchParams.get("intent");
+    if (!product && intentParam && ["session", "project", "course", "question"].includes(intentParam)) {
+      setIntent(intentParam as Intent);
+      setStep(2);
+      return;
+    }
     if (product && productToSessionType[product]) {
       if (projectProducts.includes(product)) {
         setIntent("project");
@@ -95,6 +103,8 @@ function ContactForm() {
             : "General question",
         message: message.trim() || undefined,
         found_us: foundUs || undefined,
+        // Which page sent them here, so we can see which funnel converts.
+        from_page: searchParams.get("from") || undefined,
         ...(intent === "session" && { session_type: sessionType, team_size: teamSize, timeline }),
         ...(intent === "project" && { project_type: projectType, org_size: orgSize, timeline }),
       };

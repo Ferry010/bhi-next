@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import Breadcrumb from "@/components/Breadcrumb";
 
 export const metadata: Metadata = {
@@ -171,6 +172,7 @@ export default function NoCookiesPage() {
         </section>
       </main>
 
+      <NextStep primary="book" />
       <Footer />
     </div>
   );

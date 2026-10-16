@@ -4,6 +4,7 @@ import { sendToHubspot } from "@/lib/sendToHubspot";
 import { useState, useCallback } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import QuestionStep from "@/components/assessment/QuestionStep";
@@ -261,6 +262,7 @@ export default function AssessmentClient() {
           </section>
         )}
       </main>
+      <NextStep primary="meeting" />
       <Footer />
     </>
   );

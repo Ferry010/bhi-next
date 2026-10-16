@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
@@ -418,6 +419,7 @@ export default function AIGeletterdheid() {
         </section>
 
       </main>
+      <NextStep primary="meeting" lang="nl" />
       <Footer />
     </>
   );

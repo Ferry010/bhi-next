@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import VibecodingBuilder from "./VibecodingBuilder";
 import { Check, ArrowLeft } from "lucide-react";
 import type { VibeContent } from "./content";
@@ -47,6 +48,18 @@ export default function VibecodingThanks({ content }: { content: VibeContent }) 
           </div>
         </section>
       </main>
+      {/* They just requested a quote: the next step is the book (or a call), never another quote. */}
+      <NextStep
+        primary="book"
+        exclude={["quote"]}
+        lang={c.lang}
+        heading={c.lang === "nl" ? "Alvast een voorsprong?" : "Want a head start?"}
+        body={
+          c.lang === "nl"
+            ? "Het boek is de hele methode achter de teamdag. Lees het voordat we elkaar spreken."
+            : "The book is the whole method behind the team day. Read it before we talk."
+        }
+      />
       <Footer />
     </>
   );

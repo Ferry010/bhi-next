@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
@@ -170,6 +171,7 @@ export default function TheMethodPage() {
           </div>
         </section>
       </main>
+      <NextStep primary="meeting" />
       <Footer />
     </>
   );

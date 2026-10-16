@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { Button } from "@/components/ui/button";
@@ -115,6 +116,7 @@ export default function OurBeliefsPage() {
           </div>
         </section>
       </main>
+      <NextStep primary="meeting" />
       <Footer />
     </>
   );

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import DimensionCard from "@/components/trust-gap/GapBar";
 import { getReport } from "@/lib/trustGap/store";
 import { scoreTrustGap, type TrustGapResult } from "@/lib/trustGap/scoring";
@@ -217,6 +218,11 @@ export default function ReportPage({ params }: { params: { code: string } }) {
           </div>
         </section>
       </main>
+      <NextStep
+        primary="meeting"
+        heading="Talk through your results."
+        body="A short call with Ferry about what this gap means for your team, and what to do about it first."
+      />
       <Footer />
     </>
   );

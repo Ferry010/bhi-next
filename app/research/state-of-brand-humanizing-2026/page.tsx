@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import { Button } from "@/components/ui/button";
 import ScrollProgress from "./ScrollProgress";
 import PrintButton from "./PrintButton";
@@ -413,6 +414,7 @@ export default function StateOfBrandHumanizing2026Page() {
           </div>
         </main>
       </div>
+      <NextStep primary="book" />
       <Footer />
     </>
   );

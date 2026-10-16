@@ -3,6 +3,7 @@ import type { BlogPost } from "@/hooks/useBlogPosts";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import Breadcrumb from "@/components/Breadcrumb";
 import { createServerClient } from "@/lib/supabase/server";
 import BlogCard from "@/components/blog/BlogCard";
@@ -82,6 +83,7 @@ export default async function BlogPage() {
           </div>
         </section>
       </main>
+      <NextStep primary="book" />
       <Footer />
     </>
   );

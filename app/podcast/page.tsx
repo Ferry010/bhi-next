@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import Breadcrumb from "@/components/Breadcrumb";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -99,6 +100,7 @@ export default async function PodcastPage() {
           </div>
         </section>
       </main>
+      <NextStep primary="book" />
       <Footer />
     </>
   );

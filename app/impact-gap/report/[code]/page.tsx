@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ToolHeader, ToolFooter } from "@/components/impact-gap/ToolShell";
+import NextStep from "@/components/NextStep";
 import ReportView from "@/components/impact-gap/ReportView";
 import { getReport } from "@/lib/impactGap/store";
 import { scoreImpactGap, type ImpactGapResult } from "@/lib/impactGap/scoring";
@@ -97,6 +98,11 @@ export default function ReportPage({ params }: { params: { code: string } }) {
     <>
       <ToolHeader />
       <ReportView result={result} teamCounts={teamCounts} leaderAnswer={leaderAnswer} />
+      <NextStep
+        primary="meeting"
+        heading="Talk through your results."
+        body="A short call with Ferry about what this gap means for your team, and what to do about it first."
+      />
       <ToolFooter />
     </>
   );

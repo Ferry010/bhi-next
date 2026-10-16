@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import Breadcrumb from "@/components/Breadcrumb";
 import { Button } from "@/components/ui/button";
 import { yearsActiveWord } from "@/lib/facts";
@@ -189,6 +190,7 @@ export default function WhatIsBrandHumanizingPage() {
           </div>
         </section>
       </main>
+      <NextStep primary="meeting" />
       <Footer />
     </>
   );

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import Link from "next/link";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
@@ -296,6 +297,7 @@ export default function HumanTouchClient() {
           </p>
         </section>
       </main>
+      <NextStep primary="meeting" />
       <Footer />
     </>
   );

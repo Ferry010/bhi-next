@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextStep from "@/components/NextStep";
 import Breadcrumb from "@/components/Breadcrumb";
 import AuthorBio from "@/components/blog/AuthorBio";
 import BlogCard from "@/components/blog/BlogCard";
@@ -268,6 +269,7 @@ export default async function BlogPostPage({
           </div>
         </section>
       </main>
+      <NextStep primary="book" />
       <Footer />
     </>
   );
