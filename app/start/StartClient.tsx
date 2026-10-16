@@ -5,71 +5,68 @@ import Link from "next/link";
 import { LEVELS, TALK_TO_EXPERT, type Level } from "@/lib/pricing";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
-// "Where do you start?": three questions about what someone needs right now
-// (not what they've done with us), then one firm offer from lib/pricing LEVELS.
-//   problem — what hurts now              (votes for a level)
-//   win     — what they feel solves it    (votes for a level)
-//   fit     — what they can make room for (caps the level)
-// Level = the middle of problem and win, rounded up, capped by fit.
+// "Where do you start?": three questions, then one firm offer (lib/pricing LEVELS).
+//   pain — which part of the sameness problem hits home (echoed in the result)
+//   know — what they know about Brand Humanizing right now
+//   win  — which next step would feel like a win (this picks the level)
+// One guard: the Taskforce needs a team that already knows the idea (see
+// /taskforce, "we will not sell you this cold"), so if they haven't worked
+// with us yet, the Training comes first.
 // No email, nothing stored: answers live in this component only.
 
-type Key = "problem" | "win" | "fit";
+type Key = "pain" | "know" | "win";
 type Answers = Partial<Record<Key, number>>;
-type Option = { label: string; value: number; echo?: string };
+type Option = { label: string; value: number; echo: string };
 
 const QUESTIONS: Record<Key, { question: string; options: Option[] }> = {
-  problem: {
-    question: "What's the problem right now?",
+  pain: {
+    question: "Which one hits closest to home?",
     options: [
-      { label: "I don't really know what AI means for us yet", value: 1, echo: "you don't know yet what AI means for you" },
-      { label: "My team is scared of AI, or just not on board", value: 2, echo: "your team isn't on board yet" },
-      { label: "We want to use AI, but nobody knows how", value: 3, echo: "your team wants to use AI, but nobody knows how" },
-      { label: "We tried things, but nothing sticks", value: 4, echo: "you've tried things, but nothing sticks" },
+      { label: "We're starting to look and sound like everyone else", value: 1, echo: "Your company is starting to look and sound like everyone else." },
+      { label: "We put bots where customers want a human", value: 2, echo: "You've put bots where customers want a human." },
+      { label: "Our people are stuck doing robot work", value: 3, echo: "Your people are stuck doing robot work." },
+      { label: "We have the AI, but not who should do what", value: 4, echo: "You have the AI, but not yet who should do what." },
+    ],
+  },
+  know: {
+    question: "How well do you know Brand Humanizing?",
+    options: [
+      { label: "It's new to me", value: 1, echo: "It's new to you," },
+      { label: "I've read about it, or follow Ferry online", value: 2, echo: "You know the idea," },
+      { label: "I saw Ferry speak live", value: 3, echo: "You saw Ferry live," },
+      { label: "We've worked with you before", value: 4, echo: "You've worked with us before," },
     ],
   },
   win: {
-    question: "What would feel like a win, three months from now?",
+    question: "What would be a win for you right now?",
     options: [
-      { label: "I finally get it, and know what to do next", value: 1, echo: "to finally get it yourself" },
-      { label: "My whole team is excited and on the same page", value: 2, echo: "your whole team excited and on the same page" },
-      { label: "My team uses AI well, and follows a clear plan", value: 3, echo: "a team that uses AI well, with a clear plan" },
-      { label: "It's simply how we work now, without outside help", value: 4, echo: "it to simply be how you work, without outside help" },
-    ],
-  },
-  fit: {
-    question: "What fits right now?",
-    options: [
-      { label: "Something I can read on my own", value: 1 },
-      { label: "One hour with the whole team", value: 2 },
-      { label: "One full day with one team", value: 3 },
-      { label: "A few months, with a boss who backs it", value: 4 },
+      { label: "Understand it better myself", value: 1, echo: "and you want to understand it better yourself." },
+      { label: "Get my team to hear the message", value: 2, echo: "and you want your team to hear the message too." },
+      { label: "Train my team to actually do it", value: 3, echo: "and you want your team to learn how to do it." },
+      { label: "Make it part of how our company works", value: 4, echo: "and you want it to become part of how your company works." },
     ],
   },
 };
 
-const FLOW: Key[] = ["problem", "win", "fit"];
+const FLOW: Key[] = ["pain", "know", "win"];
 
 const at = (n: number) => LEVELS[Math.min(4, Math.max(1, n)) - 1];
 const echoOf = (k: Key, v?: number) => QUESTIONS[k].options.find((o) => o.value === v)?.echo ?? "";
 
 function place(a: Answers): { level: Level; reason: string } {
-  const problem = a.problem ?? 2;
+  const pain = echoOf("pain", a.pain);
+  const said = `${pain} ${echoOf("know", a.know)} ${echoOf("win", a.win)}`;
   const win = a.win ?? 2;
-  const fit = a.fit ?? 4;
-  const need = Math.ceil((problem + win) / 2);
-  const level = at(Math.min(need, fit));
 
-  if (fit < need) {
-    const target = at(need);
+  if (win === 4 && (a.know ?? 1) < 4) {
+    const level = at(3);
     return {
       level,
-      reason: `${target.name} would get you there, but it takes ${target.commitment.toLowerCase()}. ${level.name} fits right now, and it's the first step.`,
+      reason: `${said} The way there starts with ${level.name}: your team learns how it works. Then the Taskforce makes it stick.`,
     };
   }
-  return {
-    level,
-    reason: `You said ${echoOf("problem", a.problem)}, and you want ${echoOf("win", a.win)}. That's what ${level.name} is for.`,
-  };
+  const level = at(win);
+  return { level, reason: `${said} That's what ${level.name} is for.` };
 }
 
 export default function StartClient() {
