@@ -8,7 +8,8 @@ import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Clock, Users, Euro, ArrowRight, Check, BookOpen, CalendarDays } from "lucide-react";
-import { FACILITATOR, STATS, MARQUEE_LOGOS, DISPLAY_PRICES, TALK_TO_EXPERT } from "@/lib/pricing";
+import { FACILITATOR, STATS, MARQUEE_LOGOS, DISPLAY_PRICES, TALK_TO_EXPERT, type LevelKey } from "@/lib/pricing";
+import { LevelPill, LevelsSection } from "@/components/Ladder";
 import CountUp from "@/components/ui/CountUp";
 import SessionQuote from "@/components/learning/SessionQuote";
 import StickyQuoteBar from "@/components/learning/StickyQuoteBar";
@@ -90,6 +91,9 @@ export interface ProductPageData {
   faqs: FAQ[];
   crossSells: CrossSell[];
   comingSoon?: boolean;
+  /** Which of the four levels this page is. Shows "Level n of 4" in the hero
+   *  and the ladder in place of the cross-sells. */
+  level?: LevelKey;
   /** Set it and the page becomes bookable on the spot: the price in the hero,
    *  an "Investment" card, "How it works" and the inline quote/call block. */
   priceFrom?: string;
@@ -120,10 +124,15 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl pointer-events-none" />
         <div className="container max-w-4xl relative z-10">
           <Breadcrumb items={data.breadcrumbs} variant="light" />
-          {data.badge && (
-            <span className="inline-flex items-center gap-2 bg-accent/10 text-accent font-heading font-semibold text-sm rounded-full px-4 py-1.5 mb-5">
-              {data.badge}
-            </span>
+          {(data.level || data.badge) && (
+            <div className="flex flex-wrap items-center gap-2 mb-5">
+              {data.level && <LevelPill level={data.level} />}
+              {data.badge && (
+                <span className="inline-flex items-center gap-2 bg-accent/10 text-accent font-heading font-semibold text-sm rounded-full px-4 py-1.5">
+                  {data.badge}
+                </span>
+              )}
+            </div>
           )}
           <h1 className="font-heading text-4xl md:text-6xl font-bold leading-[1.1] mb-6">
             {data.title}
@@ -466,7 +475,12 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
         </>
       )}
 
-      {data.crossSells.length > 0 && (
+      {data.level ? (
+        <>
+          <LevelsSection current={data.level} />
+          <SectionDivider />
+        </>
+      ) : data.crossSells.length > 0 && (
         <>
           <section className="section-padding bg-white">
             <div className="container max-w-4xl">

@@ -67,6 +67,7 @@ const data = {
     { title: "Your 90-day plan", body: "Your team leaves with it. Many follow up with the Taskforce to turn it into a working pilot." },
   ],
   groupOptions: ["Up to 12", "12 to 20", "20 to 30", "More than 30"],
+  level: "training" as const,
   includesBook: true,
   ctaLabel: "Book the full day",
   ctaProduct: "full-day-course",

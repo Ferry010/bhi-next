@@ -9,6 +9,7 @@ import { ArrowRight } from "lucide-react";
 import BookSection from "@/components/sections/BookSection";
 import WhyWeWroteIt from "@/components/sections/WhyWeWroteIt";
 import { BOOK } from "@/lib/pricing";
+import { LevelPill, LevelsSection } from "@/components/Ladder";
 
 // The book's purchase mechanism is not decided yet (external retailer vs. direct
 // checkout). Until BOOK.purchase.url is set to a real URL, we show the price with
@@ -47,7 +48,7 @@ export default function BookPage() {
             <Breadcrumb items={[{ label: "The Book" }]} variant="light" />
             <div className="grid md:grid-cols-[1.4fr_1fr] gap-10 md:gap-14 items-center mt-2">
               <div>
-                <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">The book</span>
+                <LevelPill level="book" />
                 <h1 className="text-hero md:text-hero-lg text-foreground mt-4">
                   We wrote the book on it. <span className="text-accent">Literally.</span>
                 </h1>
@@ -103,6 +104,7 @@ export default function BookPage() {
             </ScrollRevealSection>
           </div>
         </section>
+        <LevelsSection current="book" />
       </main>
       <Footer />
     </>

@@ -4,12 +4,14 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TALK_TO_EXPERT } from "@/lib/pricing";
+import { TALK_TO_EXPERT, LEVELS } from "@/lib/pricing";
 
 interface DropdownItem {
   label: string;
   to: string;
   badge?: string;
+  /** Shown as "1", "2"… in front of the label: the offer is a ladder. */
+  level?: number;
 }
 
 interface NavItem {
@@ -17,22 +19,21 @@ interface NavItem {
   to: string;
   children?: DropdownItem[];
   footerLink?: { label: string; to: string };
+  /** Mobile "see everything" link text; defaults to "View all {label}". */
+  allLabel?: string;
 }
 
 const navLinks: NavItem[] = [
   { label: "The Method", to: "/the-method" },
   { label: "Our Story", to: "/our-story" },
   {
-    label: "Learning",
+    // The whole offer, as the four levels, lightest first.
+    label: "How we help",
     to: "/learning",
-    children: [
-      { label: "Inspiration Session", to: "/learning/inspiration-session" },
-      { label: "Full-Day Course", to: "/learning/full-day-course" },
-    ],
-    footerLink: { label: "See all learning formats →", to: "/learning" },
+    children: LEVELS.map((l) => ({ label: l.name.replace(/^The /, ""), to: l.href, level: l.level })),
+    footerLink: { label: "Not sure? Find your level →", to: "/start" },
+    allLabel: "All four levels",
   },
-  { label: "Taskforce", to: "/taskforce" },
-  { label: "Book", to: "/book" },
   { label: "Research", to: "/research" },
   {
     label: "About",
@@ -131,7 +132,14 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
                         onClick={() => setOpenDropdown(null)}
                         className="flex items-center justify-between px-4 py-2.5 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted transition-colors"
                       >
-                        {child.label}
+                        <span className="inline-flex items-center gap-3">
+                          {child.level && (
+                            <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[11px] font-heading font-bold inline-flex items-center justify-center tabular-nums">
+                              {child.level}
+                            </span>
+                          )}
+                          {child.label}
+                        </span>
                         {child.badge && (
                           <span className="text-[10px] font-heading font-semibold uppercase tracking-wider text-accent bg-accent/10 rounded-full px-2 py-0.5">
                             {child.badge}
@@ -198,7 +206,7 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
                         onClick={() => { setMobileOpen(false); setMobileExpanded(null); }}
                         className="block px-4 py-2 text-sm font-heading font-semibold text-accent"
                       >
-                        View all {l.label.toLowerCase()} →
+                        {l.allLabel ?? `View all ${l.label.toLowerCase()}`} →
                       </Link>
                       {l.children.map((child) => (
                         <Link
@@ -207,7 +215,14 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
                           onClick={() => { setMobileOpen(false); setMobileExpanded(null); }}
                           className="flex items-center justify-between px-4 py-2 text-sm font-medium text-foreground/60 hover:text-foreground hover:bg-muted rounded-xl transition-colors"
                         >
-                          {child.label}
+                          <span className="inline-flex items-center gap-3">
+                            {child.level && (
+                              <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-[11px] font-heading font-bold inline-flex items-center justify-center tabular-nums">
+                                {child.level}
+                              </span>
+                            )}
+                            {child.label}
+                          </span>
                           {child.badge && <span className="text-[10px] font-heading font-semibold text-accent">{child.badge}</span>}
                         </Link>
                       ))}

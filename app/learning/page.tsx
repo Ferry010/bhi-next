@@ -8,7 +8,7 @@ import MessageUs from "@/components/MessageUs";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { ArrowRight, ExternalLink, Check } from "lucide-react";
-import { PRODUCTS, BOOK, TALK_TO_EXPERT, SPEAKERS_ACADEMY, FACILITATOR, STATS, MARQUEE_LOGOS, EXAMPLES } from "@/lib/pricing";
+import { PRODUCTS, BOOK, TALK_TO_EXPERT, SPEAKERS_ACADEMY, FACILITATOR, STATS, MARQUEE_LOGOS, EXAMPLES, LEVELS } from "@/lib/pricing";
 import CountUp from "@/components/ui/CountUp";
 
 export const metadata: Metadata = {
@@ -104,7 +104,7 @@ const ladder: Rung[] = [
 ];
 
 const faqs = [
-  { q: "What does it cost?", a: "The book is €24,95. For the training, it depends on the format, your group size, and where you are. Rather than sell a package off a shelf, we scope every session in a short intake and come back with an exact proposal. Most teams start with a Spark Session and grow from there." },
+  { q: "What does it cost?", a: `The book is ${BOOK.price}. A Spark Session starts at ${PRODUCTS.inspiration.priceFrom} and the Full-Day Course at ${PRODUCTS.fullDay.priceFrom}, excl. VAT. The exact price depends on your group size and where we meet, and you get it in writing within one working day. The Taskforce is quoted per engagement, once we've agreed the challenge.` },
   { q: "Can sessions be delivered online or hybrid?", a: "Yes. Both formats work well. We discuss what's best for your situation during intake." },
   { q: "How much advance notice do you need?", a: "For a Spark Session: 3–6 weeks. For a Full-Day Course: 4–8 weeks. The sooner we talk, the more we can shape it around your team." },
   { q: "Can sessions be delivered in English?", a: "Yes. Both Ferry and Jonathan deliver in Dutch and English with equal fluency." },
@@ -134,9 +134,9 @@ export default function LearningPage() {
                   See the training formats →
                 </Button>
               </a>
-              <Link href="/assessment">
+              <Link href="/start">
                 <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/70 font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto">
-                  Not sure? Take the assessment →
+                  Not sure? Find your level →
                 </Button>
               </Link>
             </div>
@@ -160,15 +160,15 @@ export default function LearningPage() {
           <div className="container max-w-5xl">
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-foreground mb-3 text-center">Where&apos;s your team right now?</h2>
-              <p className="text-body-lg text-muted-foreground text-center mb-4 max-w-2xl mx-auto">There&apos;s no wrong door. Each step matches a different moment. Read the &ldquo;pick this if&rdquo; lines and start where you actually are. Most teams climb from one to the next, and every training format includes the book.</p>
+              <p className="text-body-lg text-muted-foreground text-center mb-4 max-w-2xl mx-auto">Four levels, lightest to deepest. Each one matches a different moment. Read the &ldquo;pick this if&rdquo; lines and step in where you actually are. Most teams climb one level at a time, and every session includes the book.</p>
               <p className="text-center text-sm text-muted-foreground mb-12">
                 Rather be pointed to one?{" "}
-                <Link href="/assessment" className="font-heading font-semibold text-primary hover:text-accent transition-colors">Take the 2-minute assessment →</Link>
+                <Link href="/start" className="font-heading font-semibold text-primary hover:text-accent transition-colors">Find your level in under a minute →</Link>
               </p>
             </ScrollRevealSection>
 
             <div className="space-y-5 md:space-y-6">
-              {ladder.map((rung) => (
+              {ladder.map((rung, i) => (
                 <ScrollRevealSection key={rung.key}>
                   <div className={`relative rounded-2xl bg-white p-6 md:p-8 shadow-[0_4px_24px_rgba(18,21,46,0.08)] transition-all duration-300 hover:shadow-lg ${rung.accent ? "border-2 border-accent" : "border border-border/50"}`}>
                     {rung.accent && (
@@ -179,11 +179,12 @@ export default function LearningPage() {
                     <div className="grid md:grid-cols-[220px_1fr] gap-6 md:gap-8">
                       {/* Left rail — what this rung is */}
                       <div>
-                        <span className="text-xs font-heading font-semibold uppercase tracking-widest text-accent">{rung.step}</span>
+                        <span className="text-xs font-heading font-semibold uppercase tracking-widest text-accent">Level {i + 1} · {rung.step}</span>
                         <div className="flex items-center gap-3 mt-3">
                           <h3 className="font-heading font-bold text-xl text-foreground leading-tight">{rung.name.replace(/^The /, "")}</h3>
                         </div>
                         <span className="inline-block mt-3 text-xs font-heading font-semibold text-primary bg-cream rounded-full px-3 py-1">{rung.spec}</span>
+                        <p className="mt-3 font-heading font-bold text-foreground tabular-nums">{LEVELS[i].price}</p>
                       </div>
 
                       {/* Right — help them decide */}
@@ -310,12 +311,12 @@ export default function LearningPage() {
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-white mb-6">Not sure where to start?</h2>
               <p className="text-body-lg text-white/70 mb-8">
-                Answer three quick questions and we&apos;ll point you to the right format, then a real human replies to your specific situation. Most teams start with the Spark Session.
+                Answer a few quick questions and see which of the four levels you&apos;re at. Most teams start with the Spark Session.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/start">
                   <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                    Find your fit <ArrowRight className="w-4 h-4" />
+                    Find your level <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <a href={TALK_TO_EXPERT.url}>

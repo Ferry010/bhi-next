@@ -147,6 +147,85 @@ export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay"
 export const PRODUCT_LIST = [PRODUCTS.inspiration, PRODUCTS.fullDay];
 
 // ─────────────────────────────────────────────────────────────────────────────
+// THE FOUR LEVELS — the whole public offer, as one ladder. Every place that
+// shows "where do I start" (nav, homepage, /learning, product pages, /start)
+// reads from here, so the order, names and anchors can never drift apart.
+// Keynotes for events stay out on purpose: they run through Speakers Academy.
+// ─────────────────────────────────────────────────────────────────────────────
+export type LevelKey = "book" | "spark" | "training" | "taskforce";
+
+export interface Level {
+  key: LevelKey;
+  level: 1 | 2 | 3 | 4;
+  /** One word for the step: what you do at this level. */
+  verb: string;
+  name: string;
+  /** Recognise yourself: the moment you're in when this is the right level. */
+  youAre: string;
+  /** What changes after it. */
+  outcome: string;
+  /** Size of the commitment. */
+  commitment: string;
+  /** Price anchor as shown publicly. */
+  price: string;
+  href: string;
+  cta: { label: string; href: string; external?: boolean };
+}
+
+export const LEVELS: Level[] = [
+  {
+    key: "book",
+    level: 1,
+    verb: "Read",
+    name: "The Book",
+    youAre: "You want to understand the thinking before anyone else gets involved.",
+    outcome: "You know what Brand Humanizing is and whether it fits you.",
+    commitment: "A weekend",
+    price: BOOK.price,
+    href: BOOK.href,
+    cta: { label: BOOK.purchase.label, href: BOOK.purchase.url, external: true },
+  },
+  {
+    key: "spark",
+    level: 2,
+    verb: "Spark",
+    name: PRODUCTS.inspiration.name,
+    youAre: "Your team needs a wake-up and a shared language, in one room.",
+    outcome: "Everyone sees AI, their work and their edge differently.",
+    commitment: "One hour, whole team",
+    price: `From ${PRODUCTS.inspiration.priceFrom}`,
+    href: PRODUCTS.inspiration.href,
+    cta: { label: "See the Spark Session", href: PRODUCTS.inspiration.href },
+  },
+  {
+    key: "training",
+    level: 3,
+    verb: "Train",
+    name: PRODUCTS.fullDay.name,
+    youAre: "Your team gets it. Now they need to be able to do it.",
+    outcome: "A capable team, with a 90-day plan on Monday.",
+    commitment: "One day, 12 to 30 people",
+    price: `From ${PRODUCTS.fullDay.priceFrom}`,
+    href: PRODUCTS.fullDay.href,
+    cta: { label: "See the Full-Day Course", href: PRODUCTS.fullDay.href },
+  },
+  {
+    key: "taskforce",
+    level: 4,
+    verb: "Implement",
+    name: "The Taskforce",
+    youAre: "It has to be built into how the organisation works, for good.",
+    outcome: "A working pilot, and the capability stays when we leave.",
+    commitment: "16 weeks, your own people",
+    price: "Quoted per engagement",
+    href: "/taskforce",
+    cta: { label: "See the Taskforce", href: "/taskforce" },
+  },
+];
+
+export const levelOf = (key: LevelKey) => LEVELS.find((l) => l.key === key)!;
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Credibility — reused on product pages and the pricing page.
 // ─────────────────────────────────────────────────────────────────────────────
 

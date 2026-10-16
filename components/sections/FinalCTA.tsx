@@ -25,7 +25,7 @@ export default function FinalCTA() {
           </a>
           <Link href="/start">
             <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/60 font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base">
-              Not sure? Find your fit →
+              Not sure? Find your level →
             </Button>
           </Link>
         </div>

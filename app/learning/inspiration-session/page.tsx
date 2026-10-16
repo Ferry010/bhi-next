@@ -63,6 +63,7 @@ const data = {
     { title: "The session", body: "Ferry on your stage, and the book in every pair of hands to keep the momentum going." },
   ],
   groupOptions: ["Up to 50", "50 to 150", "150 to 500", "500+"],
+  level: "spark" as const,
   includesBook: true,
   ctaLabel: "Book this session",
   ctaProduct: "inspiration-session",

@@ -1,79 +1,19 @@
-"use client";
+import Ladder from "@/components/Ladder";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { TALK_TO_EXPERT } from "@/lib/pricing";
-
-const cards = [
-  {
-    title: "Become a Brand Humanizer",
-    body: "The practitioner path. Training takes you from understanding the idea to running it yourself, from an hour that changes the conversation to a full day that changes how your team works.",
-    cta: "See the training →",
-    to: "/learning",
-    primary: true,
-  },
-  {
-    title: "An easy way to start",
-    body: "The whole method lives in the book, so you can read it before you ever speak to us. It is also the cheapest way to find out whether this way of thinking is for you.",
-    cta: "Start with the book →",
-    to: "/book",
-    primary: true,
-  },
-  {
-    title: "See the evidence",
-    body: "Independent research on technology, organisational behaviour, and what actually makes people choose one brand over another. Free, because proof that sits behind a paywall is not doing anyone any good.",
-    cta: "Read the research",
-    to: "/research",
-    primary: false,
-  },
-];
-
+// The whole offer in one glance: four levels, lightest to deepest. Everyone
+// steps in somewhere; /start helps the ones who can't tell where.
 export default function HowWeHelp() {
-  const { ref, isVisible } = useScrollReveal();
-
   return (
-    <section ref={ref} id="how-we-help" className="bg-cream section-padding">
-      <div className="container">
-        <div className="text-center mb-10 md:mb-14">
-          <h2 className="text-display md:text-display-lg text-foreground">Pick where you want to start.</h2>
+    <section id="how-we-help" className="bg-cream section-padding">
+      <div className="container max-w-6xl">
+        <div className="text-center mb-10 md:mb-14 max-w-2xl mx-auto">
+          <h2 className="text-display md:text-display-lg text-foreground">Four levels. Step in where you are.</h2>
+          <p className="text-body-lg text-muted-foreground mt-4">
+            From a book you read this weekend to a team that runs it without us. Most organisations climb one level at a
+            time.
+          </p>
         </div>
-
-        <div className="grid md:grid-cols-3 gap-5 lg:gap-8">
-          {cards.map((c, i) => (
-            <div
-              key={c.title}
-              className={`bg-white rounded-2xl shadow-[0_4px_24px_rgba(18,21,46,0.08)] p-6 md:p-10 flex flex-col hover-lift transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${i * 150}ms` }}
-            >
-              <h3 className="font-heading font-bold text-lg md:text-section mb-2 md:mb-3 text-foreground">{c.title}</h3>
-              <p className="text-sm md:text-body-lg text-muted-foreground mb-6 md:mb-8 flex-1">
-                {c.body}
-              </p>
-              {c.primary ? (
-                <Link href={c.to}>
-                  <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm">
-                    {c.cta}
-                  </Button>
-                </Link>
-              ) : (
-                <Link href={c.to} className="inline-flex items-center gap-1.5 font-heading font-semibold text-sm text-primary hover:text-accent transition-colors">
-                  {c.cta} <ArrowRight className="w-4 h-4" />
-                </Link>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <p className="text-center text-sm text-muted-foreground mt-8">
-          Not sure which fits?{" "}
-          <a href={TALK_TO_EXPERT.url} className="font-heading font-semibold text-primary hover:text-accent transition-colors">
-            Talk to an expert →
-          </a>
-        </p>
+        <Ladder />
       </div>
     </section>
   );

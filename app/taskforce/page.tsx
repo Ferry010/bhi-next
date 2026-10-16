@@ -8,6 +8,7 @@ import MessageUs from "@/components/MessageUs";
 import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { TALK_TO_EXPERT } from "@/lib/pricing";
+import { LevelPill, LevelsSection } from "@/components/Ladder";
 import { ArrowRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -120,6 +121,7 @@ export default function TaskforcePage() {
         <section className="bg-secondary pt-28 md:pt-40 pb-16 md:pb-24">
           <div className="container max-w-4xl">
             <Breadcrumb items={[{ label: "Taskforce" }]} variant="light" />
+            <LevelPill level="taskforce" />
             <h1 className="hero-headline text-hero md:text-hero-lg text-foreground mt-4">
               Four months from now, your team runs this{" "}
               <span className="text-primary">without us.</span>
@@ -384,6 +386,7 @@ export default function TaskforcePage() {
             </ScrollRevealSection>
           </div>
         </section>
+        <LevelsSection current="taskforce" />
       </main>
       <Footer />
     </>
