@@ -5,52 +5,41 @@ import Link from "next/link";
 import { LEVELS, TALK_TO_EXPERT, type Level } from "@/lib/pricing";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
-// "Find your level": places someone on the four levels (lib/pricing LEVELS).
-// The result is one firm offer: your level is a product. Go to it, or talk to
-// us first. No email, nothing stored: answers live in this component only.
-//
-// Three signals decide the level:
-//   need     — where the team is (what level the situation calls for)
-//   done     — what they've already done (you don't go back down a level)
-//   capacity — what they can make room for now (you can't skip past it)
-// Level = need, raised to the step after what's done, capped by capacity.
-// Individuals only answer "who" and "done": their level is the next step up.
+// "Where do you start?": three questions about what someone needs right now
+// (not what they've done with us), then one firm offer from lib/pricing LEVELS.
+//   problem — what hurts now              (votes for a level)
+//   win     — what they feel solves it    (votes for a level)
+//   fit     — what they can make room for (caps the level)
+// Level = the middle of problem and win, rounded up, capped by fit.
+// No email, nothing stored: answers live in this component only.
 
-type Key = "who" | "done" | "need" | "capacity";
+type Key = "problem" | "win" | "fit";
 type Answers = Partial<Record<Key, number>>;
-type Option = { label: string; hint?: string; value: number };
+type Option = { label: string; value: number; echo?: string };
 
 const QUESTIONS: Record<Key, { question: string; options: Option[] }> = {
-  who: {
-    question: "Who is this for?",
+  problem: {
+    question: "What's the problem right now?",
     options: [
-      { label: "Just me", value: 0 },
-      { label: "My team", value: 1 },
-      { label: "My whole company", value: 2 },
+      { label: "I don't really know what AI means for us yet", value: 1, echo: "you don't know yet what AI means for you" },
+      { label: "My team is scared of AI, or just not on board", value: 2, echo: "your team isn't on board yet" },
+      { label: "We want to use AI, but nobody knows how", value: 3, echo: "your team wants to use AI, but nobody knows how" },
+      { label: "We tried things, but nothing sticks", value: 4, echo: "you've tried things, but nothing sticks" },
     ],
   },
-  done: {
-    question: "What have you already done with us?",
+  win: {
+    question: "What would feel like a win, three months from now?",
     options: [
-      { label: "Nothing yet", value: 1 },
-      { label: "I read the book, or saw Ferry speak", value: 2 },
-      { label: "We had a Spark Session", value: 3 },
-      { label: "We did the Training", value: 4 },
+      { label: "I finally get it, and know what to do next", value: 1, echo: "to finally get it yourself" },
+      { label: "My whole team is excited and on the same page", value: 2, echo: "your whole team excited and on the same page" },
+      { label: "My team uses AI well, and follows a clear plan", value: 3, echo: "a team that uses AI well, with a clear plan" },
+      { label: "It's simply how we work now, without outside help", value: 4, echo: "it to simply be how you work, without outside help" },
     ],
   },
-  need: {
-    question: "What does your team need most right now?",
+  fit: {
+    question: "What fits right now?",
     options: [
-      { label: "I want to understand it myself first", value: 1 },
-      { label: "They need to hear it and get excited", value: 2 },
-      { label: "They get it, but don't know how to do it yet", value: 3 },
-      { label: "It has to become part of how we work", value: 4 },
-    ],
-  },
-  capacity: {
-    question: "How much time can you make for it now?",
-    options: [
-      { label: "A few evenings of reading", value: 1 },
+      { label: "Something I can read on my own", value: 1 },
       { label: "One hour with the whole team", value: 2 },
       { label: "One full day with one team", value: 3 },
       { label: "A few months, with a boss who backs it", value: 4 },
@@ -58,63 +47,38 @@ const QUESTIONS: Record<Key, { question: string; options: Option[] }> = {
   },
 };
 
-const flowFor = (a: Answers): Key[] => (a.who === 0 ? ["who", "done"] : ["who", "done", "need", "capacity"]);
+const FLOW: Key[] = ["problem", "win", "fit"];
 
 const at = (n: number) => LEVELS[Math.min(4, Math.max(1, n)) - 1];
+const echoOf = (k: Key, v?: number) => QUESTIONS[k].options.find((o) => o.value === v)?.echo ?? "";
 
-function place(a: Answers): { level: Level; reason: string; nextUp?: Level; floor: number } {
-  // Nothing yet → 1, read/heard → 2, had a Spark → 3, did the Training → 4.
-  const floor = a.done ?? 1;
+function place(a: Answers): { level: Level; reason: string } {
+  const problem = a.problem ?? 2;
+  const win = a.win ?? 2;
+  const fit = a.fit ?? 4;
+  const need = Math.ceil((problem + win) / 2);
+  const level = at(Math.min(need, fit));
 
-  if (a.who === 0) {
-    const level = at(floor);
-    const reason =
-      floor === 1
-        ? "You want to understand it yourself first. That's the right place to start."
-        : floor === 2
-          ? "You already know the idea. The next step is getting your team to hear it."
-          : "You've done the level below this one. This is the next step up.";
-    return { level, reason, floor };
-  }
-
-  const need = a.need ?? 2;
-  const capacity = a.capacity ?? 4;
-  const wanted = Math.max(need, floor);
-  const level = at(Math.min(wanted, capacity));
-
-  // We don't sell the Taskforce cold (see /taskforce): it needs a team that has
-  // already had a Spark or the Training with us. Until then, the Training first.
-  if (level.key === "taskforce" && floor < 3) {
+  if (fit < need) {
+    const target = at(need);
     return {
-      level: at(3),
-      reason: "The Taskforce works best once we've worked together and your team speaks the same language. So start with the Training. The Taskforce comes right after.",
-      nextUp: level,
-      floor,
+      level,
+      reason: `${target.name} would get you there, but it takes ${target.commitment.toLowerCase()}. ${level.name} fits right now, and it's the first step.`,
     };
   }
-
-  if (wanted > capacity) {
-    const target = at(wanted);
-    const reason =
-      level.level < floor
-        ? `You've already done this level with your team. Next up is ${target.name}. Until you have time for that, this works well for the people who missed it.`
-        : `Your team is ready for ${target.name}, but you don't have the time for it yet. Start here. ${target.name} comes next.`;
-    return { level, reason, nextUp: target, floor };
-  }
-  if (floor > need) {
-    return { level, reason: "You've already done the level below. No need to do it again. This is your next step.", floor };
-  }
-  return { level, reason: level.youAre, floor };
+  return {
+    level,
+    reason: `You said ${echoOf("problem", a.problem)}, and you want ${echoOf("win", a.win)}. That's what ${level.name} is for.`,
+  };
 }
 
 export default function StartClient() {
   const [answers, setAnswers] = useState<Answers>({});
   const [step, setStep] = useState(0);
 
-  const flow = flowFor(answers);
-  const atResult = step >= flow.length;
-  const key = flow[Math.min(step, flow.length - 1)];
-  const progress = ((step + 1) / (flow.length + 1)) * 100;
+  const atResult = step >= FLOW.length;
+  const key = FLOW[Math.min(step, FLOW.length - 1)];
+  const progress = ((step + 1) / (FLOW.length + 1)) * 100;
 
   const select = (value: number) => {
     setAnswers((a) => ({ ...a, [key]: value }));
@@ -126,7 +90,7 @@ export default function StartClient() {
     const btn =
       "inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto";
 
-    // One result, one offer: your level is a product. Go to it, or talk to us first.
+    // One result, one offer: your need is a product. Go to it, or talk to us first.
     return (
       <div className="max-w-2xl mx-auto">
         <button
@@ -144,11 +108,12 @@ export default function StartClient() {
             <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">
               Level {level.level} of 4 · {level.verb}
             </span>
-            <h1 className="text-display md:text-display-lg text-foreground mt-3 leading-tight">
+            <h2 className="text-display md:text-display-lg text-foreground mt-3 leading-tight">
               That&apos;s <span className="text-primary">{level.name}</span>.
-            </h1>
+            </h2>
             <p className="text-body-lg text-muted-foreground mt-4">{reason}</p>
-            <p className="text-sm text-muted-foreground mt-3">
+            <p className="text-foreground font-heading font-semibold mt-4">{level.outcome}</p>
+            <p className="text-sm text-muted-foreground mt-2">
               {level.commitment} · <span className="font-heading font-semibold text-foreground tabular-nums">{level.price}</span>
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
@@ -183,14 +148,14 @@ export default function StartClient() {
           <ArrowLeft className="w-4 h-4" /> Back
         </button>
         <span className="text-xs font-heading font-semibold uppercase tracking-widest text-muted-foreground tabular-nums">
-          Question {step + 1} of {flow.length}
+          Question {step + 1} of {FLOW.length}
         </span>
       </div>
       <div className="h-1.5 rounded-full bg-border/60 overflow-hidden mb-10">
         <div className="h-full bg-accent transition-all duration-500" style={{ width: `${progress}%` }} />
       </div>
 
-      <h1 className="text-display md:text-display-lg text-foreground leading-tight mb-8">{q.question}</h1>
+      <h3 className="text-display md:text-display-lg text-foreground leading-tight mb-8">{q.question}</h3>
       <div className="space-y-3">
         {q.options.map((o) => (
           <button
@@ -201,10 +166,7 @@ export default function StartClient() {
             }`}
           >
             <div className="flex items-center justify-between gap-4">
-              <div>
-                <div className="font-heading font-bold text-lg text-foreground group-hover:text-accent transition-colors">{o.label}</div>
-                {o.hint && <div className="text-sm text-muted-foreground mt-0.5">{o.hint}</div>}
-              </div>
+              <div className="font-heading font-bold text-lg text-foreground group-hover:text-accent transition-colors">{o.label}</div>
               <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
             </div>
           </button>
