@@ -13,7 +13,8 @@
 // its own key; every lead is labelled with the site it came from. Without a key this does nothing.
 
 const API = "https://api.hubapi.com";
-const TOKEN = process.env.HUBSPOT_SERVICE_KEY;
+// Names in Vercel are case-sensitive; accept the lowercase spelling too
+const TOKEN = process.env.HUBSPOT_SERVICE_KEY || process.env.hubspot_service_key;
 
 // Which website this lead came in on. Shown in deal names and notes, and stored in the contact
 // property "Bron website" (internal name bron_website) when that property exists in HubSpot.
