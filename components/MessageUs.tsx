@@ -57,7 +57,7 @@ export default function MessageUs({
       <div>
         <h2 className={`text-display md:text-display-lg ${dark ? "text-white" : "text-foreground"}`}>{heading}</h2>
         <p className={`text-body-lg mt-4 ${dark ? "text-white/75" : "text-muted-foreground"}`}>{subheading}</p>
-        <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="inline-block mt-7">
+        <a href={TALK_TO_EXPERT.url} className="inline-block mt-7">
           <Button
             className={`rounded-full btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 ${
               dark

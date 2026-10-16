@@ -56,7 +56,7 @@ const tiers = [
       "Concrete first moves for Monday morning",
     ],
     booksLine: "The book, for every participant",
-    cta: { label: TALK_TO_EXPERT.label, href: TALK_TO_EXPERT.url, external: true },
+    cta: { label: TALK_TO_EXPERT.label, href: TALK_TO_EXPERT.url, external: false },
     detail: { label: "See what it looks like →", href: PRODUCTS.inspiration.href },
     popular: false,
   },
@@ -72,7 +72,7 @@ const tiers = [
       "A 90-day implementation plan you can run Monday",
     ],
     booksLine: "The book, for every participant",
-    cta: { label: TALK_TO_EXPERT.label, href: TALK_TO_EXPERT.url, external: true },
+    cta: { label: TALK_TO_EXPERT.label, href: TALK_TO_EXPERT.url, external: false },
     detail: { label: "See what it looks like →", href: PRODUCTS.fullDay.href },
     popular: true,
   },
@@ -125,7 +125,7 @@ export default function PricingPage() {
               Three ways to give your people the human edge that keeps customers choosing you. Start with the book, bring us in for a keynote, or train the team for a day.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-8">
-              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+              <a href={TALK_TO_EXPERT.url}>
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto">
                   {TALK_TO_EXPERT.label}
                 </Button>
@@ -317,7 +317,7 @@ export default function PricingPage() {
             <p className="text-body-lg text-muted-foreground mt-6 max-w-xl mx-auto">
               Tell us your team and your moment. We&apos;ll come back with the right format and an exact proposal. One message and you&apos;re on our radar.
             </p>
-            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="inline-block mt-10">
+            <a href={TALK_TO_EXPERT.url} className="inline-block mt-10">
               <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-9 h-12 text-base">
                 {TALK_TO_EXPERT.label}
               </Button>

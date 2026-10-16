@@ -68,7 +68,7 @@ export default function InCompany() {
               See the training formats <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
-          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+          <a href={TALK_TO_EXPERT.url}>
             <Button
               variant="outline"
               className="rounded-full border-[1.5px] border-white/40 text-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto"

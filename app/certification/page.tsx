@@ -183,7 +183,7 @@ export default function CertificationPage() {
             <p className="text-body-lg text-white/70 mt-6 max-w-xl mx-auto">
               Not sure which path fits? Talk it through with us. A free 30-minute call with a Brand Humanizer, no sales script.
             </p>
-            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="inline-block mt-10">
+            <a href={TALK_TO_EXPERT.url} className="inline-block mt-10">
               <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-9 h-12 text-base gap-2">
                 {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
               </Button>

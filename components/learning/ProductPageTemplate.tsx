@@ -136,7 +136,7 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
               </Button>
             </Link>
           ) : (
-            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+            <a href={TALK_TO_EXPERT.url}>
               <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                 {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
               </Button>
@@ -320,7 +320,7 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
                   <span className="text-sm">Every participant receives a copy of the book.</span>
                 </div>
               )}
-              <a href={data.comingSoon ? `/contact?product=${data.ctaProduct}` : TALK_TO_EXPERT.url} target={data.comingSoon ? undefined : "_blank"} rel={data.comingSoon ? undefined : "noopener noreferrer"} className="inline-block mt-8">
+              <a href={data.comingSoon ? `/contact?product=${data.ctaProduct}` : TALK_TO_EXPERT.url} className="inline-block mt-8">
                 <Button className="rounded-lg bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                   {data.comingSoon ? "Join the waitlist" : TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>

@@ -72,7 +72,7 @@ export default function WorkWithUsPage() {
               You don&apos;t need to commit to a six-month programme to work with us. You need half a day. Your team, our team, your real challenges on the table. You leave knowing exactly where technology should serve your people, and where it&apos;s quietly costing you. Everything after that is optional, and follows from there.
             </p>
             <div className="flex flex-wrap gap-4 mt-10">
-              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+              <a href={TALK_TO_EXPERT.url}>
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                   {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>
@@ -107,7 +107,7 @@ export default function WorkWithUsPage() {
                 ))}
               </div>
               <div className="mt-10">
-                <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+                <a href={TALK_TO_EXPERT.url}>
                   <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                     {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                   </Button>
@@ -151,7 +151,7 @@ export default function WorkWithUsPage() {
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-white mb-6">Start with a brainstorm.</h2>
               <p className="text-body-lg text-white/70 mb-8 max-w-xl mx-auto">A free 30-minute call with a Brand Humanizer, to see if it&apos;s a fit.</p>
-              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+              <a href={TALK_TO_EXPERT.url}>
                 <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                   {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>

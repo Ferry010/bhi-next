@@ -109,7 +109,7 @@ export default function ShareAndContact() {
                   <Linkedin className="w-4 h-4" /> LinkedIn
                 </Button>
               </a>
-              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+              <a href={TALK_TO_EXPERT.url}>
                 <Button
                   variant="outline"
                   className="rounded-full border-[1.5px] border-foreground/40 font-heading font-semibold px-6 h-11 gap-2"

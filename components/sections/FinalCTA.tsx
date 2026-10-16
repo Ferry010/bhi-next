@@ -18,7 +18,7 @@ export default function FinalCTA() {
           Book a course, start with the book, or just ask a question. One message and you&apos;re on our radar. No forms into the void, no bots, no sales script.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mt-8 md:mt-10">
-          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+          <a href={TALK_TO_EXPERT.url}>
             <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base">
               {TALK_TO_EXPERT.label} →
             </Button>

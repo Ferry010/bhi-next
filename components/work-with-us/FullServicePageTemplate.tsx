@@ -199,7 +199,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
               </span>
             ))}
           </div>
-          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+          <a href={TALK_TO_EXPERT.url}>
             <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
               {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
             </Button>
@@ -379,7 +379,7 @@ export default function FullServicePageTemplate({ data }: { data: FullServicePag
           <Section>
             <AccentHeading text={data.finalCtaHeading} className="font-heading text-2xl md:text-4xl font-bold mb-4 text-white" />
             {data.finalCtaSubline && <p className="text-white/70 text-lg mb-8">{data.finalCtaSubline}</p>}
-            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+            <a href={TALK_TO_EXPERT.url}>
               <Button className="rounded-lg bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                 {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
               </Button>

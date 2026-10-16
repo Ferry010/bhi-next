@@ -333,7 +333,7 @@ export default function BedanktPage() {
               </Link>
               <p className="text-white/50 text-sm mt-6">
                 Liever eerst even sparren?{" "}
-                <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-white hover:text-sunny transition-colors inline-flex items-center gap-1">
+                <a href={TALK_TO_EXPERT.url} className="font-heading font-semibold text-white hover:text-sunny transition-colors inline-flex items-center gap-1">
                   Plan een gratis gesprek <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </p>

@@ -12,11 +12,13 @@
 export const DISPLAY_PRICES = false;
 
 // The one commercial CTA across the site. No prices, no forms into the void:
-// every "buy" path routes to a real conversation. Swap the URL when the
-// scheduling tool changes.
+// every "buy" path routes to a real conversation. `url` is our own page with
+// the scheduler embedded (people stay on-site); `calendly` is the raw booking
+// link it embeds. Swap `calendly` when the scheduling tool changes.
 export const TALK_TO_EXPERT = {
   label: "Talk to an expert",
-  url: "https://calendly.com/ferryhoes/meeting",
+  url: "/talk-to-an-expert",
+  calendly: "https://calendly.com/ferryhoes/meeting",
 };
 
 // Keynote-specific booking goes through Speakers Academy, not this site.

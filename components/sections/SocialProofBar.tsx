@@ -66,8 +66,6 @@ export default function SocialProofBar() {
         >
           <a
             href={TALK_TO_EXPERT.url}
-            target="_blank"
-            rel="noopener noreferrer"
             className="rounded-full bg-primary text-primary-foreground px-8 py-3 font-medium text-sm md:text-base btn-scale transition-all duration-300"
           >
             {TALK_TO_EXPERT.label}

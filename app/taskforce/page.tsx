@@ -138,7 +138,7 @@ export default function TaskforcePage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-10">
-              <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+              <a href={TALK_TO_EXPERT.url}>
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
                   {TALK_TO_EXPERT.label} <ArrowRight className="w-4 h-4" />
                 </Button>

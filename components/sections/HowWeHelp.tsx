@@ -70,7 +70,7 @@ export default function HowWeHelp() {
 
         <p className="text-center text-sm text-muted-foreground mt-8">
           Not sure which fits?{" "}
-          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-primary hover:text-accent transition-colors">
+          <a href={TALK_TO_EXPERT.url} className="font-heading font-semibold text-primary hover:text-accent transition-colors">
             Talk to an expert →
           </a>
         </p>

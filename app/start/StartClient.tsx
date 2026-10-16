@@ -86,7 +86,7 @@ const ALT: Record<RecKey, { prompt: string; label: string; action: Action }> = {
   book: {
     prompt: "Rather talk it through first?",
     label: "Book a call",
-    action: { label: "Book a call", href: TALK_TO_EXPERT.url, external: true },
+    action: { label: "Book a call", href: TALK_TO_EXPERT.url, external: false },
   },
 };
 

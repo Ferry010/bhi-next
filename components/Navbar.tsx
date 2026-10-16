@@ -160,7 +160,7 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
               </Link>
             )
           )}
-          <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+          <a href={TALK_TO_EXPERT.url}>
             <Button className="ml-2 rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-6">
               {TALK_TO_EXPERT.label}
             </Button>
@@ -234,7 +234,7 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
                 </Link>
               )
             )}
-            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>
+            <a href={TALK_TO_EXPERT.url} onClick={() => setMobileOpen(false)}>
               <Button className="mt-1 w-full rounded-full bg-accent text-accent-foreground font-heading font-semibold">
                 {TALK_TO_EXPERT.label}
               </Button>

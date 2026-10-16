@@ -297,7 +297,7 @@ export default function OriginTour() {
           </div>
           <p className="text-muted-foreground text-sm mt-6">
             Rather talk it through first?{" "}
-            <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-primary hover:text-accent transition-colors inline-flex items-center gap-1">
+            <a href={TALK_TO_EXPERT.url} className="font-heading font-semibold text-primary hover:text-accent transition-colors inline-flex items-center gap-1">
               Talk to us <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </p>

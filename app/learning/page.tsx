@@ -318,7 +318,7 @@ export default function LearningPage() {
                     Find your fit <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
-                <a href={TALK_TO_EXPERT.url} target="_blank" rel="noopener noreferrer">
+                <a href={TALK_TO_EXPERT.url}>
                   <Button variant="outline" className="rounded-full border-white/40 text-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base">
                     {TALK_TO_EXPERT.label}
                   </Button>
