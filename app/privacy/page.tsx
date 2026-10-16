@@ -98,9 +98,10 @@ export default function PrivacyPage() {
                   <a href="/talk-to-an-expert" className="text-accent hover:underline">
                     Talk to an expert
                   </a>{" "}
-                  page is Calendly, embedded from calendly.com. Calendly sets its own cookies inside that
-                  calendar to run the booking, and shows its own cookie notice there. It only loads on
-                  that page. What you enter in the calendar is covered by Calendly&apos;s privacy policy
+                  page, and behind &ldquo;Book a call&rdquo; on our session pages, is Calendly, embedded
+                  from calendly.com. Calendly sets its own cookies inside that calendar to run the
+                  booking, and shows its own cookie notice there. It only loads when you open the
+                  calendar. What you enter in the calendar is covered by Calendly&apos;s privacy policy
                   as well as ours.
                 </p>
                 <p>

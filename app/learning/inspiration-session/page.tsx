@@ -47,6 +47,22 @@ const data = {
     "The book in every pair of hands to keep the momentum going",
   ],
   pricingSignal: P.investmentLine,
+  priceFrom: P.priceFrom,
+  priceNote:
+    "The final price depends on your group size and where we meet. You get it in writing, with a date, within one working day.",
+  includes: [
+    "Ferry on your stage, in person or online",
+    "A 30-minute intake that shapes the session around your organisation",
+    "A copy of the book for every participant",
+    "Concrete first moves, specific to your organisation",
+  ],
+  howItWorks: [
+    { title: "Request a quote", body: "Five fields. You get a date and an exact price within one working day." },
+    { title: "Intake call", body: "Thirty minutes with Ferry about your organisation and what the room should walk away with." },
+    { title: "Shaped for your room", body: "Ferry builds the session around your team. Ideally 3 to 6 weeks ahead." },
+    { title: "The session", body: "Ferry on your stage, and the book in every pair of hands to keep the momentum going." },
+  ],
+  groupOptions: ["Up to 50", "50 to 150", "150 to 500", "500+"],
   includesBook: true,
   ctaLabel: "Book this session",
   ctaProduct: "inspiration-session",

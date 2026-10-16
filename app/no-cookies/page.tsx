@@ -149,7 +149,7 @@ export default function NoCookiesPage() {
           <p className="text-white/70 leading-relaxed">
             When you do reach out, by sending a form or booking a call, that&apos;s when we get to know
             you. One thing to be open about: our booking calendar is Calendly. It runs its own cookies
-            inside that calendar to make the booking work, and it only loads on the page where you book.
+            inside that calendar to make the booking work, and it only loads once you open the calendar.
             The details are in our{" "}
             <a href="/privacy" className="text-accent hover:underline">
               privacy policy

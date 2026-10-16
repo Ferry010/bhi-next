@@ -7,9 +7,11 @@ import Breadcrumb from "@/components/Breadcrumb";
 import FAQSection from "@/components/FAQSection";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Clock, Users, Euro, ArrowRight, Check, BookOpen } from "lucide-react";
+import { Clock, Users, Euro, ArrowRight, Check, BookOpen, CalendarDays } from "lucide-react";
 import { FACILITATOR, STATS, MARQUEE_LOGOS, DISPLAY_PRICES, TALK_TO_EXPERT } from "@/lib/pricing";
 import CountUp from "@/components/ui/CountUp";
+import SessionQuote from "@/components/learning/SessionQuote";
+import StickyQuoteBar from "@/components/learning/StickyQuoteBar";
 
 function Section({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const { ref, isVisible } = useScrollReveal(0.1);
@@ -88,6 +90,17 @@ export interface ProductPageData {
   faqs: FAQ[];
   crossSells: CrossSell[];
   comingSoon?: boolean;
+  /** Set it and the page becomes bookable on the spot: the price in the hero,
+   *  an "Investment" card, "How it works" and the inline quote/call block. */
+  priceFrom?: string;
+  /** One line under the price, e.g. what moves it. */
+  priceNote?: string;
+  /** What the price includes, shown as a checklist on the investment card. */
+  includes?: string[];
+  /** From request to the day itself, in order. */
+  howItWorks?: { title: string; body: string }[];
+  /** Group-size choices in the quote form. */
+  groupOptions?: string[];
   fixedPrice?: boolean;
   enrollLabel?: string;
   courseSchema?: Record<string, unknown>;
@@ -96,6 +109,8 @@ export interface ProductPageData {
 export default function ProductPageTemplate({ data }: { data: ProductPageData }) {
   const priceMatch = data.pricingSignal.match(/(€[\d,.]+)/);
   const shortPrice = priceMatch ? priceMatch[1] : data.pricingSignal.split(".")[0];
+  // Bookable: a published "from" price and not on the waitlist.
+  const bookable = !!data.priceFrom && !data.comingSoon;
 
   return (
     <div className="min-h-screen bg-secondary text-foreground">
@@ -122,14 +137,34 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
             <span className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 text-sm font-medium text-foreground shadow-sm">
               <Users className="w-4 h-4 text-accent" /> {data.audience}
             </span>
-            {DISPLAY_PRICES && (
-              <span className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 text-sm font-medium text-foreground shadow-sm">
-                <Euro className="w-4 h-4 text-accent" /> {shortPrice}
-              </span>
+            {bookable ? (
+              <a href="#price" className="inline-flex items-center gap-1.5 bg-white rounded-full px-4 py-2 text-sm text-foreground shadow-sm hover:shadow-md transition-shadow">
+                From <span className="font-heading font-bold text-accent tabular-nums">{data.priceFrom}</span>
+                <span className="text-muted-foreground">excl. VAT</span>
+              </a>
+            ) : (
+              DISPLAY_PRICES && (
+                <span className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-2 text-sm font-medium text-foreground shadow-sm">
+                  <Euro className="w-4 h-4 text-accent" /> {shortPrice}
+                </span>
+              )
             )}
           </div>
 
-          {data.comingSoon ? (
+          {bookable ? (
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <a href="#quote">
+                <Button className="w-full sm:w-auto rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                  Request a quote <ArrowRight className="w-4 h-4" />
+                </Button>
+              </a>
+              <a href="#call">
+                <Button variant="outline" className="w-full sm:w-auto rounded-lg border-foreground/20 bg-white hover:bg-white hover:border-foreground/40 btn-scale font-heading font-semibold px-6 h-12 text-base gap-2">
+                  <CalendarDays className="w-4 h-4" /> Book a call
+                </Button>
+              </a>
+            </div>
+          ) : data.comingSoon ? (
             <Link href={`/contact?product=${data.ctaProduct}`}>
               <Button className="rounded-lg bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
                 Join the waitlist <ArrowRight className="w-4 h-4" />
@@ -143,6 +178,9 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
             </a>
           )}
 
+          {bookable && (
+            <p className="mt-3 text-sm text-muted-foreground">Your exact price within one working day. No obligations.</p>
+          )}
           {data.urgencyLine && (
             <p className="mt-4 text-sm text-muted-foreground max-w-xl">{data.urgencyLine}</p>
           )}
@@ -280,6 +318,25 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
         </div>
       </section>
 
+      {bookable && data.howItWorks?.length ? (
+        <section className="section-padding bg-white">
+          <div className="container max-w-4xl">
+            <Section>
+              <h2 className="font-heading text-2xl md:text-4xl font-bold mb-10 text-foreground text-center">How it works</h2>
+              <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {data.howItWorks.map((step, i) => (
+                  <li key={step.title} className="relative">
+                    <span className="font-heading font-bold text-accent text-sm tabular-nums">Step {i + 1}</span>
+                    <h3 className="font-heading font-bold text-foreground text-lg mt-1 mb-2">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{step.body}</p>
+                  </li>
+                ))}
+              </ol>
+            </Section>
+          </div>
+        </section>
+      ) : null}
+
       <SectionDivider />
 
       {/* Facilitator authority band */}
@@ -303,6 +360,44 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
 
       <SectionDivider />
 
+      {bookable ? (
+        <section id="price" className="section-padding bg-cream scroll-mt-20">
+          <div className="container max-w-3xl">
+            <Section>
+              <div className="bg-navy-card rounded-3xl p-8 md:p-12 shadow-xl border border-accent/10">
+                <div className="text-center">
+                  <h2 className="font-heading text-2xl md:text-4xl font-bold mb-5 text-white">Investment</h2>
+                  <p className="font-heading font-bold text-white">
+                    <span className="text-white/60 text-lg mr-2">From</span>
+                    <span className="text-4xl md:text-5xl text-sunny tabular-nums">{data.priceFrom}</span>
+                  </p>
+                  <p className="text-white/60 text-sm mt-2">excl. VAT, for your whole group</p>
+                  {data.priceNote && <p className="text-white/80 leading-relaxed max-w-xl mx-auto mt-5">{data.priceNote}</p>}
+                </div>
+                {data.includes?.length ? (
+                  <ul className="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-3 max-w-2xl mx-auto">
+                    {data.includes.map((item) => (
+                      <li key={item} className="flex gap-3 items-start text-white/90 text-sm leading-relaxed">
+                        <Check className="w-4 h-4 text-sunny mt-0.5 shrink-0" /> {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+                <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+                  <a href="#quote">
+                    <Button className="rounded-lg bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
+                      Get your exact price <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </a>
+                  <a href="#call" className="font-heading font-semibold text-white/80 hover:text-white text-sm inline-flex items-center gap-1.5 px-3 h-12">
+                    <CalendarDays className="w-4 h-4" /> Or book a call first
+                  </a>
+                </div>
+              </div>
+            </Section>
+          </div>
+        </section>
+      ) : (
       <section className="section-padding bg-cream">
         <div className="container max-w-3xl">
           <Section>
@@ -330,6 +425,16 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
           </Section>
         </div>
       </section>
+      )}
+
+      {bookable && (
+        <SessionQuote
+          productName={data.title}
+          productSlug={data.ctaProduct}
+          priceFrom={data.priceFrom}
+          groupOptions={data.groupOptions ?? ["Up to 25", "25 to 100", "100 to 250", "250+"]}
+        />
+      )}
 
       <SectionDivider />
 
@@ -402,6 +507,7 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
       </section>
 
       <Footer />
+      {bookable && <StickyQuoteBar title={data.title} priceFrom={data.priceFrom!} />}
     </div>
   );
 }

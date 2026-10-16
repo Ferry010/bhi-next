@@ -51,6 +51,22 @@ const data = {
     "The book in every pair of hands",
   ],
   pricingSignal: P.investmentLine,
+  priceFrom: P.priceFrom,
+  priceNote:
+    "The final price depends on your team and where we meet. You get it in writing, with a date, within one working day.",
+  includes: [
+    "A full day led by a founder",
+    "A 30-minute intake that shapes the day around your team",
+    "All materials and your team's 90-day plan",
+    "A copy of the book for every participant",
+  ],
+  howItWorks: [
+    { title: "Request a quote", body: "Five fields. You get a date and an exact price within one working day." },
+    { title: "Intake call", body: "Thirty minutes about your team, where it stands and what the day has to deliver." },
+    { title: "The day", body: "From framework to skills inventory to a plan, in one continuous arc." },
+    { title: "Your 90-day plan", body: "Your team leaves with it. Many follow up with the Taskforce to turn it into a working pilot." },
+  ],
+  groupOptions: ["Up to 12", "12 to 20", "20 to 30", "More than 30"],
   includesBook: true,
   ctaLabel: "Book the full day",
   ctaProduct: "full-day-course",

@@ -32,6 +32,14 @@ export const FORMS: Record<string, { title: string; deal?: (d: Record<string, un
     deal: (d) => `${SITE_LABEL} · Vibecoding-workshop · ${str(d.company) || str(d.name)}`,
   },
   vibecoding_save: { title: "Vibecoding: info bewaard voor later" },
+  session_quote: {
+    title: "Offerteaanvraag sessie",
+    deal: (d) => `${SITE_LABEL} · ${str(d.product_name) || "Sessie"} · ${str(d.company) || str(d.name)}`,
+  },
+  call_booked: {
+    title: "Gesprek ingepland via Calendly",
+    deal: (d) => `${SITE_LABEL} · Gesprek${str(d.product_name) ? ` over ${str(d.product_name)}` : ""} · ${str(d.company) || str(d.name)}`,
+  },
   message: { title: "Bericht via de site" },
   newsletter: { title: "Aanmelding nieuwsbrief", source: "Newsletter" },
   book_request: { title: "Aanvraag boek" },

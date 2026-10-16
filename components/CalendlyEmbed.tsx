@@ -18,9 +18,12 @@ export default function CalendlyEmbed({
   url,
   fallbackLabel,
   bookedContent,
+  product,
 }: {
   url: string;
   fallbackLabel: string;
+  /** What the call is about, passed on to HubSpot/Slack with the booking. */
+  product?: string;
   /** Shown in place of the calendar once Calendly reports a booked meeting. */
   bookedContent?: React.ReactNode;
 }) {
@@ -35,12 +38,33 @@ export default function CalendlyEmbed({
       if (!/^https:\/\/([a-z0-9-]+\.)?calendly\.com$/.test(e.origin)) return;
       if (e.data?.event === "calendly.event_scheduled") {
         setBooked(true);
+        // Calendly only hands us two API links; the server looks up who booked and
+        // files it in HubSpot + Slack (see app/api/calendly-booked).
+        const p = e.data.payload ?? {};
+        let gclid: string | undefined;
+        try {
+          gclid = new URLSearchParams(window.location.search).get("gclid") || sessionStorage.getItem("vibe:gclid") || undefined;
+        } catch {
+          gclid = undefined;
+        }
+        fetch("/api/calendly-booked", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            invitee: p.invitee?.uri,
+            event: p.event?.uri,
+            product,
+            from_page: window.location.pathname,
+            gclid,
+          }),
+          keepalive: true,
+        }).catch(() => {});
         requestAnimationFrame(() => wrapRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }));
       }
     };
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, []);
+  }, [product]);
 
   useEffect(() => {
     const el = ref.current;
