@@ -1,5 +1,6 @@
 "use client";
 
+import { sendToHubspot } from "@/lib/sendToHubspot";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -63,6 +64,7 @@ export default function VibecodingSave({ lang }: { lang: "en" | "nl" }) {
       createSupabaseBrowserClient().functions.invoke("notify-slack", {
         body: { form_type: "vibecoding_save", data },
       });
+      sendToHubspot("vibecoding_save", data);
       // Also push it to the dedicated #vibecoding-workshop channel.
       fetch("/api/vibecoding/notify", {
         method: "POST",

@@ -91,6 +91,8 @@ export default function PrivacyPage() {
               <p className="text-muted-foreground leading-relaxed">
                 Form submissions are stored in Supabase (EU data region). We may also receive a
                 notification of your submission in our internal Slack workspace so a human can reply.
+                Contact details and your submission are also kept in HubSpot, the CRM we use to follow up
+                (data processed in the US under the European Commission&apos;s standard contractual clauses).
                 We do not sell, rent, or share your personal data with third parties for marketing
                 purposes.
               </p>

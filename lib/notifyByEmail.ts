@@ -1,4 +1,5 @@
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { sendToHubspot } from "@/lib/sendToHubspot";
 
 const NOTIFY_EMAILS = ["ferry@brandhumanizing.com", "jonathan@brandhumanizing.com"];
 
@@ -7,6 +8,9 @@ export async function notifyByEmail(
   formData: Record<string, unknown>,
   submissionId: string
 ) {
+  // Every form that notifies the team also lands in HubSpot
+  sendToHubspot(formType, formData);
+
   const details: Record<string, string> = {};
   for (const [key, value] of Object.entries(formData)) {
     if (value !== undefined && value !== null && value !== "") {

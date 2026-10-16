@@ -1,5 +1,6 @@
 "use client";
 
+import { sendToHubspot } from "@/lib/sendToHubspot";
 import { useState, useCallback } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -88,6 +89,12 @@ export default function AssessmentClient() {
           skillScores: result.skillScores,
         },
       } as never);
+
+      sendToHubspot("assessment", {
+        email: trimmed,
+        overallScore: `${result.overallScore}%`,
+        ...Object.fromEntries(Object.entries(result.skillScores).map(([k, v]) => [k, `${v}%`])),
+      });
 
       await supabase.functions.invoke("notify-slack", {
         body: {

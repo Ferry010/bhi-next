@@ -1,5 +1,6 @@
 "use client";
 
+import { sendToHubspot } from "@/lib/sendToHubspot";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -120,6 +121,7 @@ export default function VibecodingForm({ labels, lang }: { labels: VibeContent["
       createSupabaseBrowserClient().functions.invoke("notify-slack", {
         body: { form_type: "vibecoding", data: formData },
       });
+      sendToHubspot("vibecoding", formData);
       // Also push it to the dedicated #vibecoding-workshop channel.
       fetch("/api/vibecoding/notify", {
         method: "POST",
