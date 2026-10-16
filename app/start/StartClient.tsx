@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Ladder from "@/components/Ladder";
-import { LEVELS, TALK_TO_EXPERT, type Level, type LevelKey } from "@/lib/pricing";
-import { ArrowRight, ArrowLeft, Mail } from "lucide-react";
+import { LEVELS, TALK_TO_EXPERT, type Level } from "@/lib/pricing";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 
-// "Find your level": places someone on the four levels (lib/pricing LEVELS) and,
-// first of all, gives them something useful to do this week without us.
-// No email, nothing stored: answers live in this component only.
+// "Find your level": places someone on the four levels (lib/pricing LEVELS).
+// The result is one firm offer: your level is a product. Go to it, or talk to
+// us first. No email, nothing stored: answers live in this component only.
 //
 // Three signals decide the level:
 //   need     — where the team is (what level the situation calls for)
@@ -56,54 +55,6 @@ const QUESTIONS: Record<Key, { question: string; options: Option[] }> = {
       { label: "One full day with one team", value: 3 },
       { label: "A few months, with a boss who backs it", value: 4 },
     ],
-  },
-};
-
-// Free, concrete, doable without us. In order: each step builds on the last.
-const THIS_WEEK: Record<LevelKey, { steps: string[]; free: { label: string; href: string; note: string } }> = {
-  book: {
-    steps: [
-      "Write down ten things you did at work this week.",
-      "Put a C next to the ones a computer could do. Put an H next to the ones only a human can do well.",
-      "Look at the H list. That's where you make the difference. Ask yourself how much of your week goes there.",
-    ],
-    free: { label: "Read our free research", href: "/research", note: "No sign-up, no email." },
-  },
-  spark: {
-    steps: [
-      "At your next team meeting, ask one question: what part of your work would you happily give to a computer?",
-      "Then ask: what part should always stay human?",
-      "Write both lists on the wall. Don't fix anything yet. Just let everyone see it.",
-    ],
-    free: {
-      label: "Try the free AI Trust Gap test",
-      href: "/trust-gap",
-      note: "You answer six questions, your team answers the same six anonymously. See if you agree.",
-    },
-  },
-  training: {
-    steps: [
-      "Pick one boring task your team does every week, always the same way.",
-      "Let a tool do it for two weeks. Write down how much time it saves.",
-      "Spend that time on something customers notice: a call, a visit, a personal note.",
-    ],
-    free: {
-      label: "Try the free Impact Gap test",
-      href: "/impact-gap",
-      note: "See what AI really changed on your team, compared with what you think it changed.",
-    },
-  },
-  taskforce: {
-    steps: [
-      "Write your biggest challenge in one sentence. If you can't, that's the first job.",
-      "Find the person at the top who wants it solved, and three people who would do the work.",
-      "Pick one moment where a customer meets your company. Write down who handles it: a person or a machine.",
-    ],
-    free: {
-      label: "Try the free Impact Gap test",
-      href: "/impact-gap",
-      note: "A quick, anonymous check of where your team really is with AI.",
-    },
   },
 };
 
@@ -171,16 +122,13 @@ export default function StartClient() {
   };
 
   if (atResult) {
-    const { level, reason, nextUp, floor } = place(answers);
-    const week = THIS_WEEK[level.key];
-    // Never suggest a lighter level they've already done.
-    const lighter = level.level > 1 && level.level - 1 >= floor ? at(level.level - 1) : null;
-    const mailBody = `My level: ${level.level} of 4 (${level.name})\n\nThis week:\n${week.steps
-      .map((s, i) => `${i + 1}. ${s}`)
-      .join("\n")}\n\nhttps://brandhumanizing.com/start`;
+    const { level, reason } = place(answers);
+    const btn =
+      "inline-flex items-center justify-center gap-2 rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto";
 
+    // One result, one offer: your level is a product. Go to it, or talk to us first.
     return (
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-2xl mx-auto">
         <button
           onClick={() => setStep(0)}
           className="inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors mb-6"
@@ -188,99 +136,37 @@ export default function StartClient() {
           <ArrowLeft className="w-4 h-4" /> Change my answers
         </button>
 
-        <div className="max-w-2xl mx-auto text-center">
-          <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">Your level</span>
-          <h1 className="text-display md:text-display-lg text-foreground mt-2 leading-tight">
-            Level {level.level} of 4: <span className="text-primary">{level.verb}.</span>
-          </h1>
-          <p className="text-body-lg text-muted-foreground mt-4">{reason}</p>
-        </div>
-
-        {/* Value first: what to do this week, free, without us. */}
-        <section className="mt-10 max-w-2xl mx-auto rounded-2xl bg-white border border-border/60 shadow-[0_4px_24px_rgba(18,21,46,0.06)] p-6 md:p-9">
-          <h2 className="font-heading font-bold text-xl md:text-2xl text-foreground">Start this week, on your own</h2>
-          <p className="text-muted-foreground mt-1">Free. No help from us needed.</p>
-          <ol className="mt-6 space-y-4">
-            {week.steps.map((s, i) => (
-              <li key={i} className="flex gap-4">
-                <span className="w-8 h-8 shrink-0 rounded-full bg-primary/10 text-primary font-heading font-bold inline-flex items-center justify-center tabular-nums">
-                  {i + 1}
-                </span>
-                <p className="text-foreground leading-relaxed pt-1">{s}</p>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-7 rounded-xl bg-cream p-4 md:p-5">
-            <Link href={week.free.href} className="font-heading font-semibold text-primary hover:text-accent inline-flex items-center gap-1.5">
-              {week.free.label} <ArrowRight className="w-4 h-4" />
-            </Link>
-            <p className="text-sm text-muted-foreground mt-1">{week.free.note}</p>
-          </div>
-          <a
-            href={`mailto:?subject=${encodeURIComponent("My next steps")}&body=${encodeURIComponent(mailBody)}`}
-            className="mt-5 inline-flex items-center gap-1.5 text-sm font-heading font-semibold text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Mail className="w-4 h-4" /> Email these steps to yourself
-          </a>
-        </section>
-
-        {/* Then, quietly: if you want help with this level. */}
-        <section className="mt-10 max-w-2xl mx-auto text-center">
-          <h2 className="font-heading font-bold text-xl md:text-2xl text-foreground">Want us to help?</h2>
-          <p className="text-muted-foreground mt-2">
-            At your level that&apos;s <span className="font-semibold text-foreground">{level.name}</span>.{" "}
-            {level.commitment}, <span className="font-semibold text-foreground tabular-nums">{level.price.replace(/^From/, "from")}</span>.
+        <div className="rounded-2xl bg-white border border-border/60 shadow-[0_4px_24px_rgba(18,21,46,0.08)] overflow-hidden">
+          <p className="bg-cream text-center text-xs md:text-sm text-muted-foreground px-5 py-2.5">
+            We didn&apos;t save your answers. They stay in your browser.
           </p>
-          <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-3">
-            {level.cta.external ? (
-              <a href={level.cta.href} target="_blank" rel="noopener noreferrer" className="font-heading font-semibold text-primary hover:text-accent inline-flex items-center gap-1.5">
-                {level.cta.label} <ArrowRight className="w-4 h-4" />
-              </a>
-            ) : (
-              <Link href={level.cta.href} className="font-heading font-semibold text-primary hover:text-accent inline-flex items-center gap-1.5">
-                {level.cta.label} <ArrowRight className="w-4 h-4" />
-              </Link>
-            )}
-            <Link href={TALK_TO_EXPERT.url} className="font-heading font-semibold text-muted-foreground hover:text-foreground">
-              Or ask us a question
-            </Link>
-          </div>
-          {level.key === "book" && (
-            <p className="text-sm text-muted-foreground mt-5">
-              The book is in Dutch for now.{" "}
-              <Link href="/book/english-edition" className="font-heading font-semibold text-primary hover:text-accent underline underline-offset-2">
-                Hear when the English one is out
-              </Link>
-              .
+          <div className="p-6 md:p-10 text-center">
+            <span className="text-accent text-caption uppercase tracking-widest font-heading font-semibold">
+              Level {level.level} of 4 · {level.verb}
+            </span>
+            <h1 className="text-display md:text-display-lg text-foreground mt-3 leading-tight">
+              That&apos;s <span className="text-primary">{level.name}</span>.
+            </h1>
+            <p className="text-body-lg text-muted-foreground mt-4">{reason}</p>
+            <p className="text-sm text-muted-foreground mt-3">
+              {level.commitment} · <span className="font-heading font-semibold text-foreground tabular-nums">{level.price}</span>
             </p>
-          )}
-          {nextUp ? (
-            <p className="text-sm text-muted-foreground mt-5">
-              Later on:{" "}
-              <Link href={nextUp.href} className="font-heading font-semibold text-primary hover:text-accent">
-                {nextUp.name} →
-              </Link>
-            </p>
-          ) : (
-            lighter && (
-              <p className="text-sm text-muted-foreground mt-5">
-                Too big a step?{" "}
-                <Link href={lighter.href} className="font-heading font-semibold text-primary hover:text-accent">
-                  Start with {lighter.name} →
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5">
+              {level.cta.external ? (
+                <a href={level.cta.href} target="_blank" rel="noopener noreferrer" className={btn}>
+                  {level.cta.label} <ArrowRight className="w-4 h-4" />
+                </a>
+              ) : (
+                <Link href={level.cta.href} className={btn}>
+                  {level.cta.label} <ArrowRight className="w-4 h-4" />
                 </Link>
-              </p>
-            )
-          )}
-        </section>
-
-        <div className="mt-16 md:mt-20">
-          <h2 className="font-heading font-bold text-xl md:text-2xl text-foreground text-center mb-8">All four levels</h2>
-          <Ladder current={level.key} currentLabel="Your level" showFinder={false} />
+              )}
+              <Link href={TALK_TO_EXPERT.url} className="font-heading font-semibold text-primary hover:text-accent transition-colors">
+                Or talk to us first
+              </Link>
+            </div>
+          </div>
         </div>
-
-        <p className="text-center text-xs text-muted-foreground mt-10">
-          We didn&apos;t save your answers. They stay in your browser.
-        </p>
       </div>
     );
   }
