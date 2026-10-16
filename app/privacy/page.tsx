@@ -67,6 +67,12 @@ export default function PrivacyPage() {
                   <em>Brand Humanizing</em> becomes available. Legal basis: consent.
                 </div>
                 <div>
+                  <strong className="text-foreground">Booking a call</strong> — when you pick a time in
+                  our Calendly calendar, we receive your name, email address and anything you write in
+                  the booking notes, so we can prepare and meet you. Legal basis: taking steps at your
+                  request before a possible agreement.
+                </div>
+                <div>
                   <strong className="text-foreground">Self-assessment</strong> — your answers are
                   stored anonymously and linked to your email only if you voluntarily provide it.
                   Legal basis: consent.
@@ -76,14 +82,34 @@ export default function PrivacyPage() {
 
             <section>
               <h2 className="font-heading font-bold text-xl mb-3">Cookies and tracking</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                We do not use tracking cookies, advertising pixels, or third-party analytics. Your
-                visit to this website is completely anonymous. Read more on our{" "}
-                <a href="/no-cookies" className="text-accent hover:underline">
-                  No-Cookies policy page
-                </a>
-                .
-              </p>
+              <div className="space-y-3 text-muted-foreground leading-relaxed">
+                <p>
+                  We do not use tracking cookies, advertising pixels, or third-party analytics.
+                  Browsing this website is anonymous. We only learn who you are when you reach out:
+                  by sending a form or by booking a call. Read more on our{" "}
+                  <a href="/no-cookies" className="text-accent hover:underline">
+                    No-Cookies policy page
+                  </a>
+                  .
+                </p>
+                <p>
+                  <strong className="text-foreground">One exception, so you know.</strong> The booking
+                  calendar on our{" "}
+                  <a href="/talk-to-an-expert" className="text-accent hover:underline">
+                    Talk to an expert
+                  </a>{" "}
+                  page is Calendly, embedded from calendly.com. Calendly sets its own cookies inside that
+                  calendar to run the booking, and shows its own cookie notice there. It only loads on
+                  that page. What you enter in the calendar is covered by Calendly&apos;s privacy policy
+                  as well as ours.
+                </p>
+                <p>
+                  <strong className="text-foreground">If you came from one of our Google ads</strong> and
+                  then send us a request, we save that ad&apos;s click reference with your request. That
+                  lets us tell Google an ad led to a request. It is not a cookie, and we don&apos;t follow
+                  you around the site to do it.
+                </p>
+              </div>
             </section>
 
             <section>

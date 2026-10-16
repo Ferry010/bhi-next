@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CalendlyEmbed from "@/components/CalendlyEmbed";
 import { TALK_TO_EXPERT } from "@/lib/pricing";
+import { Check } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Talk to an expert",
@@ -31,9 +32,39 @@ export default function TalkToAnExpertPage() {
             </div>
 
             <div className="mt-8 -mx-4 md:mx-0">
-              <CalendlyEmbed url={embedUrl} fallbackLabel="Open the calendar on Calendly" />
+              <CalendlyEmbed
+                url={embedUrl}
+                fallbackLabel="Open the calendar on Calendly"
+                bookedContent={
+                  <div className="rounded-2xl bg-white border border-border/50 shadow-[0_4px_24px_rgba(18,21,46,0.06)] px-7 py-10 md:px-12 md:py-14 text-center">
+                    <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                      <Check className="w-7 h-7 text-primary" />
+                    </div>
+                    <h2 className="text-display text-foreground">
+                      Booked. Looking forward to <span className="text-accent">meeting you</span>.
+                    </h2>
+                    <p className="text-body-lg text-muted-foreground mt-5 max-w-xl mx-auto">
+                      A confirmation from Calendly is on its way to your inbox, with the details and a link
+                      to move it if something comes up. No need to prepare anything. Bring your situation,
+                      we&apos;ll take it from there.
+                    </p>
+                    <p className="font-handwritten text-3xl text-primary mt-6">Ferry</p>
+                    <p className="text-sm text-muted-foreground mt-8">
+                      Want a head start before we talk?{" "}
+                      <Link href="/book" className="text-primary font-semibold hover:text-accent transition-colors">
+                        The book has the whole method
+                      </Link>
+                      .
+                    </p>
+                  </div>
+                }
+              />
             </div>
 
+            <p className="text-xs text-muted-foreground mt-4">
+              The calendar is Calendly. It uses its own cookies to make the booking work, and only on this
+              page. <Link href="/privacy" className="underline hover:text-foreground">Privacy policy</Link>
+            </p>
             <p className="text-sm text-muted-foreground mt-6">
               Rather write it down?{" "}
               <Link href="/contact" className="text-primary font-semibold hover:text-accent transition-colors">

@@ -36,7 +36,7 @@ export default function CookieBanner() {
           </div>
           <div className="flex-1">
             <p className="text-primary-foreground/90 text-sm leading-relaxed">
-              We don&apos;t use tracking cookies. We have no idea what you are doing on our website, as we cannot follow you around. This is a conscious decision made by us because if we would invite you to our office, we wouldn&apos;t follow your every move either.
+              We don&apos;t use tracking cookies. We have no idea what you are doing on our website, as we cannot follow you around. This is a conscious decision made by us because if we would invite you to our office, we wouldn&apos;t follow your every move either. We only get to know you when you reach out.
             </p>
           </div>
         </div>

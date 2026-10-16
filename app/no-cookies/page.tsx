@@ -145,6 +145,16 @@ export default function NoCookiesPage() {
             use and with a purpose. And following people online and seeing them
             as datapoints is just not our purpose.
           </p>
+          <p className="text-white/70 leading-relaxed">
+            When you do reach out, by sending a form or booking a call, that&apos;s when we get to know
+            you. One thing to be open about: our booking calendar is Calendly. It runs its own cookies
+            inside that calendar to make the booking work, and it only loads on the page where you book.
+            The details are in our{" "}
+            <a href="/privacy" className="text-accent hover:underline">
+              privacy policy
+            </a>
+            .
+          </p>
         </section>
 
         {/* Sign-off */}
