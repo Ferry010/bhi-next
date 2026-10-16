@@ -31,15 +31,15 @@ const realWorldExamples = [
   },
   {
     title: "The utility that made its people sharper",
-    description: "A major UK utility company deployed AI to support its human customer service team — giving agents faster access to the right answers in real time. Handling times dropped. Service levels rose. And the humans stayed in the conversation throughout. The technology did not replace the relationship. It made the people on the other end of it better.",
+    description: "A big UK energy company gave its customer service team an AI helper, so they found the right answers faster. Handling times dropped. Service levels rose. And the humans stayed in the conversation throughout. The technology did not replace the relationship. It made the people on the other end of it better.",
   },
 ];
 
 const faqs = [
-  { q: "Is Brand Humanizing only relevant for large organizations?", a: "No. The framework applies equally to a team of 10 and a corporation of 10,000. The questions are the same: where does technology belong, and where do humans belong?" },
-  { q: "How is Brand Humanizing different from general \"human-centered design\"?", a: "Human-centered design focuses primarily on product and interface design. Brand Humanizing is an organizational strategy that spans how you implement technology, how you build culture, how you serve customers, and how you grow sustainably." },
-  { q: "Do we need to have an AI problem to benefit from Brand Humanizing?", a: "No. Every organization that uses any technology benefits from having a clear position on where humans belong. Most organizations have made those decisions by accident. Brand Humanizing makes them deliberately." },
-  { q: "Is there academic evidence behind this framework?", a: "Yes. The Brand Humanizing framework is backed by peer-reviewed, primary research. See our research archive for the full methodology and findings." },
+  { q: "Is Brand Humanizing only for big companies?", a: "No. It works for a team of 10 and a company of 10,000. The questions are the same: what should computers do, and what should people do?" },
+  { q: "How is Brand Humanizing different from general \"human-centered design\"?", a: "Human-centered design is mostly about designing products and screens. Brand Humanizing is about your whole company: how you use technology, how you work together, how you treat customers, and how you grow." },
+  { q: "Do we need an AI problem to get something out of this?", a: "No. Every company that uses technology should know where people make the difference. Most companies decided that by accident. Brand Humanizing helps you decide it on purpose." },
+  { q: "Is there research behind it?", a: "Yes. Brand Humanizing is based on our own research, checked by other scientists. You can read it all for free on our research page." },
 ];
 
 export default function TheMethodPage() {
@@ -51,7 +51,7 @@ export default function TheMethodPage() {
           <div className="container max-w-4xl pt-28 md:pt-40 pb-16 md:pb-24">
             <Breadcrumb items={[{ label: "The Method" }]} variant="light" />
             <h1 className="text-hero md:text-hero-lg text-foreground mt-4 leading-[1.05]">
-              The framework that makes your brand{" "}
+              The method that makes your brand{" "}
               <span className="text-accent">impossible to copy.</span>
             </h1>
             <p className="text-body-lg text-muted-foreground mt-6 max-w-2xl">
@@ -60,12 +60,12 @@ export default function TheMethodPage() {
             <div className="flex flex-wrap gap-4 mt-10">
               <a href="#pyramid">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                  Explore the framework <ArrowRight className="w-4 h-4" />
+                  See how it works <ArrowRight className="w-4 h-4" />
                 </Button>
               </a>
               <Link href="/learning">
                 <Button variant="outline" className="rounded-full border-[1.5px] border-foreground/70 text-foreground hover:border-foreground hover:bg-foreground/5 font-heading font-semibold px-8 h-12 text-base gap-2">
-                  See the training <ArrowRight className="w-4 h-4" />
+                  See the four levels <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>
@@ -127,7 +127,7 @@ export default function TheMethodPage() {
                   </p>
                   <Link href="/learning">
                     <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                      Book a session <ArrowRight className="w-4 h-4" />
+                      See the four levels <ArrowRight className="w-4 h-4" />
                     </Button>
                   </Link>
                 </div>
@@ -154,11 +154,11 @@ export default function TheMethodPage() {
         <section className="section-padding bg-navy">
           <div className="container max-w-3xl text-center">
             <ScrollRevealSection>
-              <h2 className="text-display md:text-display-lg text-white mb-6">Ready to go beyond the framework?</h2>
+              <h2 className="text-display md:text-display-lg text-white mb-6">Ready to put it to work?</h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/learning">
                   <Button className="rounded-full bg-sunny text-sunny-foreground hover:bg-sunny hover:brightness-95 btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                    Book a session <ArrowRight className="w-4 h-4" />
+                    See the four levels <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <Link href="/book">

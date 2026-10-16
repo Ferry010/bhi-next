@@ -6,19 +6,19 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 const skills = [
   {
     title: "Programming, Automation and AI",
-    desc: "Knowing which parts of your organization technology can do better, faster, and cheaper. And having the clarity and courage to actually implement it. This does not mean everyone needs to learn to code. It means your organization needs enough technical literacy to make smart decisions about automation.",
+    desc: "Knowing which work a computer can do better, faster and cheaper. And having the guts to actually hand it over. You don't need to learn to code. You just need to know enough about technology to make smart choices.",
   },
   {
     title: "Creativity and Organizational Awareness",
-    desc: "The empty space that automation creates is only valuable if you fill it with something better. Creativity is an organizational skill. It means understanding your business deeply enough to imagine what it could become.",
+    desc: "When computers take over work, you get time back. That time is only worth something if you fill it with something better. Creativity means knowing your company well enough to imagine what it could become.",
   },
   {
     title: "Human Sciences and Research",
-    desc: "Your customers are not data points. They are people with lives, fears, relationships, and needs that change. Understanding them requires more than analytics. Human Sciences keeps every other skill grounded in reality.",
+    desc: "Your customers are not numbers. They are people, with lives, worries, families and needs that change. To understand them, numbers alone are not enough. This skill keeps all the others real.",
   },
   {
     title: "Emotional Intelligence and Ethics",
-    desc: "The skill that prevents Brand Humanizing from becoming just another efficiency play. Ethics is not a constraint on good business. It is the foundation of it. Without this skill, everything else falls apart.",
+    desc: "The skill that stops this from becoming just another way to cut costs. Doing the right thing doesn't hold good business back. It is what good business is built on. Without it, the rest falls apart.",
   },
 ];
 

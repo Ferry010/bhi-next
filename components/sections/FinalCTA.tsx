@@ -12,7 +12,7 @@ export default function FinalCTA() {
     <section ref={ref} className="bg-sunny section-padding">
       <div className={`container text-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
         <h2 className="text-display md:text-display-lg lg:text-hero text-foreground max-w-3xl mx-auto">
-          Every quarter you wait, you look a little more like everyone else.
+          Every month you wait, you look a bit more like everyone else.
         </h2>
         <p className="text-sm md:text-body-lg text-foreground/75 mt-4 md:mt-6 max-w-xl mx-auto">
           Book a course, start with the book, or just ask a question. One message and you&apos;re on our radar. No forms into the void, no bots, no sales script.

@@ -116,7 +116,7 @@ export default function BookSection({ variant = "full" }: { variant?: "full" | "
               <em>Brand Humanizing: The superpower that makes your brand more human and your business grow faster</em>, written by Ferry Hoes and Jonathan Flores.
             </p>
             <p className="text-sm md:text-body-lg text-text-light">
-              If you want to go deep on the methodology, the research, and the real-world application of Brand Humanizing, this is where to start.
+              Want the whole idea, the research behind it and real company stories? This is where to start.
             </p>
             <Link href="/book">
               <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-5 h-10 text-sm md:px-8 md:h-12 md:text-base mt-2">

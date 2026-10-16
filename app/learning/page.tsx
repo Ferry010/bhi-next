@@ -13,9 +13,9 @@ import CountUp from "@/components/ui/CountUp";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/learning" },
-  title: "Live Training",
+  title: "How We Help: Four Levels",
   description:
-    "Start with the book, bring the story to your team in-house, or train the whole team for a day. Pick how deep you want to go.",
+    "Four levels: read the book, get your team inspired, learn to do it in one day, or make it stick with a Taskforce. Find the level that fits you.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
@@ -43,10 +43,10 @@ const ladder: Rung[] = [
     spec: `${BOOK.price} · ${BOOK.edition}`,
     pickIf: [
       "You're curious, but not ready to book anything yet",
-      "You want to know if this thinking fits before you spend real budget",
-      "You'd rather walk into a conversation already knowing the ideas",
+      "You want to know if this fits you before you spend real money",
+      "You'd like to know the ideas before you talk to us",
     ],
-    gist: "The whole method, the research and the real-world cases, in one book you can read this weekend.",
+    gist: "The whole idea, the research and real company stories, in one book you can read this weekend.",
     outcome: "Read it, then we'll talk.",
     primaryCta: { label: BOOK.purchase.label, href: BOOK.purchase.url, external: true },
     secondaryCta: { label: "About the book", href: BOOK.href },
@@ -59,12 +59,12 @@ const ladder: Rung[] = [
     name: PRODUCTS.inspiration.name,
     spec: `${PRODUCTS.inspiration.duration} · ${PRODUCTS.inspiration.audience}`,
     pickIf: [
-      "You've seen it land on stage and want your whole team to feel it",
-      "You need the room aligned and energised in a single sitting",
-      "You want a fast, honest wake-up, not a full course yet",
+      "You saw Ferry on stage and want your whole team to hear it",
+      "You want everyone on the same page and full of energy, in one go",
+      "You want a quick, honest wake-up call, not a full day yet",
     ],
-    gist: "A 60 to 90 minute keynote, shaped around your organisation, that gets everyone seeing AI and their own work differently.",
-    outcome: "They walk out hungry to change, with a shared language and first moves for Monday.",
+    gist: "A one-hour talk, made for your company, that makes everyone see AI and their own work differently.",
+    outcome: "They walk out excited to change, speaking the same language, with first steps for Monday.",
     primaryCta: { label: "See the Spark Session", href: PRODUCTS.inspiration.href },
     includesBook: true,
     accent: false,
@@ -75,13 +75,13 @@ const ladder: Rung[] = [
     name: PRODUCTS.fullDay.name,
     spec: `${PRODUCTS.fullDay.duration} · ${PRODUCTS.fullDay.audience}`,
     pickIf: [
-      "Your team is past interested and ready to get genuinely capable",
-      "You want them to leave with a plan, not just inspiration",
-      "You're picking one team to go deep with",
+      "Your team gets the idea and wants to learn how to do it",
+      "You want them to leave with a plan, not just good energy",
+      "You're picking one team to really go for it",
     ],
-    gist: "The complete four-skill framework, worked through with your team on your own real challenges.",
-    outcome: "A curious team walks in. A capable one walks out, with a 90-day plan for Monday.",
-    primaryCta: { label: "See the Full-Day Course", href: PRODUCTS.fullDay.href },
+    gist: "The four skills, practised with your team on your own real problems.",
+    outcome: "A curious team walks in. A team that can do it walks out, with a 90-day plan.",
+    primaryCta: { label: "See the Training", href: PRODUCTS.fullDay.href },
     includesBook: true,
     accent: true,
   },
@@ -91,12 +91,12 @@ const ladder: Rung[] = [
     name: "The Taskforce",
     spec: "16 weeks · your own people",
     pickIf: [
-      "Training alone won't cut it, you want change that outlasts us",
-      "You can name one real business challenge in a single sentence",
-      "You have an executive sponsor and appetite for four months",
+      "A training isn't enough. You want change that lasts after we leave",
+      "You can say one real business problem in one sentence",
+      "A boss backs it, and you have four months",
     ],
-    gist: "Your own people take that one challenge to a working pilot, guided by the method, over sixteen weeks.",
-    outcome: "When we leave, the capability stays, with a named owner inside your team.",
+    gist: "In sixteen weeks, a small team of your own people solves that problem, and tests the solution for real.",
+    outcome: "When we leave, your people can do it without us.",
     primaryCta: { label: "See the Taskforce", href: "/taskforce" },
     includesBook: false,
     accent: false,
@@ -104,13 +104,13 @@ const ladder: Rung[] = [
 ];
 
 const faqs = [
-  { q: "What does it cost?", a: `The book is ${BOOK.price}. A Spark Session starts at ${PRODUCTS.inspiration.priceFrom} and the Full-Day Course at ${PRODUCTS.fullDay.priceFrom}, excl. VAT. The exact price depends on your group size and where we meet, and you get it in writing within one working day. The Taskforce is quoted per engagement, once we've agreed the challenge.` },
-  { q: "Can sessions be delivered online or hybrid?", a: "Yes. Both formats work well. We discuss what's best for your situation during intake." },
-  { q: "How much advance notice do you need?", a: "For a Spark Session: 3–6 weeks. For a Full-Day Course: 4–8 weeks. The sooner we talk, the more we can shape it around your team." },
+  { q: "What does it cost?", a: `The book is ${BOOK.price}. A Spark Session starts at ${PRODUCTS.inspiration.priceFrom} and the Training at ${PRODUCTS.fullDay.priceFrom}, excl. VAT. The exact price depends on your group size and where we meet, and you get it in writing within one working day. The Taskforce is quoted per engagement, once we've agreed the challenge.` },
+  { q: "Can you do it online?", a: "Yes. Online and in person both work. We pick what suits you in the first call." },
+  { q: "How far ahead should I book?", a: "For a Spark Session: 3 to 6 weeks. For the Training: 4 to 8 weeks. The sooner we talk, the better we can fit it to your team." },
   { q: "Can sessions be delivered in English?", a: "Yes. Both Ferry and Jonathan deliver in Dutch and English with equal fluency." },
-  { q: "Do participants get the book?", a: "Yes. Every participant in our in-person sessions receives a copy of Brand Humanizing, the book." },
-  { q: "What is the intake process?", a: "A short conversation to understand your organisation. No questionnaires. A real conversation that shapes the session." },
-  { q: "Can you come to us?", a: "Yes. We deliver in-house wherever you are, and can host in Rotterdam. Remote delivery is also available." },
+  { q: "Does everyone get the book?", a: "Yes. Everyone in our sessions gets a copy of the book." },
+  { q: "What happens before a session?", a: "A short call to get to know your company. No forms. A real talk, so we can make the session fit." },
+  { q: "Can you come to us?", a: "Yes. We come to you, wherever you are. You can also come to us in Rotterdam, or do it online." },
 ];
 
 export default function LearningPage() {
@@ -179,7 +179,7 @@ export default function LearningPage() {
                     <div className="grid md:grid-cols-[220px_1fr] gap-6 md:gap-8">
                       {/* Left rail — what this rung is */}
                       <div>
-                        <span className="text-xs font-heading font-semibold uppercase tracking-widest text-accent">Level {i + 1} · {rung.step}</span>
+                        <span className="text-xs font-heading font-semibold uppercase tracking-widest text-accent">Level {i + 1} · {LEVELS[i].verb}</span>
                         <div className="flex items-center gap-3 mt-3">
                           <h3 className="font-heading font-bold text-xl text-foreground leading-tight">{rung.name.replace(/^The /, "")}</h3>
                         </div>

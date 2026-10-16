@@ -62,8 +62,8 @@ export default function WhatIsBrandHumanizingPage() {
               What is Brand Humanizing?
             </h1>
             <p className="text-body-lg text-muted-foreground mt-6 leading-relaxed">
-              <strong className="text-foreground">Brand Humanizing is a strategic framework that helps organisations build sustainable competitive advantage by deliberately combining human talent and technology.</strong>{" "}
-              It is not a marketing concept. It is a proven competitive strategy for organisations that want to use technology to amplify their people, not replace them.
+              <strong className="text-foreground">Brand Humanizing means letting technology do the work it does best, so your people can do what only people can.</strong>{" "}
+              That is what makes customers choose you, and keep choosing you. It is not a marketing trick. It is a way of running your company that makes your people stronger with technology, instead of replacing them.
             </p>
           </div>
         </section>
@@ -94,7 +94,7 @@ export default function WhatIsBrandHumanizingPage() {
               The four skills every future-proof organisation needs
             </h2>
             <p className="text-body-lg text-muted-foreground leading-relaxed">
-              Brand Humanizing identifies four organisational capabilities that AI cannot replicate and that create the most value when developed deliberately:
+              There are four skills AI can't copy. They are worth the most when you build them on purpose:
             </p>
             <ol className="space-y-6 list-none pl-0">
               {[
@@ -104,15 +104,15 @@ export default function WhatIsBrandHumanizingPage() {
                 },
                 {
                   title: "Human Sciences & Research",
-                  desc: "A working understanding of how people actually behave, grounded in psychology, sociology, and behavioural science, not assumptions.",
+                  desc: "Knowing how people really behave, based on research, not guesses.",
                 },
                 {
                   title: "Programming, Automation & AI",
-                  desc: "The capability to understand, evaluate, and work with AI tools critically, knowing when to use them and when not to.",
+                  desc: "Knowing how to work with AI tools, and when not to use them.",
                 },
                 {
                   title: "Emotional Intelligence & Ethics",
-                  desc: "The operating system for everything else: the ability to read people, manage emotions, and make sound ethical judgments under pressure.",
+                  desc: "The base for everything else: reading people, keeping your cool, and doing the right thing under pressure.",
                 },
               ].map((skill, i) => (
                 <li key={i} className="flex gap-4">
@@ -162,12 +162,12 @@ export default function WhatIsBrandHumanizingPage() {
               Go deeper
             </h2>
             <p className="text-body-lg text-white/70 max-w-xl mx-auto">
-              Brand Humanizing is more than a concept. It&apos;s a methodology you can learn, a strategy you can implement, and a movement you can join.
+              Brand Humanizing is more than an idea. It&apos;s something your team can learn and start using this year.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
               <Link href="/the-method">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-6 h-11 text-sm gap-2">
-                  Explore the methodology <ArrowRight className="w-3.5 h-3.5" />
+                  See how it works <ArrowRight className="w-3.5 h-3.5" />
                 </Button>
               </Link>
               <Link href="/research">

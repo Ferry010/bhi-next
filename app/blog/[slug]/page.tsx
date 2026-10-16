@@ -252,17 +252,17 @@ export default async function BlogPostPage({
               Want to apply this in your organisation?
             </h2>
             <p className="text-body-lg text-white/80 mb-8">
-              The Inspiration Session is where this thinking becomes practical for your team. 60–90 minutes. Built around your context.
+              The Spark Session brings this to your team. One hour, made for your company.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/learning/inspiration-session">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                  Book an Inspiration Session <ArrowRight className="w-4 h-4" />
+                  See the Spark Session <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
-              <Link href="/assessment">
+              <Link href="/start">
                 <Button variant="outline" className="rounded-full border-[1.5px] border-white/70 text-white hover:border-white hover:bg-white/5 font-heading font-semibold px-8 h-12 text-base gap-2">
-                  Take the assessment <ArrowRight className="w-4 h-4" />
+                  Find your level <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>

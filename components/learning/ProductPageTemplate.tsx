@@ -188,16 +188,16 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
           )}
 
           {bookable && (
-            <p className="mt-3 text-sm text-muted-foreground">Your exact price within one working day. No obligations.</p>
+            <p className="mt-3 text-sm text-muted-foreground">Your exact price within one working day. No strings attached.</p>
           )}
           {data.urgencyLine && (
             <p className="mt-4 text-sm text-muted-foreground max-w-xl">{data.urgencyLine}</p>
           )}
 
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> A founder in the room</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> One of the founders, in person</span>
             <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> The book for every participant</span>
-            <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> Shaped around your organisation</span>
+            <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-accent" /> Made for your company</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 mt-10">
@@ -375,7 +375,7 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
             <Section>
               <div className="bg-navy-card rounded-3xl p-8 md:p-12 shadow-xl border border-accent/10">
                 <div className="text-center">
-                  <h2 className="font-heading text-2xl md:text-4xl font-bold mb-5 text-white">Investment</h2>
+                  <h2 className="font-heading text-2xl md:text-4xl font-bold mb-5 text-white">What it costs</h2>
                   <p className="font-heading font-bold text-white">
                     <span className="text-white/60 text-lg mr-2">From</span>
                     <span className="text-4xl md:text-5xl text-sunny tabular-nums">{data.priceFrom}</span>
@@ -511,9 +511,9 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
         <div className="container max-w-3xl text-center relative z-10">
           <Section>
             <p className="text-lg text-white/80">
-              Most teams start with one format and go deeper from there. See all the ways to learn:{" "}
+              Most teams start at one level and climb from there.{" "}
               <Link href="/learning" className="text-sunny font-heading font-semibold hover:underline">
-                Explore the training →
+                See all four levels →
               </Link>
             </p>
           </Section>

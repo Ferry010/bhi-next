@@ -86,7 +86,7 @@ export function renderDay3Email(email: string, data: NurtureData): { subject: st
           way into how you work.
         </p>
         <p style="${STYLES.p}">
-          That is exactly what we cover in the Inspiration Session. In 60 to 90 minutes, we take your
+          That is exactly what we cover in the Spark Session. In 60 to 90 minutes, we take your
           team through the Brand Humanizing framework and apply it to your situation directly. Most teams
           leave with two or three concrete things they can start doing differently that week.
         </p>
@@ -95,7 +95,7 @@ export function renderDay3Email(email: string, data: NurtureData): { subject: st
         </p>
         <div style="${STYLES.btnWrap}">
           <a href="${BASE_URL}/learning/inspiration-session" style="${STYLES.btn}">
-            Learn about the Inspiration Session
+            Learn about the Spark Session
           </a>
         </div>
         <p style="${STYLES.pMuted}">

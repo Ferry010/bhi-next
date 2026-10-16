@@ -44,11 +44,19 @@ const nextConfig = {
       // /pricing merged into /learning (the single training offer page). The old
       // page file is kept for reference but is never reached because of this 301.
       { source: "/pricing", destination: "/learning", permanent: true },
+      // The old skill self-assessment was replaced by the levels test.
+      { source: "/assessment", destination: "/start", permanent: true },
       { source: "/learning/half-day-workshop", destination: "/learning", permanent: true },
       { source: "/learning/full-day-training", destination: "/learning/full-day-course", permanent: true },
-      { source: "/work-with-us/human-technology-fit-audit", destination: "/work-with-us/audit-and-brainstorm", permanent: true },
-      { source: "/work-with-us/customer-journey-humanizing", destination: "/work-with-us", permanent: true },
-      { source: "/project", destination: "/work-with-us", permanent: true },
+      // The public offer is four levels (lib/pricing LEVELS). The old 5-step
+      // project path and the coming-soon online course are parked: their page
+      // files stay, but visitors land on the level that replaced them. Temporary
+      // (307) on purpose, so they can be brought back without cached redirects.
+      { source: "/work-with-us/inspiration-session", destination: "/learning/inspiration-session", permanent: true },
+      { source: "/work-with-us", destination: "/taskforce", permanent: false },
+      { source: "/work-with-us/:path*", destination: "/taskforce", permanent: false },
+      { source: "/project", destination: "/taskforce", permanent: false },
+      { source: "/learning/online-course", destination: "/learning", permanent: false },
       { source: "/humanfingerprint", destination: "/humantouch", permanent: true },
       { source: "/humanfingerprint/v/:token", destination: "/humantouch", permanent: true },
     ];

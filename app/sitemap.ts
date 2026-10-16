@@ -13,13 +13,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // half-day-deep-dive and multi-day-programme are intentionally kept out of the
     // sitemap and nav: they are "back pocket" formats. The pages still render, they
     // are just unlinked from the public offer so they can be resurfaced instantly.
-    { url: `${base}/learning/online-course`, lastModified: new Date(), changeFrequency: "monthly" },
-    { url: `${base}/learning/ai-literacy-certificate`, lastModified: new Date(), changeFrequency: "monthly" },
-    { url: `${base}/work-with-us`, lastModified: new Date(), changeFrequency: "monthly" },
-    { url: `${base}/work-with-us/audit-and-brainstorm`, lastModified: new Date(), changeFrequency: "monthly" },
-    { url: `${base}/work-with-us/brand-humanizing-roadmap`, lastModified: new Date(), changeFrequency: "monthly" },
-    { url: `${base}/work-with-us/organisation-wide-implementation`, lastModified: new Date(), changeFrequency: "monthly" },
-    { url: `${base}/work-with-us/handover`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/taskforce`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/vibecoding`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/teamuitje`, lastModified: new Date(), changeFrequency: "monthly" },
@@ -35,7 +28,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/podcast`, lastModified: new Date(), changeFrequency: "weekly" },
     { url: `${base}/media`, lastModified: new Date(), changeFrequency: "weekly" },
     { url: `${base}/contact`, lastModified: new Date(), changeFrequency: "monthly" },
-    { url: `${base}/assessment`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/start`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/glossary`, lastModified: new Date(), changeFrequency: "monthly" },
     { url: `${base}/ai-geletterdheid`, lastModified: new Date(), changeFrequency: "monthly" },

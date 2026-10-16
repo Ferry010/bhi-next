@@ -21,11 +21,10 @@ export const TALK_TO_EXPERT = {
   calendly: "https://calendly.com/ferryhoes/meeting",
 };
 
-// Keynote-specific booking goes through Speakers Academy, not this site.
-// Swap the URL in once it's confirmed.
+// Keynotes for events are booked through Speakers Academy, not this site.
 export const SPEAKERS_ACADEMY = {
   label: "Book Ferry for a keynote",
-  url: "[PLACEHOLDER: Speakers Academy URL]",
+  url: "https://www.speakersacademy.com/en/speaker/ferry-hoes/",
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -110,7 +109,7 @@ export const PRODUCTS: Record<"inspiration" | "halfDay" | "fullDay" | "multiDay"
   },
   fullDay: {
     slug: "full-day-course",
-    name: "The Full-Day Course",
+    name: "The Training",
     outcome: "Get your team ready to work with AI, and stay the reason customers choose you",
     formatLabel: "Full day",
     promise: "One focused day that gets your team working with AI instead of around it, and keeps them the reason customers choose you.",
@@ -178,9 +177,9 @@ export const LEVELS: Level[] = [
     level: 1,
     verb: "Read",
     name: "The Book",
-    youAre: "You want to understand the thinking before anyone else gets involved.",
-    outcome: "You know what Brand Humanizing is and whether it fits you.",
-    commitment: "A weekend",
+    youAre: "You want to understand the idea first, on your own.",
+    outcome: "You know if this is for you.",
+    commitment: "A few evenings",
     price: BOOK.price,
     href: BOOK.href,
     cta: { label: BOOK.purchase.label, href: BOOK.purchase.url, external: true },
@@ -188,11 +187,11 @@ export const LEVELS: Level[] = [
   {
     key: "spark",
     level: 2,
-    verb: "Spark",
+    verb: "Get inspired",
     name: PRODUCTS.inspiration.name,
-    youAre: "Your team needs a wake-up and a shared language, in one room.",
-    outcome: "Everyone sees AI, their work and their edge differently.",
-    commitment: "One hour, whole team",
+    youAre: "Your team needs to hear it. One talk, everyone in the room.",
+    outcome: "Everyone sees AI and their own work differently.",
+    commitment: "1 hour, your whole team",
     price: `From ${PRODUCTS.inspiration.priceFrom}`,
     href: PRODUCTS.inspiration.href,
     cta: { label: "See the Spark Session", href: PRODUCTS.inspiration.href },
@@ -200,24 +199,24 @@ export const LEVELS: Level[] = [
   {
     key: "training",
     level: 3,
-    verb: "Train",
+    verb: "Learn to do it",
     name: PRODUCTS.fullDay.name,
-    youAre: "Your team gets it. Now they need to be able to do it.",
-    outcome: "A capable team, with a 90-day plan on Monday.",
-    commitment: "One day, 12 to 30 people",
+    youAre: "Your team gets the idea. Now they need to learn how to do it.",
+    outcome: "Your team can do it, and has a plan for the next 90 days.",
+    commitment: "1 day, up to 30 people",
     price: `From ${PRODUCTS.fullDay.priceFrom}`,
     href: PRODUCTS.fullDay.href,
-    cta: { label: "See the Full-Day Course", href: PRODUCTS.fullDay.href },
+    cta: { label: "See the Training", href: PRODUCTS.fullDay.href },
   },
   {
     key: "taskforce",
     level: 4,
-    verb: "Implement",
+    verb: "Make it stick",
     name: "The Taskforce",
-    youAre: "It has to be built into how the organisation works, for good.",
-    outcome: "A working pilot, and the capability stays when we leave.",
-    commitment: "16 weeks, your own people",
-    price: "Quoted per engagement",
+    youAre: "You want it to become part of how your company works, for good.",
+    outcome: "Your own people can do it without us.",
+    commitment: "16 weeks, with your own people",
+    price: "Price on request",
     href: "/taskforce",
     cta: { label: "See the Taskforce", href: "/taskforce" },
   },

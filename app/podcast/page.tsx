@@ -83,12 +83,12 @@ export default async function PodcastPage() {
           <div className="container max-w-3xl text-center">
             <h2 className="text-display md:text-display-lg text-white mb-4">Bring the conversation into your organisation</h2>
             <p className="text-body-lg text-white/80 mb-8">
-              The podcast is the thinking. The Inspiration Session is where your team works through it together.
+              The podcast is the thinking. The Spark Session brings it to your whole team, in one hour.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/learning/inspiration-session">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                  Book an Inspiration Session <ArrowRight className="w-4 h-4" />
+                  See the Spark Session <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
               <Link href="/the-method">

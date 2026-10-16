@@ -73,9 +73,8 @@ export default function PrivacyPage() {
                   request before a possible agreement.
                 </div>
                 <div>
-                  <strong className="text-foreground">Self-assessment</strong> — your answers are
-                  stored anonymously and linked to your email only if you voluntarily provide it.
-                  Legal basis: consent.
+                  <strong className="text-foreground">Find your level</strong> — your answers stay in
+                  your own browser. We don&apos;t store them and we don&apos;t ask for your email.
                 </div>
               </div>
             </section>

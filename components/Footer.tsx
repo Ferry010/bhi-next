@@ -2,19 +2,13 @@ import Link from "next/link";
 
 const navCols = [
   {
-    title: "Learning",
+    title: "Four levels",
     links: [
-      { label: "The Book", to: "/book" },
-      { label: "Spark Session", to: "/learning/inspiration-session" },
-      { label: "Full-Day Course", to: "/learning/full-day-course" },
-      { label: "All Learning Formats", to: "/learning" },
-    ],
-  },
-  {
-    title: "Working Together",
-    links: [
-      { label: "The Taskforce", to: "/taskforce" },
-      { label: "Is it a fit?", to: "/taskforce#fit" },
+      { label: "1. The Book", to: "/book" },
+      { label: "2. The Spark Session", to: "/learning/inspiration-session" },
+      { label: "3. The Training", to: "/learning/full-day-course" },
+      { label: "4. The Taskforce", to: "/taskforce" },
+      { label: "Find your level", to: "/start" },
     ],
   },
   {
@@ -30,7 +24,6 @@ const navCols = [
       { label: "Research", to: "/research" },
       { label: "Media", to: "/media" },
       { label: "Contact", to: "/contact" },
-      { label: "Self-Assessment", to: "/assessment" },
       { label: "Glossary", to: "/glossary" },
       { label: "Human Touch", to: "/humantouch" },
     ],

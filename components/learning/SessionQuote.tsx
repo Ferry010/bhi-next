@@ -109,8 +109,8 @@ export default function SessionQuote({
             Your price, within <span className="text-accent">one working day</span>.
           </h2>
           <p className="text-body-lg text-muted-foreground mt-4">
-            Five fields, and Ferry or Jonathan comes back with a date and an exact proposal for your team. Rather talk
-            first? Book a call. No obligations either way.
+            Fill in five things. Ferry or Jonathan sends you a date and an exact price for your team. Rather talk
+            first? Book a call. No strings attached.
           </p>
         </div>
 
@@ -132,7 +132,7 @@ export default function SessionQuote({
                 </div>
                 <h3 className="font-heading font-bold text-2xl text-foreground">Got it. Your quote is on its way.</h3>
                 <p className="text-muted-foreground mt-3 max-w-md mx-auto">
-                  Ferry or Jonathan comes back with a date and an exact proposal, usually within one working day.
+                  Ferry or Jonathan sends you a date and an exact price, usually within one working day.
                 </p>
                 <button onClick={() => setTab("call")} className="mt-6 inline-flex items-center gap-1.5 font-heading font-semibold text-primary hover:text-accent transition-colors">
                   Want to talk sooner? Book a call <ArrowRight className="w-4 h-4" />

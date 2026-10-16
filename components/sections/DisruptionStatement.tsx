@@ -11,7 +11,7 @@ const setupLines = [
 ];
 
 const payoffLines = [
-  "The organisations that win the next decade won't have the best technology. They'll be the ones that use it to make their people matter more. That gap is opening now, and it compounds.",
+  "The organisations that win the next decade won't have the best technology. They'll be the ones that use it to make their people matter more. That gap is opening now, and it grows every month.",
   "This is the part your competitors haven't figured out yet.",
 ];
 

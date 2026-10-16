@@ -18,7 +18,7 @@ import { ArrowRight, ArrowLeft } from "lucide-react";
 
 type Intent = "session" | "project" | "course" | "question";
 
-const sessionTypes = ["Inspiration Session", "Full-Day Course", "Not sure yet (take the assessment)"];
+const sessionTypes = ["Spark Session (1 hour)", "Training (1 day)", "Taskforce (16 weeks)", "Not sure yet"];
 const projectTypes = ["The Audit & Brainstorm", "Brand Humanizing Roadmap", "Organisation-Wide Implementation", "The Handover"];
 const teamSizes = ["Under 15", "15–30", "30–100", "100–500", "500+"];
 const orgSizes = ["1–50 employees", "50–250", "250–1,000", "1,000–10,000", "10,000+"];
@@ -26,9 +26,10 @@ const timelines = ["Within 1 month", "1–3 months", "3–6 months", "No rush, e
 const foundUsOptions = ["Google", "LinkedIn", "Word of mouth", "Speakers Academy", "Event", "Other"];
 
 const productToSessionType: Record<string, string> = {
-  "inspiration-session": "Inspiration Session",
-  "work-with-us-inspiration-session": "Inspiration Session",
-  "full-day-course": "Full-Day Course",
+  "inspiration-session": "Spark Session (1 hour)",
+  "work-with-us-inspiration-session": "Spark Session (1 hour)",
+  "full-day-course": "Training (1 day)",
+  taskforce: "Taskforce (16 weeks)",
   // Back-pocket format: not in the visible dropdown, kept so the preserved
   // multi-day page still pre-fills correctly if it is ever resurfaced.
   "multi-day-programme": "Multi-Day Programme",
@@ -151,10 +152,9 @@ function ContactForm() {
               </h2>
               <RadioGroup value={intent} onValueChange={(v) => setIntent(v as Intent)} className="space-y-3">
                 {[
-                  { value: "session", label: "I want to book a learning session", desc: "Inspiration session, workshop, or training for your team" },
-                  { value: "project", label: "I want to start a project", desc: "Audit, roadmap, implementation, or customer journey work" },
-                  { value: "course", label: "I want the online course or certificate", desc: "Self-paced learning or AI literacy certification" },
-                  { value: "question", label: "I have a question", desc: "About the book, research, media, or something else" },
+                  { value: "session", label: "I want to book a session for my team", desc: "The Spark Session or the Training" },
+                  { value: "project", label: "I want to start a Taskforce", desc: "Your own people solve one real problem, in 16 weeks" },
+                  { value: "question", label: "I have a question", desc: "About the book, our research, press, or anything else" },
                 ].map((opt) => (
                   <Label
                     key={opt.value}

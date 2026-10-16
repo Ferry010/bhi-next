@@ -152,14 +152,14 @@ export default function GlossaryPage() {
 
         <section className="section-padding bg-navy">
           <div className="container max-w-3xl text-center">
-            <h2 className="text-display md:text-display-lg text-white mb-4">See where your organisation stands</h2>
+            <h2 className="text-display md:text-display-lg text-white mb-4">See where you stand</h2>
             <p className="text-body-lg text-white/80 mb-8">
-              The concepts make more sense when you apply them to your own context. The assessment takes five minutes and shows you where your organisation is strong and where the gaps are.
+              These words make more sense once you apply them to your own team. Answer four quick questions and see where you are, plus what you can do this week on your own.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/assessment">
+              <Link href="/start">
                 <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2">
-                  Take the assessment <ArrowRight className="w-4 h-4" />
+                  Find your level <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
               <Link href="/the-method">

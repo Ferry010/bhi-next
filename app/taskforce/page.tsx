@@ -15,100 +15,100 @@ export const metadata: Metadata = {
   alternates: { canonical: "/taskforce" },
   title: "The Taskforce | Working Together",
   description:
-    "Sixteen weeks. A taskforce of your own people takes one real business challenge to a working pilot, guided by the method. When we leave, the capability stays.",
+    "Sixteen weeks. A small team of your own people takes on one real business problem and tests a solution for real. When we leave, they can do it without us.",
   // Share image comes from ./opengraph-image.tsx (generated, book palette).
 };
 
 const facts = [
   { label: "16 weeks", sub: "One half day a week" },
-  { label: "6 to 8 people", sub: "Your team, not ours" },
-  { label: "~11 days", sub: "Of your time, across four months" },
-  { label: "1 owner", sub: "Formally holds the role at the end" },
+  { label: "6 to 8 people", sub: "Your people, not ours" },
+  { label: "About 11 days", sub: "Of their time, over four months" },
+  { label: "1 owner", sub: "Keeps it going after we leave" },
 ];
 
 const forYouIf = [
   {
-    title: "You can name the challenge in one sentence",
-    body: "Not a theme, not an ambition. A specific business problem that one sentence covers. If it takes a paragraph, it isn't scoped yet, and we'll help you cut it down before we start.",
+    title: "You can say the problem in one sentence",
+    body: "Not a theme or a dream. One real business problem. If it takes a whole paragraph to explain, we'll help you make it smaller before we start.",
   },
   {
-    title: "You have an executive sponsor",
-    body: "Someone senior enough to make a decision in the room at four points across the engagement. Without that, good work stalls waiting for approval that never comes.",
+    title: "A boss backs it",
+    body: "Someone senior enough to say yes or no on the spot, four times along the way. Without that, good work gets stuck waiting for a yes that never comes.",
   },
   {
-    title: "You have appetite for four months",
-    body: "This is not a workshop with follow-up. It's a weekly rhythm across sixteen weeks. That's what it takes for a capability to actually stick.",
+    title: "You have four months",
+    body: "This is not a workshop with a follow-up. It's one half day a week, for sixteen weeks. That's what it takes for something new to really stick.",
   },
 ];
 
 const walkAway = [
-  "Your named challenge, with interventions designed, one piloted and the rest scheduled for integration",
-  "A measured before and after, so you can see what actually moved",
-  "An evaluation loop that keeps running after we've gone, with a named owner",
-  "Six to eight people who can run the method themselves",
-  "One of them formally holding the internal Brand Humanizer role",
-  "A written log of what you rejected and why, which is worth as much as what you kept",
+  "Your problem, with solutions worked out, one tested for real, and a plan for the rest",
+  "A before and after, so you can see what really changed",
+  "A simple way to keep checking what works, with someone in charge of it",
+  "Six to eight people who can do this on their own",
+  "One of them officially in charge of it inside your company",
+  "A list of what you said no to, and why. That is worth as much as what you kept",
 ];
 
 const timeline = [
-  { weeks: "Before we start", phase: "Setup, taskforce selection and a baseline scan", gate: null },
-  { weeks: "Week 1", phase: "Kickoff day and the Brand Humanizing Course", gate: null },
-  { weeks: "Weeks 2 to 3", phase: "Map the consequences", gate: null },
-  { weeks: "Week 4", phase: "Prioritise them", gate: "Gate 1" },
-  { weeks: "Weeks 5 to 6", phase: "Devise interventions", gate: null },
-  { weeks: "Week 7", phase: "Select what to build", gate: "Gate 2" },
-  { weeks: "Weeks 8 to 9", phase: "Turn them into concrete plans", gate: null },
-  { weeks: "Week 10", phase: "Plans reviewed", gate: "Gate 3" },
-  { weeks: "Weeks 11 to 13", phase: "Pilot one intervention for real", gate: null },
-  { weeks: "Week 14", phase: "Pilot review", gate: "Gate 4" },
-  { weeks: "Weeks 15 to 16", phase: "Integrate, hand over, close", gate: null },
+  { weeks: "Before we start", phase: "Pick the team, and measure where you start", gate: null },
+  { weeks: "Week 1", phase: "A kick-off day, with the Training", gate: null },
+  { weeks: "Weeks 2 to 3", phase: "Find out what the problem really causes", gate: null },
+  { weeks: "Week 4", phase: "Pick what matters most", gate: "Boss decides" },
+  { weeks: "Weeks 5 to 6", phase: "Come up with solutions", gate: null },
+  { weeks: "Week 7", phase: "Choose which ones to build", gate: "Boss decides" },
+  { weeks: "Weeks 8 to 9", phase: "Turn them into real plans", gate: null },
+  { weeks: "Week 10", phase: "Check the plans", gate: "Boss decides" },
+  { weeks: "Weeks 11 to 13", phase: "Test one solution for real", gate: null },
+  { weeks: "Week 14", phase: "Look at the results of the test", gate: "Boss decides" },
+  { weeks: "Weeks 15 to 16", phase: "Make it part of daily work, hand over, close", gate: null },
 ];
 
 const seats = [
   { seat: "Front line", why: "Knows what actually happens, not what the process says happens" },
-  { seat: "Technical", why: "Knows what the systems can and cannot really do" },
-  { seat: "HR or L&D", why: "Owns capability, and usually carries this forward afterwards" },
-  { seat: "Commercial", why: "Keeps the business case honest" },
+  { seat: "Tech", why: "Knows what your systems can and can't really do" },
+  { seat: "HR or training", why: "Looks after people's skills, and usually keeps this going afterwards" },
+  { seat: "Sales", why: "Keeps an eye on the money" },
   { seat: "Someone junior", why: "Asks what the senior people stopped asking years ago" },
-  { seat: "A sceptic", why: "Named on purpose. Convince them and the rest follow" },
+  { seat: "A doubter", why: "On purpose. Win them over and the rest follow" },
 ];
 
 const preconditions = [
   "The challenge is written in one sentence, and we both agree on it",
-  "An executive sponsor is named, senior enough to decide at the gates",
-  "You propose the taskforce, with names, roles and departments",
+  "A boss is named who backs it, senior enough to say yes or no",
+  "You suggest the team: names, jobs and departments",
   "The weekly slot is booked for all sixteen weeks, up front",
-  "The four gate dates are in the sponsor's diary before week one",
+  "The four decision dates are in the boss's diary before week one",
 ];
 
 const faqs = [
   {
     q: "How is this different from a training?",
-    a: "A training has a curriculum we set in advance. The Taskforce follows your challenge wherever it goes, so the shape is genuinely unpredictable. Anyone selling this to you as a longer training is setting an expectation the engagement cannot meet.",
+    a: "In a training, we decide the program up front. The Taskforce follows your problem wherever it goes, so nobody knows the exact route in advance. It is not a longer training, and we won't pretend it is.",
   },
   {
     q: "How is it different from consultancy?",
-    a: "We do not produce the work for you. Your people do the work between sessions and we correct it. If what you want is a set of recommendations delivered to you, we are the wrong partner and we will tell you so.",
+    a: "We don't do the work for you. Your people do the work between sessions, and we help them get it right. If you want a report full of advice, we are the wrong people, and we'll tell you so.",
   },
   {
     q: "Why only a half day a week?",
-    a: "Because people learn by doing the work and being corrected, not by watching someone else do it. The taskforce works between sessions and reports back. Clients often ask us to be there more, usually around week five when energy dips. More of our presence makes the outcome worse, so we say no and explain why.",
+    a: "Because people learn by doing, not by watching us. The team works in between and reports back. Clients often ask us to come more, usually around week five when energy drops. More of us makes the result worse, so we say no and explain why.",
   },
   {
     q: "What does the handover actually look like?",
-    a: "We lead the room through week four, co-facilitate with a member of your taskforce to week seven, coach while they run half a session at week nine, observe while they run all of week thirteen, and by week fifteen we are a guest. By the end, somebody who does not work for us is running a Brand Humanizing session inside your organisation.",
+    a: "We lead until week four. Until week seven we lead together with someone from your team. In week nine they lead half the session. In week thirteen they lead all of it while we watch. By week fifteen we're just a guest. By the end, one of your own people runs it.",
   },
   {
-    q: "What happens at a gate?",
-    a: "Four times across the engagement, your taskforce presents to your sponsor and asks for a decision. Thirty minutes. We sit at the back and say nothing unless asked. A no-go is a legitimate outcome and means the process worked.",
+    q: "What happens when the boss decides?",
+    a: "Four times along the way, the team shows its work to the boss and asks for a yes or no. Thirty minutes. We sit at the back and stay quiet unless asked. A no is a fine answer. It means the process works.",
   },
   {
-    q: "What size organisation is this for?",
-    a: "Corporate and upper mid-market. A sixteen week engagement is a serious commitment of time and attention, and it is not a fit for a small business.",
+    q: "How big does my company need to be?",
+    a: "Big or fairly big. Sixteen weeks takes real time and attention. It is not a fit for a small business.",
   },
   {
     q: "What does it cost?",
-    a: "It is scoped per engagement and quoted after we have agreed the challenge and the shape. Talk to us and you will get a clear proposal with no surprises.",
+    a: "It depends on your problem and your team, so we give you a price once we agree on both. Talk to us and you get a clear price, with no surprises.",
   },
 ];
 
@@ -127,7 +127,7 @@ export default function TaskforcePage() {
               <span className="text-primary">without us.</span>
             </h1>
             <p className="text-body-lg text-muted-foreground mt-6 max-w-2xl">
-              A taskforce of your own people takes one real business challenge from diagnosis to a working pilot, guided by the method. We are in the room half a day a week. They do the work in between. When we leave, the capability stays behind and one of them formally owns it.
+              A small team of your own people takes on one real business problem, and tests a solution for real. We are there half a day a week. They do the work in between. When we leave, they can do it without us, and one of them is in charge of it.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-10">
@@ -163,7 +163,7 @@ export default function TaskforcePage() {
                 <span className="text-sunny">We leave the knowledge.</span>
               </p>
               <p className="text-body-lg text-white/75 mt-6">
-                Most engagements end with a document and a dependency. This one ends with your people able to run the next challenge on their own. That is not a nice side effect of the work. It is the actual deliverable, and we measure ourselves against it.
+                Most consultants leave you with a report, and you keep needing them. We leave you with people who can take on the next problem on their own. That is not a bonus. It is the whole point, and we judge ourselves on it.
               </p>
             </ScrollRevealSection>
           </div>
@@ -175,7 +175,7 @@ export default function TaskforcePage() {
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-foreground mb-3">This is for you if three things are true.</h2>
               <p className="text-body-lg text-muted-foreground mb-10 max-w-2xl">
-                If one of them is missing, the engagement stalls somewhere in month two. We would rather find that out now than then.
+                If one is missing, things get stuck around month two. We would rather find that out now.
               </p>
             </ScrollRevealSection>
             <div className="grid md:grid-cols-3 gap-5">
@@ -216,7 +216,7 @@ export default function TaskforcePage() {
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-foreground mb-3">The shape of sixteen weeks.</h2>
               <p className="text-body-lg text-muted-foreground mb-10">
-                A full kickoff day, a half day on site each week, four decision gates, one live pilot and a close day.
+                One kick-off day, a half day with us each week, four moments where the boss decides, one real test, and a closing day.
               </p>
             </ScrollRevealSection>
             <div className="space-y-2">
@@ -254,13 +254,13 @@ export default function TaskforcePage() {
               <h2 className="text-display md:text-display-lg text-white mb-6">We hand over the room, week by week.</h2>
               <div className="space-y-4 text-body-lg text-white/75">
                 <p>
-                  We lead through week four. Then we co-facilitate with someone from your taskforce. By week nine we are coaching while they run half the session. By week thirteen we are watching them run all of it. By week fifteen we are a guest in a room we used to lead.
+                  We lead until week four. Then we lead together with someone from your team. By week nine, they lead half the session. By week thirteen, they lead all of it while we watch. By week fifteen, we are just a guest.
                 </p>
                 <p className="text-white font-heading font-semibold">
-                  By the end, somebody who does not work for us is running a Brand Humanizing session inside your organisation.
+                  By the end, one of your own people runs it. Not us.
                 </p>
                 <p>
-                  That is also why we are only there half a day a week. Your people learn by doing the work and being corrected, not by watching us do it well.
+                  That is also why we are only there half a day a week. Your people learn by doing it, not by watching us.
                 </p>
               </div>
             </ScrollRevealSection>
@@ -271,16 +271,16 @@ export default function TaskforcePage() {
         <section className="section-padding bg-cream">
           <div className="container max-w-3xl">
             <ScrollRevealSection>
-              <h2 className="text-display md:text-display-lg text-foreground mb-3">Your sponsor makes four decisions.</h2>
+              <h2 className="text-display md:text-display-lg text-foreground mb-3">The boss decides four times.</h2>
               <p className="text-body-lg text-muted-foreground mb-8">
-                Thirty minutes each. Your taskforce presents and asks for a decision in the room. We sit at the back and say nothing unless we are asked. A no is a legitimate answer and it means the process worked.
+                Thirty minutes each. The team shows its work and asks for a yes or no. We sit at the back and stay quiet unless asked. A no is a fine answer. It means the process works.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { g: "Gate 1", w: "Week 4", q: "Do you agree these are the consequences worth working on?" },
-                  { g: "Gate 2", w: "Week 7", q: "Do you approve these interventions for planning?" },
-                  { g: "Gate 3", w: "Week 10", q: "Do you approve these plans and release the pilot?" },
-                  { g: "Gate 4", w: "Week 14", q: "Do you approve integration based on the pilot results?" },
+                  { g: "Decision 1", w: "Week 4", q: "Are these the right things to work on?" },
+                  { g: "Decision 2", w: "Week 7", q: "Shall we plan these solutions?" },
+                  { g: "Decision 3", w: "Week 10", q: "Are the plans good enough to test one for real?" },
+                  { g: "Decision 4", w: "Week 14", q: "Did the test work well enough to make it part of daily work?" },
                 ].map((x) => (
                   <div key={x.g} className="bg-white rounded-2xl p-6 shadow-[0_4px_24px_rgba(18,21,46,0.06)]">
                     <div className="flex items-baseline gap-2 mb-2">
@@ -301,7 +301,7 @@ export default function TaskforcePage() {
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-foreground mb-3">Who sits on the taskforce.</h2>
               <p className="text-body-lg text-muted-foreground mb-8">
-                You propose the people, we pressure-test the mix. Diversity of expertise beats seniority here, and we will say that out loud, because the instinct is always to send managers. Eight people maximum, or they stop contributing and start attending.
+                You suggest the people, we check the mix. Different kinds of know-how matter more than rank here. Everyone wants to send managers, so we say it out loud. Eight people at most, or people stop joining in and just sit there.
               </p>
               <div className="space-y-3">
                 {seats.map((s) => (
@@ -321,7 +321,7 @@ export default function TaskforcePage() {
             <ScrollRevealSection>
               <h2 className="text-display md:text-display-lg text-foreground mb-3">What we need from you before week one.</h2>
               <p className="text-body-lg text-muted-foreground mb-8">
-                Five things, all of them non-negotiable. Every one of these gets skipped in the excitement of a signed deal, and every one of them causes pain later. We would rather be strict now.
+                Five things, and we don't bend on them. In the excitement of a new deal they often get skipped, and that always hurts later. We would rather be strict now.
               </p>
               <div className="space-y-3">
                 {preconditions.map((p, i) => (
@@ -346,24 +346,24 @@ export default function TaskforcePage() {
               </h2>
               <div className="space-y-4 text-body-lg text-foreground/80">
                 <p>
-                  The Taskforce only works with a group that already shares the language, and it needs a level of trust that comes from having delivered something together first. If we have not worked with you yet, we will point you at the Full-Day Course and tell you to start there.
+                  The Taskforce only works if your people already speak the same language, and if we trust each other from working together before. If we haven't worked with you yet, we'll tell you to start with the Training.
                 </p>
                 <p>
-                  That is not a hoop to jump through, and it is not an upsell in reverse. It is the difference between an engagement that lands and one that stalls in month two.
+                  That is not a trick to sell you more. It is the difference between a Taskforce that works and one that gets stuck in month two.
                 </p>
                 <p className="font-heading font-semibold text-foreground">
-                  We would rather turn down the bigger cheque today than take it and watch the work fail.
+                  We would rather say no to a big deal today than watch it fail later.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8">
                 <Link href="/learning/full-day-course">
                   <Button className="rounded-full bg-accent text-accent-foreground hover:bg-soft-coral btn-scale font-heading font-semibold px-8 h-12 text-base gap-2 w-full sm:w-auto">
-                    Start with the Full-Day Course <ArrowRight className="w-4 h-4" />
+                    Start with the Training <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <Link href="/learning">
                   <Button variant="outline" className="rounded-full border-2 border-foreground/30 hover:border-foreground/50 font-heading font-semibold px-8 h-12 text-base w-full sm:w-auto">
-                    See all training <span className="cta-arrow">→</span>
+                    See all four levels <span className="cta-arrow">→</span>
                   </Button>
                 </Link>
               </div>

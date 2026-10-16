@@ -10,13 +10,13 @@ const timeline = [
     date: "January 2024",
     dot: "bg-sunny ring-sunny/20",
     title: "Three days in the woods",
-    body: "Ferry booked a tiny house deep in the woods, 150 km from home, and stayed three days until the first framework existed. Those three focused days are the backbone of the book that's in stores today.",
+    body: "Ferry booked a tiny house deep in the woods, 150 km from home, and stayed three days until the first version of the idea was on paper. Those three focused days are the backbone of the book that's in stores today.",
   },
   {
     date: "2024",
     dot: "bg-primary ring-primary/15",
     title: "The manuscript",
-    body: "On that framework, Ferry and Jonathan wrote the book, chapter by chapter.",
+    body: "From there, Ferry and Jonathan wrote the book, chapter by chapter.",
   },
   {
     date: "2024",
@@ -57,8 +57,8 @@ export default function WhyWeWroteIt() {
                   The whole method, in <span className="text-primary">one book</span>.
                 </h2>
                 <p className="text-body-lg text-muted-foreground mt-6 max-w-xl">
-                  This isn&apos;t a recap of the keynote. It&apos;s the whole thing: the frameworks, the thinking
-                  behind them, and the company cases we usually keep for the stage. Written to be read in a
+                  This isn&apos;t a recap of the keynote. It&apos;s the whole thing: the ideas, the thinking
+                  behind them, and the company stories we usually keep for the stage. Written to be read in a
                   weekend, not studied for a term.
                 </p>
                 <p className="text-body-lg text-muted-foreground mt-4 max-w-xl">
@@ -75,7 +75,7 @@ export default function WhyWeWroteIt() {
                   <li className="flex gap-3">
                     <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
-                      <h3 className="font-heading font-bold text-base text-foreground">The full framework</h3>
+                      <h3 className="font-heading font-bold text-base text-foreground">The whole idea</h3>
                       <p className="text-sm text-muted-foreground mt-0.5 leading-relaxed">
                         Everything we teach, in order, with the reasoning behind it.
                       </p>
