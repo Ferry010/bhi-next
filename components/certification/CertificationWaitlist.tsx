@@ -1,5 +1,6 @@
 "use client";
 
+import { notifySlack } from "@/lib/notifySlack";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,9 +22,7 @@ export default function CertificationWaitlist() {
       await createSupabaseBrowserClient()
         .from("form_submissions" as any)
         .insert({ id: submissionId, form_type: "certification_waitlist", data: formData } as any);
-      createSupabaseBrowserClient().functions.invoke("notify-slack", {
-        body: { form_type: "certification_waitlist", data: formData },
-      });
+      notifySlack("certification_waitlist", formData);
       notifyByEmail("certification_waitlist", formData, submissionId);
       setSubmitted(true);
     } catch {

@@ -1,5 +1,6 @@
 "use client";
 
+import { notifySlack } from "@/lib/notifySlack";
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -111,7 +112,7 @@ function ContactForm() {
       const submissionId = crypto.randomUUID();
       const supabase = createSupabaseBrowserClient();
       await supabase.from("form_submissions" as any).insert({ id: submissionId, form_type: "contact", data: formData } as any);
-      await supabase.functions.invoke("notify-slack", { body: { form_type: "contact", data: formData } });
+      notifySlack("contact", formData);
       notifyByEmail("contact", formData, submissionId);
       setSubmitted(true);
     } catch {

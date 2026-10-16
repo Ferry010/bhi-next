@@ -61,9 +61,6 @@ export default function VibecodingSave({ lang }: { lang: "en" | "nl" }) {
       await createSupabaseBrowserClient()
         .from("form_submissions" as never)
         .insert({ id: crypto.randomUUID(), form_type: "vibecoding_save", data } as never);
-      createSupabaseBrowserClient().functions.invoke("notify-slack", {
-        body: { form_type: "vibecoding_save", data },
-      });
       sendToHubspot("vibecoding_save", data);
       // Also push it to the dedicated #vibecoding-workshop channel.
       fetch("/api/vibecoding/notify", {

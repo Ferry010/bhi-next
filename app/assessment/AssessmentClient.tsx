@@ -1,5 +1,6 @@
 "use client";
 
+import { notifySlack } from "@/lib/notifySlack";
 import { sendToHubspot } from "@/lib/sendToHubspot";
 import { useState, useCallback } from "react";
 import Navbar from "@/components/Navbar";
@@ -97,17 +98,10 @@ export default function AssessmentClient() {
         ...Object.fromEntries(Object.entries(result.skillScores).map(([k, v]) => [k, `${v}%`])),
       });
 
-      await supabase.functions.invoke("notify-slack", {
-        body: {
-          form_type: "assessment",
-          data: {
-            email: trimmed,
-            overallScore: result.overallScore,
-            ...Object.fromEntries(
-              Object.entries(result.skillScores).map(([k, v]) => [k, `${v}%`])
-            ),
-          },
-        },
+      notifySlack("assessment", {
+        email: trimmed,
+        overallScore: `${result.overallScore}%`,
+        ...Object.fromEntries(Object.entries(result.skillScores).map(([k, v]) => [k, `${v}%`])),
       });
 
       await supabase.functions.invoke("send-transactional-email", {

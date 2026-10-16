@@ -1,5 +1,6 @@
 "use client";
 
+import { notifySlack } from "@/lib/notifySlack";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,7 +22,7 @@ export default function Newsletter() {
       const submissionId = crypto.randomUUID();
       const formData = { email: email.trim() };
       await createSupabaseBrowserClient().from("form_submissions" as any).insert({ id: submissionId, form_type: "newsletter", data: formData } as any);
-      await createSupabaseBrowserClient().functions.invoke("notify-slack", { body: { form_type: "newsletter", data: formData } });
+      notifySlack("newsletter", formData);
       notifyByEmail("newsletter", formData, submissionId);
       setSubmitted(true);
     } catch {

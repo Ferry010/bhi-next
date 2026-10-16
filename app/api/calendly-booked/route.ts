@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { pushLeadToHubspot } from "@/lib/hubspot";
+import { postLeadToSlack } from "@/lib/slack";
 
 // Called by CalendlyEmbed when someone books a call on our own pages. Calendly's
 // browser event only carries two API links (invitee + event), no personal data,
@@ -72,7 +73,7 @@ export async function POST(req: NextRequest) {
   const hubspot = await pushLeadToHubspot("call_booked", data);
   if (!hubspot.ok && hubspot.reason !== "HUBSPOT_SERVICE_KEY not set") console.error("HubSpot:", hubspot.reason);
 
-  // Same routes as every other lead on the site: stored for /admin/forms, then Slack.
+  // Stored for /admin/forms, like every other lead on the site.
   const supaUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anon = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (supaUrl && anon) {
@@ -83,13 +84,9 @@ export async function POST(req: NextRequest) {
         headers: { ...headers, Prefer: "return=minimal" },
         body: JSON.stringify({ form_type: "call_booked", data }),
       }).catch((err) => console.error("[calendly-booked] store failed:", err)),
-      fetch(`${supaUrl}/functions/v1/notify-slack`, {
-        method: "POST",
-        headers,
-        body: JSON.stringify({ form_type: "call_booked", data }),
-      }).catch((err) => console.error("[calendly-booked] Slack failed:", err)),
     ]);
   }
+  await postLeadToSlack("call_booked", data);
 
   return NextResponse.json({ ok: true });
 }

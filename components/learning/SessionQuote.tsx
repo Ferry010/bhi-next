@@ -1,5 +1,6 @@
 "use client";
 
+import { notifySlack } from "@/lib/notifySlack";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -77,7 +78,7 @@ export default function SessionQuote({
       const id = crypto.randomUUID();
       const supabase = createSupabaseBrowserClient();
       await supabase.from("form_submissions" as never).insert({ id, form_type: "session_quote", data } as never);
-      supabase.functions.invoke("notify-slack", { body: { form_type: "session_quote", data } });
+      notifySlack("session_quote", data);
       notifyByEmail("session_quote", data, id); // also files it in HubSpot (contact + deal)
     } catch {
       // Best-effort: never strand someone on an error.

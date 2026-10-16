@@ -1,5 +1,6 @@
 "use client";
 
+import { notifySlack } from "@/lib/notifySlack";
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -26,7 +27,7 @@ export default function BookSection({ variant = "full" }: { variant?: "full" | "
       const formData = { email: email.trim() };
       await createSupabaseBrowserClient().from("english_book_requests" as any).insert({ email: email.trim() } as any);
       await createSupabaseBrowserClient().from("form_submissions" as any).insert({ id: submissionId, form_type: "book_request", data: formData } as any);
-      createSupabaseBrowserClient().functions.invoke("notify-slack", { body: { form_type: "book_request", data: formData } });
+      notifySlack("book_request", formData);
       notifyByEmail("book_request", formData, submissionId);
       setSubmitted(true);
     } catch {

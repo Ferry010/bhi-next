@@ -1,5 +1,6 @@
 "use client";
 
+import { notifySlack } from "@/lib/notifySlack";
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -27,9 +28,7 @@ export default function EnglishEditionClient() {
         form_type: "book_request",
         data: formData,
       } as never);
-      supabase.functions.invoke("notify-slack", {
-        body: { form_type: "book_english_edition", data: formData },
-      });
+      notifySlack("book_english_edition", formData);
       notifyByEmail("book_request", formData, submissionId);
       setSubmitted(true);
     } catch {
