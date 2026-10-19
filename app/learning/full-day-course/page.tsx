@@ -68,15 +68,15 @@ const data = {
   ],
   honest: {
     forYou:
-      "One team, up to 30 people, that gets the idea and now needs to do something with it. You pick the team that goes first.",
-    notForYou:
-      "Nobody has heard the story yet: start with a Spark Session. Or you want the whole company to change at once: that's the Taskforce.",
-    catch:
-      "It's a working day, not a lecture. Your whole team needs to be there for the whole day. It works much better in person. VAT and travel outside Rotterdam come on top.",
-    showTerms: true,
+      "One team, up to 30 people, that gets the idea and is ready to put it to work. You pick the team that goes first.",
+    elsewhere: {
+      text: "Want the whole company to hear the story first?",
+      label: "Start with the Spark Session",
+      href: "/learning/inspiration-session",
+    },
     worth:
       "From €7,500 for up to 30 people: €250 a person for a full day with one of the founders, the book, and a 90-day plan with names and dates.",
-    monday:
+    after:
       "Your team knows which work goes to computers and which stays with people. There's a 90-day plan on the wall with names and dates, and the first step starts that week.",
   },
   groupOptions: ["Up to 12", "12 to 20", "20 to 30", "More than 30"],

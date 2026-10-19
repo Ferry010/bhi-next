@@ -373,17 +373,23 @@ export default function TaskforcePage() {
         </section>
 
         <HonestAnswers
-          mondayLabel="What does it look like after?"
+          afterLabel="What does it look like after?"
           data={{
             forYou:
-              "You can say one real business problem in one sentence, a boss backs it, and you have four months. Your team already knows the idea from a Spark Session or the Training.",
-            notForYou:
-              "You want a report full of advice, or someone to do the work for you. Or you're a small business: sixteen weeks is a big commitment.",
-            catch:
-              "It takes your people's time: about 11 days each over four months. The price depends on your problem, so you get it after our first talks, in writing. You can stop at any of the four moments where the boss decides: you only pay for the weeks up to then.",
+              "You can say one real business problem in one sentence, a boss backs it, and you want your own people to solve it for good.",
+            elsewhere: {
+              text: "Want your team to learn the method first?",
+              label: "Start with the Training",
+              href: "/learning/full-day-course",
+            },
+            q2: {
+              question: "What if it isn't working?",
+              answer:
+                "Four times along the way, your boss decides whether to go on. If the answer is no, you stop there and only pay for the weeks so far. You're never locked in.",
+            },
             worth:
               "Most companies hire outside help again for every new problem. After this, six to eight of your own people can take on the next one themselves, and one of them is in charge of it.",
-            monday:
+            after:
               "Four months from now: one solution tested for real, a before and after, and your own people running the next problem without us.",
           }}
         />

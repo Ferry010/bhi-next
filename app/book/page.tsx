@@ -106,15 +106,22 @@ export default function BookPage() {
           </div>
         </section>
         <HonestAnswers
-          mondayLabel="What changes after reading it?"
+          afterLabel="What changes after reading it?"
           data={{
             forYou:
-              "You want to understand Brand Humanizing yourself first, before you take it to your team or spend real money.",
-            notForYou: "You don't read Dutch. The English edition isn't out yet, but you can get on the list.",
-            catch: "Not much of one. It's €24,95, it's in Dutch for now, and you buy it on the book's own site.",
+              "You want to understand Brand Humanizing yourself first, before you take it to your team.",
+            elsewhere: {
+              text: "Rather read it in English?",
+              label: "Get on the list for the English edition",
+              href: "/book/english-edition",
+            },
+            q2: {
+              question: "How long does it take?",
+              answer: "A few evenings. It's written to be read in a weekend, not studied for a term.",
+            },
             worth:
-              "The whole method, the research and the company stories we usually keep for the stage, for the price of lunch. Two years of work, readable in a few evenings.",
-            monday:
+              "The whole method, the research and the company stories we usually keep for the stage, for the price of lunch. Two years of work in one book.",
+            after:
               "You can explain why sameness is the real risk, and where people and technology belong in your company. And you'll know if your team should hear it too.",
           }}
         />

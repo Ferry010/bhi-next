@@ -65,15 +65,15 @@ const data = {
   honest: {
     forYou:
       "You want everyone to hear the same story at the same moment. At a kick-off, a team day or a company event, with ten people or five hundred.",
-    notForYou:
-      "You want your team to walk out able to do something new. One talk wakes people up, it doesn't teach them how. That's the Training.",
-    catch:
-      "It's one hour, so it starts the change, it doesn't finish it. VAT and travel outside Rotterdam come on top of the price.",
-    showTerms: true,
+    elsewhere: {
+      text: "Want your team to learn how to do it, hands-on?",
+      label: "That's the Training",
+      href: "/learning/full-day-course",
+    },
     worth:
-      "From €3,500 for the whole room, the book for everyone included. With 100 people that's €35 a person: less than a team lunch, for one hour that gets everyone talking about the same thing.",
-    monday:
-      "People use the same words for AI and for what makes you different. The meeting about \"what do we do with AI\" finally has a starting point. And the book is on their desks.",
+      "From €3,500 for the whole room, with the book for everyone included. With 100 people that's €35 a person: less than a team lunch, for one hour that gets everyone talking about the same thing.",
+    after:
+      "People use the same words for AI and for what makes you different. The conversation about \"what do we do with AI\" finally has a starting point. And the book is on their desks.",
   },
   groupOptions: ["Up to 50", "50 to 150", "150 to 500", "500+"],
   level: "spark" as const,
