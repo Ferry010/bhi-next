@@ -1,7 +1,14 @@
 // Algemene Voorwaarden (NL) + Terms & Conditions (EN) for Brand Humanizing
 // Institute. DRAFT — have a lawyer review before relying on these. Business
-// terms (cancellation tiers, payment) were confirmed by Ferry; the rest are
-// sensible NL B2B defaults and can be tuned.
+// terms: payment confirmed by Ferry; cancellation tiers set 2026-10-17 (the
+// gentler 0/25/50/100 ladder, single source CANCELLATION in lib/pricing.ts).
+// The rest are sensible NL B2B defaults and can be tuned.
+
+import { CANCELLATION } from "@/lib/pricing";
+
+const fee = (n: number, free: string) => (n === 0 ? free : `${n}%`);
+const tiersNl = CANCELLATION.tiers.map((t, i, a) => `${t.nl}: ${fee(t.fee, "kosteloos")}${i === a.length - 1 ? "." : ";"}`);
+const tiersEn = CANCELLATION.tiers.map((t, i, a) => `${t.en.toLowerCase()} the session: ${fee(t.fee, "free of charge")}${i === a.length - 1 ? "." : ";"}`);
 //
 // One shared shape rendered by two routes: /algemene-voorwaarden (nl) and
 // /terms (en), with a language switch.
@@ -99,15 +106,12 @@ export const termsNl: TermsContent = {
       blocks: [
         { p: "Annuleren kan uitsluitend schriftelijk. Bij annulering door Opdrachtgever gelden de volgende annuleringskosten, als percentage van het overeengekomen bedrag:" },
         {
-          list: [
-            "meer dan 30 dagen voor de sessie: kosteloos;",
-            "15 tot en met 30 dagen voor de sessie: 50%;",
-            "0 tot en met 14 dagen voor de sessie: 100%.",
-          ],
+          list: tiersNl,
         },
         { p: "No-show: verschijnt het team niet, of zijn de locatie of faciliteiten op de afgesproken dag niet beschikbaar waardoor de sessie geen doorgang kan vinden, dan is 100% van het overeengekomen bedrag verschuldigd." },
         { p: "Verplaatsen: de sessie kan op verzoek eenmalig kosteloos worden verplaatst, mits het verzoek meer dan 14 dagen voor de sessie schriftelijk wordt gedaan en een nieuwe datum binnen 6 maanden wordt afgesproken. Bij een verzoek binnen 14 dagen of een tweede verplaatsing gelden de annuleringskosten." },
         { p: "Annuleert Opdrachtnemer een sessie (anders dan door overmacht), dan wordt in overleg een nieuwe datum gepland of wordt het voor die sessie reeds betaalde bedrag terugbetaald." },
+        { p: "Taskforce: de termijnen hierboven rekenen vanaf de kick-offdag. Na de kick-off kan Opdrachtgever het traject beëindigen op elk van de vier beslismomenten. Dan zijn de weken tot en met dat beslismoment verschuldigd, de rest niet." },
       ],
     },
     {
@@ -237,15 +241,12 @@ export const termsEn: TermsContent = {
       blocks: [
         { p: "Cancellation must be made in writing. If the Client cancels, the following cancellation fees apply, as a percentage of the agreed price:" },
         {
-          list: [
-            "more than 30 days before the session: free of charge;",
-            "15 to 30 days before the session: 50%;",
-            "0 to 14 days before the session: 100%.",
-          ],
+          list: tiersEn,
         },
         { p: "No-show: if the team does not attend, or the venue or facilities are unavailable on the agreed day so the session cannot go ahead, 100% of the agreed price is due." },
         { p: "Rescheduling: the session may be rescheduled once free of charge, provided the request is made in writing more than 14 days before the session and a new date within 6 months is agreed. For a request within 14 days or a second reschedule, the cancellation fees apply." },
         { p: "If the Provider cancels a session (other than due to force majeure), a new date is scheduled in consultation or any amount already paid for that session is refunded." },
+        { p: "Taskforce: the periods above count from the kick-off day. After the kick-off, the Client may end the engagement at any of the four decision moments. The weeks up to and including that moment are then due, the rest is not." },
       ],
     },
     {

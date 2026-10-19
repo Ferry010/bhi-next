@@ -10,6 +10,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Clock, Users, Euro, ArrowRight, Check, BookOpen, CalendarDays } from "lucide-react";
 import { FACILITATOR, STATS, MARQUEE_LOGOS, DISPLAY_PRICES, TALK_TO_EXPERT, type LevelKey } from "@/lib/pricing";
 import { LevelPill, LevelsSection } from "@/components/Ladder";
+import HonestAnswers, { type Honest } from "@/components/HonestAnswers";
 import CountUp from "@/components/ui/CountUp";
 import SessionQuote from "@/components/learning/SessionQuote";
 import StickyQuoteBar from "@/components/learning/StickyQuoteBar";
@@ -103,6 +104,8 @@ export interface ProductPageData {
   includes?: string[];
   /** From request to the day itself, in order. */
   howItWorks?: { title: string; body: string }[];
+  /** Is this for us / what's the catch / is it worth it / what changes after. */
+  honest?: Honest;
   /** Group-size choices in the quote form. */
   groupOptions?: string[];
   fixedPrice?: boolean;
@@ -435,6 +438,8 @@ export default function ProductPageTemplate({ data }: { data: ProductPageData })
         </div>
       </section>
       )}
+
+      {data.honest && <HonestAnswers data={data.honest} />}
 
       {bookable && (
         <SessionQuote

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import ScrollRevealSection from "@/components/ui/ScrollRevealSection";
 import { TALK_TO_EXPERT } from "@/lib/pricing";
 import { LevelPill, LevelsSection } from "@/components/Ladder";
+import HonestAnswers from "@/components/HonestAnswers";
 import { ArrowRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -370,6 +371,22 @@ export default function TaskforcePage() {
             </ScrollRevealSection>
           </div>
         </section>
+
+        <HonestAnswers
+          mondayLabel="What does it look like after?"
+          data={{
+            forYou:
+              "You can say one real business problem in one sentence, a boss backs it, and you have four months. Your team already knows the idea from a Spark Session or the Training.",
+            notForYou:
+              "You want a report full of advice, or someone to do the work for you. Or you're a small business: sixteen weeks is a big commitment.",
+            catch:
+              "It takes your people's time: about 11 days each over four months. The price depends on your problem, so you get it after our first talks, in writing. You can stop at any of the four moments where the boss decides: you only pay for the weeks up to then.",
+            worth:
+              "Most companies hire outside help again for every new problem. After this, six to eight of your own people can take on the next one themselves, and one of them is in charge of it.",
+            monday:
+              "Four months from now: one solution tested for real, a before and after, and your own people running the next problem without us.",
+          }}
+        />
 
         <FAQSection title="Questions people ask before they commit" faqs={faqs} variant="light" />
 

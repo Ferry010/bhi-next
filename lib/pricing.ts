@@ -225,6 +225,24 @@ export const LEVELS: Level[] = [
 export const levelOf = (key: LevelKey) => LEVELS.find((l) => l.key === key)!;
 
 // ─────────────────────────────────────────────────────────────────────────────
+// CANCELLING AND MOVING — one source for the terms (components/legal) and the
+// "What's the catch?" answer on every level page. The closer the date, the more
+// of our time (and the books) is already committed, so the fee steps up.
+// ─────────────────────────────────────────────────────────────────────────────
+export const CANCELLATION = {
+  tiers: [
+    { en: "More than 30 days before", nl: "meer dan 30 dagen voor de sessie", fee: 0 },
+    { en: "30 to 15 days before", nl: "30 tot en met 15 dagen voor de sessie", fee: 25 },
+    { en: "14 to 8 days before", nl: "14 tot en met 8 dagen voor de sessie", fee: 50 },
+    { en: "7 days or less before", nl: "7 dagen of minder voor de sessie", fee: 100 },
+  ],
+  /** Moving the date once is free up to this many days before. */
+  freeMoveDays: 14,
+  /** …to a new date within this many months. */
+  moveWithinMonths: 6,
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Credibility — reused on product pages and the pricing page.
 // ─────────────────────────────────────────────────────────────────────────────
 

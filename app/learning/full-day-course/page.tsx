@@ -66,6 +66,19 @@ const data = {
     { title: "The day", body: "From the idea, to a check of your skills, to a plan. All in one day." },
     { title: "Your 90-day plan", body: "Your team leaves with it. Many then do the Taskforce to make it stick." },
   ],
+  honest: {
+    forYou:
+      "One team, up to 30 people, that gets the idea and now needs to do something with it. You pick the team that goes first.",
+    notForYou:
+      "Nobody has heard the story yet: start with a Spark Session. Or you want the whole company to change at once: that's the Taskforce.",
+    catch:
+      "It's a working day, not a lecture. Your whole team needs to be there for the whole day. It works much better in person. VAT and travel outside Rotterdam come on top.",
+    showTerms: true,
+    worth:
+      "From €7,500 for up to 30 people: €250 a person for a full day with one of the founders, the book, and a 90-day plan with names and dates.",
+    monday:
+      "Your team knows which work goes to computers and which stays with people. There's a 90-day plan on the wall with names and dates, and the first step starts that week.",
+  },
   groupOptions: ["Up to 12", "12 to 20", "20 to 30", "More than 30"],
   level: "training" as const,
   includesBook: true,

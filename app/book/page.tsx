@@ -10,6 +10,7 @@ import BookSection from "@/components/sections/BookSection";
 import WhyWeWroteIt from "@/components/sections/WhyWeWroteIt";
 import { BOOK } from "@/lib/pricing";
 import { LevelPill, LevelsSection } from "@/components/Ladder";
+import HonestAnswers from "@/components/HonestAnswers";
 
 // The book's purchase mechanism is not decided yet (external retailer vs. direct
 // checkout). Until BOOK.purchase.url is set to a real URL, we show the price with
@@ -104,6 +105,19 @@ export default function BookPage() {
             </ScrollRevealSection>
           </div>
         </section>
+        <HonestAnswers
+          mondayLabel="What changes after reading it?"
+          data={{
+            forYou:
+              "You want to understand Brand Humanizing yourself first, before you take it to your team or spend real money.",
+            notForYou: "You don't read Dutch. The English edition isn't out yet, but you can get on the list.",
+            catch: "Not much of one. It's €24,95, it's in Dutch for now, and you buy it on the book's own site.",
+            worth:
+              "The whole method, the research and the company stories we usually keep for the stage, for the price of lunch. Two years of work, readable in a few evenings.",
+            monday:
+              "You can explain why sameness is the real risk, and where people and technology belong in your company. And you'll know if your team should hear it too.",
+          }}
+        />
         <LevelsSection current="book" />
       </main>
       <Footer />
